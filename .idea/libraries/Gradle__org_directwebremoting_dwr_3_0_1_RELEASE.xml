@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="Gradle: org.directwebremoting:dwr:3.0.1-RELEASE">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.directwebremoting/dwr/3.0.1-RELEASE/2719d2ccacda4260940d2bb5e0ec49e629707344/dwr-3.0.1-RELEASE.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.directwebremoting/dwr/3.0.1-RELEASE/c101c5e9d84d95b8a87041202264b2843ad63c0a/dwr-3.0.1-RELEASE-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

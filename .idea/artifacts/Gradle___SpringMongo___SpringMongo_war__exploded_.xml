@@ -1,0 +1,37 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="Gradle : SpringMongo : SpringMongo.war (exploded)">
+    <output-path>$PROJECT_DIR$/build/classes/artifacts/SpringMongo/exploded/SpringMongo.war</output-path>
+    <properties id="gradle-properties">
+      <options external-project-path="$PROJECT_DIR$" />
+    </properties>
+    <root id="root">
+      <element id="javaee-facet-resources" facet="SpringMongo/web/Web Gradle : SpringMongo.war" />
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="SpringMongo" />
+          <element id="dir-copy" path="$PROJECT_DIR$/build/resources/main" />
+        </element>
+        <element id="directory" name="lib">
+          <element id="library" level="project" name="Gradle: org.springframework:spring-aop:3.0.4.RELEASE" />
+          <element id="library" level="project" name="Gradle: aopalliance:aopalliance:1.0" />
+          <element id="library" level="project" name="Gradle: org.springframework:spring-asm:3.0.4.RELEASE" />
+          <element id="library" level="project" name="Gradle: org.springframework:spring-aspects:3.0.4.RELEASE" />
+          <element id="library" level="project" name="Gradle: org.springframework:spring-context:3.0.4.RELEASE" />
+          <element id="library" level="project" name="Gradle: org.springframework:spring-context-support:3.0.4.RELEASE" />
+          <element id="library" level="project" name="Gradle: org.springframework:spring-test:3.0.4.RELEASE" />
+          <element id="library" level="project" name="Gradle: org.springframework.data:spring-data-mongodb:1.0.1.RELEASE" />
+          <element id="library" level="project" name="Gradle: org.springframework:spring-expression:3.2.17.RELEASE" />
+          <element id="library" level="project" name="Gradle: org.springframework.data:spring-data-commons-core:1.2.1.RELEASE" />
+          <element id="library" level="project" name="Gradle: org.mongodb:mongo-java-driver:2.7.1" />
+          <element id="library" level="project" name="Gradle: org.springframework:spring-tx:3.2.17.RELEASE" />
+          <element id="library" level="project" name="Gradle: org.springframework:spring-beans:3.2.17.RELEASE" />
+          <element id="library" level="project" name="Gradle: org.springframework:spring-core:3.2.17.RELEASE" />
+          <element id="library" level="project" name="Gradle: commons-logging:commons-logging:1.1.3" />
+        </element>
+      </element>
+      <element id="directory" name="META-INF">
+        <element id="file-copy" path="$PROJECT_DIR$/build/classes/artifacts/SpringMongo/exploded/SpringMongo.war/META-INF/MANIFEST.MF" />
+      </element>
+    </root>
+  </artifact>
+</component>
