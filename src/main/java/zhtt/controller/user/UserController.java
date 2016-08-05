@@ -13,7 +13,7 @@ import zhtt.service.user.UserService;
  * Created by zhtt on 2016/8/5.
  */
 @Controller
-@RequestMapping("/users") 
+@RequestMapping("/user")
 public class UserController {
 	
 	
@@ -22,17 +22,17 @@ public class UserController {
       
     @RequestMapping("/index")  
     public ModelAndView index(){  
-        ModelAndView mav = new ModelAndView("/users/index");
+        ModelAndView mav = new ModelAndView("/user/index");
         return mav;  
     }  
     @RequestMapping("/addpage")  
     public String addUser(User user){
         //ModelAndView mav = new ModelAndView("/add");            
-        return "add";  
+        return "/user/add";
     } 
     @RequestMapping(value ="/save")  
     public ModelAndView saveUser(User user){
-        ModelAndView mav = new ModelAndView("/result");            
+        ModelAndView mav = new ModelAndView("/user/result");
         System.out.println("save:"+ user);
         mav.addObject("message","添加成功");
         userService.saveUser(user);
@@ -41,7 +41,7 @@ public class UserController {
     
     @RequestMapping("/findpage")  
     public ModelAndView findPage(User user){
-        ModelAndView mav = new ModelAndView("/get");
+        ModelAndView mav = new ModelAndView("/user/get");
         return mav;  
     }  
       
@@ -49,38 +49,38 @@ public class UserController {
     public ModelAndView findUser(User user){
         user = userService.findUserByName(user.getName());
         System.out.println("find:"+ user);
-        ModelAndView mav = new ModelAndView("/user");
+        ModelAndView mav = new ModelAndView("/user/user");
         mav.addObject("user", user);
         return mav;  
     }  
     @RequestMapping("/findAll")  
     public ModelAndView findAllUser(User user){
         List<User> allUser = userService.listUser();
-        ModelAndView mav = new ModelAndView("/findAll");
+        ModelAndView mav = new ModelAndView("/user/findAll");
         mav.addObject("allUser", allUser);
         return mav;  
     }  
     @RequestMapping("/deletepage")  
     public ModelAndView deletePage(User user){
-        ModelAndView mav = new ModelAndView("/delete");
+        ModelAndView mav = new ModelAndView("/user/delete");
         return mav;  
     } 
     @RequestMapping("/delete")  
     public ModelAndView delete(User user){
-        ModelAndView mav = new ModelAndView("/index");
+        ModelAndView mav = new ModelAndView("/user/index");
         userService.removeUser(user.getName());
         return mav;  
     } 
     
     @RequestMapping("/modfigPage")  
     public ModelAndView modfigPage(User user){
-        ModelAndView mav = new ModelAndView("/modfig");
+        ModelAndView mav = new ModelAndView("/user/modfig");
         return mav;  
     } 
     
     @RequestMapping("/modfig")  
     public ModelAndView modfig(User user,String key,String value){
-        ModelAndView mav = new ModelAndView("/index");
+        ModelAndView mav = new ModelAndView("/user/index");
         userService.updateUser(user.getName(),key,value);
         return mav;  
     }
