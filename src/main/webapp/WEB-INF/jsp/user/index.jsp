@@ -8,50 +8,40 @@
 </head>
 
 <body role="document">
-
-<!-- Fixed navbar -->
-<nav class="navbar navbar-inverse navbar-fixed-top">
-    <div class="container">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="#">Spring MongoDB</a>
-        </div>
-        <div id="navbar" class="navbar-collapse collapse">
-            <ul class="nav navbar-nav">
-                <li class="active"><a href="#">首页</a></li>
-                <li><a href="#about">数据统计</a></li>
-                <li><a href="#contact">调查表</a></li>
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">系统管理 <span class="caret"></span></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="#">数据统计模板</a></li>
-                        <li><a href="#">调查表模板</a></li>
-                        <li role="separator" class="divider"></li>
-                        <li><a href="#">用户管理</a></li>
-                        <li><a href="#">机构管理</a></li>
-                        <li><a href="#">角色管理</a></li>
-                        <li><a href="#">权限管理</a></li>
-                        <li role="separator" class="divider"></li>
-                        <li><a href="#">服务接口</a></li>
-                        <li><a href="#">机构用户数据接入</a></li>
-                    </ul>
-                </li>
-            </ul>
-        </div><!--/.nav-collapse -->
-    </div>
-</nav>
-
+<%@ include file="/jsp/nav.jsp" %>
 <div class="container theme-showcase" role="main">
-    <a href="${pageContext.request.contextPath}/users/addpage">新增</a> <br/>
-    <a href="${pageContext.request.contextPath}/users/findpage">查找</a><br/>
-    <a href="${pageContext.request.contextPath}/users/deletepage">删除</a><br/>
-    <a href="${pageContext.request.contextPath}/users/modfigPage">修改</a><br/>
-    <a href="${pageContext.request.contextPath}/users/findAll">列出所有用户</a>
+    <div class="panel panel-default">
+        <!-- Default panel contents -->
+        <div class="panel-heading">用户信息列表</div>
+        <div class="panel-body">
+            <p>
+                <a href="${ctx}/user/addpage">新增</a> <br/>
+                <a href="${ctx}/user/findpage">查找</a><br/>
+                <a href="${ctx}/user/deletepage">删除</a><br/>
+                <a href="${ctx}/user/modfigPage">修改</a><br/>
+                <a href="${ctx}/user/findAll">列出所有用户</a></p>
+        </div>
+
+        <!-- Table -->
+        <table class="table">
+            <thead>
+            <tr>
+                <th>用户名</th><th>姓名</th><th>所属机构</th><th>录入时间</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>Toom</td><td>Toom</td><td>Toom</td><td>Toom</td>
+            </tr>
+            <tr>
+                <td>Toom</td><td>Toom</td><td>Toom</td><td>Toom</td>
+            </tr>
+            <tr>
+                <td>Toom</td><td>Toom</td><td>Toom</td><td>Toom</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
     <!-- Main jumbotron for a primary marketing message or call to action -->
     <div class="jumbotron">
         <h1>Theme example</h1>
