@@ -22,7 +22,7 @@
             <li><a href="#">数据统计模板</a></li>
             <li><a href="#">调查表模板</a></li>
             <li role="separator" class="divider"></li>
-            <li><a href="user/index">用户管理</a></li>
+            <li><a href="${ctx}/user/index">用户管理</a></li>
             <li><a href="#">机构管理</a></li>
             <li><a href="#">角色管理</a></li>
             <li><a href="#">权限管理</a></li>
