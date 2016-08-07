@@ -19,8 +19,7 @@ public class UserServiceImpl implements UserService{
       
     private static String USER_COLLECTION = "users";  
   
-    @Autowired  
-    MongoOperations mongoTemplate;  
+    @Autowired  MongoOperations mongoTemplate;
       
    
     public void saveUser(User user){
@@ -37,6 +36,7 @@ public class UserServiceImpl implements UserService{
 		
 	}
 	public List<User> listUser() {
-		return mongoTemplate.findAll(User.class);
+        System.out.println(mongoTemplate.getCollectionNames());
+        return mongoTemplate.findAll(User.class);
 	}
 }

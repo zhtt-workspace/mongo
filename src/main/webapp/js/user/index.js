@@ -1,6 +1,54 @@
 /**
  * Created by zhtt on 2016/8/6.
  */
+var user={
+    createModalId:"createUserModal"
+};
+user.closeCreateModal=function(){
+    $("#"+user.createModalId).modal("hide");
+}
+user.submitCreateModal=function(){
+    user.submitForm({
+        form:$("#createUserForm"),
+        url:ctx+"/user/create-form",
+        success:function(data){
+            if(data.status=="success"){
+                alert("发送成功！");
+            }else{
+                alert(data.message);
+            }
+        }
+    });
+    user.closeCreateModal();
+}
+user.submitForm=function(obj){
+    if(obj.form.valid){
+        if(!obj.form.valid()){
+            return;
+        }
+    }
+    $.ajax({
+        cache: true,
+        type: "POST",
+        url:obj.url||obj.form.attr("action"),
+        data:obj.form.serialize(),// 你的formid
+        async: false,
+        error: function(request) {
+            if(obj.error){
+                obj.error(data);
+            }else{
+                alert("连接失败");
+            }
+        },
+        success: function(data) {
+            if(obj.success){
+                obj.success(data);
+            }else{
+                alert("操作成功");
+            }
+        }
+    });
+}
 function initTable() {
     var queryUrl = '@Url.Content("~/Welcome/QueryList")' + '?rnd=' + +Math.random();
     $table = $('.user-table-list').bootstrapTable({

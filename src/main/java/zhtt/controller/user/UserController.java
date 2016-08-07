@@ -16,8 +16,8 @@ import zhtt.service.user.UserService;
 @RequestMapping("/user")
 public class UserController {
 	
-	
-	@Autowired  
+
+	@Autowired
     private UserService userService;
       
     @RequestMapping("/index")  
@@ -57,6 +57,7 @@ public class UserController {
     public ModelAndView findAllUser(User user){
         List<User> allUser = userService.listUser();
         ModelAndView mav = new ModelAndView("/user/findAll");
+        System.out.println("allUser:"+allUser);
         mav.addObject("allUser", allUser);
         return mav;  
     }  
