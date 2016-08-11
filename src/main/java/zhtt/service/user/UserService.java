@@ -15,4 +15,7 @@ public interface UserService {
 	public void updateUser(String name, String key, String value);
 	public List<User> listUser();
 
+	public List<User> query(String name,String useranme,int limit,int skip);
+	public long count(String name,String username);
+
 }

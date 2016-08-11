@@ -9,7 +9,7 @@
 <title>mongodb</title>
 </head>
 <body>
-    <form action="${pageContext.request.contextPath}/users/find" method="post">
+    <form action="${pageContext.request.contextPath}/user/find" method="post">
        name: <input type="text" name="name" />  <br />
     
        <input type="submit" value="提交"/>

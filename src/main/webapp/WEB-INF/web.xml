@@ -4,7 +4,7 @@
          xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
 	http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
   <welcome-file-list>
-    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>/WEB-INF/jsp/login.jsp</welcome-file>
   </welcome-file-list>
 
   <!--configure the setting of springmvcDispatcherServlet and configure the
@@ -100,6 +100,9 @@
     <url-pattern>*.woff</url-pattern>
   </servlet-mapping>
 
-
+  <servlet-mapping>
+    <servlet-name>default</servlet-name>
+    <url-pattern>*.ico</url-pattern>
+  </servlet-mapping>
 
 </web-app>

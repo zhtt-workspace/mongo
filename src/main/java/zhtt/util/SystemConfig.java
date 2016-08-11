@@ -11,7 +11,9 @@ import java.util.Properties;
  */
 public class SystemConfig {
 
-    private static String systemname="Spring MongoDB平台";
+    public static String systemname="Spring MongoDB平台";
+
+    public static boolean mongo_auth=false;
 
     public static void init(){
         try{

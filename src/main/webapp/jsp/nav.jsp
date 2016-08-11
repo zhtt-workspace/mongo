@@ -19,7 +19,7 @@
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">系统管理 <span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a href="#">数据统计模板</a></li>
+            <li><a href="${ctx}/template/data-statistics/index">数据统计模板</a></li>
             <li><a href="#">调查表模板</a></li>
             <li role="separator" class="divider"></li>
             <li><a href="${ctx}/user/index">用户管理</a></li>

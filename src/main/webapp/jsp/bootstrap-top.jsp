@@ -7,10 +7,14 @@
 <title>Sping MongoDB</title>
 <!-- Bootstrap core CSS -->
 <link href="${ctx}/tool/bootstrap3/css/bootstrap.min.css" rel="stylesheet">
+<!-- 弹出框 -->
+<link href="${ctx}/tool/Lobibox/Lobibox.min.css" rel="stylesheet">
 <!-- Bootstrap theme -->
 <link href="${ctx}/tool/bootstrap3/css/bootstrap-theme.min.css" rel="stylesheet">
 <!-- Custom styles for this template -->
 <link href="${ctx}/css/index/theme.css" rel="stylesheet">
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="${ctx}/tool/jquery/jquery-1.10.2.js"></script>
 <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
 <!--[if lt IE 9]><script src="${ctx}/tool/bootstrap3/js/ie-emulation-modes-warning.js"></script><![endif]-->
 <script src="${ctx}/tool/bootstrap3/js/ie-emulation-modes-warning.js"></script>

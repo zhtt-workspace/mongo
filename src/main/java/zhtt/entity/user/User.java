@@ -1,5 +1,7 @@
 package zhtt.entity.user;
 
+import org.bson.types.ObjectId;
+
 import java.util.Date;
 
 /**
@@ -10,7 +12,7 @@ public class User {
     /**
      * 主键
      */
-    private String uid;
+    private ObjectId _id;
 
     /**
      * 用户名
@@ -42,13 +44,14 @@ public class User {
      */
     private String orgId;
 
+    public ObjectId get_id() {
+        return _id;
+    }
 
-    public String getUid() {
-        return uid;
+    public void set_id(ObjectId _id) {
+        this._id = _id;
     }
-    public void setUid(String uid) {
-        this.uid = uid;
-    }
+
 
     public String getName() {
         return name;
@@ -98,7 +101,7 @@ public class User {
 
     @Override
     public String toString() {
-        return "{USERS:{id:"+this.uid+", name:"+this.name+",age:"+this.age+"}}";
+        return "{USERS:{_id:"+this._id+", name:"+this.name+",age:"+this.age+"}}";
     }
 }
 

@@ -5,9 +5,11 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import zhtt.entity.user.User;
 import zhtt.service.user.UserService;
+import zhtt.util.JsonTableResponse;
 
 /**
  * Created by zhtt on 2016/8/5.
@@ -24,7 +26,15 @@ public class UserController {
     public ModelAndView index(){  
         ModelAndView mav = new ModelAndView("/user/index");
         return mav;  
-    }  
+    }
+
+    @RequestMapping("/query")
+    @ResponseBody
+    public JsonTableResponse query(String name,String username,int limit,int skip){
+        List<User> userList=userService.query(name,username,limit,skip);
+        long total=userService.count(name,username);
+        return new JsonTableResponse(total,userList);
+    }
     @RequestMapping("/addpage")  
     public String addUser(User user){
         //ModelAndView mav = new ModelAndView("/add");            
@@ -86,14 +96,6 @@ public class UserController {
         return mav;  
     }
     
-//    public static void main(String[] args) {
-//    
-//    	ApplicationContext ac = new ClassPathXmlApplicationContext("WebContent/WEB-INF/applicationContext.xml");
-//    	UserService userService = (UserService) ac.getBean("UserService");
-//    	Users user=new Users();
-//    	user.setAge(1000);
-//    	user.setName("zhang");
-//    	userService.saveUser(user);
-//	}
+
 
 }

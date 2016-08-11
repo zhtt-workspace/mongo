@@ -1,8 +1,12 @@
 /**
  * Created by zhtt on 2016/8/6.
  */
+$(function(){
+    user.initTable();
+});
 var user={
-    createModalId:"createUserModal"
+    createModalId:"createUserModal",
+    userListTableId:"userListTable"
 };
 user.closeCreateModal=function(){
     $("#"+user.createModalId).modal("hide");
@@ -49,17 +53,39 @@ user.submitForm=function(obj){
         }
     });
 }
-function initTable() {
-    var queryUrl = '@Url.Content("~/Welcome/QueryList")' + '?rnd=' + +Math.random();
-    $table = $('.user-table-list').bootstrapTable({
+/**
+ * 更新用户
+ */
+user.update=function(){
+    var selects =$('#'+user.userListTableId).bootstrapTable('getSelections');
+    if(selects.length==0){
+        LobiboxUtil.notify("请勾选要修改的用户！");
+        return;
+    }
+    var newSelects = $.parseJSON(JSON.stringify(selects));
+}
+/**
+ * 删除用户
+ */
+user.delete=function(){
+    var selects =$('#'+user.userListTableId).bootstrapTable('getSelections');
+    if(selects.length==0){
+        LobiboxUtil.notify("请勾选要删除的用户！");
+        return;
+    }
+    var newSelects = $.parseJSON(JSON.stringify(selects));
+}
+user.initTable=function() {
+    var queryUrl = 'http://localhost:8080/sm/user/query?name=an&username=username&limit=2&skip=0';
+    $table = $('#'+user.userListTableId).bootstrapTable({
         method: 'post',
-        contentType: "application/x-www-form-urlencoded",//必须的，操你大爷！！！！
+        contentType: "application/x-www-form-urlencoded",
         url: queryUrl,
-        height: $(window).height() - 200,
+        height: $(window).height() - 250,
         striped: true,
         pagination: true,
         singleSelect: false,
-        pageSize: 50,
+        pageSize: 2,
         pageList: [10, 50, 100, 200, 500],
         search: false, //不显示 搜索框
         showColumns: false, //不显示下拉框（选择显示的列）
@@ -67,47 +93,24 @@ function initTable() {
         queryParams: queryParams,
         minimunCountColumns: 2,
         columns: [{
-        field: 'state',
-        checkbox: true
-    }, {
-        field: 'Name',
-        title: '姓名',
-        width: 100,
-        align: 'center',
-        valign: 'middle',
-        sortable: true
-    }, {
-        field: 'Gender',
-        title: '性别',
-        width: 40,
-        align: 'left',
-        valign: 'top',
-        sortable: true
-    }, {
-        field: 'Birthday',
-        title: '出生日期',
-        width: 80,
-        align: 'left',
-        valign: 'top',
-        sortable: true
-    }, {
-        field: 'CtfId',
-        title: '身份证',
-        width: 80,
-        align: 'middle',
-        valign: 'top',
-        sortable: true
-    }, {
-            field: 'Address',        title: '地址',        width: 180,        align: 'left',        valign: 'top',        sortable: true
-    }, {
-        field: 'Tel',        title: '固定电话',        width: 100,        align: 'left',        valign: 'top',        sortable: true
-    }, {        field: 'Mobile',        title: '手机号码',        width: 100,        align: 'left',        valign: 'top',        sortable: true
-    }, {        field: 'operate',        title: '操作',        width: 100,        align: 'center',        valign: 'middle'
-    }],
-        onLoadSuccess:function(){    },
-        onLoadError: function () {
-
-        }
+            field: 'state',
+            checkbox: true
+            }, {
+                field: 'name',        title: '姓名',        width: 100,        align: 'center',        valign: 'middle',        sortable: true
+            }, {
+                field: 'username',        title: '用户名',        width: 40,        align: 'left',        valign: 'top',        sortable: true
+            }, {
+                field: 'password',        title: '密码',        width: 80,        align: 'left',        valign: 'top',        sortable: true
+            }, {
+                field: 'age',        title: '年龄',        width: 80,        align: 'middle',        valign: 'top',        sortable: true
+            }, {
+                    field: 'createTime',        title: '录入时间',        width: 180,        align: 'left',        valign: 'top',        sortable: true
+            }, {
+                field: 'orgId',        title: '所属机构',        width: 100,        align: 'left',        valign: 'top',        sortable: true
+            }, {        field: 'operate',        title: '操作',        width: 100,        align: 'center',        valign: 'middle'
+            }],
+        onLoadSuccess:function(){},
+        onLoadError: function () {}
     });
 }
 //传递的参数
