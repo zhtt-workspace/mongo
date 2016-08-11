@@ -76,7 +76,7 @@ user.delete=function(){
     var newSelects = $.parseJSON(JSON.stringify(selects));
 }
 user.initTable=function() {
-    var queryUrl = 'http://localhost:8080/sm/user/query?name=an&username=username&limit=2&skip=0';
+    var queryUrl = 'http://localhost:8080/sm/user/query?name=.&username=.&limit=2&skip=0';
     $table = $('#'+user.userListTableId).bootstrapTable({
         method: 'post',
         contentType: "application/x-www-form-urlencoded",
@@ -96,18 +96,15 @@ user.initTable=function() {
             field: 'state',
             checkbox: true
             }, {
-                field: 'name',        title: '姓名',        width: 100,        align: 'center',        valign: 'middle',        sortable: true
+                field: 'name',title: '姓名',width: 100,align: 'center',valign: 'middle',sortable: true
+            },  {
+                field: 'username',title: '用户名',width: 80,align: 'middle',valign: 'top',sortable: true
             }, {
-                field: 'username',        title: '用户名',        width: 40,        align: 'left',        valign: 'top',        sortable: true
+                field: 'createTime',title: '录入时间',width: 180,align: 'left',valign: 'top',sortable: true
             }, {
-                field: 'password',        title: '密码',        width: 80,        align: 'left',        valign: 'top',        sortable: true
+                field: 'orgId',title: '所属机构',width: 100,align: 'left',valign: 'top',sortable: true
             }, {
-                field: 'age',        title: '年龄',        width: 80,        align: 'middle',        valign: 'top',        sortable: true
-            }, {
-                    field: 'createTime',        title: '录入时间',        width: 180,        align: 'left',        valign: 'top',        sortable: true
-            }, {
-                field: 'orgId',        title: '所属机构',        width: 100,        align: 'left',        valign: 'top',        sortable: true
-            }, {        field: 'operate',        title: '操作',        width: 100,        align: 'center',        valign: 'middle'
+                field: 'operate',title: '操作',width: 100,align: 'center',valign: 'middle'
             }],
         onLoadSuccess:function(){},
         onLoadError: function () {}

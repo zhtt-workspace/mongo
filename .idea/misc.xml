@@ -36,20 +36,22 @@
   <component name="GradleLocalSettings">
     <option name="modificationStamps">
       <map>
-        <entry key="$PROJECT_DIR$/../CommandSystem" value="2926502778913" />
-        <entry key="$PROJECT_DIR$/../JiMo" value="2929728004989" />
-        <entry key="$PROJECT_DIR$/../JiMo0820" value="2880078212850" />
-        <entry key="$PROJECT_DIR$/../JiMo0831" value="2882008839552" />
-        <entry key="$PROJECT_DIR$/../SC_OMS_weixian" value="1467860296028" />
-        <entry key="$PROJECT_DIR$" value="2940608925007" />
-        <entry key="$PROJECT_DIR$/../caiji" value="1442802407148" />
-        <entry key="$PROJECT_DIR$/../caiji-weixian" value="1461743162036" />
-        <entry key="$PROJECT_DIR$/../weixian-caiji" value="1463369151916" />
-        <entry key="$PROJECT_DIR$/../../workspace/sc_oms_wx" value="1461663520062" />
+        <entry key="$PROJECT_DIR$/../../../workspace-intelli/CommandSystem" value="2926502778913" />
+        <entry key="$PROJECT_DIR$/../../../workspace-intelli/JiMo" value="2929728004989" />
+        <entry key="$PROJECT_DIR$/../../../workspace-intelli/JiMo0820" value="2880078212850" />
+        <entry key="$PROJECT_DIR$/../../../workspace-intelli/JiMo0831" value="2882008839552" />
+        <entry key="$PROJECT_DIR$/../../../workspace-intelli/SC_OMS_weixian" value="1467860296028" />
+        <entry key="$PROJECT_DIR$/../../../workspace-intelli/SpringMongo" value="2940608925007" />
+        <entry key="$PROJECT_DIR$/../../../workspace-intelli/caiji" value="1442802407148" />
+        <entry key="$PROJECT_DIR$/../../../workspace-intelli/caiji-weixian" value="1461743162036" />
+        <entry key="$PROJECT_DIR$/../../../workspace-intelli/weixian-caiji" value="1463369151916" />
+        <entry key="$PROJECT_DIR$/../../05.ucp/ucp2/trunk" value="2940608925007" />
+        <entry key="$PROJECT_DIR$" value="2940801598919" />
+        <entry key="$PROJECT_DIR$/../../../workspace/sc_oms_wx" value="1461663520062" />
       </map>
     </option>
   </component>
-  <component name="IdProvider" IDEtalkID="DC19116ED8A529501B52370FFE7208B7" />
+  <component name="IdProvider" IDEtalkID="4760519B2ED5D184A7ADB7254F70AC9A" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
     <OptionsSetting value="true" id="Remove" />
@@ -73,7 +75,7 @@
     <property name="MemberChooser.sorted" value="false" />
     <property name="MemberChooser.showClasses" value="true" />
     <property name="MemberChooser.copyJavadoc" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../caiji" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../workspace-intelli/caiji" />
   </component>
   <component name="RunManager">
     <configuration default="true" type="JUnit" factoryName="JUnit">
@@ -170,6 +172,22 @@
     <list size="0" />
   </component>
   <component name="SvnBranchConfigurationManager">
+    <option name="myConfigurationMap">
+      <map>
+        <entry key="$PROJECT_DIR$">
+          <value>
+            <SvnBranchConfiguration>
+              <option name="branchUrls">
+                <list>
+                  <option value="https://github.com/zhtt-workspace/mongo.git/branches" />
+                </list>
+              </option>
+              <option name="trunkUrl" value="https://github.com/zhtt-workspace/mongo.git/trunk" />
+            </SvnBranchConfiguration>
+          </value>
+        </entry>
+      </map>
+    </option>
     <option name="mySupportsUserInfoFilter" value="true" />
   </component>
   <component name="SvnConfiguration">
