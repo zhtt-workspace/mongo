@@ -9,6 +9,20 @@ LobiboxUtil.notify=function(cfg){
         msg: cfg.msg||""
     });
 }
+LobiboxUtil.confirm=function(cfg){
+    Lobibox.confirm({
+        msg: cfg.msg||"信息确认提醒！",
+        callback: function ($this, type, ev) {
+            if (type === 'yes') {
+                cfg.fn();
+            } else if (type === 'no') {
+                /*Lobibox.notify('info', {
+                    msg: 'You have clicked "No" button.'
+                });*/
+            }
+        }
+    });
+}
 LobiboxUtil.prompt=function(cfg){
     Lobibox.prompt('text',
         {

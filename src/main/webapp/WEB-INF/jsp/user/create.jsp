@@ -36,13 +36,13 @@
       <div class="form-group">
         <label for="create-user-age" class="col-sm-2 control-label">年龄</label>
         <div class="col-sm-10">
-          <input name="age" type="password" class="form-control" id="create-user-age" placeholder="年龄">
+          <input name="age" type="text" class="form-control" id="create-user-age" placeholder="年龄">
         </div>
       </div>
       <div class="form-group">
         <label for="create-user-org" class="col-sm-2 control-label">所属机构</label>
         <div class="col-sm-10">
-          <input name="orgId" type="password" class="form-control" id="create-user-org" placeholder="所属机构">
+          <input name="orgId" type="text" class="form-control" id="create-user-org" placeholder="所属机构">
         </div>
       </div>
     </form>

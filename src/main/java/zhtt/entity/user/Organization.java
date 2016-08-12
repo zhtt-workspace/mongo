@@ -3,6 +3,7 @@ package zhtt.entity.user;
 import org.bson.types.ObjectId;
 
 import java.util.Date;
+import java.util.UUID;
 
 /**
  * Created by zhtt on 2016/8/5.
@@ -13,6 +14,11 @@ public class Organization {
      * 主键
      */
     private ObjectId _id;
+
+    /**
+     * uuid
+     */
+    private String uuid= UUID.randomUUID().toString();
 
     /**
      * 编码，每一层级占用两位，用于like查询
@@ -126,5 +132,13 @@ public class Organization {
 
     public void setLeaf(boolean leaf) {
         this.leaf = leaf;
+    }
+
+    public String getUuid() {
+        return uuid;
+    }
+
+    public void setUuid(String uuid) {
+        this.uuid = uuid;
     }
 }

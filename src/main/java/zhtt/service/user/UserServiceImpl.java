@@ -27,6 +27,13 @@ public class UserServiceImpl implements UserService{
         mongoTemplate.save(user, TableConfig.USER);
     }
 
+    public void update(User user){
+        Query query=new Query();
+        query.addCriteria(Criteria.where("username").is(user.getUsername()));
+        mongoTemplate.updateFirst(query,user.toUpdate(),TableConfig.USER);
+        //mongoTemplate.updateFirst(query,Update.update("name", user.getName()),TableConfig.USER);
+    }
+
     public User findUserByName(String name){
         return mongoTemplate.findOne(new Query(Criteria.where("name").is(name)), $class, TableConfig.USER);
     }

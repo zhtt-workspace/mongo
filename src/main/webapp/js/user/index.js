@@ -6,30 +6,36 @@ $(function(){
 });
 var user={
     createModalId:"createUserModal",
-    userListTableId:"userListTable"
+    updateModalId:"updateUserModal",
+    userListTableId:"userListTable",
+    userListUrl:ctx+'/user/query',
+    deleteUrl:ctx+'/user/delete',
+    createUrl:ctx+"/user/create-form",
+    updateUrl:ctx+"/user/update-form"
 };
 user.closeCreateModal=function(){
     $("#"+user.createModalId).modal("hide");
 }
+user.closeUpdateModal=function(){
+    $("#"+user.updateModalId).modal("hide");
+}
 user.submitCreateModal=function(){
-    user.submitForm({
+    user.submitCreateForm({
         form:$("#createUserForm"),
-        url:ctx+"/user/create-form",
+        url:user.createUrl,
         success:function(data){
             if(data.status=="success"){
-                alert("发送成功！");
+                LobiboxUtil.notify("发送成功！");
             }else{
-                alert(data.message);
+                LobiboxUtil.notify(data.message);
             }
         }
     });
     user.closeCreateModal();
 }
-user.submitForm=function(obj){
+user.submitCreateForm=function(obj){
     if(obj.form.valid){
-        if(!obj.form.valid()){
-            return;
-        }
+        if(!obj.form.valid()){return;}
     }
     $.ajax({
         cache: true,
@@ -41,14 +47,14 @@ user.submitForm=function(obj){
             if(obj.error){
                 obj.error(data);
             }else{
-                alert("连接失败");
+                LobiboxUtil.notify("连接失败");
             }
         },
         success: function(data) {
             if(obj.success){
                 obj.success(data);
             }else{
-                alert("操作成功");
+                LobiboxUtil.notify("操作成功");
             }
         }
     });
@@ -61,8 +67,36 @@ user.update=function(){
     if(selects.length==0){
         LobiboxUtil.notify("请勾选要修改的用户！");
         return;
+    }else if(selects.length==1){
+        $("#openUpdateUserModelBtn").click();
+    }else{
+        LobiboxUtil.notify("默认修改第一条记录！");
+        $("#openUpdateUserModelBtn").click();
     }
-    var newSelects = $.parseJSON(JSON.stringify(selects));
+    setTimeout(function(){
+        var data=selects[0];
+        var form=$("form[id='updateUserForm']");
+        form.find("input[name='name']").val(data.name);
+        form.find("input[name='username']").val(data.username);
+        form.find("input[name='password']").val(data.password);
+        form.find("input[name='age']").val(data.age);
+        form.find("input[name='orgId']").val(data.orgId);
+    },300)
+    //var newSelects = $.parseJSON(JSON.stringify(selects));
+}
+user.submitUpdateModal=function(){
+    user.submitCreateForm({
+        form:$("#updateUserForm"),
+        url:user.updateUrl,
+        success:function(data){
+            if(data.status=="success"){
+                LobiboxUtil.notify("发送成功！");
+            }else{
+                LobiboxUtil.notify(data.message);
+            }
+        }
+    });
+    user.closeUpdateModal();
 }
 /**
  * 删除用户
@@ -72,11 +106,21 @@ user.delete=function(){
     if(selects.length==0){
         LobiboxUtil.notify("请勾选要删除的用户！");
         return;
+    }else{
+        LobiboxUtil.confirm({msg:"确定要删除吗？",fn:function() {
+            $.get(user.deleteUrl,{uuid:selects[0].uuid}, function (data) {
+                if(data.status=="success"){
+                    LobiboxUtil.notify("删除成功！");
+                }else{
+                    LobiboxUtil.notify("删除失败！"+data.message);
+                }
+            });
+        }});
     }
-    var newSelects = $.parseJSON(JSON.stringify(selects));
+    //var newSelects = $.parseJSON(JSON.stringify(selects));
 }
 user.initTable=function() {
-    var queryUrl = 'http://localhost:8080/sm/user/query?name=.&username=.&limit=2&skip=0';
+    var queryUrl = user.userListUrl;
     $table = $('#'+user.userListTableId).bootstrapTable({
         method: 'post',
         contentType: "application/x-www-form-urlencoded",
@@ -86,11 +130,11 @@ user.initTable=function() {
         pagination: true,
         singleSelect: false,
         pageSize: 2,
-        pageList: [10, 50, 100, 200, 500],
+        pageList: [4,10, 50, 100, 200, 500],
         search: false, //不显示 搜索框
         showColumns: false, //不显示下拉框（选择显示的列）
         sidePagination: "server", //服务端请求
-        queryParams: queryParams,
+        queryParams: user.queryParams,
         minimunCountColumns: 2,
         columns: [{
             field: 'state',
@@ -111,15 +155,17 @@ user.initTable=function() {
     });
 }
 //传递的参数
-function queryParams(params) {
+user.queryParams=function(params) {
     return {
-        pageSize: params.pageSize,
-        pageIndex: params.pageNumber,
-        UserName: $("#txtName").val(),
-        Birthday: $("#txtBirthday").val(),
-        Gender: $("#Gender").val(),
-        Address: $("#txtAddress").val(),
-        name: params.sortName,
-        order: params.sortOrder
+        offset: typeof params=="undefined"?0:params.offset,
+        limit: typeof params=="undefined"?2:params.limit,
+        name: $("#query-user-name").val()==""?".":$("#query-user-name").val(),
+        username: $("#query-user-username").val()==""?".":$("#query-user-username").val(),
+        startdate: $("#query-user-startdate").val(),
+        endDate: $("#query-user-endDate").val(),
+        order: typeof params=="undefined"?"asc":params.sortOrder
     };
+}
+user.query=function(){
+    $('#'+user.userListTableId).bootstrapTable('refresh',user.queryParams());
 }

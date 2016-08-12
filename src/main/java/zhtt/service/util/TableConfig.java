@@ -6,7 +6,7 @@ package zhtt.service.util;
  */
 public class TableConfig {
 
-    public static final String db_name="policecase";
+    public static final String DB_NAME="policecase";
 
     /**
      * Connection

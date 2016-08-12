@@ -2,6 +2,7 @@ package zhtt.controller.user;
 
 import java.util.List;
 
+import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -9,6 +10,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import zhtt.entity.user.User;
 import zhtt.service.user.UserService;
+import zhtt.util.JsonResponse;
+import zhtt.util.JsonResponseStatusEnum;
 import zhtt.util.JsonTableResponse;
 
 /**
@@ -30,11 +33,24 @@ public class UserController {
 
     @RequestMapping("/query")
     @ResponseBody
-    public JsonTableResponse query(String name,String username,int limit,int skip){
-        List<User> userList=userService.query(name,username,limit,skip);
+    public JsonTableResponse query(String name,String username,Integer limit,Integer offset){
+        limit=limit==null?2:limit;
+        offset=offset==null?0:offset;
+        List<User> userList=userService.query(name,username,limit,offset);
         long total=userService.count(name,username);
         return new JsonTableResponse(total,userList);
     }
+
+    @RequestMapping("/delete")
+    @ResponseBody
+    public JsonResponse delete(String uuid){
+        try{
+            return new JsonResponse(uuid);
+        }catch (Exception e){
+            return new JsonResponse(JsonResponseStatusEnum.ERROR,e.getMessage());
+        }
+    }
+
     @RequestMapping("/addpage")  
     public String addUser(User user){
         //ModelAndView mav = new ModelAndView("/add");            
@@ -75,13 +91,14 @@ public class UserController {
     public ModelAndView deletePage(User user){
         ModelAndView mav = new ModelAndView("/user/delete");
         return mav;  
-    } 
-    @RequestMapping("/delete")  
+    }
+    /*
+    @RequestMapping("/delete")
     public ModelAndView delete(User user){
         ModelAndView mav = new ModelAndView("/user/index");
         userService.removeUser(user.getName());
-        return mav;  
-    } 
+        return mav;
+    }*/
     
     @RequestMapping("/modfigPage")  
     public ModelAndView modfigPage(User user){

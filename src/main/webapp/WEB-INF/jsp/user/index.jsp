@@ -23,7 +23,8 @@
                         <a href="${ctx}/user/create" class="btn btn-success btn-sm" role="button"  data-toggle="modal" data-target="#createUserModal">
                             <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> 新增
                         </a>
-                        <a href="javascript:user.update()" class="btn btn-warning btn-sm" role="button">
+                        <a href="${ctx}/user/update" style="display: none;" id="openUpdateUserModelBtn"  data-toggle="modal" data-target="#updateUserModal"></a>
+                        <a href="javascript:user.update()" class="btn btn-info btn-sm" role="button">
                             <span class="glyphicon glyphicon-edit" aria-hidden="true"></span> 修改
                         </a>
                         <a href="javascript:user.delete()" class="btn btn-danger btn-sm" role="button">
@@ -48,7 +49,7 @@
                     <input type="date" class="form-control" id="query-user-startdate" placeholder="开始时间">
                     <input type="date" class="form-control" id="query-user-endDate" placeholder="结束时间">
                 </div>
-                <a href="${ctx}/user/findpage" class="btn btn-default btn-sm" role="button">
+                <a href="javascript:user.query();" class="btn btn-default btn-sm" role="button">
                     <span class="glyphicon glyphicon-search" aria-hidden="true"></span> 查 询
                 </a>
                 <a href="${ctx}/user/findAll" class="btn btn-info btn-sm" role="button">列出所有用户</a>
@@ -59,6 +60,12 @@
 </div> <!-- /container -->
 
 <div class="modal fade" id="createUserModal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal -->
+</div>
+<div class="modal fade" id="updateUserModal" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
         </div><!-- /.modal-content -->

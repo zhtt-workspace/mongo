@@ -34,4 +34,20 @@ public class CreateUpdateUserController {
             return new JsonResponse(JsonResponseStatusEnum.ERROR,e.getMessage());
         }
     }
+
+    @RequestMapping("/update")
+    public String toUdateJsp(){
+        return "/user/update";
+    }
+
+    @RequestMapping("/update-form")
+    @ResponseBody
+    public JsonResponse update(User user){
+        try{
+            userService.update(user);
+            return new JsonResponse(user);
+        }catch (Exception e){
+            return new JsonResponse(JsonResponseStatusEnum.ERROR,e.getMessage());
+        }
+    }
 }
