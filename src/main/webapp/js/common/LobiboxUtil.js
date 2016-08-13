@@ -35,12 +35,12 @@ LobiboxUtil.prompt=function(cfg){
 }
 LobiboxUtil.window=function(cfg){
     Lobibox.window({
-        title: 'Window title',
+        title: cfg.title||'信息窗口',
         content: function(){
             //return $('.container');
-            return "OK"
+            return cfg.html||"窗口内容！"
         },
-        url: 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.css',
+        url: 'http://www.cnblogs.com/refactor/archive/2012/08/09/2594870.html',
         autoload: false,
         loadMethod: 'GET',
         params: {
@@ -49,10 +49,10 @@ LobiboxUtil.window=function(cfg){
         },
         buttons: {
             load: {
-                text: 'Load from url'
+                text: '保存'
             },
             close: {
-                text: 'Close',
+                text: '关闭',
                 closeOnClick: true
             }
         },

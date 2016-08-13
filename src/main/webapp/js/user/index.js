@@ -13,29 +13,41 @@ var user={
     createUrl:ctx+"/user/create-form",
     updateUrl:ctx+"/user/update-form"
 };
-user.closeCreateModal=function(){
-    $("#"+user.createModalId).modal("hide");
-}
-user.closeUpdateModal=function(){
-    $("#"+user.updateModalId).modal("hide");
-}
 user.submitCreateModal=function(){
-    user.submitCreateForm({
+    $("#"+user.createModalId+" from").validate({
+        rules: {
+            create_user_confirm_password: {
+                required: true,
+                minlength: 6,
+                equalTo: "#create-user-password"
+            }
+        },
+        messages: {
+            create_user_confirm_password: {
+                required: "Please provide a password",
+                minlength: "Your password must be at least 6 characters long",
+                equalTo: "Please enter the same password as above"
+            }
+        }
+    });
+    var status=user.submitForm({
         form:$("#createUserForm"),
         url:user.createUrl,
         success:function(data){
             if(data.status=="success"){
-                LobiboxUtil.notify("发送成功！");
+                LobiboxUtil.notify("保存成功！");
             }else{
                 LobiboxUtil.notify(data.message);
             }
         }
     });
-    user.closeCreateModal();
+    if(status){
+        modalUtil.close("#"+user.createModalId);
+    }
 }
-user.submitCreateForm=function(obj){
+user.submitForm=function(obj){
     if(obj.form.valid){
-        if(!obj.form.valid()){return;}
+        if(!obj.form.valid()){return false;}
     }
     $.ajax({
         cache: true,
@@ -58,6 +70,7 @@ user.submitCreateForm=function(obj){
             }
         }
     });
+    return true;
 }
 /**
  * 更新用户
@@ -85,18 +98,18 @@ user.update=function(){
     //var newSelects = $.parseJSON(JSON.stringify(selects));
 }
 user.submitUpdateModal=function(){
-    user.submitCreateForm({
+    user.submitForm({
         form:$("#updateUserForm"),
         url:user.updateUrl,
         success:function(data){
             if(data.status=="success"){
-                LobiboxUtil.notify("发送成功！");
+                LobiboxUtil.notify("保存成功！");
             }else{
                 LobiboxUtil.notify(data.message);
             }
         }
     });
-    user.closeUpdateModal();
+    modalUtil.close("#"+user.createModalId);
 }
 /**
  * 删除用户
@@ -107,12 +120,23 @@ user.delete=function(){
         LobiboxUtil.notify("请勾选要删除的用户！");
         return;
     }else{
+        var uuid=[];
+        for(var i=0;i<selects.length;i++){
+            uuid.push(selects[i].uuid);
+        }
         LobiboxUtil.confirm({msg:"确定要删除吗？",fn:function() {
-            $.get(user.deleteUrl,{uuid:selects[0].uuid}, function (data) {
-                if(data.status=="success"){
-                    LobiboxUtil.notify("删除成功！");
-                }else{
-                    LobiboxUtil.notify("删除失败！"+data.message);
+            $.ajax({
+                url: user.deleteUrl,
+                type: 'POST',
+                data: JSON.stringify(uuid),
+                contentType: "application/json",
+                dataType: 'json',
+                success: function (data) {
+                    if(data.status=="success"){
+                        LobiboxUtil.notify("删除成功！");
+                    }else{
+                        LobiboxUtil.notify("删除失败！"+data.message);
+                    }
                 }
             });
         }});
@@ -125,12 +149,12 @@ user.initTable=function() {
         method: 'post',
         contentType: "application/x-www-form-urlencoded",
         url: queryUrl,
-        height: $(window).height() - 250,
+        height: $(window).height() - 220,
         striped: true,
         pagination: true,
         singleSelect: false,
         pageSize: 2,
-        pageList: [4,10, 50, 100, 200, 500],
+        pageList: [2,10, 50, 100, 200, 500],
         search: false, //不显示 搜索框
         showColumns: false, //不显示下拉框（选择显示的列）
         sidePagination: "server", //服务端请求
@@ -140,19 +164,39 @@ user.initTable=function() {
             field: 'state',
             checkbox: true
             }, {
-                field: 'name',title: '姓名',width: 100,align: 'center',valign: 'middle',sortable: true
+                field: 'name',title: '姓名',width: 100,align: 'center',valign: 'middle',sortable: true,formatter:function(value, row, index){return '<i class="glyphicon glyphicon-user"></i> '+value;}
             },  {
                 field: 'username',title: '用户名',width: 80,align: 'middle',valign: 'top',sortable: true
             }, {
-                field: 'createTime',title: '录入时间',width: 180,align: 'left',valign: 'top',sortable: true
+                field: 'createTime',title: '录入时间',width: 180,align: 'left',valign: 'top',sortable: true,formatter:function(value, row, index){return '<i class="glyphicon glyphicon-time"></i> '+value;}
             }, {
                 field: 'orgId',title: '所属机构',width: 100,align: 'left',valign: 'top',sortable: true
             }, {
-                field: 'operate',title: '操作',width: 100,align: 'center',valign: 'middle'
-            }],
+                field: 'operate', title: '操作',width: 100, align: 'center',formatter: user.operateformater
+        }],
         onLoadSuccess:function(){},
         onLoadError: function () {}
     });
+}
+/**
+ * 对操作列进行格式化
+ * @param value
+ * @param row
+ * @param index
+ * @returns {string}
+ */
+user.operateformater=function(value, row, index){
+    return [
+        '<a class="digital" href="javascript:void(0)" title="详情">',
+        '<i class="glyphicon glyphicon-list-alt"></i>',
+        '</a>  ',
+        '<a class="like" href="javascript:void(0)" title="修改">',
+        '<i class="glyphicon glyphicon-edit"></i>',
+        '</a>  ',
+        '<a class="remove" href="javascript:void(0)" title="删除">',
+        '<i class="glyphicon glyphicon-remove"></i>',
+        '</a>'
+    ].join('');
 }
 //传递的参数
 user.queryParams=function(params) {

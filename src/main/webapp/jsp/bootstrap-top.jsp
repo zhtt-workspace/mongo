@@ -16,6 +16,7 @@
 <link href="${ctx}/css/index/theme.css" rel="stylesheet">
 <!-- Placed at the end of the document so the pages load faster -->
 <script src="${ctx}/tool/jquery/jquery-1.10.2.js"></script>
+<script src="${ctx}/tool/jquery/jquery.validate.min.js"></script>
 <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
 <!--[if lt IE 9]><script src="${ctx}/tool/bootstrap3/js/ie-emulation-modes-warning.js"></script><![endif]-->
 <script src="${ctx}/tool/bootstrap3/js/ie-emulation-modes-warning.js"></script>

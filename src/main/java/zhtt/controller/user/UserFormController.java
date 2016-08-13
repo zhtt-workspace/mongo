@@ -14,15 +14,10 @@ import zhtt.util.JsonResponseStatusEnum;
  */
 @Controller
 @RequestMapping("/user")
-public class CreateUpdateUserController {
+public class UserFormController {
 
     @Autowired
     private UserService userService;
-
-    @RequestMapping("/create")
-    public String toCreateJsp(){
-        return "/user/create";
-    }
 
     @RequestMapping("/create-form")
     @ResponseBody
@@ -33,11 +28,6 @@ public class CreateUpdateUserController {
         }catch (Exception e){
             return new JsonResponse(JsonResponseStatusEnum.ERROR,e.getMessage());
         }
-    }
-
-    @RequestMapping("/update")
-    public String toUdateJsp(){
-        return "/user/update";
     }
 
     @RequestMapping("/update-form")

@@ -5,6 +5,7 @@ import java.util.List;
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
@@ -25,11 +26,11 @@ public class UserController {
 	@Autowired
     private UserService userService;
       
-    @RequestMapping("/index")  
+    /*@RequestMapping("/index")
     public ModelAndView index(){  
         ModelAndView mav = new ModelAndView("/user/index");
         return mav;  
-    }
+    }*/
 
     @RequestMapping("/query")
     @ResponseBody
@@ -43,17 +44,19 @@ public class UserController {
 
     @RequestMapping("/delete")
     @ResponseBody
-    public JsonResponse delete(String uuid){
+    public JsonResponse delete(@RequestBody List<String> uuid){
         try{
+            userService.delete(uuid);
             return new JsonResponse(uuid);
         }catch (Exception e){
             return new JsonResponse(JsonResponseStatusEnum.ERROR,e.getMessage());
         }
     }
 
+
+    /*
     @RequestMapping("/addpage")  
     public String addUser(User user){
-        //ModelAndView mav = new ModelAndView("/add");            
         return "/user/add";
     } 
     @RequestMapping(value ="/save")  
@@ -64,7 +67,7 @@ public class UserController {
         userService.saveUser(user);
         return mav;  
     }  
-    
+
     @RequestMapping("/findpage")  
     public ModelAndView findPage(User user){
         ModelAndView mav = new ModelAndView("/user/get");
@@ -92,13 +95,13 @@ public class UserController {
         ModelAndView mav = new ModelAndView("/user/delete");
         return mav;  
     }
-    /*
+
     @RequestMapping("/delete")
     public ModelAndView delete(User user){
         ModelAndView mav = new ModelAndView("/user/index");
         userService.removeUser(user.getName());
         return mav;
-    }*/
+    }
     
     @RequestMapping("/modfigPage")  
     public ModelAndView modfigPage(User user){
@@ -112,7 +115,6 @@ public class UserController {
         userService.updateUser(user.getName(),key,value);
         return mav;  
     }
-    
-
+    */
 
 }

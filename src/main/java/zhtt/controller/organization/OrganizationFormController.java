@@ -2,30 +2,31 @@ package zhtt.controller.organization;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.servlet.ModelAndView;
 import zhtt.entity.user.Organization;
 import zhtt.service.user.OrganizationService;
 import zhtt.util.JsonResponse;
-
-import java.util.List;
+import zhtt.util.JsonResponseStatusEnum;
 
 /**
- * Created by zhtt on 2016/8/11.
+ * Created by zhtt on 2016/8/13.
  */
 @Controller
 @RequestMapping("/organization")
-public class OrganizationController {
+public class OrganizationFormController {
 
     @Autowired
     private OrganizationService service;
 
-    @RequestMapping("/tree")
+    @RequestMapping("/create-from")
     @ResponseBody
-    public List<Organization> root(@RequestParam(value = "parentId",required = false)String parentId){
-        return service.getByParentId(parentId);
+    public JsonResponse create(Organization organization){
+        try{
+            service.save(organization);
+            return new JsonResponse(organization);
+        }catch (Exception e){
+            return new JsonResponse(JsonResponseStatusEnum.ERROR,e.getMessage());
+        }
     }
 }

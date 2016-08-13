@@ -50,7 +50,7 @@ public class Organization {
      * 每一层的根机构：-1
      * 每一层的代表机构：0
      */
-    private int orgType;
+    private int orgType=-1;
 
     /**
      * 创建时间
