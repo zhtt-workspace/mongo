@@ -8,7 +8,7 @@
 <div class="panel panel-default">
   <div class="panel-heading">新建机构</div>
   <div class="panel-body">
-    <form class="form-horizontal" id="createorganiztionForm" action="${ctx}/organiztion/create-form">
+    <form class="form-horizontal" id="createOrganiztionForm" action="${ctx}/organiztion/create-form">
       <div class="form-group">
         <label for="create-organiztion-name" class="col-sm-2 control-label">机构名称</label>
         <div class="col-sm-10">

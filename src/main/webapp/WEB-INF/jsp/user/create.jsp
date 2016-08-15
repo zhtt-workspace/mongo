@@ -12,37 +12,37 @@
       <div class="form-group">
         <label for="create-user-name" class="col-sm-2 control-label">姓名</label>
         <div class="col-sm-10">
-          <input name="name" type="text" class="form-control" id="create-user-name" placeholder="姓名" minlength="2" required>
+          <input name="name" type="text" class="form-control" id="create-user-name" placeholder="姓名" minlength="2" maxlength="8" required>
         </div>
       </div>
       <div class="form-group">
         <label for="create-user-username" class="col-sm-2 control-label">用户名</label>
         <div class="col-sm-10">
-          <input name="username" type="text" class="form-control" id="create-user-username" placeholder="用户名" minlength="6" required>
+          <input name="username" type="text" class="form-control" id="create-user-username" placeholder="用户名" minlength="6" maxlength="12" required>
         </div>
       </div>
       <div class="form-group">
         <label for="create-user-password" class="col-sm-2 control-label">密码</label>
         <div class="col-sm-10">
-          <input name="password" type="password" class="form-control" id="create-user-password" placeholder="密码" minlength="6" required>
+          <input name="password" type="password" class="form-control" id="create-user-password" placeholder="密码" minlength="6" maxlength="12" required>
         </div>
       </div>
       <div class="form-group">
         <label for="create_user_confirm_password" class="col-sm-2 control-label">密码确认</label>
         <div class="col-sm-10">
-          <input type="password" class="form-control" id="create_user_confirm_password" placeholder="密码确认" minlength="6" required>
+          <input type="password" class="form-control" id="create_user_confirm_password" placeholder="密码确认" minlength="6" maxlength="12" required>
         </div>
       </div>
       <div class="form-group">
         <label for="create-user-age" class="col-sm-2 control-label">年龄</label>
         <div class="col-sm-10">
-          <input name="age" type="text" class="form-control" id="create-user-age" placeholder="年龄" minlength="1" required>
+          <input name="age" type="text" class="form-control" id="create-user-age" placeholder="年龄" minlength="1" maxlength="3" required>
         </div>
       </div>
       <div class="form-group">
         <label for="create-user-org" class="col-sm-2 control-label">所属机构</label>
         <div class="col-sm-10">
-          <input name="orgId" type="text" class="form-control" id="create-user-org" placeholder="所属机构" minlength="1" required>
+          <input name="orgId" type="text" class="form-control" id="create-user-org" placeholder="所属机构" minlength="1" maxlength="32" required>
         </div>
       </div>
     </form>

@@ -30,47 +30,18 @@ user.submitCreateModal=function(){
             }
         }
     });
-    var status=user.submitForm({
+    var status=formUtil.submit({
         form:$("#createUserForm"),
         url:user.createUrl,
         success:function(data){
             if(data.status=="success"){
                 LobiboxUtil.notify("保存成功！");
+                modalUtil.close("#"+user.createModalId);
             }else{
                 LobiboxUtil.notify(data.message);
             }
         }
     });
-    if(status){
-        modalUtil.close("#"+user.createModalId);
-    }
-}
-user.submitForm=function(obj){
-    if(obj.form.valid){
-        if(!obj.form.valid()){return false;}
-    }
-    $.ajax({
-        cache: true,
-        type: "POST",
-        url:obj.url||obj.form.attr("action"),
-        data:obj.form.serialize(),// 你的formid
-        async: false,
-        error: function(request) {
-            if(obj.error){
-                obj.error(data);
-            }else{
-                LobiboxUtil.notify("连接失败");
-            }
-        },
-        success: function(data) {
-            if(obj.success){
-                obj.success(data);
-            }else{
-                LobiboxUtil.notify("操作成功");
-            }
-        }
-    });
-    return true;
 }
 /**
  * 更新用户
@@ -98,18 +69,18 @@ user.update=function(){
     //var newSelects = $.parseJSON(JSON.stringify(selects));
 }
 user.submitUpdateModal=function(){
-    user.submitForm({
+    formUtil.submit({
         form:$("#updateUserForm"),
         url:user.updateUrl,
         success:function(data){
             if(data.status=="success"){
                 LobiboxUtil.notify("保存成功！");
+                modalUtil.close("#"+user.updateModalId);
             }else{
                 LobiboxUtil.notify(data.message);
             }
         }
     });
-    modalUtil.close("#"+user.createModalId);
 }
 /**
  * 删除用户

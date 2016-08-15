@@ -9,6 +9,9 @@ organiztionTree.init=function(){
         }else{
             if(data.length==0){
                 $("#openCreateOrganizationModelBtn").click();
+                setTimeout(function(){
+                    $("#"+organization.createModalId+" .panel-heading").html("请初始化机构树根节点！");
+                },100);
             }else{
                 LobiboxUtil.notify("加载树失败！");
             }
