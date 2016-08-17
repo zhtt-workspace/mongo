@@ -49,7 +49,7 @@
     </form>
   </div>
   <div class="panel-footer text-right">
-    <a href="javascript:user.submitUpdateModal()" class="btn btn-default btn-sm" role="button">
+    <a href="javascript:user.submitUpdateForm()" class="btn btn-default btn-sm" role="button">
       <span class="glyphicon glyphicon-floppy-save" aria-hidden="true"></span> 保 存
     </a>
     <a href="javascript:modalUtil.close('#updateUserModal')" class="btn btn-primary btn-sm" role="button">

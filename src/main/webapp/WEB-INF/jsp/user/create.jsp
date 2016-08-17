@@ -48,7 +48,7 @@
     </form>
   </div>
   <div class="panel-footer text-right">
-    <a href="javascript:user.submitCreateModal()" class="btn btn-default btn-sm" role="button">
+    <a href="javascript:user.submitCreateForm()" class="btn btn-default btn-sm" role="button">
       <span class="glyphicon glyphicon-floppy-save" aria-hidden="true"></span> 保 存
     </a>
     <a href="javascript:modalUtil.close('#createUserModal')" class="btn btn-primary btn-sm" role="button">

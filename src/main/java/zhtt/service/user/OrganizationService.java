@@ -34,6 +34,6 @@ public class OrganizationService {
     }
 
     public Organization getRoot(){
-        return dao.findOne(new Query(Criteria.where("parentId").is(null)));
+        return dao.findOne(new Query(Criteria.where("parentId").is("-1")));
     }
 }

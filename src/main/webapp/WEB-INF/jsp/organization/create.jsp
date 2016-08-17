@@ -10,9 +10,29 @@
   <div class="panel-body">
     <form class="form-horizontal" id="createOrganiztionForm" action="${ctx}/organiztion/create-form">
       <div class="form-group">
-        <label for="create-organiztion-name" class="col-sm-2 control-label">机构名称</label>
+        <label for="create-organiztion-name" class="col-sm-2 control-label" maxlength="20" minlength="2">机构名称</label>
         <div class="col-sm-10">
+          <input name="parentId" type="hidden" value="-1">
+          <input name="leave" type="hidden" value="0">
+          <input name="sort" type="hidden" value="0">
           <input name="name" type="text" class="form-control" id="create-organiztion-name" placeholder="机构名称" maxlength="20">
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="create-organiztion-name" class="col-sm-2 control-label">机构类型</label>
+        <div class="col-sm-10">
+          <label class="radio-inline">
+            <input type="radio" name="orgType" id="orgType0" value="headquarters" checked="true"> 总部
+          </label>
+          <label class="radio-inline">
+            <input type="radio" name="orgType" id="orgType1" value="branch" disabled> 分部
+          </label>
+          <label class="radio-inline">
+            <input type="radio" name="orgType" id="orgType2" value="headOffice" disabled> 总部门
+          </label>
+          <label class="radio-inline">
+            <input type="radio" name="orgType" id="orgType3" value="dept" disabled> 子部门
+          </label>
         </div>
       </div>
       <div class="form-group">
@@ -36,7 +56,7 @@
     </form>
   </div>
   <div class="panel-footer text-right">
-    <a href="javascript:organiztion.submitCreateModal()" class="btn btn-default btn-sm" role="button">
+    <a href="javascript:organization.submitCreateForm()" class="btn btn-default btn-sm" role="button">
       <span class="glyphicon glyphicon-floppy-save" aria-hidden="true"></span> 保 存
     </a>
     <a href="javascript:modalUtil.close('#createOrganizationModal')" class="btn btn-primary btn-sm" role="button">

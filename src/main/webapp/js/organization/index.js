@@ -16,8 +16,26 @@ var organization={
     treeId:"orgTreeDiv"
 }
 organization.init=function(){
-    organiztionTree.init();
+    organizationTree.init();
+    organization.initEvent();
+}
+organization.initEvent=function(){
+    $('#'+organization.createModalId).on('shown.bs.modal', function () {
+        organizationTree.renderFormBySeectedNode();
+    })
 }
 organization.submitCreateForm=function(){
-
+    $("#"+organization.createModalId+" from").validate();
+    formUtil.submit({
+        form:$("#"+organization.createFormId),
+        url:organization.createUrl,
+        success:function(data){
+            if(data.status=="success"){
+                LobiboxUtil.notify("保存成功！");
+                modalUtil.close("#"+organization.createModalId);
+            }else{
+                LobiboxUtil.notify(data.message);
+            }
+        }
+    });
 }

@@ -13,7 +13,7 @@ var user={
     createUrl:ctx+"/user/create-form",
     updateUrl:ctx+"/user/update-form"
 };
-user.submitCreateModal=function(){
+user.submitCreateForm=function(){
     $("#"+user.createModalId+" from").validate({
         rules: {
             create_user_confirm_password: {
@@ -31,7 +31,7 @@ user.submitCreateModal=function(){
         }
     });
     var status=formUtil.submit({
-        form:$("#createUserForm"),
+        form:$("#"+user.createFormId),
         url:user.createUrl,
         success:function(data){
             if(data.status=="success"){
@@ -68,7 +68,7 @@ user.update=function(){
     },300)
     //var newSelects = $.parseJSON(JSON.stringify(selects));
 }
-user.submitUpdateModal=function(){
+user.submitUpdateForm=function(){
     formUtil.submit({
         form:$("#updateUserForm"),
         url:user.updateUrl,

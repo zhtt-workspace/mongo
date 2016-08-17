@@ -47,10 +47,11 @@ public class Organization {
 
     /**
      * 类型
-     * 每一层的根机构：-1
-     * 每一层的代表机构：0
+     * 每一层的根机构：org
+     * 每一层的代表机构：root
+     * 代表机构下的子部门：dept
      */
-    private int orgType=-1;
+    private String orgType;
 
     /**
      * 创建时间
@@ -60,7 +61,12 @@ public class Organization {
     /**
      * 叶子节点
      */
-    private boolean leaf;
+    private boolean leaf=true;
+
+    /**
+     * 层级
+     */
+    private int leave;
 
     public ObjectId get_id() {
         return _id;
@@ -118,11 +124,11 @@ public class Organization {
         this.sort = sort;
     }
 
-    public int getOrgType() {
+    public String getOrgType() {
         return orgType;
     }
 
-    public void setOrgType(int orgType) {
+    public void setOrgType(String orgType) {
         this.orgType = orgType;
     }
 
@@ -140,5 +146,13 @@ public class Organization {
 
     public void setUuid(String uuid) {
         this.uuid = uuid;
+    }
+
+    public int getLeave() {
+        return leave;
+    }
+
+    public void setLeave(int leave) {
+        this.leave = leave;
     }
 }

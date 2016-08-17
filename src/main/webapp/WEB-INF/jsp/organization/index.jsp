@@ -5,6 +5,7 @@
 <html lang="zh-CN">
 <head>
     <%@ include file="/jsp/bootstrap-top.jsp" %>
+    <link rel="stylesheet" href="${ctx}/tool/zTree_v3/css/metroStyle/metroStyle.css" type="text/css">
     <link href="${ctx}/tool/bootstrap3/css/bootstrap-table.min.css" rel="stylesheet">
     <link href="${ctx}/tool/bootstrap3/js/bootstrap-responsive.min.css" rel="stylesheet">
 </head>
@@ -17,7 +18,7 @@
             <div class="span4" style="height:100%;overflow: auto;">
                 <div class="panel panel-default">
                     <div class="panel-body">
-                        <div id="orgTreeDiv"></div>
+                        <div id="orgTreeDiv" class="ztree"></div>
                     </div>
                 </div>
             </div>
@@ -78,6 +79,7 @@
 <%@ include file="/jsp/bootstrap-bottom.jsp" %>
 <script type="text/javascript" src="${ctx}/tool/bootstrap3/js/bootstrap-table.min.js"></script>
 <script type="text/javascript" src="${ctx}/tool/bootstrap3/js/bootstrap-table-zh-CN.min.js"></script>
+<script type="text/javascript" src="${ctx}/tool/zTree_v3/js/jquery.ztree.core.min.js"></script>
 <script type="text/javascript" src="${ctx}/js/organization/index.js"></script>
 <script type="text/javascript" src="${ctx}/js/organization/organizationTree.js"></script>
 </body>

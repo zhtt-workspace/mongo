@@ -28,24 +28,7 @@ $(function(){
     $.fn.zTree.init($("#"+dataStatisticsTree.treeId), dataStatisticsTree.setting, dataStatisticsTree.zNodes);
 });
 dataStatisticsTree.zNodes =[
-    { name:"父节点1 - 展开", open:true,id:"123",
-        children: [
-            { name:"父节点11 - 折叠",
-                children: [
-                    { name:"叶子节点111"},
-                    { name:"叶子节点112"},
-                    { name:"叶子节点113"},
-                    { name:"叶子节点114"}
-                ]},
-            { name:"父节点12 - 折叠",
-                children: [
-                    { name:"叶子节点121"},
-                    { name:"叶子节点122"},
-                    { name:"叶子节点123"},
-                    { name:"叶子节点124"}
-                ]},
-            { name:"父节点13 - 没有子节点", isParent:true}
-        ]},
+    { name:"父节点1 - 展开", open:true,id:"123"},
     { name:"父节点2 - 折叠",
         children: [
             { name:"父节点21 - 展开", open:true,

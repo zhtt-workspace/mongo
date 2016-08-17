@@ -19,7 +19,7 @@ public class OrganizationFormController {
     @Autowired
     private OrganizationService service;
 
-    @RequestMapping("/create-from")
+    @RequestMapping("/create-form")
     @ResponseBody
     public JsonResponse create(Organization organization){
         try{
