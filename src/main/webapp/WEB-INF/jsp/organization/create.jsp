@@ -12,7 +12,6 @@
       <div class="form-group">
         <label for="create-organiztion-name" class="col-sm-2 control-label" maxlength="20" minlength="2">机构名称</label>
         <div class="col-sm-10">
-          <input name="parentId" type="hidden" value="-1">
           <input name="leave" type="hidden" value="0">
           <input name="sort" type="hidden" value="0">
           <input name="name" type="text" class="form-control" id="create-organiztion-name" placeholder="机构名称" maxlength="20">
@@ -22,7 +21,7 @@
         <label for="create-organiztion-name" class="col-sm-2 control-label">机构类型</label>
         <div class="col-sm-10">
           <label class="radio-inline">
-            <input type="radio" name="orgType" id="orgType0" value="headquarters" checked="true"> 总部
+            <input type="radio" name="orgType" id="orgType0" value="headquarters" checked="true" disabled> 总部
           </label>
           <label class="radio-inline">
             <input type="radio" name="orgType" id="orgType1" value="branch" disabled> 分部
@@ -38,19 +37,19 @@
       <div class="form-group">
         <label for="create-organiztion-fullName" class="col-sm-2 control-label">机构全称</label>
         <div class="col-sm-10">
-          <input name="fullName" type="text" class="form-control" id="create-organiztion-fullName" placeholder="机构全称"  disabled>
+          <input name="fullName" type="text" class="form-control" id="create-organiztion-fullName" placeholder="机构全称"  readonly>
         </div>
       </div>
       <div class="form-group">
         <label for="create-organiztion-code" class="col-sm-2 control-label">编码</label>
         <div class="col-sm-10">
-          <input name="code"  type="text" class="form-control" id="create-organiztion-code" placeholder="编码" disabled>
+          <input name="code" value="00" type="text" class="form-control" id="create-organiztion-code" placeholder="编码" readonly>
         </div>
       </div>
       <div class="form-group">
         <label for="create-organiztion-parentId" class="col-sm-2 control-label">上级机构</label>
         <div class="col-sm-10">
-          <input name="parentId" type="text" class="form-control" id="create-organiztion-parentId" placeholder="上级机构" disabled>
+          <input name="parentId" type="text" class="form-control" id="create-organiztion-parentId" placeholder="上级机构" readonly>
         </div>
       </div>
     </form>

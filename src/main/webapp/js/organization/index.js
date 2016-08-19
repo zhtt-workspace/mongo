@@ -12,7 +12,7 @@ var organization={
     updateFormId:"updateOrganiztionForm",
     updateUrl:ctx+"/organization/update-form",
     updateFormId:ctx+"/organization/update-form",
-    treeUrl:ctx+"/organization/tree",
+    treeUrl:ctx+"/organization/tree?parentId=",
     treeId:"orgTreeDiv"
 }
 organization.init=function(){
@@ -20,12 +20,18 @@ organization.init=function(){
     organization.initEvent();
 }
 organization.initEvent=function(){
+    $('#'+organization.createModalId).on('show.bs.modal', function () {
+        organizationTree.renderFormBySeectedNode();
+    })
     $('#'+organization.createModalId).on('shown.bs.modal', function () {
         organizationTree.renderFormBySeectedNode();
+        $("#"+organization.createFormId+" input[name='name']").blur(function(){
+            $("#"+organization.createFormId+" input[name='fullName']").val(this.value);
+        });
     })
 }
 organization.submitCreateForm=function(){
-    $("#"+organization.createModalId+" from").validate();
+    $("#"+organization.createFormId).validate();
     formUtil.submit({
         form:$("#"+organization.createFormId),
         url:organization.createUrl,

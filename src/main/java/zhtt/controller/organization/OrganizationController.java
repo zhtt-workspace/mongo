@@ -25,7 +25,7 @@ public class OrganizationController {
 
     @RequestMapping("/tree")
     @ResponseBody
-    public List<Organization> root(@RequestParam(value = "parentId",required = false,defaultValue = "-1")String parentId){
+    public List<Organization> root(@RequestParam(value = "parentId",required = false)String parentId){
         return service.getByParentId(parentId);
     }
 }

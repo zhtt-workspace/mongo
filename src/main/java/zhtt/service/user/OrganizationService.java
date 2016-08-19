@@ -30,7 +30,7 @@ public class OrganizationService {
     }
 
     public List<Organization> getByParentId(String uuid){
-        return dao.query(new Query(Criteria.where("parentId").is(uuid)));
+        return dao.query(new Query(Criteria.where("parentId").is(uuid==null?"":uuid)));
     }
 
     public Organization getRoot(){
