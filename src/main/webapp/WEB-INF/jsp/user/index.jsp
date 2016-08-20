@@ -74,7 +74,7 @@
 <%@ include file="/jsp/bootstrap-bottom.jsp" %>
 <script type="text/javascript" src="${ctx}/tool/bootstrap3/js/bootstrap-table.min.js"></script>
 <script type="text/javascript" src="${ctx}/tool/bootstrap3/js/bootstrap-table-zh-CN.min.js"></script>
-<script type="text/javascript" src="${ctx}/js/user/index.js"></script>
+<script type="text/javascript" src="${ctx}/js/user/user.js"></script>
 </body>
 </html>
 

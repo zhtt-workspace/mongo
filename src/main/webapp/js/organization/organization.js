@@ -21,12 +21,12 @@ organization.init=function(){
 }
 organization.initEvent=function(){
     $('#'+organization.createModalId).on('show.bs.modal', function () {
-        organizationTree.renderFormBySeectedNode();
+        organizationTree.renderFormBySeectedNode(true);
     })
     $('#'+organization.createModalId).on('shown.bs.modal', function () {
-        organizationTree.renderFormBySeectedNode();
+        organizationTree.renderFormBySeectedNode(true);
         $("#"+organization.createFormId+" input[name='name']").blur(function(){
-            $("#"+organization.createFormId+" input[name='fullName']").val(this.value);
+            $("#"+organization.createFormId+" input[name='fullName']").val($("#"+organization.createFormId+" input[name='fullName']")[0].defaultValue+this.value);
         });
     })
 }

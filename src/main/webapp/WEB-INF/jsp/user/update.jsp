@@ -9,7 +9,7 @@
   <div class="panel-heading">更新用户</div>
   <div class="panel-body">
     <form class="form-horizontal" id="updateUserForm" action="${ctx}/user/update-form" method="post" enctype="multipart/form-data">
-      <input type="hidden" name="id_" value="{time: 1470554950000, new: false, timeSecond: 1470554950, machine: 1481613764, inc: 922470185}">
+      <input type="hidden" name="uuid" >
       <div class="form-group">
         <label for="update-user-name" class="col-sm-2 control-label">姓名</label>
         <div class="col-sm-10">
@@ -19,7 +19,7 @@
       <div class="form-group">
         <label for="update-user-username" class="col-sm-2 control-label">用户名</label>
         <div class="col-sm-10">
-          <input name="username" type="text" class="form-control" id="update-user-username" placeholder="用户名" minlength="6" maxlength="12" required>
+          <input name="username" type="text" class="form-control" id="update-user-username" placeholder="用户名" minlength="6" maxlength="12" required readonly>
         </div>
       </div>
       <div class="form-group">

@@ -60,12 +60,13 @@ user.update=function(){
     setTimeout(function(){
         var data=selects[0];
         var form=$("form[id='updateUserForm']");
+        form.find("input[name='uuid']").val(data.uuid);
         form.find("input[name='name']").val(data.name);
         form.find("input[name='username']").val(data.username);
         form.find("input[name='password']").val(data.password);
         form.find("input[name='age']").val(data.age);
         form.find("input[name='orgId']").val(data.orgId);
-    },300)
+    },500)
     //var newSelects = $.parseJSON(JSON.stringify(selects));
 }
 user.submitUpdateForm=function(){

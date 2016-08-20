@@ -1,6 +1,9 @@
 package zhtt.entity.user;
 
+import com.mongodb.BasicDBObject;
 import org.bson.types.ObjectId;
+import org.springframework.data.mongodb.core.query.BasicUpdate;
+import org.springframework.data.mongodb.core.query.Update;
 
 import java.util.Date;
 import java.util.UUID;
@@ -154,5 +157,19 @@ public class Organization {
 
     public void setLeave(int leave) {
         this.leave = leave;
+    }
+
+    public Update toUpdate() {
+        BasicDBObject set = new BasicDBObject();
+        BasicDBObject value = new BasicDBObject();
+        if(this.name!=null){
+            value.put("name",name);
+        }
+        if(this.fullName!=null){
+            value.put("fullName",fullName);
+        }
+        set.put("$set", value);
+        Update update=new BasicUpdate(set);
+        return update;
     }
 }

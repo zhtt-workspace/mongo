@@ -30,7 +30,7 @@ public class UserService {
 
 	public WriteResult update(User user){
 		Query query=new Query();
-		query.addCriteria(Criteria.where("username").is(user.getUsername()));
+		query.addCriteria(Criteria.where("uuid").is(user.getUuid()));
 		WriteResult writeResult=mongoTemplate.updateFirst(query, user.toUpdate(),$class, TableConfig.USER);
 		return writeResult;
 	}

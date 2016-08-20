@@ -21,16 +21,16 @@
         <label for="create-organiztion-name" class="col-sm-2 control-label">机构类型</label>
         <div class="col-sm-10">
           <label class="radio-inline">
-            <input type="radio" name="orgType" id="orgType0" value="headquarters" checked="true" disabled> 总部
+            <input type="radio" name="orgType" id="orgType0" value="root" checked="true" disabled> 机构根节点
           </label>
           <label class="radio-inline">
-            <input type="radio" name="orgType" id="orgType1" value="branch" disabled> 分部
+            <input type="radio" name="orgType" id="orgType1" value="org" disabled> 分机构
           </label>
           <label class="radio-inline">
-            <input type="radio" name="orgType" id="orgType2" value="headOffice" disabled> 总部门
+            <input type="radio" name="orgType" id="orgType2" value="headquarters" disabled> 本机构总部
           </label>
           <label class="radio-inline">
-            <input type="radio" name="orgType" id="orgType3" value="dept" disabled> 子部门
+            <input type="radio" name="orgType" id="orgType3" value="dept" disabled> 本机构子部门
           </label>
         </div>
       </div>
@@ -49,7 +49,8 @@
       <div class="form-group">
         <label for="create-organiztion-parentId" class="col-sm-2 control-label">上级机构</label>
         <div class="col-sm-10">
-          <input name="parentId" type="text" class="form-control" id="create-organiztion-parentId" placeholder="上级机构" readonly>
+          <input name="parentName" type="text" class="form-control" id="create-organiztion-parentName" placeholder="上级机构" readonly>
+          <input name="parentId" type="hidden" class="form-control" id="create-organiztion-parentId" placeholder="上级机构" readonly>
         </div>
       </div>
     </form>
