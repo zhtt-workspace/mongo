@@ -12,11 +12,11 @@ import java.util.Random;
  * Created by zhtt on 2016/8/7.
  */
 public class UserServiceMain {
-        public static void main(String[] args) {
-            ApplicationContext ac = new ClassPathXmlApplicationContext(
-                    new String[] { "applicationContext-test.xml", "applicationContext-mongo-config-test.xml", "applicationContext-servlet-test.xml"});
-            UserService userService = (UserService) ac.getBean("userService");
-            count(userService);
+    public static void main(String[] args) {
+        ApplicationContext ac = new ClassPathXmlApplicationContext(
+                new String[] { "applicationContext-test.xml", "applicationContext-mongo-config-test.xml", "applicationContext-servlet-test.xml"});
+        UserService userService = (UserService) ac.getBean("userService");
+        count(userService);
 	}
 
     public static void count(UserService userService){

@@ -82,6 +82,7 @@
 <script type="text/javascript" src="${ctx}/tool/zTree_v3/js/jquery.ztree.core.min.js"></script>
 <script type="text/javascript" src="${ctx}/js/organization/organization.js"></script>
 <script type="text/javascript" src="${ctx}/js/organization/organizationTree.js"></script>
+<script type="text/javascript" src="${ctx}/js/organization/organizationUtil.js"></script>
 </body>
 </html>
 

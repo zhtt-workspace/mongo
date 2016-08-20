@@ -1,8 +1,10 @@
 package zhtt.service.user;
 
+import com.mongodb.BasicDBObject;
 import com.mongodb.WriteResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoOperations;
+import org.springframework.data.mongodb.core.query.BasicQuery;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.data.mongodb.core.query.Update;
@@ -11,7 +13,10 @@ import zhtt.dao.user.OrganizationDao;
 import zhtt.entity.user.Organization;
 import zhtt.entity.user.User;
 import zhtt.service.util.TableConfig;
+import zhtt.util.JsonResponse;
+import zhtt.util.JsonResponseStatusEnum;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -27,10 +32,17 @@ public class OrganizationService {
      * 保存机构
      * @param organization
      */
-    public void save(Organization organization){
-        dao.save(organization);
-        if(organization.getCode().endsWith("00")){
-            updateLeaf(organization.getParentId(),false);
+    public JsonResponse save(Organization organization){
+        String newCode=buildOrgCode(organization.getCode(),organization.getParentId());
+        if(newCode==null){
+            return new JsonResponse(JsonResponseStatusEnum.ERROR,"编码已用尽，最多支持100个子节点，请重新调整当前结构！");
+        }else{
+            organization.setCode(newCode);
+            dao.save(organization);
+            if(organization.getCode().endsWith("00")){
+                updateLeaf(organization.getParentId(),false);
+            }
+            return new JsonResponse(organization);
         }
     }
 
@@ -64,10 +76,47 @@ public class OrganizationService {
     }
 
     /**
-     * 获取根节点
+     * 检查此code是否存在，如果存在则生成一个新code
+     * @param code
      * @return
      */
-    public Organization getRoot(){
-        return dao.findOne(new Query(Criteria.where("parentId").is("-1")));
+    public String buildOrgCode(String code,String parentId){
+        if(code.endsWith("00")){
+            return code;
+        }else{
+            Query query =new Query();
+            query.addCriteria(Criteria.where("parentId").is(parentId));
+            BasicDBObject fieldsObject=new BasicDBObject();
+            fieldsObject.put("code", 1);
+            fieldsObject.put("sort", 1);
+            List<Organization> orgList=dao.query(query,fieldsObject);
+            List<String> codeList=new ArrayList<String>();
+            for(Organization org:orgList){
+                codeList.add(org.getCode());
+            }
+            if(codeList.contains(code)){
+                String parentCode=code.substring(0,code.length()-2);
+                int childCount=codeList.size();
+                for(int i=childCount;i<100;i++){
+                    String newCode=""+parentCode+(childCount>9?childCount:"0"+childCount);
+                    if(codeList.contains(newCode)){
+                        continue;
+                    }else{
+                        return newCode;
+                    }
+                }
+                for(int i=0;i<childCount;i++){
+                    String newCode=""+parentCode+(childCount>9?childCount:"0"+childCount);
+                    if(codeList.contains(newCode)){
+                        continue;
+                    }else{
+                        return newCode;
+                    }
+                }
+            }else{
+                return code;
+            }
+            return null;
+        }
     }
 }

@@ -1,0 +1,11 @@
+//BasicQuery query1 =new BasicQuery("{\"code\": {$regex : '" + code + "'} }");
+        BasicQuery query1 =new BasicQuery("{code: {$regex : '"+code+"[0-9]{2}'} }");
+        //query1.addCriteria(Criteria.where("parentId").is("f3af7031-60d0-49a7-aa83-a784a12e8d13"));
+        BasicDBObject query2=new BasicDBObject();
+        Pattern pattern = Pattern.compile( code+ "[0-9]{2}");
+        query2.put("code", pattern);
+        BasicDBObject fieldsObject=new BasicDBObject();
+        fieldsObject.put("code", 1);
+        //Query query=new BasicQuery(query1.getQueryObject(),fieldsObject);
+        Query query=new BasicQuery(query2,fieldsObject);
+        return query(query);

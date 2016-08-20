@@ -1,8 +1,12 @@
 package zhtt.dao.user;
 
+import com.mongodb.BasicDBObject;
+import com.mongodb.DBObject;
+import com.mongodb.QueryBuilder;
 import com.mongodb.WriteResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoOperations;
+import org.springframework.data.mongodb.core.query.BasicQuery;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.data.mongodb.core.query.Update;
@@ -11,6 +15,7 @@ import zhtt.entity.user.Organization;
 import zhtt.service.util.TableConfig;
 
 import java.util.List;
+import java.util.regex.Pattern;
 
 /**
  * Created by zhtt on 2016/8/11.
@@ -69,5 +74,9 @@ public class OrganizationDao {
      */
     public List<Organization> query(Query query){
         return mongoTemplate.find(query,$class, TableConfig.ORGANIZATION);
+    }
+
+    public List<Organization> query(Query query,DBObject fieldsObject){
+        return query(new BasicQuery(query.getQueryObject(),fieldsObject));
     }
 }

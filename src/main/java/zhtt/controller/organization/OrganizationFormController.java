@@ -23,8 +23,7 @@ public class OrganizationFormController {
     @ResponseBody
     public JsonResponse create(Organization organization){
         try{
-            service.save(organization);
-            return new JsonResponse(organization);
+            return service.save(organization);
         }catch (Exception e){
             return new JsonResponse(JsonResponseStatusEnum.ERROR,e.getMessage());
         }
