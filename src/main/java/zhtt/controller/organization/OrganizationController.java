@@ -8,6 +8,7 @@ import zhtt.entity.user.Organization;
 import zhtt.service.user.OrganizationService;
 import zhtt.util.JsonResponse;
 import zhtt.util.JsonResponseStatusEnum;
+import zhtt.util.JsonTableResponse;
 
 import java.util.List;
 
@@ -27,6 +28,15 @@ public class OrganizationController {
         return service.getByParentId(parentId);
     }
 
+    @RequestMapping("/query")
+    @ResponseBody
+    public JsonTableResponse query(String code,String parentId,String name,Integer limit,Integer offset) {
+        limit = limit == null ? 2 : limit;
+        offset = offset == null ? 0 : offset;
+        List<Organization> orgList=service.query(code,parentId,name,limit,offset);
+        long total=service.count(code,parentId,name);
+        return new JsonTableResponse(total,orgList);
+    }
     @RequestMapping("/delete")
     @ResponseBody
     public JsonResponse delete(@RequestBody List<String> uuid){

@@ -2,13 +2,14 @@
  * Created by zhtt on 2016/8/6.
  */
 $(function(){
-    user.initTable();
+    user.loadTableList();
+    //user.loadULList();
 });
 var user={
     createModalId:"createUserModal",
     updateModalId:"updateUserModal",
-    userListTableId:"userListTable",
-    userListUrl:ctx+'/user/query',
+    tableListId:"userListTable",
+    tableListUrl:ctx+'/user/query',
     deleteUrl:ctx+'/user/delete',
     createUrl:ctx+"/user/create-form",
     updateUrl:ctx+"/user/update-form"
@@ -50,7 +51,7 @@ user.submitCreateForm=function(){
  * 更新用户
  */
 user.openUpdateForm=function(){
-    var selects =$('#'+user.userListTableId).bootstrapTable('getSelections');
+    var selects =$('#'+user.tableListId).bootstrapTable('getSelections');
     if(selects.length==0){
         LobiboxUtil.notify("请勾选要修改的用户！");
         return;
@@ -93,7 +94,7 @@ user.submitUpdateForm=function(){
  * 删除用户
  */
 user.delete=function(){
-    var selects =$('#'+user.userListTableId).bootstrapTable('getSelections');
+    var selects =$('#'+user.tableListId).bootstrapTable('getSelections');
     if(selects.length==0){
         LobiboxUtil.notify("请勾选要删除的用户！");
         return;
@@ -124,9 +125,9 @@ user.delete=function(){
 /**
  * 加载用户记录列表数据
  */
-user.initTable=function() {
-    var queryUrl = user.userListUrl;
-    $table = $('#'+user.userListTableId).bootstrapTable({
+user.loadTableList=function() {
+    var queryUrl = user.tableListUrl;
+    $table = $('#'+user.tableListId).bootstrapTable({
         method: 'post',
         contentType: "application/x-www-form-urlencoded",
         url: queryUrl,
@@ -195,5 +196,5 @@ user.queryParams=function(params) {
  * 用户查询
  */
 user.query=function(){
-    $('#'+user.userListTableId).bootstrapTable('refresh',user.queryParams());
+    $('#'+user.tableListId).bootstrapTable('refresh',user.queryParams());
 }

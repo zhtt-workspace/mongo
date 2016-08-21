@@ -70,7 +70,6 @@ public class OrganizationDao {
         return writeResult;
     }
 
-
     /**
      * 查询
      * @param query
@@ -96,5 +95,9 @@ public class OrganizationDao {
      */
     public List<Organization> query(Query query,DBObject fieldsObject){
         return query(new BasicQuery(query.getQueryObject(),fieldsObject));
+    }
+
+    public long count(Query query){
+        return mongoTemplate.count(query,table);
     }
 }

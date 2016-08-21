@@ -3,6 +3,7 @@ package zhtt.service.user;
 import com.mongodb.BasicDBObject;
 import com.mongodb.WriteResult;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.data.mongodb.core.MongoOperations;
 import org.springframework.data.mongodb.core.query.BasicQuery;
 import org.springframework.data.mongodb.core.query.Criteria;
@@ -58,6 +59,10 @@ public class OrganizationService {
         return new JsonResponse(organization);
     }
 
+    /**
+     * 删除机构
+     * @param uuid
+     */
     public void delete(List<String> uuid){
         dao.delete(uuid);
     }
@@ -89,6 +94,53 @@ public class OrganizationService {
      */
     public List<Organization> getByParentId(String uuid){
         return dao.query(new Query(Criteria.where("parentId").is(uuid==null?"":uuid)));
+    }
+
+    /**
+     *
+     * @param code
+     * @param parentId
+     * @param name
+     * @param limit
+     * @param skip
+     * @return
+     */
+    public List<Organization> query(String code,String parentId,String name,int limit,int skip){
+        Query query=new Query();
+        query.addCriteria(Criteria.where("name").regex(name));
+        if(parentId==null||"".equals(parentId)){
+            if(!(code==null||"".equals(code))){
+                query.addCriteria(Criteria.where("code").regex(code));
+            }
+        }else{
+            query.addCriteria(Criteria.where("parentId").is(parentId));
+        }
+        query.limit(limit);
+        query.skip(skip);
+        /** 排序 **/
+        Sort.Direction direction=true? Sort.Direction.ASC: Sort.Direction.DESC;
+        query.with(new Sort(direction,"sort"));
+        return dao.query(query);
+    }
+
+    /**
+     * 查询总数
+     * @param code
+     * @param parentId
+     * @param name
+     * @return
+     */
+    public long count(String code,String parentId,String name){
+        Query query=new Query();
+        query.addCriteria(Criteria.where("name").regex(name));
+        if(parentId==null||"".equals(parentId)){
+            if(!(code==null||"".equals(code))){
+                query.addCriteria(Criteria.where("code").regex(code));
+            }
+        }else{
+            query.addCriteria(Criteria.where("parentId").is(parentId));
+        }
+        return dao.count(query);
     }
 
     /**

@@ -13,11 +13,14 @@ var organization={
     updateUrl:ctx+"/organization/update-form",
     deleteUrl:ctx+"/organization/delete",
     treeUrl:ctx+"/organization/tree?parentId=",
-    treeId:"orgTreeDiv"
+    treeId:"orgTreeDiv",
+    tableListId:"organizationListTable",
+    tableListUrl:ctx+'/organization/query'
 }
 organization.init=function(){
     organizationTree.init();
     organization.initEvent();
+    organization.loadTableList();
 }
 /**
  * 为html标签绑定事件
@@ -156,4 +159,74 @@ organization.delete=function(){
             });
         }});
     }});
+}
+organization.loadTableList=function() {
+    var queryUrl = organization.tableListUrl;
+    $table = $('#'+organization.tableListId).bootstrapTable({
+        method: 'post',
+        contentType: "application/x-www-form-urlencoded",
+        url: queryUrl,
+        height: $(window).height() - 220,
+        striped: true,
+        pagination: true,
+        singleSelect: false,
+        pageSize: 10,
+        pageList: [10, 50, 100, 200, 500],
+        search: false, //不显示 搜索框
+        showColumns: false, //不显示下拉框（选择显示的列）
+        sidePagination: "server", //服务端请求
+        queryParams: organization.queryParams,
+        minimunCountColumns: 2,
+        columns: [{
+            field: 'state',
+            checkbox: true
+        }, {
+            field: 'name',title: '名称',width: 100,align: 'center',valign: 'middle',sortable: true,formatter:function(value, row, index){return '<i class="glyphicon glyphicon-user"></i> '+value;}
+        },  {
+            field: 'fullName',title: '机构全称',width: 80,align: 'middle',valign: 'top',sortable: true
+        }, {
+            field: 'createTime',title: '录入时间',width: 180,align: 'left',valign: 'top',sortable: true,formatter:function(value, row, index){return '<i class="glyphicon glyphicon-time"></i> '+value;}
+        }, {
+            field: 'operate', title: '操作',width: 100, align: 'center',formatter: organization.operateformater
+        }],
+        onLoadSuccess:function(){},
+        onLoadError: function () {}
+    });
+}
+/**
+ * 对操作列进行格式化
+ * @param value
+ * @param row
+ * @param index
+ * @returns {string}
+ */
+organization.operateformater=function(value, row, index){
+    return [
+        '<a class="digital" href="javascript:void(0)" title="详情">',
+        '<i class="glyphicon glyphicon-list-alt"></i>',
+        '</a>  ',
+        '<a class="like" href="javascript:void(0)" title="修改">',
+        '<i class="glyphicon glyphicon-edit"></i>',
+        '</a>  ',
+        '<a class="remove" href="javascript:void(0)" title="删除">',
+        '<i class="glyphicon glyphicon-remove"></i>',
+        '</a>'
+    ].join('');
+}
+//传递的参数
+organization.queryParams=function(params) {
+    return {
+        offset: typeof params=="undefined"?0:params.offset,
+        limit: typeof params=="undefined"?2:params.limit,
+        name: $("#query-organization-name").val()==""?".":$("#query-organization-name").val(),
+        code: "00",
+        parentId: null,
+        order: typeof params=="undefined"?"asc":params.sortOrder
+    };
+}
+/**
+ * 用户查询
+ */
+organization.query=function(){
+    $('#'+user.tableListId).bootstrapTable('refresh',organization.queryParams());
 }

@@ -26,12 +26,6 @@ public class UserController {
 	@Autowired
     private UserService userService;
       
-    /*@RequestMapping("/index")
-    public ModelAndView index(){  
-        ModelAndView mav = new ModelAndView("/user/index");
-        return mav;  
-    }*/
-
     @RequestMapping("/query")
     @ResponseBody
     public JsonTableResponse query(String name,String username,Integer limit,Integer offset){

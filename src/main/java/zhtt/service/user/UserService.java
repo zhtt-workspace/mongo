@@ -53,8 +53,6 @@ public class UserService {
 		query.addCriteria(Criteria.where("username").regex(username));
 		query.limit(limit);
 		query.skip(skip);
-		Sort sort=new Sort("name");
-
 		/** 排序 **/
 		Sort.Direction direction=true? Sort.Direction.ASC: Sort.Direction.DESC;
 		query.with(new Sort(direction,"name"));
