@@ -13,6 +13,9 @@ var user={
     createUrl:ctx+"/user/create-form",
     updateUrl:ctx+"/user/update-form"
 };
+/**
+ * 提交新建用户的表单
+ */
 user.submitCreateForm=function(){
     $("#"+user.createModalId+" from").validate({
         rules: {
@@ -46,7 +49,7 @@ user.submitCreateForm=function(){
 /**
  * 更新用户
  */
-user.update=function(){
+user.openUpdateForm=function(){
     var selects =$('#'+user.userListTableId).bootstrapTable('getSelections');
     if(selects.length==0){
         LobiboxUtil.notify("请勾选要修改的用户！");
@@ -69,6 +72,9 @@ user.update=function(){
     },500)
     //var newSelects = $.parseJSON(JSON.stringify(selects));
 }
+/**
+ * 提交更新用户的表单
+ */
 user.submitUpdateForm=function(){
     formUtil.submit({
         form:$("#updateUserForm"),
@@ -115,6 +121,9 @@ user.delete=function(){
     }
     //var newSelects = $.parseJSON(JSON.stringify(selects));
 }
+/**
+ * 加载用户记录列表数据
+ */
 user.initTable=function() {
     var queryUrl = user.userListUrl;
     $table = $('#'+user.userListTableId).bootstrapTable({
@@ -182,6 +191,9 @@ user.queryParams=function(params) {
         order: typeof params=="undefined"?"asc":params.sortOrder
     };
 }
+/**
+ * 用户查询
+ */
 user.query=function(){
     $('#'+user.userListTableId).bootstrapTable('refresh',user.queryParams());
 }

@@ -47,6 +47,15 @@ public class OrganizationService {
     }
 
     /**
+     * 更新机构
+     * @param organization
+     * @return
+     */
+    public JsonResponse update(Organization organization){
+        return new JsonResponse(organization);
+    }
+
+    /**
      * 增加节点、删除子节点
      * 将父节点的 是否为叶子节点字段修改为false/true
      */

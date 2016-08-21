@@ -74,4 +74,29 @@ function filter(treeId, parentNode, childNodes) {
     }
     return childNodes;
 }
+/**
+ * 获取选中的节点
+ * @param args
+ * @returns {*}
+ */
+organizationTree.getSelectedNodes=function(args){
+    if(typeof args=="string"){
+        args={msg:args};
+    }
+    var zTree = $.fn.zTree.getZTreeObj(organization.treeId);
+    if(zTree==null||zTree.getNodes().length==0){
+        LobiboxUtil.notify("您还没有新建机构，请选新建机构！");
+        return {"zTree":null,"nodes":null};;
+    }
+    var nodes = zTree.getSelectedNodes();
+    if(nodes.length==0){
+        LobiboxUtil.notify(args.msg);
+        return {"zTree":zTree,"nodes":null};
+    }else{
+        if(typeof args=="object"&&typeof args.callback=="function"){
+            args.callback({"zTree":zTree,"nodes":nodes});
+        }
+        return {"zTree":zTree,"nodes":nodes};
+    }
+}
 

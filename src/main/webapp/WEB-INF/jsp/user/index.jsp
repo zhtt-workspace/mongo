@@ -24,7 +24,7 @@
                             <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> 新增
                         </a>
                         <a href="${ctx}/user/update" style="display: none;" id="openUpdateUserModelBtn"  data-toggle="modal" data-target="#updateUserModal"></a>
-                        <a href="javascript:user.update()" class="btn btn-info btn-sm" role="button">
+                        <a href="javascript:user.openUpdateForm()" class="btn btn-info btn-sm" role="button">
                             <span class="glyphicon glyphicon-edit" aria-hidden="true"></span> 修改
                         </a>
                         <a href="javascript:user.delete()" class="btn btn-danger btn-sm" role="button">

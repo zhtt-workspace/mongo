@@ -28,4 +28,14 @@ public class OrganizationFormController {
             return new JsonResponse(JsonResponseStatusEnum.ERROR,e.getMessage());
         }
     }
+
+    @RequestMapping("/update-form")
+    @ResponseBody
+    public JsonResponse update(Organization organization){
+        try{
+            return service.save(organization);
+        }catch (Exception e){
+            return new JsonResponse(JsonResponseStatusEnum.ERROR,e.getMessage());
+        }
+    }
 }

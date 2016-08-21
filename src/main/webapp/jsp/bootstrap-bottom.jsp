@@ -10,3 +10,4 @@
 <script src="${ctx}/js/common/LobiboxUtil.js"></script>
 <script src="${ctx}/js/common/modalUtil.js"></script>
 <script src="${ctx}/js/common/formUtil.js"></script>
+<script src="${ctx}/js/common/util.js"></script>

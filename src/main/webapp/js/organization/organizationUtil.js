@@ -26,6 +26,7 @@ organizationUtil.renderFormBySeectedNode=function(isLoop){
                 organizationUtil.renderFormBySeectedNode(false);
             }else{
                 fullNameNode[0].defaultValue=obj.fullName;
+                fullNameNode[0].value=obj.fullName;
             }
         }
         form.find("input[name='parentId']").val(obj.uuid);
