@@ -6,13 +6,10 @@ var organizationUtil={};
 /**
  * 打开新建机构节点的对话框，并对表单初始化信息
  */
-organizationUtil.renderFormBySeectedNode=function(isLoop){
-    if(isLoop==false){
-        return;
-    }
+organizationUtil.renderFormBySeectedNode=function(){
     var zTree = $.fn.zTree.getZTreeObj(organization.treeId);
     if(zTree==null||zTree.getNodes().length==0){
-        organizationTree.disableOrgType(null);
+        organizationUtil.disableOrgType(null);
         return;
     }
     var nodes = zTree.getSelectedNodes();
@@ -22,12 +19,8 @@ organizationUtil.renderFormBySeectedNode=function(isLoop){
         var form=$("#"+organization.createFormId);
         if(obj.orgType!="root"){
             var fullNameNode=form.find("input[name='fullName']");
-            if(fullNameNode.length==0){
-                organizationUtil.renderFormBySeectedNode(false);
-            }else{
-                fullNameNode[0].defaultValue=obj.fullName;
-                fullNameNode[0].value=obj.fullName;
-            }
+            fullNameNode[0].defaultValue=obj.fullName;
+            fullNameNode[0].value=obj.fullName;
         }
         form.find("input[name='parentId']").val(obj.uuid);
         form.find("input[name='parentName']").val(obj.fullName);

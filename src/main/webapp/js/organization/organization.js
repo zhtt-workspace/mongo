@@ -11,7 +11,7 @@ var organization={
     updateModalId:"updateOrganizationModal",
     updateFormId:"updateOrganiztionForm",
     updateUrl:ctx+"/organization/update-form",
-    treeUrl:ctx+"/organization/tree?parentId=",
+    treeUrl:ctx+"/organization/tree?parentId=1",
     treeId:"orgTreeDiv"
 }
 organization.init=function(){
@@ -23,7 +23,27 @@ organization.init=function(){
  */
 organization.initEvent=function(){
     $('#'+organization.createModalId).on('shown.bs.modal', function () {
-        organizationUtil.renderFormBySeectedNode(true);
+        var tree=organizationTree.getSelectedNodes({msg:"添加子节点时，请选择一个父节点！",callback:function(obj){
+            var node=obj.nodes[0];
+            organizationUtil.disableOrgType(node);
+            var form=$("#"+organization.createFormId);
+            if(node.orgType!="root"){
+                var fullNameNode=form.find("input[name='fullName']");
+                fullNameNode[0].defaultValue=node.fullName;
+                fullNameNode[0].value=node.fullName;
+            }
+            form.find("input[name='parentId']").val(node.uuid);
+            form.find("input[name='parentName']").val(node.fullName);
+            form.find("input[name='leave']").val(parseInt(node.leave)+1);
+            var childNodes=node.children;
+            var childLength=typeof childNodes=="undefined"?0:childNodes.length;
+            form.find("input[name='sort']").val(childLength);
+            form.find("input[name='code']").val(node.code+(childLength<10?("0"+childLength):(childLength)));
+        }});
+        if(tree.zTree==null){
+            organizationUtil.disableOrgType(null);
+        }
+        //organizationUtil.renderFormBySeectedNode(true);
         util.bindEvent({
             el:"#"+organization.createFormId+" input[name='name']",
             eventType:"blur",
@@ -55,6 +75,14 @@ organization.initEvent=function(){
             });
         }});
     });
+}
+/**
+ * 打开新建机构的表单窗口
+ */
+organization.openCreateForm=function(){
+    organizationTree.getSelectedNodes({msg:"添加子节点时，请选择一个父节点！",callback:function(obj){
+        $("#openCreateOrganizationModelBtn").click();
+    }});
 }
 /**
  * 提交新建表单

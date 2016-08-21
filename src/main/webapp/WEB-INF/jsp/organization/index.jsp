@@ -32,12 +32,13 @@
                                     <span class="glyphicon glyphicon-tree-conifer" aria-hidden="true"></span> 机构信息列表
                                 </div>
                                 <div class="col-xs-12 col-md-4 text-right">
-                                    <a href="${ctx}/organization/create" class="btn btn-success btn-sm" role="button" id="openCreateOrganizationModelBtn"  data-toggle="modal" data-target="#createOrganizationModal">
+                                    <%--<a href="${ctx}/organization/create" class="btn btn-success btn-sm" role="button" id="openCreateOrganizationModelBtn"  data-toggle="modal" data-target="#createOrganizationModal">--%>
+                                    <a href="${ctx}/organization/create" style="display: none;" id="openCreateOrganizationModelBtn"  data-toggle="modal" data-target="#createOrganizationModal"></a>
+                                    <a href="javascript:organization.openCreateForm()" class="btn btn-success btn-sm" role="button">
                                         <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> 新增
                                     </a>
                                     <a href="${ctx}/organization/update" style="display: none;" id="openUpdateOrganizationModelBtn"  data-toggle="modal" data-target="#updateOrganizationModal"></a>
                                     <a href="javascript:organization.openUpdateForm()" class="btn btn-warning btn-sm" role="button">
-                                    <%--<a href="${ctx}/organization/update" class="btn btn-warning btn-sm" role="button" id="openUpdateOrganizationModelBtn"  data-toggle="modal" data-target="#updateOrganizationModal">--%>
                                         <span class="glyphicon glyphicon-edit" aria-hidden="true"></span> 修改
                                     </a>
                                     <a href="javascript:organization.delete()" class="btn btn-danger btn-sm" role="button">
