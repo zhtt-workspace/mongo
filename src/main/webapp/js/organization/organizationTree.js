@@ -36,6 +36,8 @@ function onAsyncSuccess(event,treeId,treeNode,msg){
             setTimeout(function(){
                 $("#"+organization.createModalId+" .panel-heading").html("请初始化机构树根节点！");
             },100);
+        }else{
+            organization.loadTableList();
         }
     }catch (e){
         LobiboxUtil.notify(e.message);
@@ -93,7 +95,9 @@ organizationTree.getSelectedNodes=function(args){
     }
     var nodes = zTree.getSelectedNodes();
     if(nodes.length==0){
-        LobiboxUtil.notify(args.msg);
+        if(args.msg){
+            LobiboxUtil.notify(args.msg);
+        }
         return {"zTree":zTree,"nodes":null};
     }else{
         if(typeof args=="object"&&typeof args.callback=="function"){

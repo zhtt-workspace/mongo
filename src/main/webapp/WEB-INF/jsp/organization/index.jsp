@@ -54,7 +54,7 @@
                                 <label for="query-organization-name">机构名称</label>
                                 <input type="text" class="form-control" id="query-organization-name" placeholder="机构名称">
                             </div>
-                            <a href="${ctx}/organization/findpage" class="btn btn-default btn-sm" role="button">
+                            <a href="javascript:organization.query()" class="btn btn-default btn-sm" role="button">
                                 <span class="glyphicon glyphicon-search" aria-hidden="true"></span> 查 询
                             </a>
                         </form>

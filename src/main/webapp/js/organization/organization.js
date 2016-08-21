@@ -20,7 +20,6 @@ var organization={
 organization.init=function(){
     organizationTree.init();
     organization.initEvent();
-    organization.loadTableList();
 }
 /**
  * 为html标签绑定事件
@@ -215,11 +214,12 @@ organization.operateformater=function(value, row, index){
 }
 //传递的参数
 organization.queryParams=function(params) {
+    var tree=organizationTree.getSelectedNodes("");
     return {
         offset: typeof params=="undefined"?0:params.offset,
         limit: typeof params=="undefined"?2:params.limit,
         name: $("#query-organization-name").val()==""?".":$("#query-organization-name").val(),
-        code: "00",
+        code: tree.nodes==null?"":tree.nodes[0].code,
         parentId: null,
         order: typeof params=="undefined"?"asc":params.sortOrder
     };
@@ -228,5 +228,5 @@ organization.queryParams=function(params) {
  * 用户查询
  */
 organization.query=function(){
-    $('#'+user.tableListId).bootstrapTable('refresh',organization.queryParams());
+    $('#'+organization.tableListId).bootstrapTable('refresh',organization.queryParams());
 }
