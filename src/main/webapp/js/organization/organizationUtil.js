@@ -6,38 +6,28 @@ var organizationUtil={};
 /**
  * 打开新建机构节点的对话框，并对表单初始化信息
  */
-organizationUtil.renderFormBySeectedNode=function(){
-    var zTree = $.fn.zTree.getZTreeObj(organization.treeId);
-    if(zTree==null||zTree.getNodes().length==0){
-        organizationUtil.disableOrgType(null);
-        return;
+organizationUtil.renderCreateFormByNode=function(node){
+    organizationUtil.disableOrgType(node);
+    var form=$("#"+organization.createFormId);
+    if(node.orgType!="root"){
+        var fullNameNode=form.find("input[name='fullName']");
+        fullNameNode[0].defaultValue=node.fullName;
+        fullNameNode[0].value=node.fullName;
     }
-    var nodes = zTree.getSelectedNodes();
-    if(nodes.length==1){
-        var obj=nodes[0];
-        organizationUtil.disableOrgType(obj);
-        var form=$("#"+organization.createFormId);
-        if(obj.orgType!="root"){
-            var fullNameNode=form.find("input[name='fullName']");
-            fullNameNode[0].defaultValue=obj.fullName;
-            fullNameNode[0].value=obj.fullName;
-        }
-        form.find("input[name='parentId']").val(obj.uuid);
-        form.find("input[name='parentName']").val(obj.fullName);
-        form.find("input[name='leave']").val(parseInt(obj.leave)+1);
-        var childNodes=obj.children;
-        var childLength=typeof childNodes=="undefined"?0:childNodes.length;
-        form.find("input[name='sort']").val(childLength);
-        form.find("input[name='code']").val(obj.code+(childLength<10?("0"+childLength):(childLength)));
-    }else{
-        modalUtil.close('#'+organization.createModalId)
-        LobiboxUtil.notify("添加子节点时，请选择一个父节点！");
-    }
+    form.find("input[name='name']").val("");
+    form.find("input[name='parentId']").val(node.uuid);
+    form.find("input[name='parentName']").val(node.fullName);
+    form.find("input[name='leave']").val(parseInt(node.leave)+1);
+    var childNodes=node.children;
+    var childLength=typeof childNodes=="undefined"?0:childNodes.length;
+    form.find("input[name='sort']").val(childLength);
+    form.find("input[name='code']").val(node.code+(childLength<10?("0"+childLength):(childLength)));
 }
 organizationUtil.disableOrgType=function(node){
     $("#"+organization.createFormId+" input[name='orgType']").attr("disabled",true).removeAttr("checked");
     if(node==null){
-        $("#"+organization.createFormId+" input[value='root']").removeAttr("disabled").attr("checked",true);
+        $("#"+organization.createFormId+" input[value='root']").removeAttr("disabled");
+        $("#"+organization.createFormId+" input[value='root']")[0].checked=true;
     }else{
         switch (node.orgType){
             case "root":$("#"+organization.createFormId+" input[value='org']").removeAttr("disabled");$("#"+organization.createFormId+" input[value='org']").attr("checked",true);$("#"+organization.createFormId+" input[value='headquarters']").removeAttr("disabled");break;

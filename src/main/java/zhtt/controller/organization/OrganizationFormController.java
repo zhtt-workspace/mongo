@@ -33,7 +33,7 @@ public class OrganizationFormController {
     @ResponseBody
     public JsonResponse update(Organization organization){
         try{
-            return service.save(organization);
+            return service.update(organization);
         }catch (Exception e){
             return new JsonResponse(JsonResponseStatusEnum.ERROR,e.getMessage());
         }

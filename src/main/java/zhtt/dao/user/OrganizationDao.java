@@ -25,6 +25,8 @@ public class OrganizationDao {
 
     private final Class<Organization> $class=Organization.class;
 
+    private final String  table=TableConfig.ORGANIZATION;
+
     @Autowired
     MongoOperations mongoTemplate;
 
@@ -33,7 +35,7 @@ public class OrganizationDao {
      * @param organization
      */
     public void save(Organization organization){
-        mongoTemplate.save(organization, TableConfig.ORGANIZATION);
+        mongoTemplate.save(organization, table);
     }
 
     /**
@@ -42,7 +44,7 @@ public class OrganizationDao {
      * @return
      */
     public Organization findOne(Query query){
-        return mongoTemplate.findOne(query,$class, TableConfig.ORGANIZATION);
+        return mongoTemplate.findOne(query,$class, table);
     }
 
     /**
@@ -64,18 +66,34 @@ public class OrganizationDao {
      * @return
      */
     public WriteResult update(Query query,Update update){
-        WriteResult writeResult=mongoTemplate.updateFirst(query, update,$class, TableConfig.ORGANIZATION);
+        WriteResult writeResult=mongoTemplate.updateFirst(query, update,$class, table);
         return writeResult;
     }
+
+
     /**
      * 查询
      * @param query
      * @return
      */
     public List<Organization> query(Query query){
-        return mongoTemplate.find(query,$class, TableConfig.ORGANIZATION);
+        return mongoTemplate.find(query,$class, table);
     }
 
+    /**
+     * 删除机构
+     * @param uuid
+     */
+    public void delete(List<String> uuid){
+        mongoTemplate.remove(new Query(Criteria.where("uuid").in(uuid)),$class, table);
+    }
+
+    /**
+     * 查询机构，指定需要返回的字段
+     * @param query
+     * @param fieldsObject
+     * @return
+     */
     public List<Organization> query(Query query,DBObject fieldsObject){
         return query(new BasicQuery(query.getQueryObject(),fieldsObject));
     }

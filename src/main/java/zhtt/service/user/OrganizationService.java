@@ -52,7 +52,14 @@ public class OrganizationService {
      * @return
      */
     public JsonResponse update(Organization organization){
+        Query query=new Query();
+        query.addCriteria(Criteria.where("uuid").is(organization.getUuid()));
+        WriteResult writeResult=dao.update(query,organization.toUpdate());
         return new JsonResponse(organization);
+    }
+
+    public void delete(List<String> uuid){
+        dao.delete(uuid);
     }
 
     /**

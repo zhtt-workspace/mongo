@@ -85,7 +85,10 @@ organizationTree.getSelectedNodes=function(args){
     }
     var zTree = $.fn.zTree.getZTreeObj(organization.treeId);
     if(zTree==null||zTree.getNodes().length==0){
-        LobiboxUtil.notify("您还没有新建机构，请选新建机构！");
+        if($('#'+organization.createModalId).is(":hidden")){
+            LobiboxUtil.notify("您还没有新建机构，请选新建机构！");
+            $("#openCreateOrganizationModelBtn").click();
+        }
         return {"zTree":null,"nodes":null};;
     }
     var nodes = zTree.getSelectedNodes();

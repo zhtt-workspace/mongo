@@ -11,7 +11,8 @@ var organization={
     updateModalId:"updateOrganizationModal",
     updateFormId:"updateOrganiztionForm",
     updateUrl:ctx+"/organization/update-form",
-    treeUrl:ctx+"/organization/tree?parentId=1",
+    deleteUrl:ctx+"/organization/delete",
+    treeUrl:ctx+"/organization/tree?parentId=",
     treeId:"orgTreeDiv"
 }
 organization.init=function(){
@@ -25,25 +26,11 @@ organization.initEvent=function(){
     $('#'+organization.createModalId).on('shown.bs.modal', function () {
         var tree=organizationTree.getSelectedNodes({msg:"添加子节点时，请选择一个父节点！",callback:function(obj){
             var node=obj.nodes[0];
-            organizationUtil.disableOrgType(node);
-            var form=$("#"+organization.createFormId);
-            if(node.orgType!="root"){
-                var fullNameNode=form.find("input[name='fullName']");
-                fullNameNode[0].defaultValue=node.fullName;
-                fullNameNode[0].value=node.fullName;
-            }
-            form.find("input[name='parentId']").val(node.uuid);
-            form.find("input[name='parentName']").val(node.fullName);
-            form.find("input[name='leave']").val(parseInt(node.leave)+1);
-            var childNodes=node.children;
-            var childLength=typeof childNodes=="undefined"?0:childNodes.length;
-            form.find("input[name='sort']").val(childLength);
-            form.find("input[name='code']").val(node.code+(childLength<10?("0"+childLength):(childLength)));
+            organizationUtil.renderCreateFormByNode(node);
         }});
         if(tree.zTree==null){
             organizationUtil.disableOrgType(null);
         }
-        //organizationUtil.renderFormBySeectedNode(true);
         util.bindEvent({
             el:"#"+organization.createFormId+" input[name='name']",
             eventType:"blur",
@@ -137,4 +124,36 @@ organization.submitUpdateForm=function(){
             }
         }
     });
+}
+/**
+ * 删除机构
+ **/
+organization.delete=function(){
+    organizationTree.getSelectedNodes({msg:"请选择要删除的节点",callback:function(obj){
+        var uuid=[];
+        var node=obj.nodes[0];
+        var childNodes=node.children;
+        var childLength=typeof childNodes=="undefined"?0:childNodes.length;
+        if(childLength>0){
+            LobiboxUtil.notify("含有子节点，禁止删除！");
+            return;
+        }
+        uuid.push(node.uuid);
+        LobiboxUtil.confirm({msg:"确定要删除吗？",fn:function() {
+            $.ajax({
+                url: organization.deleteUrl,
+                type: 'POST',
+                data: JSON.stringify(uuid),
+                contentType: "application/json",
+                dataType: 'json',
+                success: function (data) {
+                    if(data.status=="success"){
+                        LobiboxUtil.notify("删除成功！");
+                    }else{
+                        LobiboxUtil.notify("删除失败！"+data.message);
+                    }
+                }
+            });
+        }});
+    }});
 }
