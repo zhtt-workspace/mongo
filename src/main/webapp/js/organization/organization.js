@@ -180,10 +180,8 @@ organization.loadTableList=function() {
             field: 'state',
             checkbox: true
         }, {
-            field: 'name',title: '名称',width: 100,align: 'center',valign: 'middle',sortable: true,formatter:function(value, row, index){return '<i class="glyphicon glyphicon-user"></i> '+value;}
+            field: 'name',title: '名称',width: 150,align: 'left',valign: 'middle',sortable: true,formatter:function(value, row, index){return '<i class="glyphicon glyphicon-tree-conifer"></i> <span title="'+row.fullName+'">'+value+'</span>';}
         },  {
-            field: 'fullName',title: '机构全称',width: 80,align: 'middle',valign: 'top',sortable: true
-        }, {
             field: 'createTime',title: '录入时间',width: 180,align: 'left',valign: 'top',sortable: true,formatter:function(value, row, index){return '<i class="glyphicon glyphicon-time"></i> '+value;}
         }, {
             field: 'operate', title: '操作',width: 100, align: 'center',formatter: organization.operateformater

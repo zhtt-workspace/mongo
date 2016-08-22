@@ -19,6 +19,7 @@ import zhtt.util.JsonResponseStatusEnum;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Pattern;
 
 /**
  * Created by zhtt on 2016/8/11.
@@ -185,6 +186,22 @@ public class OrganizationService {
                 return code;
             }
             return null;
+        }
+    }
+
+    public void regTest(){
+        String code="00";
+        Query query=new Query(Criteria.where("code").regex(code));
+
+        Query query1 =new BasicQuery("{code: {$regex : '^" + code + ".{2}$'} }");
+
+        Pattern pattern = Pattern.compile("^"+code+".{2}$");//, Pattern.CASE_INSENSITIVE
+        Criteria criteria = new Criteria("code").regex(pattern.toString());
+        Query query2=new Query(criteria);
+
+        List<Organization> orgList=dao.query(query1);
+        for(Organization org:orgList){
+            System.out.println("org.code:"+org.getCode());
         }
     }
 }

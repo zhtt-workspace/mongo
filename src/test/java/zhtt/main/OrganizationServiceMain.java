@@ -15,12 +15,16 @@ public class OrganizationServiceMain {
         ApplicationContext ac = new ClassPathXmlApplicationContext(
                 new String[] { "applicationContext-test.xml", "applicationContext-mongo-config-test.xml", "applicationContext-servlet-test.xml"});
         organizationService = (zhtt.service.user.OrganizationService) ac.getBean("organizationService");
-        buildOrgCode();
+        regTest();
     }
 
     public static void buildOrgCode(){
         String code="000101";
         String parentId="f3af7031-60d0-49a7-aa83-a784a12e8d13";
         organizationService.buildOrgCode(code,parentId);
+    }
+
+    public static void regTest(){
+        organizationService.regTest();
     }
 }

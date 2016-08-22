@@ -10,33 +10,26 @@ organizationTree.init=function(){
     var orgTree=new orgTreeUtil({
         treeDivId:organization.treeId,
         url:organization.treeUrl,
-        onClick:organizationTree.onClick,
-        onAsyncSuccess:organizationTree.onAsyncSuccess
+        onClick:onClick,
+        onAsyncSuccess:onAsyncSuccess
     });
     orgTree.init();
+    //$.fn.zTree.init($("#"+organization.treeId), organizationTree.setting);
 }
-/**
- * ztree节点的点击事件
- * @param event
- * @param treeId
- * @param treeNode
- */
-organizationTree.onClick=function(event, treeId, treeNode){
-    if(typeof treeNode.children=="undefined"){
-        $.get(organization.treeUrl+treeNode.uuid,function(data){
-            organizationTree.addZtreeNode({treeId:treeId,nodeData:data});
-        });
+organizationTree.setting={
+    view: {
+        selectedMulti: false
+    },
+    async: {
+        enable: true,
+        url:organization.treeUrl,
+        autoParam:["uuid"],
+        otherParam:{"otherParam":"zTreeAsyncTest"}
+    },
+    callback: {
+        onClick: onClick,
+        onAsyncSuccess:onAsyncSuccess
     }
-}
-/**
- * 向ztree中添加新节点
- * @param obj
- */
-organizationTree.addZtreeNode=function(obj){
-    var treeObj = $.fn.zTree.getZTreeObj(obj.treeId);
-    var nodes = treeObj.getSelectedNodes();
-    //var nodeData = {name:"newNode1"};
-    newNode = treeObj.addNodes(nodes[0], obj.nodeData);
 }
 /**
  * 异步加载成功后执行的方法
@@ -45,7 +38,7 @@ organizationTree.addZtreeNode=function(obj){
  * @param treeNode
  * @param msg
  */
-organizationTree.onAsyncSuccess=function(event,treeId,treeNode,msg){
+function onAsyncSuccess(event,treeId,treeNode,msg){
     try{
         var obj=$.parseJSON(msg);
         if(obj.length==0){
@@ -62,6 +55,36 @@ organizationTree.onAsyncSuccess=function(event,treeId,treeNode,msg){
         LobiboxUtil.notify(e.number);
         LobiboxUtil.notify(e.name);
     }
+
+}
+/**
+ * ztree节点的点击事件
+ * @param event
+ * @param treeId
+ * @param treeNode
+ */
+function onClick(event, treeId, treeNode){
+    if(typeof treeNode.children=="undefined"){
+        $.get(organization.treeUrl+treeNode.uuid,function(data){
+            addZtreeNode({treeId:treeId,nodeData:data});
+        });
+    }
+}
+function addZtreeNode(obj){
+    var treeObj = $.fn.zTree.getZTreeObj(obj.treeId);
+    var nodes = treeObj.getSelectedNodes();
+    //var nodeData = {name:"newNode1"};
+    newNode = treeObj.addNodes(nodes[0], obj.nodeData);
+}
+function dataFilter(treeId, parentNode, childNodes){
+    LobiboxUtil.notify("dataFilter");
+}
+function filter(treeId, parentNode, childNodes) {
+    if (!childNodes) return null;
+    for (var i=0, l=childNodes.length; i<l; i++) {
+        childNodes[i].name = childNodes[i].name.replace(/\.n/g, '.');
+    }
+    return childNodes;
 }
 /**
  * 获取选中的节点
