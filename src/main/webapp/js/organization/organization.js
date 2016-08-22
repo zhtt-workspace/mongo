@@ -26,7 +26,7 @@ organization.init=function(){
  */
 organization.initEvent=function(){
     $('#'+organization.createModalId).on('shown.bs.modal', function () {
-        var tree=organizationTree.getSelectedNodes({msg:"添加子节点时，请选择一个父节点！",callback:function(obj){
+        var tree=organizationTree.tree.getSelectedNodes({msg:"添加子节点时，请选择一个父节点！",callback:function(obj){
             var node=obj.nodes[0];
             organizationUtil.renderCreateFormByNode(node);
         }});
@@ -44,7 +44,7 @@ organization.initEvent=function(){
         });
     });
     $('#'+organization.updateModalId).on('shown.bs.modal', function () {
-        organizationTree.getSelectedNodes({msg:"请选择要更新的节点",callback:function(obj){
+        organizationTree.tree.getSelectedNodes({msg:"请选择要更新的节点",callback:function(obj){
             var node=obj.nodes[0];
             var form=$("#"+organization.updateFormId);
             form.find("input[name='orgType']").filter("[value='"+node.orgType+"']").removeAttr("disabled").attr("checked",true);
@@ -69,7 +69,7 @@ organization.initEvent=function(){
  * 打开新建机构的表单窗口
  */
 organization.openCreateForm=function(){
-    organizationTree.getSelectedNodes({msg:"添加子节点时，请选择一个父节点！",callback:function(obj){
+    organizationTree.tree.getSelectedNodes({msg:"添加子节点时，请选择一个父节点！",callback:function(obj){
         $("#openCreateOrganizationModelBtn").click();
     }});
 }
@@ -100,7 +100,7 @@ organization.submitCreateForm=function(){
  * 打开更新节点的form表单
  */
 organization.openUpdateForm=function(){
-    organizationTree.getSelectedNodes({msg:"请选择要更新的节点",callback:function(obj){
+    organizationTree.tree.getSelectedNodes({msg:"请选择要更新的节点",callback:function(obj){
         $("#openUpdateOrganizationModelBtn").click();
     }});
 }
@@ -131,7 +131,7 @@ organization.submitUpdateForm=function(){
  * 删除机构
  **/
 organization.delete=function(){
-    organizationTree.getSelectedNodes({msg:"请选择要删除的节点",callback:function(obj){
+    organizationTree.tree.getSelectedNodes({msg:"请选择要删除的节点",callback:function(obj){
         var uuid=[];
         var node=obj.nodes[0];
         var childNodes=node.children;
@@ -212,7 +212,7 @@ organization.operateformater=function(value, row, index){
 }
 //传递的参数
 organization.queryParams=function(params) {
-    var tree=organizationTree.getSelectedNodes("");
+    var tree=organizationTree.tree.getSelectedNodes("");
     return {
         offset: typeof params=="undefined"?0:params.offset,
         limit: typeof params=="undefined"?2:params.limit,

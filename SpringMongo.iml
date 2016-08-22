@@ -70,6 +70,8 @@
           <root url="jar://$MODULE_DIR$/libs/aopalliance-1.0.jar!/" />
           <root url="jar://$MODULE_DIR$/libs/aopalliance-1.0.jar!/" />
           <root url="jar://$MODULE_DIR$/libs/aopalliance-1.0.jar!/" />
+          <root url="jar://$MODULE_DIR$/libs/aopalliance-1.0.jar!/" />
+          <root url="jar://$MODULE_DIR$/libs/aopalliance-1.0.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
@@ -78,6 +80,8 @@
     <orderEntry type="module-library" exported="">
       <library name="Gradle: cglib-2.2.2">
         <CLASSES>
+          <root url="jar://$MODULE_DIR$/libs/cglib-2.2.2.jar!/" />
+          <root url="jar://$MODULE_DIR$/libs/cglib-2.2.2.jar!/" />
           <root url="jar://$MODULE_DIR$/libs/cglib-2.2.2.jar!/" />
           <root url="jar://$MODULE_DIR$/libs/cglib-2.2.2.jar!/" />
           <root url="jar://$MODULE_DIR$/libs/cglib-2.2.2.jar!/" />
@@ -160,6 +164,8 @@
           <root url="jar://$MODULE_DIR$/libs/commons-logging-1.1.1.jar!/" />
           <root url="jar://$MODULE_DIR$/libs/commons-logging-1.1.1.jar!/" />
           <root url="jar://$MODULE_DIR$/libs/commons-logging-1.1.1.jar!/" />
+          <root url="jar://$MODULE_DIR$/libs/commons-logging-1.1.1.jar!/" />
+          <root url="jar://$MODULE_DIR$/libs/commons-logging-1.1.1.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
@@ -168,6 +174,8 @@
     <orderEntry type="module-library" exported="">
       <library name="Gradle: jstl-1.1.2">
         <CLASSES>
+          <root url="jar://$MODULE_DIR$/libs/jstl-1.1.2.jar!/" />
+          <root url="jar://$MODULE_DIR$/libs/jstl-1.1.2.jar!/" />
           <root url="jar://$MODULE_DIR$/libs/jstl-1.1.2.jar!/" />
           <root url="jar://$MODULE_DIR$/libs/jstl-1.1.2.jar!/" />
           <root url="jar://$MODULE_DIR$/libs/jstl-1.1.2.jar!/" />
@@ -250,6 +258,8 @@
           <root url="jar://$MODULE_DIR$/libs/log4j-1.2.15.jar!/" />
           <root url="jar://$MODULE_DIR$/libs/log4j-1.2.15.jar!/" />
           <root url="jar://$MODULE_DIR$/libs/log4j-1.2.15.jar!/" />
+          <root url="jar://$MODULE_DIR$/libs/log4j-1.2.15.jar!/" />
+          <root url="jar://$MODULE_DIR$/libs/log4j-1.2.15.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
@@ -258,6 +268,8 @@
     <orderEntry type="module-library" exported="">
       <library name="Gradle: mongo-2.10.1">
         <CLASSES>
+          <root url="jar://$MODULE_DIR$/libs/mongo-2.10.1.jar!/" />
+          <root url="jar://$MODULE_DIR$/libs/mongo-2.10.1.jar!/" />
           <root url="jar://$MODULE_DIR$/libs/mongo-2.10.1.jar!/" />
           <root url="jar://$MODULE_DIR$/libs/mongo-2.10.1.jar!/" />
           <root url="jar://$MODULE_DIR$/libs/mongo-2.10.1.jar!/" />
@@ -340,6 +352,8 @@
           <root url="jar://$MODULE_DIR$/libs/slf4j-api-1.5.8.jar!/" />
           <root url="jar://$MODULE_DIR$/libs/slf4j-api-1.5.8.jar!/" />
           <root url="jar://$MODULE_DIR$/libs/slf4j-api-1.5.8.jar!/" />
+          <root url="jar://$MODULE_DIR$/libs/slf4j-api-1.5.8.jar!/" />
+          <root url="jar://$MODULE_DIR$/libs/slf4j-api-1.5.8.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
@@ -348,6 +362,8 @@
     <orderEntry type="module-library" exported="">
       <library name="Gradle: slf4j-log4j12-1.5.8">
         <CLASSES>
+          <root url="jar://$MODULE_DIR$/libs/slf4j-log4j12-1.5.8.jar!/" />
+          <root url="jar://$MODULE_DIR$/libs/slf4j-log4j12-1.5.8.jar!/" />
           <root url="jar://$MODULE_DIR$/libs/slf4j-log4j12-1.5.8.jar!/" />
           <root url="jar://$MODULE_DIR$/libs/slf4j-log4j12-1.5.8.jar!/" />
           <root url="jar://$MODULE_DIR$/libs/slf4j-log4j12-1.5.8.jar!/" />
@@ -430,6 +446,8 @@
           <root url="jar://$MODULE_DIR$/libs/spring-data-commons-1.7.2.RELEASE.jar!/" />
           <root url="jar://$MODULE_DIR$/libs/spring-data-commons-1.7.2.RELEASE.jar!/" />
           <root url="jar://$MODULE_DIR$/libs/spring-data-commons-1.7.2.RELEASE.jar!/" />
+          <root url="jar://$MODULE_DIR$/libs/spring-data-commons-1.7.2.RELEASE.jar!/" />
+          <root url="jar://$MODULE_DIR$/libs/spring-data-commons-1.7.2.RELEASE.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
@@ -438,6 +456,8 @@
     <orderEntry type="module-library" exported="">
       <library name="Gradle: spring-data-commons-core-1.4.1.RELEASE">
         <CLASSES>
+          <root url="jar://$MODULE_DIR$/libs/spring-data-commons-core-1.4.1.RELEASE.jar!/" />
+          <root url="jar://$MODULE_DIR$/libs/spring-data-commons-core-1.4.1.RELEASE.jar!/" />
           <root url="jar://$MODULE_DIR$/libs/spring-data-commons-core-1.4.1.RELEASE.jar!/" />
           <root url="jar://$MODULE_DIR$/libs/spring-data-commons-core-1.4.1.RELEASE.jar!/" />
           <root url="jar://$MODULE_DIR$/libs/spring-data-commons-core-1.4.1.RELEASE.jar!/" />
@@ -520,6 +540,8 @@
           <root url="jar://$MODULE_DIR$/libs/spring-data-jpa-1.5.2.RELEASE.jar!/" />
           <root url="jar://$MODULE_DIR$/libs/spring-data-jpa-1.5.2.RELEASE.jar!/" />
           <root url="jar://$MODULE_DIR$/libs/spring-data-jpa-1.5.2.RELEASE.jar!/" />
+          <root url="jar://$MODULE_DIR$/libs/spring-data-jpa-1.5.2.RELEASE.jar!/" />
+          <root url="jar://$MODULE_DIR$/libs/spring-data-jpa-1.5.2.RELEASE.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
@@ -565,6 +587,8 @@
           <root url="jar://$MODULE_DIR$/libs/standard-1.1.2.jar!/" />
           <root url="jar://$MODULE_DIR$/libs/standard-1.1.2.jar!/" />
           <root url="jar://$MODULE_DIR$/libs/standard-1.1.2.jar!/" />
+          <root url="jar://$MODULE_DIR$/libs/standard-1.1.2.jar!/" />
+          <root url="jar://$MODULE_DIR$/libs/standard-1.1.2.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
@@ -573,6 +597,8 @@
     <orderEntry type="module-library" exported="">
       <library name="Gradle: spring-data-mongodb-1.4.2.RELEASE">
         <CLASSES>
+          <root url="jar://$MODULE_DIR$/libs/spring-data-mongodb-1.4.2.RELEASE.jar!/" />
+          <root url="jar://$MODULE_DIR$/libs/spring-data-mongodb-1.4.2.RELEASE.jar!/" />
           <root url="jar://$MODULE_DIR$/libs/spring-data-mongodb-1.4.2.RELEASE.jar!/" />
           <root url="jar://$MODULE_DIR$/libs/spring-data-mongodb-1.4.2.RELEASE.jar!/" />
           <root url="jar://$MODULE_DIR$/libs/spring-data-mongodb-1.4.2.RELEASE.jar!/" />
