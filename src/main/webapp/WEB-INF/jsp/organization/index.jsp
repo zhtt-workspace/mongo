@@ -81,11 +81,11 @@
 <%@ include file="/jsp/bootstrap-bottom.jsp" %>
 <script type="text/javascript" src="${ctx}/tool/bootstrap3/js/bootstrap-table.min.js"></script>
 <script type="text/javascript" src="${ctx}/tool/bootstrap3/js/bootstrap-table-zh-CN.min.js"></script>
-<script type="text/javascript" src="${ctx}/tool/zTree_v3/js/jquery.ztree.core.min.js"></script>
+<script type="text/javascript" src="${ctx}/tool/zTree_v3/js/jquery.ztree.all.min.js"></script>
 <script type="text/javascript" src="${ctx}/js/organization/organization.js"></script>
 <script type="text/javascript" src="${ctx}/js/organization/organizationTree.js"></script>
 <script type="text/javascript" src="${ctx}/js/organization/organizationUtil.js"></script>
-<script type="text/javascript" src="${ctx}/js/organization/orgTreeUtil.js"></script>
+<script type="text/javascript" src="${ctx}/js/common/ztreeUtil.js"></script>
 </body>
 </html>
 

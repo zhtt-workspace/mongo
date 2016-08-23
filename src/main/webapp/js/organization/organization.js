@@ -69,9 +69,13 @@ organization.initEvent=function(){
  * 打开新建机构的表单窗口
  */
 organization.openCreateForm=function(){
-    organizationTree.tree.getSelectedNodes({msg:"添加子节点时，请选择一个父节点！",callback:function(obj){
+    var treeObj=organizationTree.tree.getSelectedNodes({msg:"添加子节点时，请选择一个父节点！",callback:function(obj){
         $("#openCreateOrganizationModelBtn").click();
     }});
+    if(treeObj.zTree==null){
+        LobiboxUtil.notify("请初始化根节点！");
+        $("#openCreateOrganizationModelBtn").click();
+    }
 }
 /**
  * 提交新建表单

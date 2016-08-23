@@ -5,115 +5,76 @@ var dataStatisticsTree={
     treeUrl:ctx+"/template/data-statistics/tree?tree=false",
     treeId:"dataStatisticsTreeDiv"
 }
-dataStatisticsTree.setting={
-    callback: {
-        onClick: dataStatisticsTreeOnclick
+
+$(document).ready(function(){
+    $.fn.zTree.init($("#dataStatisticsTreeDiv"), setting, zNodes);
+});
+var setting = {
+    view: {
+        addHoverDom: addHoverDom,
+        removeHoverDom: removeHoverDom,
+        selectedMulti: false
+    },
+    check: {
+        enable: true
+    },
+    data: {
+        simpleData: {
+            enable: true
+        }
+    },
+    edit: {
+        enable: true
     }
 };
-/** 树节点的点击事件回调方法 **/
-function dataStatisticsTreeOnclick (event, treeId, treeNode){
-    alert(treeId);
-}
-/** 加载树的节点数据 **/
-dataStatisticsTree.loadTreeData=function(){
-    $.get(dataStatisticsTree.treeUrl,function(data){
-        if(data.status=="success"&&data.data==null){
-            LobiboxUtil.notify(data.message);
-        }else if(data.status=="error"){
-            LobiboxUtil.notify(data.message);
-        }
-    });
-}
-$(function(){
-    $.fn.zTree.init($("#"+dataStatisticsTree.treeId), dataStatisticsTree.setting, dataStatisticsTree.zNodes);
-});
-dataStatisticsTree.zNodes =[
-    { name:"父节点1 - 展开", open:true,id:"123"},
-    { name:"父节点2 - 折叠",
-        children: [
-            { name:"父节点21 - 展开", open:true,
-                children: [
-                    { name:"叶子节点211", open:true,
-                        children: [
-                            { name:"叶子节点235"},
-                            { name:"叶子节点236"},
-                            { name:"叶子节点237"},
-                            { name:"叶子节点238", open:true,
-                                children: [
-                                    { name:"叶子节点235"},
-                                    { name:"叶子节点236"},
-                                    { name:"叶子节点237"},
-                                    { name:"叶子节点238", open:true,
-                                        children: [
-                                            { name:"叶子节点235"},
-                                            { name:"叶子节点236"},
-                                            { name:"叶子节点237"},
-                                            { name:"叶子节点238"}
-                                        ]}
-                                ]}
-                        ]},
-                    { name:"叶子节点212"},
-                    { name:"叶子节点213"},
-                    { name:"叶子节点214", open:true,
-                        children: [
-                            { name:"叶子节点235"},
-                            { name:"叶子节点236"},
-                            { name:"叶子节点237"},
-                            { name:"叶子节点238", open:true,
-                                children: [
-                                    { name:"叶子节点235"},
-                                    { name:"叶子节点236"},
-                                    { name:"叶子节点237"},
-                                    { name:"叶子节点238", open:true,
-                                        children: [
-                                            { name:"叶子节点235"},
-                                            { name:"叶子节点236"},
-                                            { name:"叶子节点237"},
-                                            { name:"叶子节点238", open:true,
-                                                children: [
-                                                    { name:"叶子节点235"},
-                                                    { name:"叶子节点236"},
-                                                    { name:"叶子节点237"},
-                                                    { name:"叶子节点238", open:true,
-                                                        children: [
-                                                            { name:"叶子节点235"},
-                                                            { name:"叶子节点236"},
-                                                            { name:"叶子节点237"},
-                                                            { name:"叶子节点238", open:true,
-                                                                children: [
-                                                                    { name:"叶子节点235"},
-                                                                    { name:"叶子节点236"},
-                                                                    { name:"叶子节点237"},
-                                                                    { name:"叶子节点238", open:true,
-                                                                        children: [
-                                                                            { name:"叶子节点235"},
-                                                                            { name:"叶子节点236"},
-                                                                            { name:"叶子节点237"},
-                                                                            { name:"叶子节点238"}
-                                                                        ]}
-                                                                ]}
-                                                        ]}
-                                                ]}
-                                        ]}
-                                ]}
-                            ]
-                    }
-                ]},
-            { name:"父节点22 - 折叠",
-                children: [
-                    { name:"叶子节点221"},
-                    { name:"叶子节点222"},
-                    { name:"叶子节点223"},
-                    { name:"叶子节点224"}
-                ]},
-            { name:"父节点23 - 折叠",
-                children: [
-                    { name:"叶子节点231"},
-                    { name:"叶子节点232"},
-                    { name:"叶子节点233"},
-                    { name:"叶子节点234"}
-                ]}
-        ]},
-    { name:"父节点3 - 没有子节点", isParent:true}
 
+var zNodes =[
+    { id:1, pId:0, name:"父节点1", open:true},
+    { id:11, pId:1, name:"父节点11"},
+    { id:111, pId:11, name:"叶子节点111"},
+    { id:112, pId:11, name:"叶子节点112"},
+    { id:113, pId:11, name:"叶子节点113"},
+    { id:114, pId:11, name:"叶子节点114"},
+    { id:12, pId:1, name:"父节点12"},
+    { id:121, pId:12, name:"叶子节点121"},
+    { id:122, pId:12, name:"叶子节点122"},
+    { id:123, pId:12, name:"叶子节点123"},
+    { id:124, pId:12, name:"叶子节点124"},
+    { id:13, pId:1, name:"父节点13", isParent:true},
+    { id:2, pId:0, name:"父节点2"},
+    { id:21, pId:2, name:"父节点21", open:true},
+    { id:211, pId:21, name:"叶子节点211"},
+    { id:212, pId:21, name:"叶子节点212"},
+    { id:213, pId:21, name:"叶子节点213"},
+    { id:214, pId:21, name:"叶子节点214"},
+    { id:22, pId:2, name:"父节点22"},
+    { id:221, pId:22, name:"叶子节点221"},
+    { id:222, pId:22, name:"叶子节点222"},
+    { id:223, pId:22, name:"叶子节点223"},
+    { id:224, pId:22, name:"叶子节点224"},
+    { id:23, pId:2, name:"父节点23"},
+    { id:231, pId:23, name:"叶子节点231"},
+    { id:232, pId:23, name:"叶子节点232"},
+    { id:233, pId:23, name:"叶子节点233"},
+    { id:234, pId:23, name:"叶子节点234"},
+    { id:3, pId:0, name:"父节点3", isParent:true}
 ];
+
+
+var newCount = 1;
+function addHoverDom(treeId, treeNode) {
+    var sObj = $("#" + treeNode.tId + "_span");
+    if (treeNode.editNameFlag || $("#addBtn_"+treeNode.tId).length>0) return;
+    var addStr = "<span class='button add' id='addBtn_" + treeNode.tId
+        + "' title='add node' onfocus='this.blur();'></span>";
+    sObj.after(addStr);
+    var btn = $("#addBtn_"+treeNode.tId);
+    if (btn) btn.bind("click", function(){
+        var zTree = $.fn.zTree.getZTreeObj("treeDemo");
+        zTree.addNodes(treeNode, {id:(100 + newCount), pId:treeNode.id, name:"new node" + (newCount++)});
+        return false;
+    });
+};
+function removeHoverDom(treeId, treeNode) {
+    $("#addBtn_"+treeNode.tId).unbind().remove();
+};

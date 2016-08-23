@@ -32,7 +32,7 @@
 </div>
 </BODY>
 <%@ include file="/jsp/bootstrap-bottom.jsp" %>
-<script type="text/javascript" src="${ctx}/tool/zTree_v3/js/jquery.ztree.core.min.js"></script>
+<script type="text/javascript" src="${ctx}/tool/zTree_v3/js/jquery.ztree.all.min.js"></script>
 <script type="text/javascript" src="${ctx}/js/template/data-statistics/dataStatisticsTree.js"></script>
 <script type="text/javascript" src="${ctx}/js/common/ztreeUtil.js"></script>
 <script>

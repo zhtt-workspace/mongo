@@ -8,7 +8,7 @@ var organizationTree={
     tree:null
 }
 organizationTree.init=function(){
-    organizationTree.tree=new orgTreeUtil({
+    organizationTree.tree=new zTreeUtil({
         treeDivId:organization.treeId,
         url:organization.treeUrl,
         ajaxLoad:true,
