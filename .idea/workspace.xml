@@ -8,16 +8,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" readonly="true" id="37eef5dd-1dfe-4e9d-855f-61686d0c1ff8" name="Default" comment="">
-      <change type="DELETED" beforePath="E:\zhtt-workspace\workspace-zhtt\zhtt\SpringMongo\src\main\webapp\js\organization\orgTreeUtil.js" afterPath="" />
-      <change type="DELETED" beforePath="E:\zhtt-workspace\workspace-zhtt\zhtt\SpringMongo\src\main\webapp\js\organization\organizationTree-temp.js" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/artifacts/Gradle___SpringMongo___sm_war.xml" afterPath="$PROJECT_DIR$/.idea/artifacts/Gradle___SpringMongo___sm_war.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/artifacts/Gradle___SpringMongo___sm_war__exploded_.xml" afterPath="$PROJECT_DIR$/.idea/artifacts/Gradle___SpringMongo___sm_war__exploded_.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SpringMongo.iml" afterPath="$PROJECT_DIR$/SpringMongo.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/js/template/data-statistics/dataStatisticsTree.js" afterPath="$PROJECT_DIR$/src/main/webapp/js/template/data-statistics/dataStatisticsTree.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/organization/index.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/organization/index.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/template/data-statistics/index.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/template/data-statistics/index.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/js/organization/organization.js" afterPath="$PROJECT_DIR$/src/main/webapp/js/organization/organization.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/js/organization/organizationTree.js" afterPath="$PROJECT_DIR$/src/main/webapp/js/organization/organizationTree.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/js/common/ztreeUtil.js" afterPath="$PROJECT_DIR$/src/main/webapp/js/common/ztreeUtil.js" />
     </list>
@@ -50,8 +40,8 @@
       <file leaf-file-name="ztreeUtil.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/webapp/js/common/ztreeUtil.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.36121672" vertical-offset="969" max-vertical-offset="4066">
-              <caret line="63" column="14" selection-start-line="63" selection-start-column="14" selection-end-line="63" selection-end-column="14" />
+            <state vertical-scroll-proportion="0.6863118" vertical-offset="0" max-vertical-offset="4161">
+              <caret line="21" column="27" selection-start-line="21" selection-start-column="27" selection-end-line="21" selection-end-column="27" />
               <folding />
             </state>
           </provider>
@@ -1779,7 +1769,7 @@
       <workItem from="1471736151671" duration="25070000" />
       <workItem from="1471849747085" duration="8769000" />
       <workItem from="1471863325853" duration="12581000" />
-      <workItem from="1471916120071" duration="987000" />
+      <workItem from="1471916120071" duration="1163000" />
     </task>
     <task id="LOCAL-00001" summary="提交测试">
       <created>1470401125713</created>
@@ -1889,15 +1879,21 @@
       <option name="project" value="LOCAL" />
       <updated>1471875208092</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="test org tree radio">
+      <created>1471917123984</created>
+      <option name="number" value="00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1471917123984</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="261147000" />
+    <option name="totallyTimeSpent" value="261323000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1696" height="1026" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
@@ -2374,8 +2370,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/js/common/ztreeUtil.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.36121672" vertical-offset="969" max-vertical-offset="4066">
-          <caret line="63" column="14" selection-start-line="63" selection-start-column="14" selection-end-line="63" selection-end-column="14" />
+        <state vertical-scroll-proportion="0.6863118" vertical-offset="0" max-vertical-offset="4161">
+          <caret line="21" column="27" selection-start-line="21" selection-start-column="27" selection-end-line="21" selection-end-column="27" />
           <folding />
         </state>
       </provider>

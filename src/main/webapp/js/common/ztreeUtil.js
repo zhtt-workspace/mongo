@@ -6,15 +6,20 @@
 /**
  * Created by zhtt on 2016/8/13.
  * {
+ *  可以传入的【变量】参数
  *  treeDivId：加载树的div容器【这个是必填】
  *  url:加载节点的地址,
  *  autoParam:参数,
  *  ajaxLoad：点击的时候，是否加载子节点
  *
- *  下面是方法
+ *  可以传入的【方法】参数
  *  onClick:点击事件触发的方法
  *  onAsyncSuccess：加载成功后需要执行的方法
  *  getSelectedNodes：获取选中的节点
+ *
+ *  外部可以调用的【方法】
+ *  init：加载树结构
+ *  getSelectedNodes：获取选中的树
  * }
  */
 function zTreeUtil(options){
@@ -60,6 +65,9 @@ function zTreeUtil(options){
         return true;
     }
 
+    /**
+     * 初始化配置选项
+     */
     function initSetting(){
         if(typeof options.radio!="undefined"&&options.radio){
             setting.check= {
