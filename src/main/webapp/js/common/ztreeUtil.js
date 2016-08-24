@@ -6,20 +6,28 @@
 /**
  * Created by zhtt on 2016/8/13.
  * {
- *  可以传入的【变量】参数
+ * -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+ *      可以传入的【变量】参数
+ *
  *  treeDivId：加载树的div容器【这个是必填】
- *  url:加载节点的地址,
+ *  url:加载节点的地址,【这个是必填】
  *  autoParam:参数,
  *  ajaxLoad：点击的时候，是否加载子节点
  *
- *  可以传入的【方法】参数
+ * -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+ *      可以传入的【方法】参数
+ *
  *  onClick:点击事件触发的方法
  *  onAsyncSuccess：加载成功后需要执行的方法
- *  getSelectedNodes：获取选中的节点
+ *  onCheck：点击单选按钮事件
  *
- *  外部可以调用的【方法】
- *  init：加载树结构
- *  getSelectedNodes：获取选中的树
+ * -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+ *      外部可以调用的【方法】
+ *
+ *  init：(无参、无返回值)加载树结构
+ *  getSelectedNodes：（有参、有返回值）获取选中的树
+ *  showCombo：（有参）显示下拉框
+ *  hideCombo:：（无参）隐藏下拉框
  * }
  */
 function zTreeUtil(options){
@@ -29,22 +37,7 @@ function zTreeUtil(options){
             $.fn.zTree.init($("#"+options.treeDivId), setting);
         }
     }
-    var setting={
-        view: {
-            selectedMulti: false,
-            dblClickExpand: false
-        },
-        async: {
-            enable: true,
-            url:typeof options=="undefined"?"":options.url,
-            autoParam:typeof options=="undefined"?["uuid"]:options.autoParam
-        },
-        callback: {
-            onClick: onClick,
-            onAsyncSuccess:onAsyncSuccess,
-            onCheck: onCheck
-        }
-    };
+
     /**
      * 检查必填参数是否有
      * @returns {boolean}
@@ -63,6 +56,70 @@ function zTreeUtil(options){
             return false;
         }
         return true;
+    }
+
+    var setting={
+        view: {
+            selectedMulti: false,
+            dblClickExpand: false
+        },
+        async: {
+            enable: true,
+            url:typeof options=="undefined"?"":options.url,
+            autoParam:typeof options=="undefined"?["uuid"]:options.autoParam
+        },
+        callback: {
+            onClick: onClick,
+            onAsyncSuccess:onAsyncSuccess,
+            onCheck: onCheck
+        }
+    };
+
+    /**
+     * 获取选中的节点，并返回当前树对象
+     * {
+     * msg:未获取到节点时的提醒信息【可选】
+     * callback:获取成功时，需要执行的方法【可选】
+     * }
+     * @param args【可选】
+     * @returns {*}
+     */
+    this.getSelectedNodes=function(args){
+        if(typeof args=="string"){
+            args={msg:args};
+        }else if(typeof args=="undefined"){
+            args={};
+        }
+        var zTree = $.fn.zTree.getZTreeObj(options.treeDivId);
+        if(zTree==null||zTree.getNodes().length==0){
+            return {"zTree":null,"nodes":null};;
+        }
+        var nodes = zTree.getSelectedNodes();
+        if(nodes.length==0){
+            if(args.msg){
+                LobiboxUtil.notify(args.msg);
+            }
+            return {"zTree":zTree,"nodes":null};
+        }else{
+            if(typeof args=="object"&&typeof args.callback=="function"){
+                args.callback({"zTree":zTree,"nodes":nodes});
+            }
+            return {"zTree":zTree,"nodes":nodes};
+        }
+    }
+
+    this.showCombo=function(obj) {
+        var jqueryObj = $(obj);
+        var jqueryObjOffset = $(obj).offset();
+        $("#"+options.treeDivId).css({left:jqueryObjOffset.left + "px", top:jqueryObjOffset.top + obj.offsetHeight + "px"}).slideDown("fast");
+        $("#"+options.treeDivId).show();
+        $("#"+options.treeDivId+"Container").show();
+        $("body").bind("mousedown", onBodyDown);
+    }
+
+    this.hideCombo=function() {
+        $("#"+options.treeDivId+"Container").fadeOut("fast");
+        $("body").unbind("mousedown", onBodyDown);
     }
 
     /**
@@ -136,36 +193,14 @@ function zTreeUtil(options){
         }
     }
 
-    /**
-     * 获取选中的节点，并返回当前树对象
-     * {
-     * msg:未获取到节点时的提醒信息【可选】
-     * callback:获取成功时，需要执行的方法【可选】
-     * }
-     * @param args【可选】
-     * @returns {*}
-     */
-    this.getSelectedNodes=function(args){
-        if(typeof args=="string"){
-            args={msg:args};
-        }else if(typeof args=="undefined"){
-            args={};
-        }
-        var zTree = $.fn.zTree.getZTreeObj(options.treeDivId);
-        if(zTree==null||zTree.getNodes().length==0){
-            return {"zTree":null,"nodes":null};;
-        }
-        var nodes = zTree.getSelectedNodes();
-        if(nodes.length==0){
-            if(args.msg){
-                LobiboxUtil.notify(args.msg);
-            }
-            return {"zTree":zTree,"nodes":null};
-        }else{
-            if(typeof args=="object"&&typeof args.callback=="function"){
-                args.callback({"zTree":zTree,"nodes":nodes});
-            }
-            return {"zTree":zTree,"nodes":nodes};
+    function hideCombo(){
+        $("#"+options.treeDivId+"Container").fadeOut("fast");
+        $("body").unbind("mousedown", onBodyDown);
+    }
+
+    function onBodyDown(event) {
+        if ($("#"+options.treeDivId+"Container",event.target).length!=0) {
+            hideCombo();
         }
     }
 }

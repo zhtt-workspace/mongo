@@ -2,13 +2,26 @@
  * Created by zhtt on 2016/8/8.
  */
 var dataStatisticsTree={
-    treeUrl:ctx+"/template/data-statistics/tree?tree=false",
-    treeId:"dataStatisticsTreeDiv"
+    treeUrl:ctx+"/organization/tree?parentId=",
+    //treeUrl:ctx+"/template/data-statistics/tree?tree=false",
+    treeId:"dataStatisticsTreeDiv1",
+    tree:null
 }
 
 $(document).ready(function(){
-    $.fn.zTree.init($("#dataStatisticsTreeDiv"), setting, zNodes);
+    //$.fn.zTree.init($("#dataStatisticsTreeDiv"), setting, zNodes);
+
+    dataStatisticsTree.tree=new zTreeUtil({
+        treeDivId:dataStatisticsTree.treeId,
+        url:dataStatisticsTree.treeUrl,
+        ajaxLoad:true
+    });
+    dataStatisticsTree.tree.init();
+
 });
+function showCombo(obj){
+    dataStatisticsTree.tree.showCombo(obj);
+}
 var setting = {
     view: {
         addHoverDom: addHoverDom,
