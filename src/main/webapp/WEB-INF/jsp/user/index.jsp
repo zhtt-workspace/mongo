@@ -4,8 +4,9 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-    <%@ include file="/jsp/bootstrap-top.jsp" %>
-    <link href="${ctx}/tool/bootstrap3/css/bootstrap-table.min.css" rel="stylesheet">
+<%@ include file="/jsp/bootstrap-top.jsp" %>
+<link rel="stylesheet" href="${ctx}/tool/zTree_v3/css/metroStyle/metroStyle.css" type="text/css">
+<link href="${ctx}/tool/bootstrap3/css/bootstrap-table.min.css" rel="stylesheet">
 </head>
 
 <body role="document">
@@ -20,7 +21,8 @@
                         <span class="glyphicon glyphicon-user" aria-hidden="true"></span> 用户信息列表
                     </div>
                     <div class="col-xs-12 col-md-4 text-right">
-                        <a href="${ctx}/user/create" class="btn btn-success btn-sm" role="button"  data-toggle="modal" data-target="#createUserModal">
+                        <a href="${ctx}/user/create" style="display: none;"  id="openCreateUserModelBtn"  data-toggle="modal" data-target="#createUserModal"></a>
+                        <a href="javascript:user.openCreateForm()" class="btn btn-success btn-sm" role="button">
                             <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> 新增
                         </a>
                         <a href="${ctx}/user/update" style="display: none;" id="openUpdateUserModelBtn"  data-toggle="modal" data-target="#updateUserModal"></a>
@@ -72,8 +74,11 @@
     </div><!-- /.modal -->
 </div>
 <%@ include file="/jsp/bootstrap-bottom.jsp" %>
+<script type="text/javascript" src="${ctx}/tool/zTree_v3/js/jquery.ztree.all.min.js"></script>
 <script type="text/javascript" src="${ctx}/tool/bootstrap3/js/bootstrap-table.min.js"></script>
 <script type="text/javascript" src="${ctx}/tool/bootstrap3/js/bootstrap-table-zh-CN.min.js"></script>
+<script type="text/javascript" src="${ctx}/js/common/ztreeUtil.js"></script>
+<script type="text/javascript" src="${ctx}/js/common/ztreeComboUtil.js"></script>
 <script type="text/javascript" src="${ctx}/js/user/user.js"></script>
 </body>
 </html>

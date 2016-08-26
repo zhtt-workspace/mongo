@@ -3,14 +3,11 @@
  */
 var dataStatisticsTree={
     treeUrl:ctx+"/organization/tree?parentId=",
-    //treeUrl:ctx+"/template/data-statistics/tree?tree=false",
     treeId:"dataStatisticsTreeDiv1",
     tree:null
 }
 
 $(document).ready(function(){
-    //$.fn.zTree.init($("#dataStatisticsTreeDiv"), setting, zNodes);
-
     dataStatisticsTree.tree=new zTreeUtil({
         treeDivId:dataStatisticsTree.treeId,
         inputId:"dataStatisticsTreeInput",
@@ -18,5 +15,4 @@ $(document).ready(function(){
         ajaxLoad:true
     });
     dataStatisticsTree.tree.comboTree(dataStatisticsTree.tree);
-
 });

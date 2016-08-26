@@ -10,9 +10,11 @@ zTreeUtil.prototype.comboTree=function(){
         $("#"+this._options.inputId).click(function(){
             var jqueryObj = $(this);
             var jqueryObjOffset = $(this).offset();
-            $("#"+_options.treeDivId+"Container").css({left:jqueryObjOffset.left + "px", top:jqueryObjOffset.top + this.offsetHeight + "px"}).slideDown("fast");
+            var zindex=parseInt($("[style*='z-index']").attr("style").match(/z-index.*;/)[0].match(/[\d]+/))+1;
+            $("#"+_options.treeDivId+"Container").css({left:jqueryObjOffset.left + "px", top:jqueryObjOffset.top + this.offsetHeight + "px","z-index":zindex}).slideDown("fast");
             $("#"+_options.treeDivId+"Container").show();
             //$("body").bind("mousedown", _this.onBodyDown);
+            ;
         });
         this.addComboTreeHtml();
         $.fn.zTree.init($("#"+this._options.treeDivId), this.setting);

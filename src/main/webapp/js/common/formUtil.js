@@ -4,7 +4,7 @@
 var formUtil={}
 formUtil.submit=function(obj){
     if(obj.form.valid){
-        if(!obj.form.valid()){return false;}
+        //if(!obj.form.valid()){return false;}
     }
     $.ajax({
         cache: true,
