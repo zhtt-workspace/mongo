@@ -28,13 +28,23 @@
  *  getSelectedNodes：（有参、有返回值）获取选中的树
  *  showCombo：（有参）显示下拉框
  *  hideCombo:：（无参）隐藏下拉框
+ *
+ * -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+ *      内部可以调用的【方法】
+ * checkOptions：必传参数检查
+ * initSetting：初始化参数配置变量
+ *
+ * -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+ * 内部变量
+ * setting：加载树需要的配置信息
  * }
  */
 function zTreeUtil(options){
+    this._options=options;
     this.init=function(){
-        if(checkOptions()){
-            initSetting();
-            $.fn.zTree.init($("#"+options.treeDivId), setting);
+        if(this.checkOptions()){
+            this.initSetting();
+            $.fn.zTree.init($("#"+options.treeDivId), this.setting);
         }
     }
 
@@ -42,7 +52,7 @@ function zTreeUtil(options){
      * 检查必填参数是否有
      * @returns {boolean}
      */
-    function checkOptions(){
+    this.checkOptions=function(){
         if(typeof options=="undefined"||typeof options.treeDivId=="undefined"){
             LobiboxUtil.notify("树容器ID未传入！");
             return false;
@@ -58,7 +68,8 @@ function zTreeUtil(options){
         return true;
     }
 
-    var setting={
+    this.setting={
+        instance:null,
         view: {
             selectedMulti: false,
             dblClickExpand: false
@@ -108,26 +119,12 @@ function zTreeUtil(options){
         }
     }
 
-    this.showCombo=function(obj) {
-        var jqueryObj = $(obj);
-        var jqueryObjOffset = $(obj).offset();
-        $("#"+options.treeDivId).css({left:jqueryObjOffset.left + "px", top:jqueryObjOffset.top + obj.offsetHeight + "px"}).slideDown("fast");
-        $("#"+options.treeDivId).show();
-        $("#"+options.treeDivId+"Container").show();
-        $("body").bind("mousedown", onBodyDown);
-    }
-
-    this.hideCombo=function() {
-        $("#"+options.treeDivId+"Container").fadeOut("fast");
-        $("body").unbind("mousedown", onBodyDown);
-    }
-
     /**
      * 初始化配置选项
      */
-    function initSetting(){
+    this.initSetting=function(){
         if(typeof options.radio!="undefined"&&options.radio){
-            setting.check= {
+            this.setting.check= {
                 enable: true,
                 chkStyle: "radio",
                 radioType: "all"
@@ -190,17 +187,6 @@ function zTreeUtil(options){
     function onCheck(e, treeId, treeNode){
         if(typeof options.onCheck=="function"){
             options.onAsyncSuccess(e, treeId, treeNode,msg);
-        }
-    }
-
-    function hideCombo(){
-        $("#"+options.treeDivId+"Container").fadeOut("fast");
-        $("body").unbind("mousedown", onBodyDown);
-    }
-
-    function onBodyDown(event) {
-        if ($("#"+options.treeDivId+"Container",event.target).length!=0) {
-            hideCombo();
         }
     }
 }

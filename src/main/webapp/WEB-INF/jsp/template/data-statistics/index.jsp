@@ -28,18 +28,7 @@
         </div>
     </div>
     <div class="zhtt-layout-right">
-        <input type="text" onclick="showCombo(this)" readonly>
-        <div id="dataStatisticsTreeDiv1Container" style="display:none; position: absolute;">
-            <div class="panel panel-default">
-                <div class="panel-body" style="overflow: auto;">
-                    <ul id="dataStatisticsTreeDiv1" class="ztree" style="margin-top:0; width:180px; height: 200px;"></ul>
-                </div>
-                <div class="panel-footer">
-                    <button type="button">确定</button>
-                    <button type="button">关闭</button>
-                </div>
-            </div>
-        </div>
+        <input name="orgId" id="dataStatisticsTreeInput"  readonly type="text" style="width:215px;">
     </div>
     <div style="clear: both;"></div>
 </div>
@@ -48,6 +37,7 @@
 <script type="text/javascript" src="${ctx}/tool/zTree_v3/js/jquery.ztree.all.min.js"></script>
 <script type="text/javascript" src="${ctx}/js/template/data-statistics/dataStatisticsTree.js"></script>
 <script type="text/javascript" src="${ctx}/js/common/ztreeUtil.js"></script>
+<script type="text/javascript" src="${ctx}/js/common/ztreeComboUtil.js"></script>
 <script>
 
     function addMenu() {
