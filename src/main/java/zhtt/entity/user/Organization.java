@@ -46,7 +46,7 @@ public class Organization {
     /**
      * 排序
      */
-    private int sort;
+    private int sort=0;
 
     /**
      * 类型

@@ -6,7 +6,6 @@
   <welcome-file-list>
     <welcome-file>/WEB-INF/jsp/login.jsp</welcome-file>
   </welcome-file-list>
-
   <!--configure the setting of springmvcDispatcherServlet and configure the
       mapping -->
   <servlet>
@@ -22,6 +21,17 @@
     <servlet-name>springmvc</servlet-name>
     <url-pattern>/</url-pattern>
   </servlet-mapping>
+
+    <!-- Spring ApplicationContext配置文件的路径,可使用通配符,多个路径用,号分隔此参数用于后面的Spring Context Loader -->
+    <context-param>
+      <param-name>contextConfigLocation</param-name>
+      <param-value>classpath*:/applicationContext*.xml</param-value>
+    </context-param>
+
+    <listener>
+      <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+    </listener>
+
   <!-- configure the HiddenHttpMethodFilter,convert the post method to put or delete -->
   <filter>
     <filter-name>HiddenHttpMethodFilter</filter-name>

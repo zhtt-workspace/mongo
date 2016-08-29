@@ -11,6 +11,7 @@ import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.data.mongodb.core.query.Update;
 import org.springframework.stereotype.Service;
 
+import zhtt.dao.user.UserDao;
 import zhtt.entity.user.User;
 import zhtt.service.util.TableConfig;
 
@@ -20,23 +21,34 @@ import zhtt.service.util.TableConfig;
 @Service(value = "userService")
 public class UserService {
 
-	private final Class<User> $class=User.class;
+	@Autowired	UserDao dao;
 
-	@Autowired  MongoOperations mongoTemplate;
-
+	/**
+	 * 保存
+	 * @param user
+	 */
 	public void saveUser(User user){
-		mongoTemplate.save(user, TableConfig.USER);
+		dao.saveUser(user);
 	}
 
+	/**
+	 * 更新
+	 * @param user
+	 * @return
+	 */
 	public WriteResult update(User user){
 		Query query=new Query();
 		query.addCriteria(Criteria.where("uuid").is(user.getUuid()));
-		WriteResult writeResult=mongoTemplate.updateFirst(query, user.toUpdate(),$class, TableConfig.USER);
+		WriteResult writeResult=dao.update(query, user.toUpdate());
 		return writeResult;
 	}
 
+	/**
+	 * 删除
+	 * @param uuid
+	 */
 	public void delete(List<String> uuid){
-		mongoTemplate.remove(new Query(Criteria.where("uuid").in(uuid)),$class, TableConfig.USER);
+		dao.delete(new Query(Criteria.where("uuid").in(uuid)));
 	}
 
 	/**
@@ -56,7 +68,7 @@ public class UserService {
 		/** 排序 **/
 		Sort.Direction direction=true? Sort.Direction.ASC: Sort.Direction.DESC;
 		query.with(new Sort(direction,"name"));
-		List<User> userList= mongoTemplate.find(query, $class, TableConfig.USER);
+		List<User> userList= dao.query(query, limit,skip );
 		return userList;
 	}
 
@@ -70,7 +82,20 @@ public class UserService {
 		Query query=new Query();
 		query.addCriteria(Criteria.where("name").regex(name));
 		query.addCriteria(Criteria.where("username").regex(username));
-		return mongoTemplate.count(query,TableConfig.USER);
+		return dao.count(query);
+	}
+
+	/**
+	 * 登录
+	 * @param username
+	 * @param password
+	 * @return
+	 */
+	public User login(String username,String password){
+		Query query=new Query();
+		query.addCriteria(Criteria.where("username").regex(username));
+		query.addCriteria(Criteria.where("password").regex(password));
+		return dao.findOne(query);
 	}
 
 

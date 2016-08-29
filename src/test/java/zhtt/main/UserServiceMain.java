@@ -19,9 +19,16 @@ public class UserServiceMain {
         count(userService);
 	}
 
-    public static void count(UserService userService){
-        String name="an";
+    public static void login(UserService userService){
         String username="username";
+        String password="pa";
+        User user=userService.login(username,password);
+        System.out.println("user:"+user);
+    }
+
+    public static void count(UserService userService){
+        String name=".";
+        String username=".";
         long total=userService.count(name,username);
         System.out.println("total:\t"+total);
     }

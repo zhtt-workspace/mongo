@@ -19,26 +19,15 @@ var user={
     updateOrgTree:null
 };
 user.initEvent=function(){
-    $('#'+user.createModalId).on('shown.bs.modal', function () {
-        if(user.createOrgTree==null){
-            user.createOrgTree=new zTreeUtil({
-                treeDivId:"createOrgTreeDiv",
-                inputId:"create-user-org",
-                url:user.orgTreeUrl,
-                ajaxLoad:true
-            });
-            user.createOrgTree.comboTree();
-        }
-    });
     $('#'+user.updateModalId).on('shown.bs.modal', function () {
         if(user.updateOrgTree==null){
-            user.updateOrgTree=new zTreeUtil({
-                treeDivId:"updateOrgTreeDiv",
-                inputId:"update-user-org",
-                url:user.orgTreeUrl,
-                ajaxLoad:true
-            });
-            user.updateOrgTree.comboTree();
+                user.updateOrgTree=new zTreeUtil({
+                    treeDivId:"updateOrgTreeDiv",
+                    inputId:"update-user-org",
+                    url:user.orgTreeUrl,
+                    ajaxLoad:true
+                });
+                user.updateOrgTree.comboTree();
         }
     });
 }
@@ -181,11 +170,11 @@ user.loadTableList=function() {
             },  {
                 field: 'username',title: '用户名',width: 80,align: 'middle',valign: 'top',sortable: true
             }, {
-                field: 'createTime',title: '录入时间',width: 100,align: 'left',valign: 'top',sortable: true,formatter:function(value, row, index){return '<i class="glyphicon glyphicon-time"></i> '+value;}
+                field: 'createTime',title: '录入时间',width: 180,align: 'left',valign: 'top',sortable: true,formatter:function(value, row, index){return '<i class="glyphicon glyphicon-time"></i> '+value;}
             }, {
-                field: 'orgId',title: '所属机构',width: 220,align: 'left',valign: 'top',sortable: true
+                field: 'orgId',title: '所属机构',width: 100,align: 'left',valign: 'top',sortable: true
             }, {
-                field: 'operate', title: '操作',width: 80, align: 'center',formatter: user.operateformater
+                field: 'operate', title: '操作',width: 100, align: 'center',formatter: user.operateformater
         }],
         onLoadSuccess:function(){},
         onLoadError: function () {}

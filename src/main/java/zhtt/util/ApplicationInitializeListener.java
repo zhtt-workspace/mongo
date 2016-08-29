@@ -2,6 +2,7 @@ package zhtt.util;
 
 import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.context.support.WebApplicationContextUtils;
+import zhtt.service.InitService;
 
 import javax.servlet.ServletContext;
 import javax.servlet.ServletContextEvent;
@@ -16,6 +17,7 @@ public class ApplicationInitializeListener implements ServletContextListener {
         WebApplicationContext applicationContext = getApplicationContext(event);
         try {
             SystemConfig.init();
+            initializeLocalDatabase(applicationContext);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -30,5 +32,10 @@ public class ApplicationInitializeListener implements ServletContextListener {
         ServletContext servletContext = event.getServletContext();
         WebApplicationContext applicationContext = WebApplicationContextUtils.getWebApplicationContext(servletContext);
         return applicationContext;
+    }
+
+    private void initializeLocalDatabase(WebApplicationContext applicationContext) throws Exception {
+        InitService initService =(InitService) applicationContext.getBean("initService");
+        initService.init();
     }
 }
