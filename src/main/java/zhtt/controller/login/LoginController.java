@@ -11,6 +11,8 @@ import zhtt.service.user.UserService;
 import zhtt.util.JsonResponse;
 import zhtt.util.JsonResponseStatusEnum;
 
+import javax.servlet.http.HttpServletRequest;
+
 /**
  * Created by zhtt on 2016/8/9.
  */
@@ -33,9 +35,10 @@ public class LoginController {
 
     @RequestMapping("/login/{username}/{password}")
     @ResponseBody
-    private JsonResponse loginCheck(@PathVariable("username")String username,@PathVariable("password")String password){
+    private JsonResponse loginCheck(@PathVariable("username")String username,@PathVariable("password")String password,HttpServletRequest request){
         try{
             User user=userService.login(username,password);
+            request.getSession().setAttribute("loginUser",user);
             return new JsonResponse(user);
         }catch (Exception e){
             return new JsonResponse(JsonResponseStatusEnum.ERROR,e.getMessage());

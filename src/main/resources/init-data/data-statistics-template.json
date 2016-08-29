@@ -1,0 +1,12 @@
+[
+  {
+    "name":"数据统计模板",
+    "cols":"1",
+    "type":"root",
+    "uuid":"doc_tree",
+    "maxcols":"4"
+  },{
+    "uuid":"doc_tree",
+    "tree":[]
+  }
+]

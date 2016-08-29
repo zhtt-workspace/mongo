@@ -4,10 +4,10 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-    <%@ include file="/jsp/bootstrap-top.jsp" %>
-    <link rel="stylesheet" href="${ctx}/tool/zTree_v3/css/metroStyle/metroStyle.css" type="text/css">
-    <link href="${ctx}/tool/bootstrap3/css/bootstrap-table.min.css" rel="stylesheet">
-    <link href="${ctx}/tool/bootstrap3/js/bootstrap-responsive.min.css" rel="stylesheet">
+<%@ include file="/jsp/bootstrap-top.jsp" %>
+<link rel="stylesheet" href="${ctx}/tool/zTree_v3/css/metroStyle/metroStyle.css" type="text/css">
+<link href="${ctx}/tool/bootstrap3/css/bootstrap-table.min.css" rel="stylesheet">
+<link href="${ctx}/tool/bootstrap3/js/bootstrap-responsive.min.css" rel="stylesheet">
 </head>
 
 <body role="document">
@@ -79,8 +79,6 @@
     </div><!-- /.modal -->
 </div>
 <%@ include file="/jsp/bootstrap-bottom.jsp" %>
-<script type="text/javascript" src="${ctx}/tool/bootstrap3/js/bootstrap-table.min.js"></script>
-<script type="text/javascript" src="${ctx}/tool/bootstrap3/js/bootstrap-table-zh-CN.min.js"></script>
 <script type="text/javascript" src="${ctx}/tool/zTree_v3/js/jquery.ztree.all.min.js"></script>
 <script type="text/javascript" src="${ctx}/js/organization/organization.js"></script>
 <script type="text/javascript" src="${ctx}/js/organization/organizationTree.js"></script>

@@ -7,8 +7,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
+import zhtt.entity.user.User;
 import zhtt.service.template.DataStatisticsTemplateService;
 import zhtt.util.JsonResponse;
+
+import javax.servlet.http.HttpServletRequest;
 
 /**
  * Created by zhtt on 2016/8/7.
@@ -22,6 +25,8 @@ public class DataStatisticsTemplateController {
 
     @Autowired private DataStatisticsTemplateService dataStatisticsTemplateService;
 
+    @Autowired private HttpServletRequest request;
+
     @RequestMapping("/index")
     public ModelAndView index(){
         ModelAndView mav = new ModelAndView(path+"/index");
@@ -31,11 +36,11 @@ public class DataStatisticsTemplateController {
     @RequestMapping("/tree")
     @ResponseBody
     public Object tree(@RequestParam(value = "orgId",required = false)String orgId,@RequestParam(value = "tree",defaultValue = "true",required = false)String tree){
+        User loginUser=(User)request.getSession().getAttribute("loginUser");
         if("true".equals(tree)){
             return dataStatisticsTemplateService.getDataStatisticsTree(orgId).getData();
         }else{
             return dataStatisticsTemplateService.getDataStatisticsTree(orgId);
         }
     }
-
 }

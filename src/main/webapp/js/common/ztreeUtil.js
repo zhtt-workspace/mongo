@@ -190,6 +190,7 @@ function zTreeUtil(options){
         }
     }
 }
+//yzTreeUtils.addMenu('dataStatisticsTreeDiv', 'rMenu');
 /** 增加右键菜单  **/
 (function (window) {
     yzTreeUtils = {

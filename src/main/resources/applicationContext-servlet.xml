@@ -27,6 +27,12 @@
         <!--请求后缀-->
         <property name="suffix" value=".jsp"></property>
     </bean>
-            
-   
+
+    <!-- interceptor setting -->
+    <mvc:interceptors>
+        <mvc:interceptor>
+            <mvc:mapping path="/**"/>
+            <bean class="zhtt.util.SMInterceptor"></bean>
+        </mvc:interceptor>
+    </mvc:interceptors>
 </beans>

@@ -75,8 +75,6 @@
 </div>
 <%@ include file="/jsp/bootstrap-bottom.jsp" %>
 <script type="text/javascript" src="${ctx}/tool/zTree_v3/js/jquery.ztree.all.min.js"></script>
-<script type="text/javascript" src="${ctx}/tool/bootstrap3/js/bootstrap-table.min.js"></script>
-<script type="text/javascript" src="${ctx}/tool/bootstrap3/js/bootstrap-table-zh-CN.min.js"></script>
 <script type="text/javascript" src="${ctx}/js/common/ztreeUtil.js"></script>
 <script type="text/javascript" src="${ctx}/js/common/ztreeComboUtil.js"></script>
 <script type="text/javascript" src="${ctx}/js/user/user.js"></script>
