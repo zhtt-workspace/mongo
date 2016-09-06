@@ -61,8 +61,8 @@ public class UserService {
 	 */
 	public List<User> query(String name,String username,int limit,int skip){
 		Query query=new Query();
-		query.addCriteria(Criteria.where("name").regex(name));
-		query.addCriteria(Criteria.where("username").regex(username));
+		query.addCriteria(Criteria.where("name").regex(".*"+name+".*"));
+		query.addCriteria(Criteria.where("username").regex(".*"+username+".*"));
 		query.limit(limit);
 		query.skip(skip);
 		/** 排序 **/

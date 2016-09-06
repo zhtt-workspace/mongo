@@ -38,7 +38,7 @@ user.openCreateForm=function(){
  * 提交新建用户的表单
  */
 user.submitCreateForm=function(){
-    $("#"+user.createModalId+" from").validate({
+    $("#"+user.createModalId+" form").validate({
         rules: {
             create_user_confirm_password: {
                 required: true,
@@ -55,7 +55,7 @@ user.submitCreateForm=function(){
         }
     });
     var status=formUtil.submit({
-        form:$("#"+user.createFormId),
+        form:$("#"+user.createModalId+" form"),
         url:user.createUrl,
         success:function(data){
             if(data.status=="success"){

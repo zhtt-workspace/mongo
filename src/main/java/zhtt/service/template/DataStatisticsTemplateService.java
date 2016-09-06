@@ -49,9 +49,10 @@ public class DataStatisticsTemplateService {
     public JsonResponse getDataStatisticsTree(String orgId){
         BasicDBObject docTreeObj=getDocTreeNode(orgId);
         if(docTreeObj==null){
-            return new JsonResponse(JsonResponseStatusEnum.SUCCESS,"节点树未初始化，请创建。");
+            return new JsonResponse(JsonResponseStatusEnum.ERROR,"节点树未初始化，请创建。");
+        }else{
+            return new JsonResponse(docTreeObj);
         }
-        return new JsonResponse(JsonResponseStatusEnum.ERROR,"构建树遇到错误！");
     }
 
     /**

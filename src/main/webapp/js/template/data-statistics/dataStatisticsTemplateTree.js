@@ -1,20 +1,21 @@
 /**
  * Created by zhtt on 2016/8/8.
  */
-$(function(){
-    dataStatisticsTemplateTree.init();
-});
 var dataStatisticsTemplateTree={
-    treeUrl:ctx+"/organization/tree?parentId=",
-    treeId:"dataStatisticsTemplateTreeDiv1",
-    tree:null
 }
 dataStatisticsTemplateTree.init=function(){
-    dataStatisticsTemplateTree.tree=new zTreeUtil({
-        treeDivId:dataStatisticsTemplateTree.treeId,
-        inputId:"dataStatisticsTemplateTreeInput",
-        url:dataStatisticsTemplateTree.treeUrl,
+    dataStatisticsTemplate.tree=new zTreeUtil({
+        treeDivId:dataStatisticsTemplate.treeId,
+        url:dataStatisticsTemplate.treeUrl,
         ajaxLoad:true
     });
-    //dataStatisticsTemplateTree.tree.comboTree(dataStatisticsTemplateTree.tree);
+    $.get(dataStatisticsTemplate.treeUrl,function(data){
+        if(data.status=="success"){
+
+        }else{
+            $("#openCreateDataStatisticsTemplateModelBtn").click();
+            LobiboxUtil.notify(data.message);
+        }
+    })
+    //dataStatisticsTemplateTree.tree.comboTree();
 }

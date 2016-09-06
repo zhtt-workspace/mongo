@@ -27,16 +27,13 @@ public class DataStatisticsTemplateController {
 
     @Autowired private HttpServletRequest request;
 
-    @RequestMapping("/index")
-    public ModelAndView index(){
-        ModelAndView mav = new ModelAndView(path+"/index");
-        return mav;
-    }
-
     @RequestMapping("/tree")
     @ResponseBody
     public Object tree(@RequestParam(value = "orgId",required = false)String orgId,@RequestParam(value = "tree",defaultValue = "true",required = false)String tree){
-        User loginUser=(User)request.getSession().getAttribute("loginUser");
+        if(orgId==null||"".equals(orgId)){
+            User loginUser=(User)request.getSession().getAttribute("loginUser");
+            orgId=loginUser.getOrgId();
+        }
         if("true".equals(tree)){
             return dataStatisticsTemplateService.getDataStatisticsTree(orgId).getData();
         }else{

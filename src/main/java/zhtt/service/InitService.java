@@ -27,7 +27,7 @@ public class InitService {
 
     private void organization(){
         List<BasicDBObject> org=FileUtil.readBasicDBObjectsFrom("/init-data/organization.json");
-        if(organizationService.count(".",".",".")==0){
+        if(organizationService.count(".","",".")==0){
             Organization organization=new Organization();
             organization.setName(org.get(0).getString("orgName"));
             organization.setFullName(org.get(0).getString("orgName"));
@@ -41,6 +41,7 @@ public class InitService {
 
     private void user(String orgId,BasicDBObject obj){
         User user=new User();
+        user.setName(obj.getString("username"));
         user.setUsername(obj.getString("username"));
         user.setPassword(obj.getString("password"));
         user.setOrgId(orgId);

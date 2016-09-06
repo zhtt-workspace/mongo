@@ -133,7 +133,7 @@ public class OrganizationService {
      */
     public long count(String code,String parentId,String name){
         Query query=new Query();
-        query.addCriteria(Criteria.where("name").regex(name));
+        query.addCriteria(Criteria.where("name").regex(".*"+name+".*"));
         if(parentId==null||"".equals(parentId)){
             if(!(code==null||"".equals(code))){
                 query.addCriteria(Criteria.where("code").regex(code));
