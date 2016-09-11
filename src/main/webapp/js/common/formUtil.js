@@ -9,7 +9,7 @@ formUtil.submit=function(obj){
     $.ajax({
         cache: true,
         type: "POST",
-        url:obj.url||obj.form.attr("action"),
+        url:obj.url||ctx+obj.form.attr("action"),
         data:obj.form.serialize(),// 你的formid
         async: false,
         error: function(request) {

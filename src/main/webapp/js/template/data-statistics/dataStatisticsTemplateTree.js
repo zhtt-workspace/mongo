@@ -13,7 +13,7 @@ dataStatisticsTemplateTree.init=function(){
         if(data.status=="success"){
 
         }else{
-            $("#openCreateDataStatisticsTemplateModelBtn").click();
+            dataStatisticsTemplate.openForm('createRootModalId');
             LobiboxUtil.notify(data.message);
         }
     })

@@ -19,26 +19,28 @@ public class ToJspController {
         return mav;
     }
 
-    @RequestMapping(value = "/{child}/index",method = RequestMethod.GET)
-    public ModelAndView toTemplateIndexJsp(@PathVariable("module")String module,@PathVariable("child")String child){
-        ModelAndView mav = new ModelAndView("/"+module+"/"+child+"/index");
-        return mav;
-    }
-
     @RequestMapping(value = "/create",method = RequestMethod.GET)
     public String toCreateJsp(@PathVariable("module")String module){
         return "/"+module+"/create";
-    }
-
-    @RequestMapping(value = "/{child}/create",method = RequestMethod.GET)
-    public String toTempleateCreateJsp(@PathVariable("module")String module,@PathVariable("child")String child){
-        return "/"+module+"/"+child+"/create";
     }
 
     @RequestMapping(value = "/update",method = RequestMethod.GET)
     public ModelAndView toUpdateJsp(@PathVariable("module")String module){
         ModelAndView mav = new ModelAndView("/"+module+"/update");
         return mav;
+    }
+
+
+
+    @RequestMapping(value = "/{child}/index",method = RequestMethod.GET)
+    public ModelAndView toTemplateIndexJsp(@PathVariable("module")String module,@PathVariable("child")String child){
+        ModelAndView mav = new ModelAndView("/"+module+"/"+child+"/index");
+        return mav;
+    }
+
+    @RequestMapping(value = "/{child}/create",method = RequestMethod.GET)
+    public String toTempleateCreateJsp(@PathVariable("module")String module,@PathVariable("child")String child){
+        return "/"+module+"/"+child+"/create";
     }
 
     @RequestMapping(value = "/{child}/update",method = RequestMethod.GET)

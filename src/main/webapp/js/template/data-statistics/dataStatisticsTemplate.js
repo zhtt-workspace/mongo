@@ -7,6 +7,10 @@ $(function(){
 var dataStatisticsTemplate={
     treeUrl:ctx+"/template/data-statistics/tree?tree=false",
     treeId:"dataStatisticsTemplateTreeDiv",
+    createRootModalId:"openCreateRootDataStatisticsTemplateModelBtn",
+    createGroupModalId:"openCreateGroupDataStatisticsTemplateModelBtn",
+    createFieldModalId:"openCreateFieldDataStatisticsTemplateModelBtn",
+    createUrl:ctx+"/template/data-statistics/form",
     tree:null
 };
 dataStatisticsTemplate.init=function(){
@@ -14,15 +18,34 @@ dataStatisticsTemplate.init=function(){
     dataStatisticsTemplate.initEvent();
 }
 dataStatisticsTemplate.initEvent=function(){
-    $('#'+dataStatisticsTemplate.createModalId).on('shown.bs.modal', function () {
+    $('#'+dataStatisticsTemplate.createRootModalId).on('shown.bs.modal', function () {
 
     });
 }
-dataStatisticsTemplate.openCreateForm=function(){
-    $("#openCreateDataStatisticsTemplateModelBtn").click();
+dataStatisticsTemplate.openForm=function(flag){
+    if(flag){
+        if(dataStatisticsTemplate[flag]){
+            $("#"+dataStatisticsTemplate[flag]).click()
+        }else{
+            LobiboxUtil.notify("打开窗口无效");
+        }
+    }else{
+        LobiboxUtil.notify("打开窗口无效");
+    }
 }
-dataStatisticsTemplate.submitCreateForm=function(){
-
+dataStatisticsTemplate.submitCreateForm=function(obj){
+    var modalDiv=obj.parentNode.parentNode.parentNode.parentNode.parentNode;
+    formUtil.submit({
+        form:$("#"+modalDiv.id+" form"),
+        success:function(data){
+            if(data.status=="success"){
+                LobiboxUtil.notify("保存成功！");
+                modalUtil.close("#"+modalDiv.id);
+            }else{
+                LobiboxUtil.notify(data.message);
+            }
+        }
+    });
 }
 dataStatisticsTemplate.openUpdateForm=function(){
     $("#openUpdateDataStatisticsTemplateModelBtn").click();

@@ -22,10 +22,10 @@ import java.util.Map;
 public class DataStatisticsTemplateService {
 
     @Autowired
-    MongoOperations mongoTemplate;
+    private MongoOperations mongoTemplate;
 
     @Autowired
-    DataStatisticsTemplateManager dataStatisticsTemplateManager;
+    private DataStatisticsTemplateManager dataStatisticsTemplateManager;
 
     /**
      * 初始化 ：doc_tree节点

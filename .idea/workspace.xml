@@ -7,18 +7,25 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" readonly="true" id="37eef5dd-1dfe-4e9d-855f-61686d0c1ff8" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/zhtt/controller/template/DataStatisticsTemplateController.java" afterPath="$PROJECT_DIR$/src/main/java/zhtt/controller/template/DataStatisticsTemplateController.java" />
+    <list default="true" readonly="true" id="37eef5dd-1dfe-4e9d-855f-61686d0c1ff8" name="Default" comment="test  data-statistics-template">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/zhtt/controller/template/DataStatisticsFormControlller.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/zhtt/controller/template/DataStatisticsJspControlller.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/zhtt/service/template/DataStatisticsTemplateFormService.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/template/data-statistics/create-field.jsp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/template/data-statistics/create-group.jsp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/template/data-statistics/create-root.jsp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/js/common/regexUtil.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/js/common/timeUtil.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/zhtt/service/util/DataStatisticsTemplateManager.java" afterPath="$PROJECT_DIR$/src/main/java/zhtt/service/util/DataStatisticsTemplateManager.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/zhtt/service/template/DataStatisticsTemplateService.java" afterPath="$PROJECT_DIR$/src/main/java/zhtt/service/template/DataStatisticsTemplateService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/zhtt/service/InitService.java" afterPath="$PROJECT_DIR$/src/main/java/zhtt/service/InitService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/zhtt/service/user/OrganizationService.java" afterPath="$PROJECT_DIR$/src/main/java/zhtt/service/user/OrganizationService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SpringMongo.iml" afterPath="$PROJECT_DIR$/SpringMongo.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/zhtt/controller/CommonController/ToJspController.java" afterPath="$PROJECT_DIR$/src/main/java/zhtt/controller/CommonController/ToJspController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/zhtt/service/user/UserService.java" afterPath="$PROJECT_DIR$/src/main/java/zhtt/service/user/UserService.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/template/data-statistics/create.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/template/data-statistics/create.jsp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/js/template/data-statistics/dataStatisticsTemplate.js" afterPath="$PROJECT_DIR$/src/main/webapp/js/template/data-statistics/dataStatisticsTemplate.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/js/template/data-statistics/dataStatisticsTemplateTree.js" afterPath="$PROJECT_DIR$/src/main/webapp/js/template/data-statistics/dataStatisticsTemplateTree.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/js/user/user.js" afterPath="$PROJECT_DIR$/src/main/webapp/js/user/user.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/js/common/formUtil.js" afterPath="$PROJECT_DIR$/src/main/webapp/js/common/formUtil.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/template/data-statistics/index.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/template/data-statistics/index.jsp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/tool/jquery/jquery.validate.min.js" afterPath="$PROJECT_DIR$/src/main/webapp/tool/jquery/jquery.validate.min.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/js/common/util.js" afterPath="$PROJECT_DIR$/src/main/webapp/js/common/util.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="SpringMongo.iws" />
@@ -47,104 +54,111 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="index.jsp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/template/data-statistics/index.jsp">
+      <file leaf-file-name="create.jsp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/user/create.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-5.034483" vertical-offset="392" max-vertical-offset="1710">
-              <caret line="36" column="152" selection-start-line="36" selection-start-column="112" selection-end-line="36" selection-end-column="152" />
+            <state vertical-scroll-proportion="-9.5" vertical-offset="0" max-vertical-offset="1197">
+              <caret line="14" column="137" selection-start-line="14" selection-start-column="100" selection-end-line="14" selection-end-column="137" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="organization.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/js/organization/organization.js">
+      <file leaf-file-name="dataStatisticsTemplateTree.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/js/template/data-statistics/dataStatisticsTemplateTree.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="684" max-vertical-offset="4541">
-              <caret line="76" column="53" selection-start-line="76" selection-start-column="53" selection-end-line="76" selection-end-column="53" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="513">
+              <caret line="15" column="62" selection-start-line="15" selection-start-column="62" selection-end-line="15" selection-end-column="62" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="InitService.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/zhtt/service/InitService.java">
+      <file leaf-file-name="create-root.jsp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/template/data-statistics/create-root.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="254" max-vertical-offset="893">
-              <caret line="43" column="46" selection-start-line="43" selection-start-column="46" selection-end-line="43" selection-end-column="46" />
+            <state vertical-scroll-proportion="-3.392857" vertical-offset="171" max-vertical-offset="722">
+              <caret line="14" column="60" selection-start-line="14" selection-start-column="52" selection-end-line="14" selection-end-column="60" />
               <folding>
-                <element signature="e#608#609#0" expanded="true" />
-                <element signature="e#638#639#0" expanded="true" />
+                <element signature="n#div#2;n#div#0;n#!!top" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="OrganizationService.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/zhtt/service/user/OrganizationService.java">
+      <file leaf-file-name="create-field.jsp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/template/data-statistics/create-field.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="2089" max-vertical-offset="3610">
-              <caret line="143" column="32" selection-start-line="143" selection-start-column="15" selection-end-line="143" selection-end-column="32" />
+            <state vertical-scroll-proportion="-11.214286" vertical-offset="636" max-vertical-offset="1292">
+              <caret line="50" column="172" selection-start-line="50" selection-start-column="172" selection-end-line="50" selection-end-column="172" />
+              <folding>
+                <element signature="n#div#2;n#div#0;n#!!top" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="create-group.jsp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/template/data-statistics/create-group.jsp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-15.535714" vertical-offset="59" max-vertical-offset="722">
+              <caret line="26" column="167" selection-start-line="26" selection-start-column="167" selection-end-line="26" selection-end-column="167" />
+              <folding>
+                <element signature="n#div#2;n#div#0;n#!!top" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DataStatisticsFormControlller.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/zhtt/controller/template/DataStatisticsFormControlller.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="601" max-vertical-offset="1292">
+              <caret line="53" column="0" selection-start-line="53" selection-start-column="0" selection-end-line="53" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="UserController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/zhtt/controller/user/UserController.java">
+      <file leaf-file-name="util.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/js/common/util.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="227" max-vertical-offset="2033">
-              <caret line="33" column="0" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
+            <state vertical-scroll-proportion="1.6785715" vertical-offset="0" max-vertical-offset="1653">
+              <caret line="47" column="8" selection-start-line="47" selection-start-column="8" selection-end-line="47" selection-end-column="8" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.jsp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/user/index.jsp">
+      <file leaf-file-name="regexUtil.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/js/common/regexUtil.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-8.142858" vertical-offset="0" max-vertical-offset="1691">
-              <caret line="12" column="34" selection-start-line="12" selection-start-column="34" selection-end-line="12" selection-end-column="34" />
-              <folding />
+            <state vertical-scroll-proportion="0.0" vertical-offset="1594" max-vertical-offset="3914">
+              <caret line="105" column="2" selection-start-line="105" selection-start-column="2" selection-end-line="105" selection-end-column="2" />
+              <folding>
+                <element signature="n#!!doc;n#regexpUtil#0" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="UserService.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/zhtt/service/user/UserService.java">
+      <file leaf-file-name="timeUtil.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/js/common/timeUtil.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="645" max-vertical-offset="2109">
-              <caret line="64" column="77" selection-start-line="64" selection-start-column="77" selection-end-line="64" selection-end-column="77" />
-              <folding />
+            <state vertical-scroll-proportion="0.0" vertical-offset="245" max-vertical-offset="836">
+              <caret line="8" column="39" selection-start-line="8" selection-start-column="39" selection-end-line="8" selection-end-column="39" />
+              <folding>
+                <element signature="e#0#40#0" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ApplicationInitializeListener.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/zhtt/util/ApplicationInitializeListener.java">
+      <file leaf-file-name="User.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/zhtt/entity/user/User.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="162" max-vertical-offset="779">
-              <caret line="38" column="22" selection-start-line="38" selection-start-column="22" selection-end-line="38" selection-end-column="22" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="dataStatisticsTemplate.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/js/template/data-statistics/dataStatisticsTemplate.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="722">
-              <caret line="30" column="0" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="user.js" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/js/user/user.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.5080214" vertical-offset="798" max-vertical-offset="4275">
-              <caret line="57" column="45" selection-start-line="57" selection-start-column="45" selection-end-line="57" selection-end-column="45" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2147">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -565,19 +579,7 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/webapp/js/user/index.js" />
-        <option value="$PROJECT_DIR$/src/main/webapp/js/organization/index.js" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/organization/organizationUtil.js" />
-        <option value="$PROJECT_DIR$/src/test/java/zhtt/main/OrganizationServiceTest.java" />
-        <option value="$PROJECT_DIR$/src/test/resources/zhtt" />
-        <option value="$PROJECT_DIR$/src/main/webapp/js/common/util.js" />
-        <option value="$PROJECT_DIR$/src/main/java/zhtt/controller/organization/OrganizationFormController.java" />
-        <option value="$PROJECT_DIR$/src/main/webapp/css/index/theme.css" />
-        <option value="$PROJECT_DIR$/src/test/java/zhtt/main/OrganizationServiceMain.java" />
-        <option value="$PROJECT_DIR$/src/main/webapp/js/organization/orgTreeUtil.js" />
-        <option value="$PROJECT_DIR$/src/main/webapp/js/organization/zTreeUtil.js" />
         <option value="$PROJECT_DIR$/src/main/webapp/js/organization/organizationTree.js" />
-        <option value="$PROJECT_DIR$/src/main/webapp/js/common/formUtil.js" />
         <option value="$PROJECT_DIR$/src/main/java/zhtt/entity/user/User.java" />
         <option value="$PROJECT_DIR$/src/main/java/zhtt/dao/user/OrganizationDao.java" />
         <option value="$PROJECT_DIR$/src/main/java/zhtt/controller/user/UserController.java" />
@@ -601,21 +603,33 @@
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/user/index.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/js/template/data-statistics/dataStatisticsTree.js" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/organization/index.jsp" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/template/data-statistics/index.jsp" />
         <option value="$PROJECT_DIR$/src/main/java/zhtt/controller/login/LoginController.java" />
         <option value="$PROJECT_DIR$/src/main/java/zhtt/util/SMInterceptor.java" />
         <option value="$PROJECT_DIR$/src/main/resources/applicationContext-servlet.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/zhtt/service/template/DataStatisticsTemplateService.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/js/organization/organization.js" />
-        <option value="$PROJECT_DIR$/src/main/webapp/js/template/data-statistics/dataStatisticsTemplateTree.js" />
-        <option value="$PROJECT_DIR$/src/main/java/zhtt/controller/CommonController/ToJspController.java" />
         <option value="$PROJECT_DIR$/src/main/java/zhtt/controller/template/DataStatisticsTemplateController.java" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/template/data-statistics/create.jsp" />
-        <option value="$PROJECT_DIR$/src/main/webapp/js/template/data-statistics/dataStatisticsTemplate.js" />
         <option value="$PROJECT_DIR$/src/main/java/zhtt/service/user/OrganizationService.java" />
         <option value="$PROJECT_DIR$/src/main/java/zhtt/service/user/UserService.java" />
         <option value="$PROJECT_DIR$/src/main/java/zhtt/service/InitService.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/js/user/user.js" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/template/data-statistics/create.jsp" />
+        <option value="$PROJECT_DIR$/src/main/java/zhtt/controller/CommonController/ToJspController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/zhtt/controller/template/DataStatisticsJspControlller.java" />
+        <option value="$PROJECT_DIR$/src/main/java/zhtt/service/template/DataStatisticsTemplateFormService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/zhtt/service/util/DataStatisticsTemplateManager.java" />
+        <option value="$PROJECT_DIR$/src/main/java/zhtt/service/template/DataStatisticsTemplateService.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/template/data-statistics/index.jsp" />
+        <option value="$PROJECT_DIR$/src/main/webapp/js/template/data-statistics/dataStatisticsTemplateTree.js" />
+        <option value="$PROJECT_DIR$/src/main/webapp/js/common/formUtil.js" />
+        <option value="$PROJECT_DIR$/src/main/webapp/js/template/data-statistics/dataStatisticsTemplate.js" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/template/data-statistics/create-root.jsp" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/template/data-statistics/create-field.jsp" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/template/data-statistics/create-group.jsp" />
+        <option value="$PROJECT_DIR$/src/main/webapp/tool/jquery/jquery.validate.min.js" />
+        <option value="$PROJECT_DIR$/src/main/java/zhtt/controller/template/DataStatisticsFormControlller.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/js/common/TimeUtil.js" />
+        <option value="$PROJECT_DIR$/src/main/webapp/js/common/regexUtil.js" />
+        <option value="$PROJECT_DIR$/src/main/webapp/js/common/util.js" />
       </list>
     </option>
   </component>
@@ -625,8 +639,8 @@
   <component name="ProjectFrameBounds">
     <option name="x" value="-8" />
     <option name="y" value="-8" />
-    <option name="width" value="1696" />
-    <option name="height" value="1026" />
+    <option name="width" value="1936" />
+    <option name="height" value="1056" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <OptionsSetting value="true" id="Add" />
@@ -653,6 +667,7 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -684,198 +699,6 @@
               <option name="myItemId" value="src" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="test" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="resources" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="SpringMongo" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="SpringMongo" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="test" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="SpringMongo" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="SpringMongo" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="webapp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="WEB-INF" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="SpringMongo" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="SpringMongo" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="webapp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="WEB-INF" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="jsp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="SpringMongo" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="SpringMongo" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="webapp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="WEB-INF" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="jsp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="user" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="SpringMongo" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="SpringMongo" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="webapp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="WEB-INF" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="jsp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="template" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="data-statistics" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="SpringMongo" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="SpringMongo" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="webapp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="WEB-INF" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="jsp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="organization" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -924,10 +747,6 @@
               <option name="myItemId" value="js" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="user" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -955,11 +774,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="template" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="data-statistics" />
+              <option name="myItemId" value="common" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -978,92 +793,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="webapp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="js" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="organization" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="SpringMongo" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="SpringMongo" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="webapp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="js" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="SpringMongo" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="SpringMongo" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="resources" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="SpringMongo" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="SpringMongo" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="resources" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="init-data" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -1090,10 +819,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="zhtt" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="util" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -1157,100 +882,6 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="util" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="SpringMongo" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="SpringMongo" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="zhtt" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="SpringMongo" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="SpringMongo" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="zhtt" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="controller" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="user" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="SpringMongo" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="SpringMongo" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="zhtt" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="controller" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="template" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -1315,14 +946,13 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="CommonController" />
+              <option name="myItemId" value="template" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
       <pane id="Scope" />
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -1354,11 +984,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\zhtt-workspace\workspace-zhtt\zhtt\SpringMongo\src\main\webapp\WEB-INF\jsp\template\data-statistics" />
       <recent name="E:\zhtt-workspace\workspace-zhtt\zhtt\SpringMongo\src\main\java\zhtt\util" />
       <recent name="E:\zhtt-workspace\workspace-zhtt\zhtt\SpringMongo\src\main\webapp\js\common" />
       <recent name="E:\zhtt-workspace\workspace-zhtt\zhtt\SpringMongo\src\main\webapp\js\organization" />
       <recent name="E:\zhtt-workspace\workspace-zhtt\zhtt\SpringMongo\src\main\webapp\WEB-INF\jsp\organization" />
-      <recent name="E:\zhtt-workspace\workspace-zhtt\zhtt\SpringMongo\src\main\webapp\tool\ZeroClipboard" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="E:\zhtt-workspace\workspace-zhtt\zhtt\SpringMongo\src\main\webapp\js\common" />
@@ -1369,6 +999,9 @@
     </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="zhtt" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="zhtt.controller.template" />
     </key>
   </component>
   <component name="RunManager" selected="Tomcat Server.sm">
@@ -1973,7 +1606,12 @@
       <workItem from="1472547636632" duration="1610000" />
       <workItem from="1472618291309" duration="1324000" />
       <workItem from="1472969601581" duration="20000" />
-      <workItem from="1473137509238" duration="3879000" />
+      <workItem from="1473137509238" duration="4011000" />
+      <workItem from="1473295907324" duration="1396000" />
+      <workItem from="1473311572624" duration="1373000" />
+      <workItem from="1473494088782" duration="851000" />
+      <workItem from="1473499091263" duration="10864000" />
+      <workItem from="1473513571221" duration="9933000" />
     </task>
     <task id="LOCAL-00001" summary="提交测试">
       <created>1470401125713</created>
@@ -2125,15 +1763,21 @@
       <option name="project" value="LOCAL" />
       <updated>1472462257150</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="test  data-statistics-template">
+      <created>1473141420169</created>
+      <option name="number" value="00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1473141420169</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="318802000" />
+    <option name="totallyTimeSpent" value="343351000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1696" height="1026" extended-state="6" />
-    <editor active="true" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <editor active="false" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
@@ -2146,16 +1790,16 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.28667483" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32550335" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32900432" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3176734" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.35234898" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3517316" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24572127" sideWeight="0.4992343" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24307036" sideWeight="0.4992343" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2903423" sideWeight="0.5007657" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.23166259" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -2237,7 +1881,15 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="49" />
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/zhtt/controller/template/DataStatisticsFormControlller.java</url>
+          <line>53</line>
+          <properties />
+          <option name="timeStamp" value="58" />
+        </line-breakpoint>
+      </breakpoints>
+      <option name="time" value="59" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -2246,116 +1898,10 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/js/common/LobiboxUtil.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.35672516" vertical-offset="159" max-vertical-offset="17423">
-          <caret line="18" column="42" selection-start-line="18" selection-start-column="42" selection-end-line="18" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/js/common/modalUtil.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.4334601" vertical-offset="0" max-vertical-offset="526">
-          <caret line="12" column="1" selection-start-line="12" selection-start-column="1" selection-end-line="12" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/tool/zTree_v3/js/jquery.ztree.core.min.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7407407" vertical-offset="0" max-vertical-offset="1482">
-          <caret line="20" column="99" selection-start-line="20" selection-start-column="99" selection-end-line="20" selection-end-column="99" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/js/organization/organizationTree.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="817">
-          <caret line="16" column="33" selection-start-line="10" selection-start-column="4" selection-end-line="16" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/zhtt/controller/organization/OrganizationController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.45402297" vertical-offset="352" max-vertical-offset="874">
-          <caret line="41" column="61" selection-start-line="41" selection-start-column="57" selection-end-line="41" selection-end-column="61" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/user/update.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.2462963" vertical-offset="76" max-vertical-offset="1216">
-          <caret line="11" column="37" selection-start-line="11" selection-start-column="33" selection-end-line="11" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/organization/update.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.2462963" vertical-offset="133" max-vertical-offset="1330">
-          <caret line="14" column="27" selection-start-line="14" selection-start-column="23" selection-end-line="14" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/js/common/ztreeComboUtil.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.1747212" vertical-offset="742" max-vertical-offset="1330">
-          <caret line="46" column="37" selection-start-line="46" selection-start-column="33" selection-end-line="46" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/js/common/formUtil.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="41" max-vertical-offset="684">
-          <caret line="15" column="26" selection-start-line="15" selection-start-column="26" selection-end-line="15" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/js/organization/organizationUtil.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="287" max-vertical-offset="855">
-          <caret line="17" column="55" selection-start-line="17" selection-start-column="55" selection-end-line="17" selection-end-column="55" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/zhtt/dao/user/OrganizationDao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1634">
-          <caret line="30" column="34" selection-start-line="23" selection-start-column="30" selection-end-line="30" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/zhtt/entity/user/User.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1282" max-vertical-offset="2147">
-          <caret line="142" column="21" selection-start-line="142" selection-start-column="8" selection-end-line="142" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/zhtt/dao/user/UserDao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="845" max-vertical-offset="1710">
-          <caret line="78" column="11" selection-start-line="78" selection-start-column="11" selection-end-line="78" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/zhtt/util/JsonResponse.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="168" max-vertical-offset="1102">
-          <caret line="31" column="46" selection-start-line="31" selection-start-column="24" selection-end-line="31" selection-end-column="46" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/zhtt/main/UserServiceMain.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1026">
-          <caret line="18" column="27" selection-start-line="18" selection-start-column="8" selection-end-line="18" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/jsp/taglibs.jsp">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="632">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2377,7 +1923,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-6.107143" vertical-offset="0" max-vertical-offset="608">
           <caret line="9" column="75" selection-start-line="9" selection-start-column="75" selection-end-line="11" selection-end-column="66" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2406,7 +1951,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="874">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2442,7 +1986,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-4.75" vertical-offset="0" max-vertical-offset="380">
           <caret line="7" column="31" selection-start-line="7" selection-start-column="31" selection-end-line="7" selection-end-column="31" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2457,7 +2000,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="148" max-vertical-offset="798">
           <caret line="40" column="64" selection-start-line="40" selection-start-column="64" selection-end-line="40" selection-end-column="64" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2492,75 +2034,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/zhtt/service/template/DataStatisticsTemplateService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="482" max-vertical-offset="1273">
-          <caret line="53" column="46" selection-start-line="53" selection-start-column="46" selection-end-line="53" selection-end-column="46" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/js/template/data-statistics/dataStatisticsTemplateTree.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="513">
-          <caret line="15" column="56" selection-start-line="15" selection-start-column="16" selection-end-line="15" selection-end-column="56" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/zhtt/controller/CommonController/ToJspController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="39" max-vertical-offset="931">
-          <caret line="22" column="114" selection-start-line="22" selection-start-column="114" selection-end-line="22" selection-end-column="114" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/zhtt/controller/template/DataStatisticsTemplateController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="172" max-vertical-offset="722">
-          <caret line="36" column="32" selection-start-line="36" selection-start-column="32" selection-end-line="36" selection-end-column="32" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/init-data/data-statistics-template.json">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-5.428571" vertical-offset="0" max-vertical-offset="323">
           <caret line="8" column="22" selection-start-line="8" selection-start-column="22" selection-end-line="8" selection-end-column="22" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/organization/create.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-11.857142" vertical-offset="827" max-vertical-offset="1349">
-          <caret line="61" column="67" selection-start-line="61" selection-start-column="24" selection-end-line="61" selection-end-column="67" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/template/data-statistics/create.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-32.892857" vertical-offset="67" max-vertical-offset="1216">
-          <caret line="52" column="82" selection-start-line="52" selection-start-column="82" selection-end-line="52" selection-end-column="82" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/template/data-statistics/index.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-5.034483" vertical-offset="392" max-vertical-offset="1710">
-          <caret line="36" column="152" selection-start-line="36" selection-start-column="112" selection-end-line="36" selection-end-column="152" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/js/template/data-statistics/dataStatisticsTemplate.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="722">
-          <caret line="30" column="0" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2568,15 +2045,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="684" max-vertical-offset="4541">
           <caret line="76" column="53" selection-start-line="76" selection-start-column="53" selection-end-line="76" selection-end-column="53" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/zhtt/util/ApplicationInitializeListener.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="162" max-vertical-offset="779">
+        <state vertical-scroll-proportion="0.77700347" vertical-offset="162" max-vertical-offset="779">
           <caret line="38" column="22" selection-start-line="38" selection-start-column="22" selection-end-line="38" selection-end-column="22" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2584,15 +2059,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="2089" max-vertical-offset="3610">
           <caret line="143" column="32" selection-start-line="143" selection-start-column="15" selection-end-line="143" selection-end-column="32" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/zhtt/service/user/UserService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="645" max-vertical-offset="2109">
+        <state vertical-scroll-proportion="0.43205574" vertical-offset="645" max-vertical-offset="2109">
           <caret line="64" column="77" selection-start-line="64" selection-start-column="77" selection-end-line="64" selection-end-column="77" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2600,10 +2073,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="254" max-vertical-offset="893">
           <caret line="43" column="46" selection-start-line="43" selection-start-column="46" selection-end-line="43" selection-end-column="46" />
-          <folding>
-            <element signature="e#608#609#0" expanded="true" />
-            <element signature="e#638#639#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -2611,22 +2080,210 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="227" max-vertical-offset="2033">
           <caret line="33" column="0" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/user/index.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-8.142858" vertical-offset="0" max-vertical-offset="1691">
+        <state vertical-scroll-proportion="0.41758242" vertical-offset="0" max-vertical-offset="1691">
           <caret line="12" column="34" selection-start-line="12" selection-start-column="34" selection-end-line="12" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/user/update.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="76" max-vertical-offset="1216">
+          <caret line="11" column="40" selection-start-line="11" selection-start-column="6" selection-end-line="11" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/template/data-statistics/create.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="276" max-vertical-offset="1330">
+          <caret line="25" column="92" selection-start-line="25" selection-start-column="92" selection-end-line="25" selection-end-column="92" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/zhtt/controller/CommonController/ToJspController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="114" max-vertical-offset="1007">
+          <caret line="24" column="5" selection-start-line="21" selection-start-column="4" selection-end-line="24" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/zhtt/controller/template/DataStatisticsTemplateController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="722">
+          <caret line="23" column="46" selection-start-line="23" selection-start-column="38" selection-end-line="23" selection-end-column="46" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/zhtt/controller/template/DataStatisticsJspControlller.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="665">
+          <caret line="11" column="26" selection-start-line="11" selection-start-column="18" selection-end-line="11" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/zhtt/service/util/DataStatisticsTemplateManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="570">
+          <caret line="15" column="12" selection-start-line="15" selection-start-column="12" selection-end-line="15" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/zhtt/service/template/DataStatisticsTemplateFormService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="418">
+          <caret line="14" column="12" selection-start-line="14" selection-start-column="12" selection-end-line="14" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/zhtt/service/template/DataStatisticsTemplateService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-4.4333334" vertical-offset="171" max-vertical-offset="1273">
+          <caret line="29" column="7" selection-start-line="29" selection-start-column="7" selection-end-line="29" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/js/common/formUtil.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="41" max-vertical-offset="684">
+          <caret line="11" column="25" selection-start-line="11" selection-start-column="25" selection-end-line="11" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/template/data-statistics/index.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-12.857142" vertical-offset="1141" max-vertical-offset="2033">
+          <caret line="79" column="38" selection-start-line="79" selection-start-column="38" selection-end-line="79" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/js/template/data-statistics/dataStatisticsTemplate.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="568" max-vertical-offset="1159">
+          <caret line="36" column="75" selection-start-line="36" selection-start-column="75" selection-end-line="36" selection-end-column="75" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/js/user/user.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5080214" vertical-offset="798" max-vertical-offset="4275">
-          <caret line="57" column="45" selection-start-line="57" selection-start-column="45" selection-end-line="57" selection-end-column="45" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="513" max-vertical-offset="4275">
+          <caret line="61" column="44" selection-start-line="61" selection-start-column="44" selection-end-line="61" selection-end-column="44" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/organization/create.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-8.821428" vertical-offset="266" max-vertical-offset="1349">
+          <caret line="27" column="18" selection-start-line="27" selection-start-column="18" selection-end-line="27" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/user/create.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-9.5" vertical-offset="0" max-vertical-offset="1197">
+          <caret line="14" column="137" selection-start-line="14" selection-start-column="100" selection-end-line="14" selection-end-column="137" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/template/data-statistics/create-group.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-15.535714" vertical-offset="59" max-vertical-offset="722">
+          <caret line="26" column="167" selection-start-line="26" selection-start-column="167" selection-end-line="26" selection-end-column="167" />
+          <folding>
+            <element signature="n#div#2;n#div#0;n#!!top" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/tool/jquery/jquery.validate.min.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.44344702" vertical-offset="0" max-vertical-offset="557">
+          <caret line="13" column="21" selection-start-line="13" selection-start-column="21" selection-end-line="13" selection-end-column="21" />
+          <folding>
+            <element signature="n#!!doc" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/template/data-statistics/create-field.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-11.214286" vertical-offset="636" max-vertical-offset="1292">
+          <caret line="50" column="172" selection-start-line="50" selection-start-column="172" selection-end-line="50" selection-end-column="172" />
+          <folding>
+            <element signature="n#div#2;n#div#0;n#!!top" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/js/template/data-statistics/dataStatisticsTemplateTree.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="513">
+          <caret line="15" column="62" selection-start-line="15" selection-start-column="62" selection-end-line="15" selection-end-column="62" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/template/data-statistics/create-root.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-3.392857" vertical-offset="171" max-vertical-offset="722">
+          <caret line="14" column="60" selection-start-line="14" selection-start-column="52" selection-end-line="14" selection-end-column="60" />
+          <folding>
+            <element signature="n#div#2;n#div#0;n#!!top" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/zhtt/entity/user/User.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2147">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/zhtt/controller/template/DataStatisticsFormControlller.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="601" max-vertical-offset="1292">
+          <caret line="53" column="0" selection-start-line="53" selection-start-column="0" selection-end-line="53" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/js/common/timeUtil.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="245" max-vertical-offset="836">
+          <caret line="8" column="39" selection-start-line="8" selection-start-column="39" selection-end-line="8" selection-end-column="39" />
+          <folding>
+            <element signature="e#0#40#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/js/common/regexUtil.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1594" max-vertical-offset="3914">
+          <caret line="105" column="2" selection-start-line="105" selection-start-column="2" selection-end-line="105" selection-end-column="2" />
+          <folding>
+            <element signature="n#!!doc;n#regexpUtil#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/js/common/util.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="1.6785715" vertical-offset="0" max-vertical-offset="1653">
+          <caret line="47" column="8" selection-start-line="47" selection-start-column="8" selection-end-line="47" selection-end-column="8" />
           <folding />
         </state>
       </provider>

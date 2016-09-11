@@ -26,15 +26,20 @@
                     <div class="panel-heading">
                         <div class="container-fluid">
                             <div class="row">
-                                <div class="col-xs-12 col-md-8">
+                                <div class="col-xs-12 col-md-7">
                                     <span class="glyphicon glyphicon-tree-conifer" aria-hidden="true"></span> 模板预览
                                 </div>
-                                <div class="col-xs-12 col-md-4 text-right">
-                                    <a href="${ctx}/template/data-statistics/create" style="display: none;" id="openCreateDataStatisticsTemplateModelBtn"  data-toggle="modal" data-target="#createDataStatisticsTemplateModal"></a>
-                                    <a href="javascript:dataStatisticsTemplate.openCreateForm()" class="btn btn-success btn-sm" role="button">
-                                        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> 新增
+                                <div class="col-xs-12 col-md-5 text-right">
+                                    <a href="${ctx}/template/data-statistics/create-root" style="display: none;" id="openCreateRootDataStatisticsTemplateModelBtn"  data-toggle="modal" data-target="#createRootDataStatisticsTemplateModal"></a>
+                                    <a href="${ctx}/template/data-statistics/create-group" style="display: none;" id="openCreateGroupDataStatisticsTemplateModelBtn"  data-toggle="modal" data-target="#createGroupDataStatisticsTemplateModal"></a>
+                                    <a href="${ctx}/template/data-statistics/create-field" style="display: none;" id="openCreateFieldDataStatisticsTemplateModelBtn"  data-toggle="modal" data-target="#createFieldDataStatisticsTemplateModal"></a>
+                                    <a href="javascript:dataStatisticsTemplate.openForm('createGroupModalId')" class="btn btn-success btn-sm" role="button">
+                                        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> 新增分组
                                     </a>
-                                    <a href="${ctx}/template/data-statistics/update" style="display: none;" id="openUpdateDataStatisticsTemplateModelBtn"  data-toggle="modal" data-target="#updateDataStatisticsTemplateModal"></a>
+                                    <a href="javascript:dataStatisticsTemplate.openForm('createFieldModalId')" class="btn btn-success btn-sm" role="button">
+                                        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> 新增字段
+                                    </a>
+                                    <a href="${ctx}/template/data-statistics/create" style="display: none;" id="openUpdateDataStatisticsTemplateModelBtn"  data-toggle="modal" data-target="#updateDataStatisticsTemplateModal"></a>
                                     <a href="javascript:dataStatisticsTemplate.openUpdateForm()" class="btn btn-warning btn-sm" role="button">
                                         <span class="glyphicon glyphicon-edit" aria-hidden="true"></span> 修改
                                     </a>
@@ -63,7 +68,19 @@
     </div>
 </div> <!-- /container -->
 
-<div class="modal fade" id="createDataStatisticsTemplateModal" tabindex="-1" role="dialog" aria-hidden="true">
+<div class="modal fade" id="createRootDataStatisticsTemplateModal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal -->
+</div>
+<div class="modal fade" id="createGroupDataStatisticsTemplateModal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal -->
+</div>
+<div class="modal fade" id="createFieldDataStatisticsTemplateModal" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
         </div><!-- /.modal-content -->

@@ -13,7 +13,7 @@ import org.springframework.stereotype.Service;
 public class DataStatisticsTemplateManager {
 
     @Autowired
-    MongoCollectionsManager mongoCollectionsManager;
+    private MongoCollectionsManager mongoCollectionsManager;
 
     public WriteResult save(DBObject obj){
         DBCollection collection=mongoCollectionsManager.getDataStatisticsTemplateCollection();
