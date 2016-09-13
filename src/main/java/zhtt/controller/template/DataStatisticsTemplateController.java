@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
+import zhtt.entity.user.Organization;
 import zhtt.entity.user.User;
 import zhtt.service.template.DataStatisticsTemplateService;
 import zhtt.util.JsonResponse;
@@ -31,8 +32,8 @@ public class DataStatisticsTemplateController {
     @ResponseBody
     public Object tree(@RequestParam(value = "orgId",required = false)String orgId,@RequestParam(value = "tree",defaultValue = "true",required = false)String tree){
         if(orgId==null||"".equals(orgId)){
-            User loginUser=(User)request.getSession().getAttribute("loginUser");
-            orgId=loginUser.getOrgId();
+            Organization loginRootOrganization=(Organization)request.getSession().getAttribute("loginRootOrganization");
+            orgId=loginRootOrganization.getUuid();
         }
         if("true".equals(tree)){
             return dataStatisticsTemplateService.getDataStatisticsTree(orgId).getData();

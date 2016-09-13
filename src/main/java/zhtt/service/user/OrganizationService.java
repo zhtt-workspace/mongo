@@ -1,10 +1,10 @@
 package zhtt.service.user;
 
 import com.mongodb.BasicDBObject;
+import com.mongodb.DBObject;
 import com.mongodb.WriteResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
-import org.springframework.data.mongodb.core.MongoOperations;
 import org.springframework.data.mongodb.core.query.BasicQuery;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
@@ -12,8 +12,7 @@ import org.springframework.data.mongodb.core.query.Update;
 import org.springframework.stereotype.Service;
 import zhtt.dao.user.OrganizationDao;
 import zhtt.entity.user.Organization;
-import zhtt.entity.user.User;
-import zhtt.service.util.TableConfig;
+import zhtt.util.FileUtil;
 import zhtt.util.JsonResponse;
 import zhtt.util.JsonResponseStatusEnum;
 
@@ -202,6 +201,46 @@ public class OrganizationService {
         List<Organization> orgList=dao.query(query1);
         for(Organization org:orgList){
             System.out.println("org.code:"+org.getCode());
+        }
+    }
+
+    /**
+     * 获取当前机构的根节点
+     * @param code
+     * @return
+     */
+    public BasicDBObject getCurrentRootOrg(String code){
+        try{
+            String finalizer = FileUtil.getJavaScricptFunctionFromFile(this, "/js/org-getCurrentRootOrg.js");
+            DBObject key = new BasicDBObject("orgType", true);
+            List<String> orgTypeList=new ArrayList<String>();
+            orgTypeList.add(Organization.ROOT);
+            orgTypeList.add(Organization.ORG);
+            DBObject filter = new BasicDBObject("$in", orgTypeList);
+            DBObject filterCond = new BasicDBObject("orgType", filter);
+            DBObject initialCode = new BasicDBObject("code",code);
+            List<BasicDBObject> dbObjectList =  dao.group(key, filterCond, initialCode, finalizer);
+            if(dbObjectList.size()==2){
+                BasicDBObject org1=dbObjectList.get(0);
+                BasicDBObject org2=dbObjectList.get(1);
+                String code1=org1.getString("rootParentCode");
+                String code2=org2.getString("rootParentCode");
+                if(code1==null&&code2!=null){
+                    return org2;
+                }else if(code2==null&&code1!=null){
+                    return org1;
+                }else if(code2!=null&&code1!=null){
+                    if(code2.length()>code1.length()){
+                        return org2;
+                    }else{
+                        return org1;
+                    }
+                }
+            }
+            return null;
+        }catch (Exception e){
+            e.printStackTrace();
+            return null;
         }
     }
 }

@@ -9,6 +9,7 @@ import org.springframework.data.mongodb.core.MongoOperations;
 import org.springframework.stereotype.Service;
 import zhtt.service.util.DataStatisticsTemplateManager;
 import zhtt.service.util.MongoCollectionsManager;
+import zhtt.util.FileUtil;
 import zhtt.util.JsonResponse;
 import zhtt.util.JsonResponseStatusEnum;
 
@@ -26,20 +27,6 @@ public class DataStatisticsTemplateService {
 
     @Autowired
     private DataStatisticsTemplateManager dataStatisticsTemplateManager;
-
-    /**
-     * 初始化 ：doc_tree节点
-     * @param name
-     * @return
-     */
-    public WriteResult init(String name,int cols){
-        DBObject obj=new BasicDBObject();
-        obj.put("name",name);//树结构名称
-        obj.put("children",null);//子节点标识
-        obj.put("cols",cols);//形成table表格时的总列数
-        obj.put("code","doc_tree");//code标识
-        return dataStatisticsTemplateManager.save(obj);
-    }
 
     /**
      * 返回统计树
@@ -67,8 +54,16 @@ public class DataStatisticsTemplateService {
         }else{
             query.put("orgId",orgId);
         }
-        return (BasicDBObject)dataStatisticsTemplateManager.query(query);
+        return (BasicDBObject)dataStatisticsTemplateManager.findOne(query);
     }
 
+    /**
+     * 根据查询条件返回  List<BasicDBObject>
+     * @param query
+     * @return
+     */
+    public List<BasicDBObject> queryDBObjectList(DBObject query){
+        return dataStatisticsTemplateManager.queryDBObjectList(query);
+    }
 
 }

@@ -5,12 +5,10 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.mongodb.BasicDBObject;
+import org.apache.commons.io.IOUtils;
 import zhtt.service.util.MongoCollectionsManager;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
+import java.io.*;
 import java.util.List;
 
 /**
@@ -29,6 +27,52 @@ public class FileUtil {
             buffer.append(str+"\n");
         }
         return buffer.toString();
+    }
+
+    /**
+     * 得到obj对应的Java类同一目录下的JavaScript文件，并将之转换成字符串
+     *
+     * js文件必须和obj类在同一个目录下
+     * js文件是UTF8编码的
+     *
+     * @param obj
+     * @param fileName javascipt文件名
+     * @return
+     */
+    public static String getJavaScricptFunctionFromFile(Object obj, String fileName) {
+        InputStream js = obj.getClass().getResourceAsStream(fileName);
+        StringWriter stringWriter = new StringWriter();
+        String reduce = null;
+        try {
+            IOUtils.copy(js, stringWriter, "UTF-8");
+            reduce = stringWriter.toString();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        return reduce;
+    }
+
+
+    /**
+     * 得到obj对应的Java类同一目录下的JavaScript文件，并将之转换成字符串
+     *
+     * js文件必须和obj类在同一个目录下
+     * js文件是UTF8编码的
+     *
+     * @param fileName javascipt文件名
+     * @return
+     */
+    public static String getJavaScricptFunctionFromFile(String fileName) {
+        InputStream js = FileUtil.class.getClass().getResourceAsStream(fileName);
+        StringWriter stringWriter = new StringWriter();
+        String reduce = null;
+        try {
+            IOUtils.copy(js, stringWriter, "UTF-8");
+            reduce = stringWriter.toString();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        return reduce;
     }
 
     public static List<BasicDBObject> readBasicDBObjectsFrom(String jsonFileName) {

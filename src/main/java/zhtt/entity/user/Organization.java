@@ -172,4 +172,24 @@ public class Organization {
         Update update=new BasicUpdate(set);
         return update;
     }
+
+    /**
+     * 机构根节点
+     */
+    public static final String ROOT="root";
+
+    /**
+     * 分机构
+     */
+    public static final String ORG="org";
+
+    /**
+     * 机构总部
+     */
+    public static final String HEADQUARTERS="headquarters";
+
+    /**
+     * 机构下的部门
+     */
+    public static final String DEPT="dept";
 }

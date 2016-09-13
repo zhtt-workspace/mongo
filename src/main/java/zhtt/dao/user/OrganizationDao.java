@@ -1,9 +1,6 @@
 package zhtt.dao.user;
 
-import com.mongodb.BasicDBObject;
-import com.mongodb.DBObject;
-import com.mongodb.QueryBuilder;
-import com.mongodb.WriteResult;
+import com.mongodb.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoOperations;
 import org.springframework.data.mongodb.core.query.BasicQuery;
@@ -99,5 +96,10 @@ public class OrganizationDao {
 
     public long count(Query query){
         return mongoTemplate.count(query,table);
+    }
+
+    public List<BasicDBObject> group(DBObject key, DBObject filterCond, DBObject initialCode,  String finalizer){
+        DBCollection collection=mongoTemplate.getCollection(table);
+        return (List<BasicDBObject>)collection.group(key, filterCond, initialCode,  finalizer);
     }
 }

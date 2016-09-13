@@ -6,7 +6,7 @@ var timeUtil={};
 /** 获取当前时间  **/
 timeUtil.getCurrentDateTime=function(){
     var today = new Date ();
-    return TimeUtil.getDateTime(today);
+    return timeUtil.format(today,'yyyy-MM-dd');
 };
 timeUtil.format = function(date,format){
     var o = {
@@ -36,6 +36,6 @@ timeUtil.getByMillisecondsStr = function (str) {
     } else {
         var date = new Date();
         date.setTime(str);
-        return TimeUtil.format(date, 'yyyy-MM-dd');
+        return timeUtil.format(date, 'yyyy-MM-dd');
     }
 };

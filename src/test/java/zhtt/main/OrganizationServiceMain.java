@@ -15,7 +15,11 @@ public class OrganizationServiceMain {
         ApplicationContext ac = new ClassPathXmlApplicationContext(
                 new String[] { "applicationContext-test.xml", "applicationContext-mongo-config-test.xml", "applicationContext-servlet-test.xml"});
         organizationService = (zhtt.service.user.OrganizationService) ac.getBean("organizationService");
-        regTest();
+        getCurrentRootOrg();
+    }
+
+    public static void getCurrentRootOrg(){
+        organizationService.getCurrentRootOrg("00");
     }
 
     public static void buildOrgCode(){

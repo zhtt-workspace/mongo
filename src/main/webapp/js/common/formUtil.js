@@ -3,13 +3,20 @@
  */
 var formUtil={}
 formUtil.submit=function(obj){
+    if(typeof obj.form!="object"){
+        LobiboxUtil.notify("form对象为空");return false;
+    }
+    var url=obj.url||ctx+obj.form.attr("action");
+    if(typeof url!="string"){
+        LobiboxUtil.notify("提交地址无效："+url);return false;
+    }
     if(obj.form.valid){
         if(!obj.form.valid()){return false;}
     }
     $.ajax({
         cache: true,
         type: "POST",
-        url:obj.url||ctx+obj.form.attr("action"),
+        url:url,
         data:obj.form.serialize(),// 你的formid
         async: false,
         error: function(request) {
