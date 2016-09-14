@@ -82,7 +82,7 @@ public class DataStatisticsFormControlller {
             dataStatisticsTemplateFormService.save(dbObjQuery, dbObj);
             return new JsonResponse(map);
         }catch (Exception e){
-            return new JsonResponse();
+            return new JsonResponse(JsonResponseStatusEnum.ERROR,e.getMessage());
         }
     }
 

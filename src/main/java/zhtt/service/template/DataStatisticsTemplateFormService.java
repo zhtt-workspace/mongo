@@ -7,6 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import zhtt.dao.templeate.DataStatisticsTemplateManager;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by zhtt on 2016/9/10.
  * 本表单负责增删改
@@ -25,6 +28,12 @@ public class DataStatisticsTemplateFormService {
         return dataStatisticsTemplateManager.update(find, update, insert, multi);
     }
 
+    /**
+     * 不存在则插入
+     * @param find
+     * @param update
+     * @return
+     */
     public WriteResult updateOrInsert(DBObject find,DBObject update){
         return dataStatisticsTemplateManager.updateOrInsert(find, update);
     }
@@ -50,7 +59,11 @@ public class DataStatisticsTemplateFormService {
             DBObject update=new BasicDBObject(removeOrAddFlag?"$addToSet":"$pull", new BasicDBObject("children",new BasicDBObject("uuid",uuid)));
             update(query, update, false, false);
         }else{
-
+            List<String> sqlList=new ArrayList<String>();
+            String sql=DataStatisticsTemplateQueryUtil.buildAddChildrenUpdateSql((List<BasicDBObject>)treeDoc.get("children"),parentUuid,sqlList);
+            DBObject update=new BasicDBObject(removeOrAddFlag?"$addToSet":"$pull", new BasicDBObject(sql,new BasicDBObject("uuid",uuid)));
+            update(query, update, false, false);
+            System.out.println(sql);
         }
         return false;
     }

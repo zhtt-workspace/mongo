@@ -9,7 +9,10 @@ import zhtt.dao.templeate.DataStatisticsTemplateManager;
 import zhtt.util.JsonResponse;
 import zhtt.util.JsonResponseStatusEnum;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by zhtt on 2016/8/7.
@@ -33,9 +36,25 @@ public class DataStatisticsTemplateService {
         if(docTreeObj==null){
             return new JsonResponse(JsonResponseStatusEnum.ERROR,"节点树未初始化，请创建。");
         }else{
-            return new JsonResponse(docTreeObj);
+            List<String> uuidList=DataStatisticsTemplateQueryUtil.getUuidListByDocTree(docTreeObj);
+            BasicDBObject query=new BasicDBObject("uuid", new BasicDBObject("$in", uuidList));
+            DBObject filter=new BasicDBObject("uuid",true);
+            filter.put("name",true);
+            filter.put("parentId",true);
+            filter.put("type",true);
+            List<BasicDBObject> dbList=dataStatisticsTemplateManager.queryDBObjectList(query,filter);
+            Map<String,BasicDBObject> dbMap=new HashMap<String,BasicDBObject>();
+            for(BasicDBObject basicDBObject:dbList){
+                String uuid=basicDBObject.getString("uuid");
+                if(basicDBObject.containsField("name")){
+                    dbMap.put(uuid, basicDBObject);
+                }
+            }
+            Map<String, Object> map=DataStatisticsTemplateQueryUtil.buildTree(docTreeObj,dbMap);
+            return new JsonResponse(map);
         }
     }
+
 
     /**
      * 查询指定机构下的doc_tree文档记录
@@ -43,12 +62,7 @@ public class DataStatisticsTemplateService {
      * @return
      */
     public BasicDBObject getDocTreeNode(String orgId){
-        BasicDBObject query = new BasicDBObject();
-        if(orgId==null){
-            query.put("orgId", new BasicDBObject("$exists", false));
-        }else{
-            query.put("orgId",orgId);
-        }
+        DBObject query = DataStatisticsTemplateQueryUtil.getTreeDocQuery(orgId);
         return (BasicDBObject)dataStatisticsTemplateManager.findOne(query);
     }
 

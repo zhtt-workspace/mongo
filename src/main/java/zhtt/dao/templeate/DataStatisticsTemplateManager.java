@@ -17,14 +17,25 @@ public class DataStatisticsTemplateManager {
     @Autowired
     private MongoCollectionsManager mongoCollectionsManager;
 
+    /**
+     * 保存
+     * @param obj
+     * @return
+     */
     public WriteResult save(DBObject obj){
         DBCollection collection=mongoCollectionsManager.getDataStatisticsTemplateCollection();
         WriteResult result=collection.save(obj);
         return result;
     }
 
+    /**
+     * 有则更新，无则插入
+     * @param find
+     * @param update
+     * @return
+     */
     public WriteResult updateOrInsert(DBObject find,DBObject update){
-        WriteResult result=update(find,new BasicDBObject("$set", update),true,true);
+        WriteResult result=update(find, new BasicDBObject("$set", update), true, true);
         return result;
     }
 
@@ -42,6 +53,11 @@ public class DataStatisticsTemplateManager {
         return result;
     }
 
+    /**
+     * 仅返回一条
+     * @param query
+     * @return
+     */
     public DBObject findOne(DBObject query){
         DBCollection collection=mongoCollectionsManager.getDataStatisticsTemplateCollection();
         return collection.findOne(query);
@@ -79,6 +95,18 @@ public class DataStatisticsTemplateManager {
     }
 
     /**
+     * 根据查询条件返回  DBCursor
+     * @param query：查询条件
+     * @param filter：指定需要返回的字段
+     * @return
+     */
+    public DBCursor queryDBCursor(DBObject query,DBObject filter){
+        DBCollection coll=mongoCollectionsManager.getDataStatisticsTemplateCollection();
+        DBCursor cusor = coll.find(query,filter);
+        return cusor;
+    }
+
+    /**
      * 根据查询条件返回  List<BasicDBObject>
      * @param query
      * @return
@@ -92,6 +120,28 @@ public class DataStatisticsTemplateManager {
         return dblist;
     }
 
+    /**
+     * 根据查询条件返回  List<BasicDBObject>
+     * @param query
+     * @return
+     */
+    public List<BasicDBObject> queryDBObjectList(DBObject query,DBObject filter){
+        DBCursor cusor=this.queryDBCursor(query,filter);
+        List<BasicDBObject> dblist=new ArrayList<BasicDBObject>();
+        while (cusor.hasNext()) {
+            dblist.add((BasicDBObject) cusor.next());
+        }
+        return dblist;
+    }
+
+    /**
+     * 分组
+     * @param key
+     * @param filterCond
+     * @param initialCode
+     * @param finalizer
+     * @return
+     */
     public List<BasicDBObject> group(DBObject key, DBObject filterCond, DBObject initialCode,  String finalizer){
         DBCollection collection=mongoCollectionsManager.getDataStatisticsTemplateCollection();
         return (List<BasicDBObject>)collection.group(key, filterCond, initialCode,  finalizer);
