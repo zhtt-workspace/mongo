@@ -9,10 +9,9 @@ import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.data.mongodb.core.query.Update;
 import org.springframework.stereotype.Service;
 import zhtt.entity.user.Organization;
-import zhtt.service.util.TableConfig;
+import zhtt.dao.TableConfig;
 
 import java.util.List;
-import java.util.regex.Pattern;
 
 /**
  * Created by zhtt on 2016/8/11.

@@ -4,18 +4,16 @@
 var dataStatisticsTemplateTree={
 }
 dataStatisticsTemplateTree.init=function(){
-    dataStatisticsTemplate.tree=new zTreeUtil({
-        treeDivId:dataStatisticsTemplate.treeId,
-        url:dataStatisticsTemplate.treeUrl,
-        ajaxLoad:true
-    });
     $.get(dataStatisticsTemplate.treeUrl,function(data){
         if(data.status=="success"){
-
+            dataStatisticsTemplate.tree=new zTreeUtil({
+                treeDivId:dataStatisticsTemplate.treeId,
+                zNodes:[data.data]
+            });
+            dataStatisticsTemplate.tree.init();
         }else{
             dataStatisticsTemplate.openForm('createRootModalId');
             LobiboxUtil.notify(data.message);
         }
-    })
-    //dataStatisticsTemplateTree.tree.comboTree();
+    });
 }

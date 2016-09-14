@@ -26,11 +26,9 @@ public class DataStatisticsTemplateController {
 
     @Autowired private DataStatisticsTemplateService dataStatisticsTemplateService;
 
-    @Autowired private HttpServletRequest request;
-
     @RequestMapping("/tree")
     @ResponseBody
-    public Object tree(@RequestParam(value = "orgId",required = false)String orgId,@RequestParam(value = "tree",defaultValue = "true",required = false)String tree){
+    public Object tree(@RequestParam(value = "orgId",required = false)String orgId,@RequestParam(value = "tree",defaultValue = "true",required = false)String tree,HttpServletRequest request){
         if(orgId==null||"".equals(orgId)){
             Organization loginRootOrganization=(Organization)request.getSession().getAttribute("loginRootOrganization");
             orgId=loginRootOrganization.getUuid();

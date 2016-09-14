@@ -1,20 +1,15 @@
 package zhtt.service.template;
 
 import com.mongodb.BasicDBObject;
-import com.mongodb.DBCollection;
 import com.mongodb.DBObject;
-import com.mongodb.WriteResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoOperations;
 import org.springframework.stereotype.Service;
-import zhtt.service.util.DataStatisticsTemplateManager;
-import zhtt.service.util.MongoCollectionsManager;
-import zhtt.util.FileUtil;
+import zhtt.dao.templeate.DataStatisticsTemplateManager;
 import zhtt.util.JsonResponse;
 import zhtt.util.JsonResponseStatusEnum;
 
 import java.util.List;
-import java.util.Map;
 
 /**
  * Created by zhtt on 2016/8/7.

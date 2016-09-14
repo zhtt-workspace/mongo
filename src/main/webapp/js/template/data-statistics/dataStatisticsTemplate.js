@@ -18,12 +18,33 @@ dataStatisticsTemplate.init=function(){
     dataStatisticsTemplate.initEvent();
 }
 dataStatisticsTemplate.initEvent=function(){
-    $('#'+dataStatisticsTemplate.createRootModalId).on('shown.bs.modal', function () {
-
+    $('#createGroupDataStatisticsTemplateModal').on('shown.bs.modal', function () {
+        var selected=dataStatisticsTemplate.tree.getSelectedNodes();
+        $('#createGroupDataStatisticsTemplateModal input[name="parentId"]').val(selected.nodes[0].uuid);
+    });
+    $('#createFieldDataStatisticsTemplateModal').on('shown.bs.modal', function () {
+        var selected=dataStatisticsTemplate.tree.getSelectedNodes();
+        $('#createGroupDataStatisticsTemplateModal input[name="parentId"]').val(selected.nodes[0].uuid);
     });
 }
 dataStatisticsTemplate.openForm=function(flag){
     if(flag){
+        if(dataStatisticsTemplate[flag]!=dataStatisticsTemplate.createRootModalId){
+            if(dataStatisticsTemplate.tree==null){
+                LobiboxUtil.notify("模板树未创建！");
+                dataStatisticsTemplate.openForm('createRootModalId');
+                return;
+            }
+            var selected=dataStatisticsTemplate.tree.getSelectedNodes();
+            if(selected.zTree==null){
+                LobiboxUtil.notify("模板树未创建！");
+                dataStatisticsTemplate.openForm('createRootModalId');
+                return;
+            }else if(selected.nodes==null){
+                LobiboxUtil.notify("请选择父节点！");
+                return;
+            }
+        }
         if(dataStatisticsTemplate[flag]){
             $("#"+dataStatisticsTemplate[flag]).click()
         }else{

@@ -6,7 +6,7 @@ import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.mongodb.BasicDBObject;
 import org.apache.commons.io.IOUtils;
-import zhtt.service.util.MongoCollectionsManager;
+import zhtt.dao.MongoCollectionsManager;
 
 import java.io.*;
 import java.util.List;

@@ -5,15 +5,12 @@ import java.util.List;
 import com.mongodb.WriteResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
-import org.springframework.data.mongodb.core.MongoOperations;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
-import org.springframework.data.mongodb.core.query.Update;
 import org.springframework.stereotype.Service;
 
 import zhtt.dao.user.UserDao;
 import zhtt.entity.user.User;
-import zhtt.service.util.TableConfig;
 
 /**
  * Created by zhtt on 2016/8/5.

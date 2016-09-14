@@ -5,7 +5,7 @@ import com.mongodb.DBObject;
 import com.mongodb.WriteResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import zhtt.service.util.DataStatisticsTemplateManager;
+import zhtt.dao.templeate.DataStatisticsTemplateManager;
 
 /**
  * Created by zhtt on 2016/9/10.
@@ -21,8 +21,38 @@ public class DataStatisticsTemplateFormService {
         return dataStatisticsTemplateManager.save(obj);
     }
 
+    public WriteResult update(DBObject find,DBObject update,boolean insert,boolean multi){
+        return dataStatisticsTemplateManager.update(find, update, insert, multi);
+    }
+
     public WriteResult updateOrInsert(DBObject find,DBObject update){
-        return dataStatisticsTemplateManager.updateOrInsert(find,update);
+        return dataStatisticsTemplateManager.updateOrInsert(find, update);
+    }
+
+    public void save(DBObject find,DBObject update){
+        updateOrInsert(find,update);
+        if(!update.get("uuid").toString().equals("doc_tree")&&(update.get("type").toString().equals("group")||update.get("type").toString().equals("field"))){
+            removeOrAddChildToTree(update.get("orgId").toString(),update.get("parentId").toString(),update.get("uuid").toString(),true);
+        }
+    }
+    /**
+     *为模板树节点增加或删除节点
+     * @param orgId
+     * @param parentUuid
+     * @param uuid
+     * @param removeOrAddFlag
+     * @return
+     */
+    private boolean removeOrAddChildToTree(String orgId,String parentUuid,String uuid,boolean removeOrAddFlag){
+        DBObject query=DataStatisticsTemplateQueryUtil.getTreeDocQuery(orgId);
+        DBObject treeDoc=dataStatisticsTemplateManager.findOne(query);
+        if(treeDoc.containsField("children")==false||parentUuid.equals(treeDoc.get("uuid").toString())){
+            DBObject update=new BasicDBObject(removeOrAddFlag?"$addToSet":"$pull", new BasicDBObject("children",new BasicDBObject("uuid",uuid)));
+            update(query, update, false, false);
+        }else{
+
+        }
+        return false;
     }
 
     /**

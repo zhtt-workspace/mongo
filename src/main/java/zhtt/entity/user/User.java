@@ -4,9 +4,9 @@ import com.mongodb.BasicDBObject;
 import org.bson.types.ObjectId;
 import org.springframework.data.mongodb.core.query.BasicUpdate;
 import org.springframework.data.mongodb.core.query.Update;
+import zhtt.util.ProjectUtil;
 
 import java.util.Date;
-import java.util.UUID;
 
 /**
  * Created by zhtt on 2016/8/5.
@@ -21,7 +21,7 @@ public class User {
     /**
      * uuid
      */
-    private String uuid= UUID.randomUUID().toString();
+    private String uuid= ProjectUtil.randomUUID();
 
     /**
      * 用户名

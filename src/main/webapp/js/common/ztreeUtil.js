@@ -44,7 +44,11 @@ function zTreeUtil(options){
     this.init=function(){
         if(this.checkOptions()){
             this.initSetting();
-            $.fn.zTree.init($("#"+options.treeDivId), this.setting);
+            if(options.url){
+                $.fn.zTree.init($("#"+options.treeDivId), this.setting);
+            }else{
+                $.fn.zTree.init($("#"+options.treeDivId), this.setting,options.zNodes);
+            }
         }
     }
 
@@ -61,7 +65,8 @@ function zTreeUtil(options){
             return false;
         }
         var url=options.url;
-        if(typeof url=="undefined"){
+        var zNodes=options.zNodes;
+        if(typeof url=="undefined"&&typeof zNodes=="undefined"){
             LobiboxUtil.notify("数据请求地址未传入！");
             return false;
         }

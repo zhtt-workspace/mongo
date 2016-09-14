@@ -2,15 +2,12 @@ package zhtt.dao.user;
 
 import com.mongodb.WriteResult;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Sort;
 import org.springframework.data.mongodb.core.MongoOperations;
-import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.data.mongodb.core.query.Update;
 import org.springframework.stereotype.Service;
-import zhtt.entity.user.Organization;
 import zhtt.entity.user.User;
-import zhtt.service.util.TableConfig;
+import zhtt.dao.TableConfig;
 
 import java.util.List;
 
