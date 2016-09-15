@@ -60,7 +60,9 @@
                                 <span class="glyphicon glyphicon-search" aria-hidden="true"></span> 查 询
                             </a>
                         </form>
-                        <table id="dataStatisticsTemplateListTable" class="table table-bordered table-hover  table-striped"></table>
+                        <div id="dataStatisticsTemplateTableBox">
+
+                        </div>
                     </div>
                 </div>
             </div>
@@ -100,4 +102,5 @@
 <script type="text/javascript" src="${ctx}/js/common/ztreeComboUtil.js"></script>
 <script type="text/javascript" src="${ctx}/js/template/data-statistics/dataStatisticsTemplate.js"></script>
 <script type="text/javascript" src="${ctx}/js/template/data-statistics/dataStatisticsTemplateTree.js"></script>
+<script type="text/javascript" src="${ctx}/js/template/data-statistics/dataStatisticsTemplateTable.js"></script>
 </HTML>

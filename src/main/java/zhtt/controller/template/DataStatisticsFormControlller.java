@@ -47,14 +47,15 @@ public class DataStatisticsFormControlller {
                 return new JsonResponse(JsonResponseStatusEnum.ERROR,"登录信息已过期！");
             }
 
-            DBObject dbObj=createGroupDoc(map);
-            dbObj.put(DataStatisticsTemplate.FieldKey.orgId,loginRootOrganization.getUuid());
-
-            DBObject dbObjQuery=createGroupDocQuery(map);
-            dbObjQuery.put(DataStatisticsTemplate.FieldKey.orgId,loginRootOrganization.getUuid());
-            dataStatisticsTemplateFormService.save(dbObjQuery, dbObj);
-
-            return new JsonResponse(map);
+            DBObject dbObj=createFieldDoc(map);
+            dbObj.put(DataStatisticsTemplate.FieldKey.orgId, loginRootOrganization.getUuid());
+            if(map.containsKey("uuid")&&map.get("uuid")!=null&&map.get("uuid").length()>0){
+                DBObject dbObjQuery=createFieldDocQuery(map);
+                dataStatisticsTemplateFormService.update(dbObjQuery, dbObj);
+            }else{
+                dataStatisticsTemplateFormService.saveAndModifyTreeDoc(dbObj);
+            }
+            return new JsonResponse(dbObj);
         }catch (Exception e){
             return new JsonResponse();
         }
@@ -76,11 +77,13 @@ public class DataStatisticsFormControlller {
             }
             DBObject dbObj=createGroupDoc(map);
             dbObj.put(DataStatisticsTemplate.GroupKey.orgId,loginRootOrganization.getUuid());
-
-            DBObject dbObjQuery=createGroupDocQuery(map);
-            dbObjQuery.put(DataStatisticsTemplate.GroupKey.orgId,loginRootOrganization.getUuid());
-            dataStatisticsTemplateFormService.save(dbObjQuery, dbObj);
-            return new JsonResponse(map);
+            if(map.containsKey("uuid")&&map.get("uuid")!=null&&map.get("uuid").length()>0){
+                DBObject dbObjQuery=createGroupDocQuery(map);
+                dataStatisticsTemplateFormService.update(dbObjQuery, dbObj);
+            }else{
+                dataStatisticsTemplateFormService.saveAndModifyTreeDoc(dbObj);
+            }
+            return new JsonResponse(dbObj);
         }catch (Exception e){
             return new JsonResponse(JsonResponseStatusEnum.ERROR,e.getMessage());
         }
@@ -175,9 +178,10 @@ public class DataStatisticsFormControlller {
      */
     private DBObject createGroupDocQuery(Map<String,String> map){
         DBObject dbObjQuery=new BasicDBObject();
-        dbObjQuery.put(DataStatisticsTemplate.GroupKey.parentId,map.get(DataStatisticsTemplate.GroupKey.parentId));
+        /*dbObjQuery.put(DataStatisticsTemplate.GroupKey.parentId,map.get(DataStatisticsTemplate.GroupKey.parentId));
         dbObjQuery.put(DataStatisticsTemplate.GroupKey.name,map.get(DataStatisticsTemplate.GroupKey.name));
-        dbObjQuery.put(DataStatisticsTemplate.GroupKey.type,DataStatisticsTemplate.Type.GROUP);
+        dbObjQuery.put(DataStatisticsTemplate.GroupKey.type,DataStatisticsTemplate.Type.GROUP);*/
+        dbObjQuery.put(DataStatisticsTemplate.GroupKey.uuid,map.get(DataStatisticsTemplate.GroupKey.uuid));
         return dbObjQuery;
     }
 
@@ -209,9 +213,10 @@ public class DataStatisticsFormControlller {
      */
     private DBObject createFieldDocQuery(Map<String,String> map){
         DBObject dbObjQuery=new BasicDBObject();
-        dbObjQuery.put(DataStatisticsTemplate.FieldKey.parentId,map.get(DataStatisticsTemplate.FieldKey.parentId));
-        dbObjQuery.put(DataStatisticsTemplate.FieldKey.name,map.get(DataStatisticsTemplate.FieldKey.name));
-        dbObjQuery.put(DataStatisticsTemplate.FieldKey.type,DataStatisticsTemplate.Type.FIELD);
+        dbObjQuery.put(DataStatisticsTemplate.FieldKey.uuid,map.get(DataStatisticsTemplate.FieldKey.uuid));
+        //dbObjQuery.put(DataStatisticsTemplate.FieldKey.parentId,map.get(DataStatisticsTemplate.FieldKey.parentId));
+        //dbObjQuery.put(DataStatisticsTemplate.FieldKey.name,map.get(DataStatisticsTemplate.FieldKey.name));
+        //dbObjQuery.put(DataStatisticsTemplate.FieldKey.type,DataStatisticsTemplate.Type.FIELD);
         return dbObjQuery;
     }
 }

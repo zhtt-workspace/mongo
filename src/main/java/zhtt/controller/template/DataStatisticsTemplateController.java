@@ -39,4 +39,18 @@ public class DataStatisticsTemplateController {
             return dataStatisticsTemplateService.getDataStatisticsTree(orgId);
         }
     }
+
+    @RequestMapping("/table")
+    @ResponseBody
+    public Object table(@RequestParam(value = "orgId",required = false)String orgId,@RequestParam(value = "table",defaultValue = "true",required = false)String tree,HttpServletRequest request){
+        if(orgId==null||"".equals(orgId)){
+            Organization loginRootOrganization=(Organization)request.getSession().getAttribute("loginRootOrganization");
+            orgId=loginRootOrganization.getUuid();
+        }
+        if("true".equals(tree)){
+            return dataStatisticsTemplateService.getDataStatisticsTable(orgId).getData();
+        }else{
+            return dataStatisticsTemplateService.getDataStatisticsTable(orgId);
+        }
+    }
 }

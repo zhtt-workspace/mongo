@@ -12,7 +12,7 @@
     <form class="form-horizontal" action="${ctx}/template/data-statistics/field-form">
       <div style="display: none;">
         <input type="hidden" name="type" value="field">
-        <input type="hidden" type="parentId">
+        <input type="hidden" name="parentId">
         <input type="hidden" name="uuid" >
       </div>
       <div class="form-group">
@@ -63,7 +63,7 @@
     <a href="javascript:" onclick="dataStatisticsTemplate.submitCreateForm(this)" class="btn btn-default btn-sm" role="button">
       <span class="glyphicon glyphicon-floppy-save" aria-hidden="true"></span> 保 存
     </a>
-    <a href="javascript:modalUtil.close('createRootModalId')" class="btn btn-primary btn-sm" role="button">
+    <a href="javascript:modalUtil.close('#createFieldDataStatisticsTemplateModal')" class="btn btn-primary btn-sm" role="button">
       <span class="glyphicon glyphicon-remove" aria-hidden="true"></span> 关 闭
     </a>
   </div>

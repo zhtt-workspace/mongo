@@ -28,6 +28,10 @@ public class DataStatisticsTemplateFormService {
         return dataStatisticsTemplateManager.update(find, update, insert, multi);
     }
 
+    public WriteResult update(DBObject find,DBObject update){
+        return dataStatisticsTemplateManager.update(find, update);
+    }
+
     /**
      * 不存在则插入
      * @param find
@@ -38,12 +42,13 @@ public class DataStatisticsTemplateFormService {
         return dataStatisticsTemplateManager.updateOrInsert(find, update);
     }
 
-    public void save(DBObject find,DBObject update){
-        updateOrInsert(find,update);
+    public void saveAndModifyTreeDoc(DBObject update){
+        save(update);
         if(!update.get("uuid").toString().equals("doc_tree")&&(update.get("type").toString().equals("group")||update.get("type").toString().equals("field"))){
             removeOrAddChildToTree(update.get("orgId").toString(),update.get("parentId").toString(),update.get("uuid").toString(),true);
         }
     }
+
     /**
      *为模板树节点增加或删除节点
      * @param orgId
@@ -55,16 +60,17 @@ public class DataStatisticsTemplateFormService {
     private boolean removeOrAddChildToTree(String orgId,String parentUuid,String uuid,boolean removeOrAddFlag){
         DBObject query=DataStatisticsTemplateQueryUtil.getTreeDocQuery(orgId);
         DBObject treeDoc=dataStatisticsTemplateManager.findOne(query);
+        String updateKey=null;
         if(treeDoc.containsField("children")==false||parentUuid.equals(treeDoc.get("uuid").toString())){
-            DBObject update=new BasicDBObject(removeOrAddFlag?"$addToSet":"$pull", new BasicDBObject("children",new BasicDBObject("uuid",uuid)));
-            update(query, update, false, false);
+            updateKey="children";
         }else{
             List<String> sqlList=new ArrayList<String>();
-            String sql=DataStatisticsTemplateQueryUtil.buildAddChildrenUpdateSql((List<BasicDBObject>)treeDoc.get("children"),parentUuid,sqlList);
-            DBObject update=new BasicDBObject(removeOrAddFlag?"$addToSet":"$pull", new BasicDBObject(sql,new BasicDBObject("uuid",uuid)));
-            update(query, update, false, false);
-            System.out.println(sql);
+            updateKey=DataStatisticsTemplateQueryUtil.buildAddChildrenUpdateSql((List<BasicDBObject>)treeDoc.get("children"),parentUuid,sqlList,updateKey);
         }
+        DBObject updateValue=new BasicDBObject("uuid",uuid);
+        updateValue.put("show",true);
+        DBObject update=new BasicDBObject(removeOrAddFlag?"$addToSet":"$pull", new BasicDBObject(updateKey,updateValue));
+        update(query, update, false, false);
         return false;
     }
 

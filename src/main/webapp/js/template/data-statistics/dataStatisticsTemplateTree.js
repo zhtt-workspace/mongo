@@ -11,6 +11,7 @@ dataStatisticsTemplateTree.init=function(){
                 zNodes:[data.data]
             });
             dataStatisticsTemplate.tree.init();
+            dataStatisticsTemplate.tree.getSelectedNodes().zTree.expandAll(true);
         }else{
             dataStatisticsTemplate.openForm('createRootModalId');
             LobiboxUtil.notify(data.message);

@@ -2,6 +2,7 @@ package zhtt.service.template;
 
 import com.mongodb.BasicDBObject;
 import com.mongodb.DBObject;
+import zhtt.entity.templeate.DataStatisticsTemplate;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -25,7 +26,7 @@ public class DataStatisticsTemplateQueryUtil {
     }
 
     /** 构造更新树 **/
-    public  static String buildAddChildrenUpdateSql(List<BasicDBObject> tree,final String parent,List<String> sqlList){
+    public  static String buildAddChildrenUpdateSql(List<BasicDBObject> tree,final String parent,List<String> sqlList,String sql){
         int i=0;
         int j=tree.size();
         for(BasicDBObject child:tree){
@@ -37,13 +38,13 @@ public class DataStatisticsTemplateQueryUtil {
                     for(String string:sqlList){
                         sqlBuffer.append(string);
                     }
-                    return sqlBuffer.toString();
+                    sql= sqlBuffer.toString();
                 }else{
                     List<BasicDBObject> childtree=(List<BasicDBObject>) child.get("children");
                     if(childtree==null){
                     }else{
                         sqlList.add("."+i+".children");
-                        buildAddChildrenUpdateSql(childtree,parent,sqlList);
+                        sql=buildAddChildrenUpdateSql(childtree,parent,sqlList,sql);
                     }
                 }
             }
@@ -52,7 +53,7 @@ public class DataStatisticsTemplateQueryUtil {
                 sqlList.remove(sqlList.size()-1);
             }
         }
-        return null;
+        return sql;
     }
 
 
@@ -95,7 +96,24 @@ public class DataStatisticsTemplateQueryUtil {
         return uuidList;
     }
 
-
+    /** 得到子树上的所有显示状态的 input code **/
+    public static  List<String> getInputShowListByChildrenTree(List<BasicDBObject> tree,List<String> inputUuidList){
+        List<String> uuidList=new ArrayList<String>();
+        for(BasicDBObject child:tree){
+            if(child==null){continue;}
+            List<BasicDBObject> childtree=(List<BasicDBObject>) child.get("children");
+            if(child.containsField("show")&&child.getBoolean("show")){
+                String uuid=child.getString("uuid");
+                if(inputUuidList.contains(uuid)){
+                    uuidList.add(uuid);
+                }
+                if(childtree!=null){
+                    uuidList.addAll(getInputShowListByChildrenTree(childtree, inputUuidList));
+                }
+            }
+        }
+        return uuidList;
+    }
 
     /** 构造树 **/
     public static  Map<String, Object> buildTree(BasicDBObject treeObj,Map<String,BasicDBObject> dbMap){
@@ -108,9 +126,12 @@ public class DataStatisticsTemplateQueryUtil {
     }
 
     /** 构造树 **/
-    private static  List<Map<String, Object>> buildTree(List<BasicDBObject> tree,Map<String,BasicDBObject> DCTMap){
+    private static  List<Map<String, Object>> buildTree(List<BasicDBObject> childrens,Map<String,BasicDBObject> DCTMap){
         List<Map<String, Object>> mapList = new ArrayList<Map<String, Object>>();
-        for(BasicDBObject child:tree){
+        if(childrens==null||childrens.size()==0){
+            return mapList;
+        }
+        for(BasicDBObject child:childrens){
             Map<String, Object> map = new HashMap<String, Object>();
             if(child==null){
                 continue;
@@ -137,6 +158,61 @@ public class DataStatisticsTemplateQueryUtil {
                 }
                 mapList.add(map);
             }
+        }
+        return mapList;
+    }
+
+    /** 得到所有input **/
+    public static List<String> getAllInputList(List<BasicDBObject> dctList){
+        List<String> codeList=new ArrayList<String>();
+        for(BasicDBObject child:dctList){
+            if(("field".equals(child.get("type")))){
+                codeList.add(child.getString("uuid"));
+            }
+        }
+        return codeList;
+    }
+
+    /** 构造表单 **/
+    public static  List<Map<String, Object>> buildTable(List<BasicDBObject> tree,Map<String,BasicDBObject> DCTMap,List<String> inputCodeList){
+        List<Map<String, Object>> mapList = new ArrayList<Map<String, Object>>();
+        try{
+            for(BasicDBObject child:tree){
+                if(child==null){continue;}
+                if(child.containsField("show")&&child.getBoolean("show")){
+                    Map<String, Object> map = new HashMap<String, Object>();
+                    String uuid=child.getString(DataStatisticsTemplate.FieldKey.uuid);
+                    map.put("uuid", uuid);
+                    BasicDBObject DCT=DCTMap.get(uuid);
+                    if(DCT==null){
+                        //本节点对应模板已被删除
+                    }else{
+                        map.put(DataStatisticsTemplate.FieldKey.name, DCT.get(DataStatisticsTemplate.FieldKey.name));
+                        map.put(DataStatisticsTemplate.FieldKey.parentId, DCT.get(DataStatisticsTemplate.FieldKey.parentId));
+                        String type=(String) DCT.get(DataStatisticsTemplate.FieldKey.type);
+                        map.put(DataStatisticsTemplate.FieldKey.type, type);
+                        List<BasicDBObject> childtree=(List<BasicDBObject>) child.get("children");
+                        if(childtree==null){
+                            //本节点无子节点
+                            map.put(DataStatisticsTemplate.FieldKey.colspan, DCT.getString(DataStatisticsTemplate.FieldKey.colspan));//1 为占一列、0 为占半列
+                            if(DataStatisticsTemplate.Type.FIELD.equals(type)){
+                                map.put(DataStatisticsTemplate.FieldKey.unit, DCT.get(DataStatisticsTemplate.FieldKey.unit));
+                                map.put(DataStatisticsTemplate.FieldKey.type, DCT.get(DataStatisticsTemplate.FieldKey.type));
+                                map.put(DataStatisticsTemplate.FieldKey.maxNumber, DCT.get(DataStatisticsTemplate.FieldKey.maxNumber));
+                                map.put(DataStatisticsTemplate.FieldKey.minNumber, DCT.get(DataStatisticsTemplate.FieldKey.minNumber));
+                                map.put(DataStatisticsTemplate.FieldKey.beyondRemind, DCT.get(DataStatisticsTemplate.FieldKey.beyondRemind));
+                            }
+                        }else{
+                            map.put(DataStatisticsTemplate.FieldKey.colspan, DCT.getString(DataStatisticsTemplate.FieldKey.colspan));
+                            map.put("children",buildTable(childtree,DCTMap,inputCodeList));
+                            map.put("childrenSize",getInputShowListByChildrenTree(childtree, inputCodeList).size());
+                        }
+                    }
+                    mapList.add(map);
+                }
+            }
+        }catch(Exception e){
+            e.printStackTrace();
         }
         return mapList;
     }

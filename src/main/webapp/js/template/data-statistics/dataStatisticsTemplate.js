@@ -5,6 +5,7 @@ $(function(){
     dataStatisticsTemplate.init();
 });
 var dataStatisticsTemplate={
+    tableUrl:ctx+"/template/data-statistics/table?table=false",
     treeUrl:ctx+"/template/data-statistics/tree?tree=false",
     treeId:"dataStatisticsTemplateTreeDiv",
     createRootModalId:"openCreateRootDataStatisticsTemplateModelBtn",
@@ -15,6 +16,7 @@ var dataStatisticsTemplate={
 };
 dataStatisticsTemplate.init=function(){
     dataStatisticsTemplateTree.init();
+    dataStatisticsTemplateTable.init();
     dataStatisticsTemplate.initEvent();
 }
 dataStatisticsTemplate.initEvent=function(){
@@ -24,7 +26,7 @@ dataStatisticsTemplate.initEvent=function(){
     });
     $('#createFieldDataStatisticsTemplateModal').on('shown.bs.modal', function () {
         var selected=dataStatisticsTemplate.tree.getSelectedNodes();
-        $('#createGroupDataStatisticsTemplateModal input[name="parentId"]').val(selected.nodes[0].uuid);
+        $('#createFieldDataStatisticsTemplateModal input[name="parentId"]').val(selected.nodes[0].uuid);
     });
 }
 dataStatisticsTemplate.openForm=function(flag){
@@ -46,7 +48,7 @@ dataStatisticsTemplate.openForm=function(flag){
             }
         }
         if(dataStatisticsTemplate[flag]){
-            $("#"+dataStatisticsTemplate[flag]).click()
+            $("#"+dataStatisticsTemplate[flag]).click();
         }else{
             LobiboxUtil.notify("打开窗口无效");
         }

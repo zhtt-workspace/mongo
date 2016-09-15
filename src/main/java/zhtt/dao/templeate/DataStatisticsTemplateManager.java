@@ -29,6 +29,17 @@ public class DataStatisticsTemplateManager {
     }
 
     /**
+     * 有则更新
+     * @param find
+     * @param update
+     * @return
+     */
+    public WriteResult update(DBObject find,DBObject update){
+        WriteResult result=update(find, new BasicDBObject("$set", update), false, true);
+        return result;
+    }
+
+    /**
      * 有则更新，无则插入
      * @param find
      * @param update

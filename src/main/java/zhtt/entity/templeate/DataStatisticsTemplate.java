@@ -23,6 +23,28 @@ public class DataStatisticsTemplate {
         public static final String FIELD="field";
     }
 
+    public class DocTree{
+        /**
+         * 本模板的主键（由于_id为ObjectId，使用起来不方便)
+         */
+        public static final String uuid="uuid";
+        /**
+         * 本模板的的所属机构（机构为根机构或分机构）
+         */
+        public static final String orgId="orgId";
+        /**
+         * node_id
+         */
+        public static final String node_id="node_id";
+        /**
+         * node_id
+         */
+        public static final String datetime="datetime";
+        /**
+         * node_id
+         */
+        public static final String children="children";
+    }
 
     /**
      * 根节点的字段

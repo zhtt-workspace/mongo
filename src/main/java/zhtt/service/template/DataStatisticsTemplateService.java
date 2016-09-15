@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoOperations;
 import org.springframework.stereotype.Service;
 import zhtt.dao.templeate.DataStatisticsTemplateManager;
+import zhtt.entity.templeate.DataStatisticsTemplate;
 import zhtt.util.JsonResponse;
 import zhtt.util.JsonResponseStatusEnum;
 
@@ -55,6 +56,39 @@ public class DataStatisticsTemplateService {
         }
     }
 
+    /**
+     * 返回统计树
+     * @param orgId
+     * @return
+     */
+    public JsonResponse getDataStatisticsTable(String orgId){
+        BasicDBObject docTreeObj=getDocTreeNode(orgId);
+        if(docTreeObj==null){
+            return new JsonResponse(JsonResponseStatusEnum.ERROR,"节点树未初始化，请创建。");
+        }else{
+            List<String> uuidList=DataStatisticsTemplateQueryUtil.getUuidListByDocTree(docTreeObj);
+            BasicDBObject query=new BasicDBObject(DataStatisticsTemplate.FieldKey.uuid, new BasicDBObject("$in", uuidList));
+            DBObject filter=new BasicDBObject(DataStatisticsTemplate.FieldKey.uuid,true);
+            filter.put(DataStatisticsTemplate.FieldKey.name,true);
+            filter.put(DataStatisticsTemplate.FieldKey.parentId,true);
+            filter.put(DataStatisticsTemplate.FieldKey.type,true);
+            filter.put(DataStatisticsTemplate.FieldKey.colspan,true);
+            filter.put(DataStatisticsTemplate.FieldKey.maxNumber,true);
+            filter.put(DataStatisticsTemplate.FieldKey.minNumber,true);
+            filter.put(DataStatisticsTemplate.FieldKey.unit,true);
+            filter.put(DataStatisticsTemplate.FieldKey.beyondRemind,true);
+            List<BasicDBObject> dbList=dataStatisticsTemplateManager.queryDBObjectList(query,filter);
+            Map<String,BasicDBObject> dbMap=new HashMap<String,BasicDBObject>();
+            for(BasicDBObject basicDBObject:dbList){
+                String uuid=basicDBObject.getString(DataStatisticsTemplate.FieldKey.uuid);
+                if(basicDBObject.containsField(DataStatisticsTemplate.FieldKey.name)){
+                    dbMap.put(uuid, basicDBObject);
+                }
+            }
+            List<Map<String, Object>> mapList = DataStatisticsTemplateQueryUtil.buildTable((List<BasicDBObject>) docTreeObj.get("children"), dbMap, DataStatisticsTemplateQueryUtil.getAllInputList(dbList));
+            return new JsonResponse(mapList);
+        }
+    }
 
     /**
      * 查询指定机构下的doc_tree文档记录
