@@ -1,16 +1,16 @@
 package zhtt.controller.template;
 
 import com.beust.jcommander.Parameter;
+import com.mongodb.DBObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import zhtt.entity.user.Organization;
 import zhtt.entity.user.User;
 import zhtt.service.template.DataStatisticsTemplateService;
 import zhtt.util.JsonResponse;
+import zhtt.util.JsonResponseStatusEnum;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -51,6 +51,17 @@ public class DataStatisticsTemplateController {
             return dataStatisticsTemplateService.getDataStatisticsTable(orgId).getData();
         }else{
             return dataStatisticsTemplateService.getDataStatisticsTable(orgId);
+        }
+    }
+
+    @RequestMapping(value = "/get/{uuid}",method = RequestMethod.GET)
+    @ResponseBody
+    public Object get(@PathVariable("uuid")String uuid){
+        if(uuid==null&&uuid.length()==0){
+            return new JsonResponse(JsonResponseStatusEnum.ERROR,"请示路径无效");
+        }else{
+            DBObject obj=dataStatisticsTemplateService.getByUuid(uuid);
+            return new JsonResponse(obj);
         }
     }
 }

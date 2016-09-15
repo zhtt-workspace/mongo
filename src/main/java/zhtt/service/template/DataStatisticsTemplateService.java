@@ -27,6 +27,10 @@ public class DataStatisticsTemplateService {
     @Autowired
     private DataStatisticsTemplateManager dataStatisticsTemplateManager;
 
+    public DBObject getByUuid(String uuid){
+        return dataStatisticsTemplateManager.findOne(new BasicDBObject("uuid",uuid));
+    }
+
     /**
      * 返回统计树
      * @param orgId

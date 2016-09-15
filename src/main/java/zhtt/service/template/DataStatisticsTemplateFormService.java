@@ -24,6 +24,10 @@ public class DataStatisticsTemplateFormService {
         return dataStatisticsTemplateManager.save(obj);
     }
 
+    public void delete(String uuid){
+
+    }
+
     public WriteResult update(DBObject find,DBObject update,boolean insert,boolean multi){
         return dataStatisticsTemplateManager.update(find, update, insert, multi);
     }

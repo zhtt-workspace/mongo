@@ -34,12 +34,13 @@
                                     <a href="${ctx}/template/data-statistics/create-group" style="display: none;" id="openCreateGroupDataStatisticsTemplateModelBtn"  data-toggle="modal" data-target="#createGroupDataStatisticsTemplateModal"></a>
                                     <a href="${ctx}/template/data-statistics/create-field" style="display: none;" id="openCreateFieldDataStatisticsTemplateModelBtn"  data-toggle="modal" data-target="#createFieldDataStatisticsTemplateModal"></a>
                                     <a href="javascript:dataStatisticsTemplate.openForm('createGroupModalId')" class="btn btn-success btn-sm" role="button">
-                                        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> 新增分组
+                                        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>新增分组
                                     </a>
                                     <a href="javascript:dataStatisticsTemplate.openForm('createFieldModalId')" class="btn btn-success btn-sm" role="button">
                                         <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> 新增字段
                                     </a>
-                                    <a href="${ctx}/template/data-statistics/create" style="display: none;" id="openUpdateDataStatisticsTemplateModelBtn"  data-toggle="modal" data-target="#updateDataStatisticsTemplateModal"></a>
+                                    <a href="${ctx}/template/data-statistics/create-field" style="display: none;" id="openUpdateFieldDataStatisticsTemplateModelBtn"  data-toggle="modal" data-target="#updateFieldDataStatisticsTemplateModal"></a>
+                                    <a href="${ctx}/template/data-statistics/create-group" style="display: none;" id="openUpdateGroupDataStatisticsTemplateModelBtn"  data-toggle="modal" data-target="#updateGroupDataStatisticsTemplateModal"></a>
                                     <a href="javascript:dataStatisticsTemplate.openUpdateForm()" class="btn btn-warning btn-sm" role="button">
                                         <span class="glyphicon glyphicon-edit" aria-hidden="true"></span> 修改
                                     </a>
@@ -69,26 +70,36 @@
         </div>
     </div>
 </div> <!-- /container -->
-
+<!-- 新建根节点 -->
 <div class="modal fade" id="createRootDataStatisticsTemplateModal" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
         </div><!-- /.modal-content -->
     </div><!-- /.modal -->
 </div>
+<!-- 新建分组 -->
 <div class="modal fade" id="createGroupDataStatisticsTemplateModal" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
         </div><!-- /.modal-content -->
     </div><!-- /.modal -->
 </div>
+<!-- 新建字段 -->
 <div class="modal fade" id="createFieldDataStatisticsTemplateModal" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
         </div><!-- /.modal-content -->
     </div><!-- /.modal -->
 </div>
-<div class="modal fade" id="updateDataStatisticsTemplateModal" tabindex="-1" role="dialog" aria-hidden="true">
+<!-- 更新分组 -->
+<div class="modal fade" id="updateGroupDataStatisticsTemplateModal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal -->
+</div>
+<!-- 更新字段 -->
+<div class="modal fade" id="updateFieldDataStatisticsTemplateModal" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
         </div><!-- /.modal-content -->

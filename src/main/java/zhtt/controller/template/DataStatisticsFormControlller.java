@@ -32,6 +32,17 @@ public class DataStatisticsFormControlller {
     @Autowired
     private OrganizationService organizationService;
 
+    @RequestMapping(value = "/delete/{uuid}",method = RequestMethod.GET)
+    @ResponseBody
+    public Object get(@PathVariable("uuid")String uuid){
+        if(uuid==null&&uuid.length()==0){
+            return new JsonResponse(JsonResponseStatusEnum.ERROR,"请示路径无效");
+        }else{
+            dataStatisticsTemplateFormService.delete(uuid);
+            return new JsonResponse();
+        }
+    }
+
     @RequestMapping(value = "/data-statistics/field-form",method = RequestMethod.POST)
     @ResponseBody
     private JsonResponse fieldform(@RequestParam Map<String,String> map,HttpServletRequest request){
@@ -51,6 +62,7 @@ public class DataStatisticsFormControlller {
             dbObj.put(DataStatisticsTemplate.FieldKey.orgId, loginRootOrganization.getUuid());
             if(map.containsKey("uuid")&&map.get("uuid")!=null&&map.get("uuid").length()>0){
                 DBObject dbObjQuery=createFieldDocQuery(map);
+                dbObj.put("uuid",map.get("uuid"));
                 dataStatisticsTemplateFormService.update(dbObjQuery, dbObj);
             }else{
                 dataStatisticsTemplateFormService.saveAndModifyTreeDoc(dbObj);
@@ -79,6 +91,7 @@ public class DataStatisticsFormControlller {
             dbObj.put(DataStatisticsTemplate.GroupKey.orgId,loginRootOrganization.getUuid());
             if(map.containsKey("uuid")&&map.get("uuid")!=null&&map.get("uuid").length()>0){
                 DBObject dbObjQuery=createGroupDocQuery(map);
+                dbObj.put("uuid",map.get("uuid"));
                 dataStatisticsTemplateFormService.update(dbObjQuery, dbObj);
             }else{
                 dataStatisticsTemplateFormService.saveAndModifyTreeDoc(dbObj);

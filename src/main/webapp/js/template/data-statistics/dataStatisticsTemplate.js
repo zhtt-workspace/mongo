@@ -5,6 +5,7 @@ $(function(){
     dataStatisticsTemplate.init();
 });
 var dataStatisticsTemplate={
+    getUrl:ctx+"/template/data-statistics/get/",
     tableUrl:ctx+"/template/data-statistics/table?table=false",
     treeUrl:ctx+"/template/data-statistics/tree?tree=false",
     treeId:"dataStatisticsTemplateTreeDiv",
@@ -27,6 +28,33 @@ dataStatisticsTemplate.initEvent=function(){
     $('#createFieldDataStatisticsTemplateModal').on('shown.bs.modal', function () {
         var selected=dataStatisticsTemplate.tree.getSelectedNodes();
         $('#createFieldDataStatisticsTemplateModal input[name="parentId"]').val(selected.nodes[0].uuid);
+    });
+    $('#updateGroupDataStatisticsTemplateModal').on('shown.bs.modal', function () {
+        var selected=dataStatisticsTemplate.tree.getSelectedNodes();
+        var nodeData=selected.nodes[0];
+        $.get(dataStatisticsTemplate.getUrl+nodeData.uuid,function(data){
+            data=data.data;
+            $('#updateGroupDataStatisticsTemplateModal input[name="parentId"]').val(data.parentId);
+            $('#updateGroupDataStatisticsTemplateModal input[name="uuid"]').val(data.uuid);
+            $('#updateGroupDataStatisticsTemplateModal input[name="name"]').val(data.name);
+            $('#updateGroupDataStatisticsTemplateModal input[name="colspan"]').val(data.colspan);
+        });
+    });
+    $('#updateFieldDataStatisticsTemplateModal').on('shown.bs.modal', function () {
+        var selected=dataStatisticsTemplate.tree.getSelectedNodes();
+        var nodeData=selected.nodes[0];
+        $.get(dataStatisticsTemplate.getUrl+nodeData.uuid,function(data){
+            data=data.data;
+            $('#updateFieldDataStatisticsTemplateModal input[name="parentId"]').val(data.parentId);
+            $('#updateFieldDataStatisticsTemplateModal input[name="uuid"]').val(data.uuid);
+            $('#updateFieldDataStatisticsTemplateModal input[name="name"]').val(data.name);
+            $('#updateFieldDataStatisticsTemplateModal input[name="colspan"]').val(data.colspan);
+            $('#updateFieldDataStatisticsTemplateModal input[name="unit"]').val(data.unit);
+            $('#updateFieldDataStatisticsTemplateModal input[name="decimalDigits"]').val(data.decimalDigits);
+            $('#updateFieldDataStatisticsTemplateModal input[name="maxNumber"]').val(data.maxNumber);
+            $('#updateFieldDataStatisticsTemplateModal input[name="minNumber"]').val(data.minNumber);
+            $('#updateFieldDataStatisticsTemplateModal input[name="beyondRemind"]').val(data.beyondRemind);
+        });
     });
 }
 dataStatisticsTemplate.openForm=function(flag){
@@ -64,6 +92,7 @@ dataStatisticsTemplate.submitCreateForm=function(obj){
             if(data.status=="success"){
                 LobiboxUtil.notify("保存成功！");
                 modalUtil.close("#"+modalDiv.id);
+                dataStatisticsTemplateTree.addNodeByParentId(data.data);
             }else{
                 LobiboxUtil.notify(data.message);
             }
@@ -71,7 +100,13 @@ dataStatisticsTemplate.submitCreateForm=function(obj){
     });
 }
 dataStatisticsTemplate.openUpdateForm=function(){
-    $("#openUpdateDataStatisticsTemplateModelBtn").click();
+    var selected=dataStatisticsTemplate.tree.getSelectedNodes();
+    var data=selected.nodes[0];
+    if(data.type=="field"){
+        $("#openUpdateFieldDataStatisticsTemplateModelBtn").click();
+    }else if(data.type=="group"){
+        $("#openUpdateGroupDataStatisticsTemplateModelBtn").click();
+    }
 }
 dataStatisticsTemplate.delete=function(){
 

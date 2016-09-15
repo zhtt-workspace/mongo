@@ -7,7 +7,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <div class="panel panel-default">
-  <div class="panel-heading">初始化根节点</div>
+  <div class="panel-heading">创建分组</div>
   <div class="panel-body">
     <form class="form-horizontal" action="${ctx}/template/data-statistics/group-form">
       <div style="display: none;">
