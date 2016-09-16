@@ -16,6 +16,7 @@ import zhtt.util.ProjectUtil;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -32,14 +33,21 @@ public class DataStatisticsFormControlller {
     @Autowired
     private OrganizationService organizationService;
 
-    @RequestMapping(value = "/delete/{uuid}",method = RequestMethod.GET)
+    @RequestMapping(value = "/data-statistics/delete/{uuid}/{parentId}",method = RequestMethod.GET)
     @ResponseBody
-    public Object get(@PathVariable("uuid")String uuid){
+    public Object get(@PathVariable("uuid")String uuid,@PathVariable("parentId")String parentId,HttpServletRequest request){
+        Organization loginRootOrganization=(Organization)request.getSession().getAttribute("loginRootOrganization");
+        if(loginRootOrganization==null){
+            return new JsonResponse(JsonResponseStatusEnum.ERROR,"登录信息已过期！");
+        }
         if(uuid==null&&uuid.length()==0){
             return new JsonResponse(JsonResponseStatusEnum.ERROR,"请示路径无效");
         }else{
-            dataStatisticsTemplateFormService.delete(uuid);
-            return new JsonResponse();
+            dataStatisticsTemplateFormService.deleteAndModifyDocTree(uuid, parentId,loginRootOrganization.getUuid(), false);
+            Map<String,String> map=new HashMap<String,String>();
+            map.put("uuid",uuid);
+            map.put("parentId",parentId);
+            return new JsonResponse(map);
         }
     }
 
@@ -69,7 +77,7 @@ public class DataStatisticsFormControlller {
             }
             return new JsonResponse(dbObj);
         }catch (Exception e){
-            return new JsonResponse();
+            return new JsonResponse(JsonResponseStatusEnum.ERROR,e.getMessage());
         }
     }
 
@@ -118,22 +126,19 @@ public class DataStatisticsFormControlller {
             }
 
             DBObject dbObj=createRootDoc(map);
+            if(map.containsKey("uuid")&&map.get("uuid")!=null&&map.get("uuid").length()>0){
+
+            }else{
+                DBObject treeObj=createRootDocTreeDoc(map);
+                treeObj.put(DataStatisticsTemplate.RootKey.orgId,loginRootOrganization.getUuid());
+                DBObject treeObjQuery=createRootDocTreeDocQuery(map);
+                treeObjQuery.put(DataStatisticsTemplate.RootKey.orgId,loginRootOrganization.getUuid());
+                dataStatisticsTemplateFormService.updateOrInsert(treeObjQuery, treeObj);
+            }
             dbObj.put(DataStatisticsTemplate.RootKey.orgId,loginRootOrganization.getUuid());
             DBObject dbObjQuery=createRootDocQuery(map);
             dbObjQuery.put(DataStatisticsTemplate.RootKey.orgId,loginRootOrganization.getUuid());
             dataStatisticsTemplateFormService.updateOrInsert(dbObjQuery, dbObj);
-
-            DBObject treeObj=new BasicDBObject();
-            treeObj.put(DataStatisticsTemplate.RootKey.datetime, new Date());
-            treeObj.put("node_id", "doc_tree");
-            treeObj.put(DataStatisticsTemplate.RootKey.uuid, "doc_tree");
-            treeObj.put(DataStatisticsTemplate.RootKey.orgId,loginRootOrganization.getUuid());
-
-            DBObject treeObjQuery=new BasicDBObject();
-            treeObjQuery.put("node_id", "doc_tree");
-            treeObjQuery.put(DataStatisticsTemplate.RootKey.uuid, "doc_tree");
-            treeObjQuery.put(DataStatisticsTemplate.RootKey.orgId,loginRootOrganization.getUuid());
-            dataStatisticsTemplateFormService.updateOrInsert(treeObjQuery, treeObj);
             return new JsonResponse(dbObj);
         }catch (Exception e){
             e.printStackTrace();
@@ -167,6 +172,30 @@ public class DataStatisticsFormControlller {
         dbObjQuery.put(DataStatisticsTemplate.RootKey.uuid, "doc_tree");
         return dbObjQuery;
     }
+
+    /**
+     * 创建树文档
+     * @param map
+     * @return
+     */
+    private DBObject createRootDocTreeDoc(Map<String,String> map){
+        DBObject treeObj=new BasicDBObject();
+        treeObj.put(DataStatisticsTemplate.RootKey.datetime, new Date());
+        return treeObj;
+    }
+
+    /**
+     * 创建树文档查询条件
+     * @param map
+     * @return
+     */
+    private DBObject createRootDocTreeDocQuery(Map<String,String> map){
+        DBObject treeObjQuery=new BasicDBObject();
+        treeObjQuery.put("node_id", "doc_tree");
+        return treeObjQuery;
+    }
+
+
 
     /**
      * 创建分组节点文档

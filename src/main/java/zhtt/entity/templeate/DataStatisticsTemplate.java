@@ -6,6 +6,12 @@ package zhtt.entity.templeate;
 public class DataStatisticsTemplate {
 
     /**
+     * 数据库中作为标记为删除的字段,某些数据（例如casttype和typeitem）因为有其他数据相关联的原因不方便直接删除，所以做标记删除
+     *
+     */
+    public static final String DELETE_MAEK = "dismissed";
+
+    /**
      * 节点的类型对应的值
      */
     public class Type{

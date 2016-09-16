@@ -119,8 +119,9 @@ public class DataStatisticsTemplateQueryUtil {
     public static  Map<String, Object> buildTree(BasicDBObject treeObj,Map<String,BasicDBObject> dbMap){
         List<Map<String, Object>> mapList = buildTree((List<BasicDBObject>)treeObj.get("children"),dbMap);
         Map<String, Object> map=new HashMap<>();
-        map.put("name",dbMap.get("doc_tree").get("name"));
-        map.put("uuid",dbMap.get("doc_tree").get("uuid"));
+        map.put(DataStatisticsTemplate.RootKey.name,dbMap.get("doc_tree").get(DataStatisticsTemplate.RootKey.name));
+        map.put(DataStatisticsTemplate.RootKey.uuid,dbMap.get("doc_tree").get(DataStatisticsTemplate.RootKey.uuid));
+        map.put(DataStatisticsTemplate.RootKey.type,dbMap.get("doc_tree").get(DataStatisticsTemplate.RootKey.type));
         map.put("children",mapList);
         return map;
     }
@@ -141,6 +142,7 @@ public class DataStatisticsTemplateQueryUtil {
                 continue;
             }
             map.put("uuid", uuid);
+            map.put("parentId", child.get("parentId"));
             map.put("show", child.containsField("show")&&child.getBoolean("show")==true);
             BasicDBObject DCT=DCTMap.get(uuid);
             if(DCT==null){
@@ -148,7 +150,7 @@ public class DataStatisticsTemplateQueryUtil {
             }else{
                 map.put("uuid", DCT.getString("uuid"));
                 map.put("name", DCT.get("name"));
-                map.put("parent", DCT.get("parentId"));
+                map.put("parentId", DCT.get("parentId"));
                 map.put("type", DCT.get("type"));
                 List<BasicDBObject> childtree=(List<BasicDBObject>) child.get("children");
                 if(childtree==null){
@@ -176,6 +178,9 @@ public class DataStatisticsTemplateQueryUtil {
     /** 构造表单 **/
     public static  List<Map<String, Object>> buildTable(List<BasicDBObject> tree,Map<String,BasicDBObject> DCTMap,List<String> inputCodeList){
         List<Map<String, Object>> mapList = new ArrayList<Map<String, Object>>();
+        if(tree==null){
+            return mapList;
+        }
         try{
             for(BasicDBObject child:tree){
                 if(child==null){continue;}

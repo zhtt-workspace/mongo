@@ -6,6 +6,7 @@ $(function(){
 });
 var dataStatisticsTemplate={
     getUrl:ctx+"/template/data-statistics/get/",
+    deleteUrl:ctx+"/template/data-statistics/delete/",
     tableUrl:ctx+"/template/data-statistics/table?table=false",
     treeUrl:ctx+"/template/data-statistics/tree?tree=false",
     treeId:"dataStatisticsTemplateTreeDiv",
@@ -56,6 +57,16 @@ dataStatisticsTemplate.initEvent=function(){
             $('#updateFieldDataStatisticsTemplateModal input[name="beyondRemind"]').val(data.beyondRemind);
         });
     });
+    $('#updateRootDataStatisticsTemplateModal').on('shown.bs.modal', function () {
+        var selected=dataStatisticsTemplate.tree.getSelectedNodes();
+        var nodeData=selected.nodes[0];
+        $.get(dataStatisticsTemplate.getUrl+nodeData.uuid,function(data){
+            data=data.data;
+            $('#updateRootDataStatisticsTemplateModal input[name="uuid"]').val(data.uuid);
+            $('#updateRootDataStatisticsTemplateModal input[name="name"]').val(data.name);
+            $('#updateRootDataStatisticsTemplateModal input[name="colspan"]').val(data.colspan);
+        });
+    });
 }
 dataStatisticsTemplate.openForm=function(flag){
     if(flag){
@@ -91,23 +102,66 @@ dataStatisticsTemplate.submitCreateForm=function(obj){
         success:function(data){
             if(data.status=="success"){
                 LobiboxUtil.notify("保存成功！");
+                if($("#"+modalDiv.id+" input[name='uuid']").val()==""){
+                    dataStatisticsTemplateTree.addNode(data.data);
+                }else{
+                    dataStatisticsTemplateTree.updateNode(data.data);
+                }
                 modalUtil.close("#"+modalDiv.id);
-                dataStatisticsTemplateTree.addNodeByParentId(data.data);
             }else{
                 LobiboxUtil.notify(data.message);
             }
+        },
+        error:function(data){
+            LobiboxUtil.notify("操作失败！");
         }
     });
 }
 dataStatisticsTemplate.openUpdateForm=function(){
     var selected=dataStatisticsTemplate.tree.getSelectedNodes();
-    var data=selected.nodes[0];
-    if(data.type=="field"){
-        $("#openUpdateFieldDataStatisticsTemplateModelBtn").click();
-    }else if(data.type=="group"){
-        $("#openUpdateGroupDataStatisticsTemplateModelBtn").click();
+    var data=selected.nodes;
+    if(data==null){
+        LobiboxUtil.notify("请选择要更新的节点！");
+        return;
     }
+    if(data[0].type){
+        if(data[0].type=="field"){
+            $("#openUpdateFieldDataStatisticsTemplateModelBtn").click();
+        }else if(data[0].type=="group"){
+            $("#openUpdateGroupDataStatisticsTemplateModelBtn").click();
+        }else if(data[0].type=="root"){
+            $("#openUpdateRootDataStatisticsTemplateModelBtn").click();
+        }
+    }else{
+        LobiboxUtil.notify("节点类型未定义！");
+    }
+
 }
 dataStatisticsTemplate.delete=function(){
+    var selected=dataStatisticsTemplate.tree.getSelectedNodes();
+    if(selected.nodes==null){
+        LobiboxUtil.notify("请选择要删除的节点！");
+        return;
+    }
+    var data=selected.nodes[0];
+    if(data.type!="field"){
+        if(typeof data.children!="undefined"&&data.children.length>0){
+            LobiboxUtil.notify("请先删除子节点！");
+            return ;
+        }
+    }
+    $.get(dataStatisticsTemplate.deleteUrl+data.uuid+"/"+data.parentId,function(data){
+        if(data.status=="success"){
+            LobiboxUtil.notify("删除成功！");
+            dataStatisticsTemplateTree.removeNode(data.data);
+        }else{
+            LobiboxUtil.notify(data.message);
+        }
+    });
+}
+dataStatisticsTemplate.showNode=function(){
+
+}
+dataStatisticsTemplate.hideNode=function(){
 
 }

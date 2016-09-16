@@ -42,6 +42,7 @@ public class DataStatisticsTemplateService {
             return new JsonResponse(JsonResponseStatusEnum.ERROR,"节点树未初始化，请创建。");
         }else{
             List<String> uuidList=DataStatisticsTemplateQueryUtil.getUuidListByDocTree(docTreeObj);
+            uuidList.add("doc_tree");
             BasicDBObject query=new BasicDBObject("uuid", new BasicDBObject("$in", uuidList));
             DBObject filter=new BasicDBObject("uuid",true);
             filter.put("name",true);

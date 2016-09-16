@@ -3,8 +3,8 @@
  */
 var LobiboxUtil={};
 LobiboxUtil.notify=function(cfg){
-    if(typeof cfg=="undefined"){
-        cfg="消息框收到消息未定义！";
+    if(typeof cfg=="undefined"||cfg==null){
+        cfg="消息框收到消息未定义或为空！";
     }
     cfg=typeof cfg=="string"?{msg:cfg}:cfg;
     Lobibox.notify('error', {

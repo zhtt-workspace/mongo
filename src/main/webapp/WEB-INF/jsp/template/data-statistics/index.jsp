@@ -39,6 +39,7 @@
                                     <a href="javascript:dataStatisticsTemplate.openForm('createFieldModalId')" class="btn btn-success btn-sm" role="button">
                                         <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> 新增字段
                                     </a>
+                                    <a href="${ctx}/template/data-statistics/create-root" style="display: none;" id="openUpdateRootDataStatisticsTemplateModelBtn"  data-toggle="modal" data-target="#updateRootDataStatisticsTemplateModal"></a>
                                     <a href="${ctx}/template/data-statistics/create-field" style="display: none;" id="openUpdateFieldDataStatisticsTemplateModelBtn"  data-toggle="modal" data-target="#updateFieldDataStatisticsTemplateModal"></a>
                                     <a href="${ctx}/template/data-statistics/create-group" style="display: none;" id="openUpdateGroupDataStatisticsTemplateModelBtn"  data-toggle="modal" data-target="#updateGroupDataStatisticsTemplateModal"></a>
                                     <a href="javascript:dataStatisticsTemplate.openUpdateForm()" class="btn btn-warning btn-sm" role="button">
@@ -100,6 +101,13 @@
 </div>
 <!-- 更新字段 -->
 <div class="modal fade" id="updateFieldDataStatisticsTemplateModal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal -->
+</div>
+<!-- 更新根节点 -->
+<div class="modal fade" id="updateRootDataStatisticsTemplateModal" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
         </div><!-- /.modal-content -->

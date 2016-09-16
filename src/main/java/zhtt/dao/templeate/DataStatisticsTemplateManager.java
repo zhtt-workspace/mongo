@@ -65,6 +65,20 @@ public class DataStatisticsTemplateManager {
     }
 
     /**
+     * 删除模板字段
+     */
+    public boolean delete(DBObject query){
+        try{
+            DBCollection coll = mongoCollectionsManager.getDataStatisticsTemplateCollection();
+            coll.remove(query, WriteConcern.SAFE);
+            return true;
+        }catch(Exception exception){
+            exception.printStackTrace();
+            return false;
+        }
+    }
+
+    /**
      * 仅返回一条
      * @param query
      * @return
