@@ -235,4 +235,36 @@ public class DataStatisticsTemplateQueryUtil {
         }
         return mapList;
     }
+
+    /**
+     * 节点调整位置
+     * @param forest
+     * @param uuid
+     * @param moveDirection
+     */
+    public static void moveNode(List<BasicDBObject>  forest ,final String uuid,final int moveDirection){
+        try{
+            int forestLengt=forest.size();
+            for (int i=0;i<forestLengt;i++) {
+                BasicDBObject obj=forest.get(i);
+                if(obj.get("uuid").equals(uuid)){
+                    int objIndex=forest.indexOf(obj);
+                    if(objIndex+moveDirection==-1||objIndex+moveDirection>=forestLengt){
+                        System.out.println("移动极限");
+                        break;
+                    }else{
+                        forest.remove(obj);
+                        forest.add(objIndex+moveDirection, obj);
+                    }
+                }else{
+                    List<BasicDBObject>  childList=(List<BasicDBObject> ) obj.get("children");
+                    if(childList!=null){
+                        moveNode(childList,uuid,moveDirection);
+                    }
+                }
+            }
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+    }
 }

@@ -6,6 +6,7 @@ $(function(){
 });
 var dataStatisticsTemplate={
     getUrl:ctx+"/template/data-statistics/get/",
+    moveUrl:ctx+"/template/data-statistics/move/",
     changeStateUrl:ctx+"/template/data-statistics/show/",
     deleteUrl:ctx+"/template/data-statistics/delete/",
     tableUrl:ctx+"/template/data-statistics/table?table=false",
@@ -183,6 +184,36 @@ dataStatisticsTemplate.hideNode=function(){
     }
     var data=selected.nodes[0];
     $.get(dataStatisticsTemplate.changeStateUrl+data.uuid+"/false",function(data){
+        if(data.status=="success"){
+            LobiboxUtil.notify("修改成功！");
+        }else{
+            LobiboxUtil.notify(data.message);
+        }
+    });
+}
+dataStatisticsTemplate.moveUp=function(){
+    var selected=dataStatisticsTemplate.tree.getSelectedNodes();
+    if(selected.nodes==null){
+        LobiboxUtil.notify("请选择要修改的节点！");
+        return;
+    }
+    var data=selected.nodes[0];
+    $.get(dataStatisticsTemplate.moveUrl+data.uuid+"/-1",function(data){
+        if(data.status=="success"){
+            LobiboxUtil.notify("修改成功！");
+        }else{
+            LobiboxUtil.notify(data.message);
+        }
+    });
+}
+dataStatisticsTemplate.moveDown=function(){
+    var selected=dataStatisticsTemplate.tree.getSelectedNodes();
+    if(selected.nodes==null){
+        LobiboxUtil.notify("请选择要修改的节点！");
+        return;
+    }
+    var data=selected.nodes[0];
+    $.get(dataStatisticsTemplate.moveUrl+data.uuid+"/1",function(data){
         if(data.status=="success"){
             LobiboxUtil.notify("修改成功！");
         }else{

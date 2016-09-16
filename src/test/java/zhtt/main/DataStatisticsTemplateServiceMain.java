@@ -20,7 +20,13 @@ public class DataStatisticsTemplateServiceMain {
                 new String[]{"applicationContext-test.xml", "applicationContext-mongo-config-test.xml", "applicationContext-servlet-test.xml"});
         dataStatisticsTemplateService = (DataStatisticsTemplateService) ac.getBean("dataStatisticsTemplateService");
         dataStatisticsTemplateFormService = (DataStatisticsTemplateFormService) ac.getBean("dataStatisticsTemplateFormService");
-        update();
+        upOrDown();
+    }
+
+    public static void upOrDown(){
+        String orgId="74fade7353954b899a37ba137df227d2";
+        String uuid="ad3d2c8c207249209939218513b03e8a";
+        dataStatisticsTemplateFormService.upOrDown(orgId,uuid,1);
     }
 
     public static void update(){

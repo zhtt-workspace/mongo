@@ -33,6 +33,8 @@ public class DataStatisticsFormControlller {
     @Autowired
     private OrganizationService organizationService;
 
+
+
     @RequestMapping(value="/data-statistics/show/{uuid}/{state}")
     @ResponseBody
     private Object changeState(@PathVariable("uuid")String uuid,@PathVariable("state")boolean state,HttpServletRequest request){
@@ -45,6 +47,28 @@ public class DataStatisticsFormControlller {
                 return new JsonResponse(JsonResponseStatusEnum.ERROR,"请示路径无效");
             }else{
                 dataStatisticsTemplateFormService.updateTreeState(loginRootOrganization.getUuid(),uuid, state);
+                Map<String,String> map=new HashMap<String,String>();
+                map.put("uuid",uuid);
+                return new JsonResponse(map);
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+            return new JsonResponse(JsonResponseStatusEnum.ERROR,e.getMessage());
+        }
+    }
+
+    @RequestMapping(value="/data-statistics/move/{uuid}/{moveDirection}")
+    @ResponseBody
+    private Object upOrDown(@PathVariable("uuid")String uuid,@PathVariable("moveDirection")int moveDirection,HttpServletRequest request){
+        try{
+            Organization loginRootOrganization=(Organization)request.getSession().getAttribute("loginRootOrganization");
+            if(loginRootOrganization==null){
+                return new JsonResponse(JsonResponseStatusEnum.ERROR,"登录信息已过期！");
+            }
+            if(uuid==null&&uuid.length()==0){
+                return new JsonResponse(JsonResponseStatusEnum.ERROR,"请示路径无效");
+            }else{
+                dataStatisticsTemplateFormService.upOrDown(loginRootOrganization.getUuid(), uuid, moveDirection);
                 Map<String,String> map=new HashMap<String,String>();
                 map.put("uuid",uuid);
                 return new JsonResponse(map);

@@ -120,6 +120,16 @@ public class DataStatisticsTemplateFormService {
         return true;
     }
 
+    public boolean upOrDown(String orgId,String uuid,int moveDirection){
+        DBObject query=DataStatisticsTemplateQueryUtil.getTreeDocQuery(orgId);
+        DBObject treeDoc=dataStatisticsTemplateManager.findOne(query);
+        List<BasicDBObject>  forest=(List<BasicDBObject>)treeDoc.get("children");
+        DataStatisticsTemplateQueryUtil.moveNode(forest, uuid, moveDirection);
+        DBObject update=new BasicDBObject("$set", new BasicDBObject("children",forest));
+        update(query, update, false, false);
+        return true;
+    }
+
     /**
      * 初始化 ：doc_tree节点
      * @param name
