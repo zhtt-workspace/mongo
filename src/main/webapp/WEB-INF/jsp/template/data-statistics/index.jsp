@@ -26,10 +26,10 @@
                     <div class="panel-heading">
                         <div class="container-fluid">
                             <div class="row">
-                                <div class="col-xs-12 col-md-7">
+                                <div class="col-xs-12 col-md-6">
                                     <span class="glyphicon glyphicon-tree-conifer" aria-hidden="true"></span> 模板预览
                                 </div>
-                                <div class="col-xs-12 col-md-5 text-right">
+                                <div class="col-xs-12 col-md-6 text-right">
                                     <a href="${ctx}/template/data-statistics/create-root" style="display: none;" id="openCreateRootDataStatisticsTemplateModelBtn"  data-toggle="modal" data-target="#createRootDataStatisticsTemplateModal"></a>
                                     <a href="${ctx}/template/data-statistics/create-group" style="display: none;" id="openCreateGroupDataStatisticsTemplateModelBtn"  data-toggle="modal" data-target="#createGroupDataStatisticsTemplateModal"></a>
                                     <a href="${ctx}/template/data-statistics/create-field" style="display: none;" id="openCreateFieldDataStatisticsTemplateModelBtn"  data-toggle="modal" data-target="#createFieldDataStatisticsTemplateModal"></a>
@@ -47,6 +47,12 @@
                                     </a>
                                     <a href="javascript:dataStatisticsTemplate.delete()" class="btn btn-danger btn-sm" role="button">
                                         <span class="glyphicon glyphicon-remove" aria-hidden="true"></span> 删除
+                                    </a>
+                                    <a href="javascript:dataStatisticsTemplate.showNode()" class="btn btn-danger btn-sm" role="button">
+                                        <span class="glyphicon glyphicon-remove" aria-hidden="true"></span> 显示
+                                    </a>
+                                    <a href="javascript:dataStatisticsTemplate.hideNode()" class="btn btn-danger btn-sm" role="button">
+                                        <span class="glyphicon glyphicon-remove" aria-hidden="true"></span> 隐藏
                                     </a>
                                 </div>
                             </div>

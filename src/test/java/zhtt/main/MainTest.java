@@ -6,7 +6,7 @@ package zhtt.main;
 public class MainTest {
 
     public static void main(String[] args){
-        String str="123";
-        System.out.println( str instanceof String );
+        String str="children.0.children.1.children.0.children";
+        System.out.println( str.substring(0,str.lastIndexOf("children"))+"show");
     }
 }

@@ -103,6 +103,24 @@ public class DataStatisticsTemplateFormService {
     }
 
     /**
+     *
+     * @param orgId
+     * @param uuid
+     * @param state：显示状态（true,false）
+     * @return
+     */
+    public boolean updateTreeState(String orgId,String uuid,boolean state){
+        DBObject query=DataStatisticsTemplateQueryUtil.getTreeDocQuery(orgId);
+        DBObject treeDoc=dataStatisticsTemplateManager.findOne(query);
+        String updateKey=null;
+        List<String> sqlList=new ArrayList<String>();
+        updateKey=DataStatisticsTemplateQueryUtil.buildAddChildrenUpdateSql((List<BasicDBObject>)treeDoc.get("children"),uuid,sqlList,updateKey);
+        DBObject update=new BasicDBObject("$set", new BasicDBObject(updateKey.substring(0,updateKey.lastIndexOf("children"))+"show",state));
+        update(query, update, false, false);
+        return true;
+    }
+
+    /**
      * 初始化 ：doc_tree节点
      * @param name
      * @return

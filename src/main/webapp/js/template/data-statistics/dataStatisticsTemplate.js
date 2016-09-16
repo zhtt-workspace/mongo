@@ -6,6 +6,7 @@ $(function(){
 });
 var dataStatisticsTemplate={
     getUrl:ctx+"/template/data-statistics/get/",
+    changeStateUrl:ctx+"/template/data-statistics/show/",
     deleteUrl:ctx+"/template/data-statistics/delete/",
     tableUrl:ctx+"/template/data-statistics/table?table=false",
     treeUrl:ctx+"/template/data-statistics/tree?tree=false",
@@ -160,8 +161,32 @@ dataStatisticsTemplate.delete=function(){
     });
 }
 dataStatisticsTemplate.showNode=function(){
-
+    var selected=dataStatisticsTemplate.tree.getSelectedNodes();
+    if(selected.nodes==null){
+        LobiboxUtil.notify("请选择要修改的节点！");
+        return;
+    }
+    var data=selected.nodes[0];
+    $.get(dataStatisticsTemplate.changeStateUrl+data.uuid+"/true",function(data){
+        if(data.status=="success"){
+            LobiboxUtil.notify("修改成功！");
+        }else{
+            LobiboxUtil.notify(data.message);
+        }
+    });
 }
 dataStatisticsTemplate.hideNode=function(){
-
+    var selected=dataStatisticsTemplate.tree.getSelectedNodes();
+    if(selected.nodes==null){
+        LobiboxUtil.notify("请选择要修改的节点！");
+        return;
+    }
+    var data=selected.nodes[0];
+    $.get(dataStatisticsTemplate.changeStateUrl+data.uuid+"/false",function(data){
+        if(data.status=="success"){
+            LobiboxUtil.notify("修改成功！");
+        }else{
+            LobiboxUtil.notify(data.message);
+        }
+    });
 }
