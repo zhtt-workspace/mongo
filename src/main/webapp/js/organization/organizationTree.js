@@ -4,17 +4,15 @@
  * 删除时，后台没有验证是否有子节点
  * 新增、删除后前台节点没有更新
  */
-var organizationTree={
-    tree:null
-}
+var organizationTree={}
 organizationTree.init=function(){
-    organizationTree.tree=new zTreeUtil({
+    organization.tree=new zTreeUtil({
         treeDivId:organization.treeId,
         url:organization.treeUrl,
         ajaxLoad:true,
         onAsyncSuccess:organizationTree.onAsyncSuccess
     });
-    organizationTree.tree.init();
+    organization.tree.init();
 }
 /**
  * 异步加载成功后执行的方法

@@ -26,6 +26,9 @@
  *
  *  init：(无参、无返回值)加载树结构
  *  getSelectedNodes：（有参、有返回值）获取选中的树
+ *  addNode：（有参、无返回）添加节点
+ *  updateNode：（有参、无返回）更新节点
+ *  removeNode：（有参、无返回）删除节点
  *  showCombo：（有参）显示下拉框
  *  hideCombo:：（无参）隐藏下拉框
  *
@@ -92,7 +95,42 @@ function zTreeUtil(options){
             onCheck: onCheck
         }
     };
-
+    /**
+     * 新建成功后，向树节点中添加节点
+     * @param data：｛根据data的parentId获取父节点，然后向里添加子节点｝
+     */
+    this.addNode=function(data){
+        var tree=this.getSelectedNodes().zTree;
+        if(tree){
+            var parentNode=tree.getNodeByParam("uuid",data.parentId);
+            tree.addNodes(parentNode, data);
+        }else{
+            this.init();
+        }
+    }
+    /**
+     * 更新成功后，更新节点的名称，根据节点的uuid
+     * @param data
+     */
+    this.updateNode=function(data){
+        var tree=this.getSelectedNodes().zTree;
+        if(tree){
+            var node=tree.getNodeByParam("uuid",data.uuid);
+            node.name=data.name;
+            tree.updateNode(node);
+        }
+    }
+    /**
+     * 根据uuid从树上移出节点
+     * @param data
+     */
+    this.removeNode=function(data){
+        var tree=this.getSelectedNodes().zTree;
+        if(tree){
+            var node=tree.getNodeByParam("uuid",data.uuid);
+            tree.removeNode(node);
+        }
+    }
     function getFont(treeId, node) {
         return node.font ? node.font : {};
     }

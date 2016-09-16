@@ -116,8 +116,10 @@ dataStatisticsTemplate.submitCreateForm=function(obj){
                 LobiboxUtil.notify("保存成功！");
                 if($("#"+modalDiv.id+" input[name='uuid']").val()==""){
                     dataStatisticsTemplateTree.addNode(data.data);
+                    //dataStatisticsTemplate.tree.addNode(data.data);
                 }else{
-                    dataStatisticsTemplateTree.updateNode(data.data);
+                    //dataStatisticsTemplateTree.updateNode(data.data);
+                    dataStatisticsTemplate.tree.updateNode(data.data);
                 }
                 modalUtil.close("#"+modalDiv.id);
             }else{
@@ -166,7 +168,8 @@ dataStatisticsTemplate.delete=function(){
         $.get(dataStatisticsTemplate.deleteUrl+data.uuid+"/"+data.parentId,function(data){
             if(data.status=="success"){
                 LobiboxUtil.notify("删除成功！");
-                dataStatisticsTemplateTree.removeNode(data.data);
+                //dataStatisticsTemplateTree.removeNode(data.data);
+                dataStatisticsTemplate.tree.removeNode(data.data);
             }else{
                 LobiboxUtil.notify(data.message);
             }

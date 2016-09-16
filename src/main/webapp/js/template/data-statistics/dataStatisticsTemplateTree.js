@@ -19,47 +19,6 @@ dataStatisticsTemplateTree.init=function(){
     });
 }
 /**
- * 新建成功后，向树节点中添加节点
- * @param data
- */
-dataStatisticsTemplateTree.addNode=function(data){
-    if(dataStatisticsTemplate.tree==null){
-        dataStatisticsTemplate.init();
-    }else{
-        var tree=dataStatisticsTemplate.tree.getSelectedNodes().zTree;
-        if(tree){
-            var parentNode=tree.getNodeByParam("uuid",data.parentId);
-            tree.addNodes(parentNode, data);
-        }else{
-            dataStatisticsTemplateTree.init();
-        }
-    }
-}
-/**
- * 新建成功后，向树节点中添加节点
- * @param data
- */
-dataStatisticsTemplateTree.updateNode=function(data){
-    var tree=dataStatisticsTemplate.tree.getSelectedNodes().zTree;
-    if(tree){
-        var node=tree.getNodeByParam("uuid",data.uuid);
-        node.name=data.name;
-        tree.updateNode(node);
-    }
-}
-/**
- * 新建成功后，向树节点中添加节点
- * @param data
- */
-dataStatisticsTemplateTree.removeNode=function(data){
-    var tree=dataStatisticsTemplate.tree.getSelectedNodes().zTree;
-    if(tree){
-        var node=tree.getNodeByParam("uuid",data.uuid);
-        node.name=data.name;
-        tree.removeNode(node);
-    }
-}
-/**
  * 点击节点时，做一些验证等操作
  * @param event
  * @param treeId
@@ -113,3 +72,44 @@ dataStatisticsTemplateTree.moveDown=function(data){
         }
     }
 }
+/**
+ * 新建成功后，向树节点中添加节点
+ * @param data
+ dataStatisticsTemplateTree.addNode=function(data){
+    if(dataStatisticsTemplate.tree==null){
+        dataStatisticsTemplate.init();
+    }else{
+        var tree=dataStatisticsTemplate.tree.getSelectedNodes().zTree;
+        if(tree){
+            var parentNode=tree.getNodeByParam("uuid",data.parentId);
+            tree.addNodes(parentNode, data);
+        }else{
+            dataStatisticsTemplateTree.init();
+        }
+    }
+}
+ */
+/**
+ * 新建成功后，向树节点中添加节点
+ * @param data
+ dataStatisticsTemplateTree.updateNode=function(data){
+    var tree=dataStatisticsTemplate.tree.getSelectedNodes().zTree;
+    if(tree){
+        var node=tree.getNodeByParam("uuid",data.uuid);
+        node.name=data.name;
+        tree.updateNode(node);
+    }
+}
+ */
+/**
+ * 新建成功后，向树节点中添加节点
+ * @param data
+ dataStatisticsTemplateTree.removeNode=function(data){
+    var tree=dataStatisticsTemplate.tree.getSelectedNodes().zTree;
+    if(tree){
+        var node=tree.getNodeByParam("uuid",data.uuid);
+        node.name=data.name;
+        tree.removeNode(node);
+    }
+}
+ */

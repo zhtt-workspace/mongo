@@ -15,7 +15,8 @@ var organization={
     treeUrl:ctx+"/organization/tree?parentId=",
     treeId:"orgTreeDiv",
     tableListId:"organizationListTable",
-    tableListUrl:ctx+'/organization/query'
+    tableListUrl:ctx+'/organization/query',
+    tree:null
 }
 organization.init=function(){
     organizationTree.init();
@@ -26,7 +27,7 @@ organization.init=function(){
  */
 organization.initEvent=function(){
     $('#'+organization.createModalId).on('shown.bs.modal', function () {
-        var tree=organizationTree.tree.getSelectedNodes({msg:"添加子节点时，请选择一个父节点！",callback:function(obj){
+        var tree=organization.tree.getSelectedNodes({msg:"添加子节点时，请选择一个父节点！",callback:function(obj){
             var node=obj.nodes[0];
             organizationUtil.renderCreateFormByNode(node);
         }});
@@ -44,7 +45,7 @@ organization.initEvent=function(){
         });
     });
     $('#'+organization.updateModalId).on('shown.bs.modal', function () {
-        organizationTree.tree.getSelectedNodes({msg:"请选择要更新的节点",callback:function(obj){
+        organization.tree.getSelectedNodes({msg:"请选择要更新的节点",callback:function(obj){
             var node=obj.nodes[0];
             var form=$("#"+organization.updateFormId);
             form.find("input[name='orgType']").filter("[value='"+node.orgType+"']").removeAttr("disabled").attr("checked",true);
@@ -69,7 +70,7 @@ organization.initEvent=function(){
  * 打开新建机构的表单窗口
  */
 organization.openCreateForm=function(){
-    var treeObj=organizationTree.tree.getSelectedNodes({msg:"添加子节点时，请选择一个父节点！",callback:function(obj){
+    var treeObj=organization.tree.getSelectedNodes({msg:"添加子节点时，请选择一个父节点！",callback:function(obj){
         $("#openCreateOrganizationModelBtn").click();
     }});
     if(treeObj.zTree==null){
@@ -94,6 +95,7 @@ organization.submitCreateForm=function(){
             if(data.status=="success"){
                 LobiboxUtil.notify("保存成功！");
                 modalUtil.close("#"+organization.createModalId);
+                organization.tree.addNode(data.data);
             }else{
                 LobiboxUtil.notify(data.message);
             }
@@ -104,7 +106,7 @@ organization.submitCreateForm=function(){
  * 打开更新节点的form表单
  */
 organization.openUpdateForm=function(){
-    organizationTree.tree.getSelectedNodes({msg:"请选择要更新的节点",callback:function(obj){
+    organization.tree.getSelectedNodes({msg:"请选择要更新的节点",callback:function(obj){
         $("#openUpdateOrganizationModelBtn").click();
     }});
 }
@@ -123,8 +125,9 @@ organization.submitUpdateForm=function(){
         url:organization.updateUrl,
         success:function(data){
             if(data.status=="success"){
-                LobiboxUtil.notify("保存成功！");
+                LobiboxUtil.notify("修改成功！");
                 modalUtil.close("#"+organization.updateFormId);
+                organization.tree.updateNode(data.data);
             }else{
                 LobiboxUtil.notify(data.message);
             }
@@ -135,7 +138,7 @@ organization.submitUpdateForm=function(){
  * 删除机构
  **/
 organization.delete=function(){
-    organizationTree.tree.getSelectedNodes({msg:"请选择要删除的节点",callback:function(obj){
+    organization.tree.getSelectedNodes({msg:"请选择要删除的节点",callback:function(obj){
         var uuid=[];
         var node=obj.nodes[0];
         var childNodes=node.children;
@@ -155,6 +158,9 @@ organization.delete=function(){
                 success: function (data) {
                     if(data.status=="success"){
                         LobiboxUtil.notify("删除成功！");
+                        for(var i=0;i<data.data.length;i++){
+                            organization.tree.removeNode({"uuid":data.data[i]});
+                        }
                     }else{
                         LobiboxUtil.notify("删除失败！"+data.message);
                     }
@@ -216,7 +222,7 @@ organization.operateformater=function(value, row, index){
 }
 //传递的参数
 organization.queryParams=function(params) {
-    var tree=organizationTree.tree.getSelectedNodes("");
+    var tree=organization.tree.getSelectedNodes("");
     return {
         offset: typeof params=="undefined"?0:params.offset,
         limit: typeof params=="undefined"?2:params.limit,
