@@ -42,7 +42,6 @@ public class DataStatisticsTemplateService {
             return new JsonResponse(JsonResponseStatusEnum.ERROR,"节点树未初始化，请创建。");
         }else{
             List<String> uuidList=DataStatisticsTemplateQueryUtil.getUuidListByDocTree(docTreeObj);
-            uuidList.add("doc_tree");
             BasicDBObject query=new BasicDBObject("uuid", new BasicDBObject("$in", uuidList));
             DBObject filter=new BasicDBObject("uuid",true);
             filter.put("name",true);
@@ -90,8 +89,8 @@ public class DataStatisticsTemplateService {
                     dbMap.put(uuid, basicDBObject);
                 }
             }
-            List<Map<String, Object>> mapList = DataStatisticsTemplateQueryUtil.buildTable((List<BasicDBObject>) docTreeObj.get("children"), dbMap, DataStatisticsTemplateQueryUtil.getAllInputList(dbList));
-            return new JsonResponse(mapList);
+            Map<String, Object> map = DataStatisticsTemplateQueryUtil.buildTable(docTreeObj, dbMap, DataStatisticsTemplateQueryUtil.getAllInputList(dbList));
+            return new JsonResponse(map);
         }
     }
 

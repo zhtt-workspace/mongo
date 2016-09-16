@@ -71,6 +71,7 @@ public class DataStatisticsTemplateQueryUtil {
                 uuidList.addAll(getUuidListByDocTree((List<BasicDBObject> )docTreeObj.get("children")));
             }
         }
+        uuidList.add("doc_tree");
         return uuidList;
     }
 
@@ -173,6 +174,19 @@ public class DataStatisticsTemplateQueryUtil {
             }
         }
         return codeList;
+    }
+
+    /** 构造表单 **/
+    public static  Map<String, Object> buildTable(BasicDBObject treeObj,Map<String,BasicDBObject> dbMap,List<String> inputCodeList){
+        List<Map<String, Object>> mapList = DataStatisticsTemplateQueryUtil.buildTable((List<BasicDBObject>) treeObj.get("children"), dbMap, inputCodeList);
+        Map<String, Object> map=new HashMap<>();
+        BasicDBObject treeDoc=dbMap.get("doc_tree");
+        map.put(DataStatisticsTemplate.RootKey.name, treeDoc.get(DataStatisticsTemplate.RootKey.name));
+        map.put(DataStatisticsTemplate.RootKey.uuid,treeDoc.get(DataStatisticsTemplate.RootKey.uuid));
+        map.put(DataStatisticsTemplate.RootKey.type,treeDoc.get(DataStatisticsTemplate.RootKey.type));
+        map.put(DataStatisticsTemplate.RootKey.colspan,treeDoc.get(DataStatisticsTemplate.RootKey.colspan));
+        map.put("children",mapList);
+        return map;
     }
 
     /** 构造表单 **/

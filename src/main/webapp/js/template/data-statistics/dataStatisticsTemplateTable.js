@@ -16,13 +16,13 @@ dataStatisticsTemplateTable.template=function(cfg){
     var table=[];
     table.push('<table class="dstTable table table-bordered table-hover  table-striped">');
     table.push('<tr class="dstHeader">');
-    table.push('<th colspan="4"  style="width:533px;letter-spacing: 12px;" id="dataitem">数据项</th>');
+    table.push('<th colspan="'+(parseInt(cfg.colspan)-1)+'"  style="width:533px;letter-spacing: 12px;" id="dataitem">数据项</th>');
     table.push('<th style="width:99px;">最小值</th>');
     table.push('<th style="width:99px;">最大值</th>');
     table.push('<th style="width:99px;">阀值提醒</th>');
     table.push('</tr>');
 
-    var childCfg={'data':cfg,'trFlag':false,'method':'template'};
+    var childCfg={'data':cfg.children,'trFlag':false,'method':'template'};
     table.push(dataStatisticsTemplateTable.templateTr(childCfg));
 
     table.push('</table>');
