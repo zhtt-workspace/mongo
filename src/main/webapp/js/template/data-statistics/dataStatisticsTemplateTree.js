@@ -1,8 +1,7 @@
 /**
  * Created by zhtt on 2016/8/8.
  */
-var dataStatisticsTemplateTree={
-}
+var dataStatisticsTemplateTree={}
 dataStatisticsTemplateTree.init=function(){
     $.get(dataStatisticsTemplate.treeUrl,function(data){
         if(data.status=="success"){
@@ -71,5 +70,46 @@ dataStatisticsTemplateTree.onClick=function(event, treeId, treeNode){
         $('a:contains("新增")').addClass("disabled");
     }else{
         $('a:contains("新增")').removeClass("disabled");
+    }
+    if(treeNode.show==true){
+        $('a:contains("显示")').addClass("disabled");
+        $('a:contains("隐藏")').removeClass("disabled");
+    }else{
+        $('a:contains("显示")').removeClass("disabled");
+        $('a:contains("隐藏")').addClass("disabled");
+    }
+    if(treeNode.getPreNode()==null){
+        $('a:contains("上移")').addClass("disabled");
+    }else{
+        $('a:contains("上移")').removeClass("disabled");
+    }
+    if(treeNode.getNextNode()==null){
+        $('a:contains("下移")').addClass("disabled");
+    }else{
+        $('a:contains("下移")').removeClass("disabled");
+    }
+}
+/**
+ * 节点向上移动
+ */
+dataStatisticsTemplateTree.moveUp=function(data){
+    var tree=dataStatisticsTemplate.tree.getSelectedNodes().zTree;
+    if(tree){
+        var node=tree.getNodeByParam("uuid",data.uuid);
+        if(node.getPreNode()){
+            tree.moveNode(node.getPreNode(),node,"prev");
+        }
+    }
+}
+/**
+ * 节点向上移动
+ */
+dataStatisticsTemplateTree.moveDown=function(data){
+    var tree=dataStatisticsTemplate.tree.getSelectedNodes().zTree;
+    if(tree){
+        var node=tree.getNodeByParam("uuid",data.uuid);
+        if(node.getNextNode()){
+            tree.moveNode(node,node.getNextNode(),"prev");
+        }
     }
 }

@@ -33,7 +33,10 @@
     <a href="javascript:" onclick="dataStatisticsTemplate.submitCreateForm(this)" class="btn btn-default btn-sm" role="button">
       <span class="glyphicon glyphicon-floppy-save" aria-hidden="true"></span> 保 存
     </a>
-    <a href="javascript:modalUtil.close('#createRootDataStatisticsTemplateModal')" class="btn btn-primary btn-sm" role="button">
+    <a href="javascript:modalUtil.close('#createRootDataStatisticsTemplateModal')" class="btn btn-primary btn-sm crete-close-btn" role="button">
+      <span class="glyphicon glyphicon-remove" aria-hidden="true"></span> 关 闭
+    </a>
+    <a href="javascript:modalUtil.close('#updateRootDataStatisticsTemplateModal')" class="btn btn-primary btn-sm update-close-btn hide" role="button">
       <span class="glyphicon glyphicon-remove" aria-hidden="true"></span> 关 闭
     </a>
   </div>

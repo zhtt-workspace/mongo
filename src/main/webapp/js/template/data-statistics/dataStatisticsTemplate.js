@@ -25,14 +25,20 @@ dataStatisticsTemplate.init=function(){
 }
 dataStatisticsTemplate.initEvent=function(){
     $('#createGroupDataStatisticsTemplateModal').on('shown.bs.modal', function () {
+        $("#updateRootDataStatisticsTemplateModal .crete-close-btn").show();
+        $("#updateRootDataStatisticsTemplateModal .update-close-btn").hide();
         var selected=dataStatisticsTemplate.tree.getSelectedNodes();
         $('#createGroupDataStatisticsTemplateModal input[name="parentId"]').val(selected.nodes[0].uuid);
     });
     $('#createFieldDataStatisticsTemplateModal').on('shown.bs.modal', function () {
+        $("#updateRootDataStatisticsTemplateModal .crete-close-btn").show();
+        $("#updateRootDataStatisticsTemplateModal .update-close-btn").hide();
         var selected=dataStatisticsTemplate.tree.getSelectedNodes();
         $('#createFieldDataStatisticsTemplateModal input[name="parentId"]').val(selected.nodes[0].uuid);
     });
     $('#updateGroupDataStatisticsTemplateModal').on('shown.bs.modal', function () {
+        $("#updateRootDataStatisticsTemplateModal .crete-close-btn").hide();
+        $("#updateRootDataStatisticsTemplateModal .update-close-btn").removeClass("hide").show();
         var selected=dataStatisticsTemplate.tree.getSelectedNodes();
         var nodeData=selected.nodes[0];
         $.get(dataStatisticsTemplate.getUrl+nodeData.uuid,function(data){
@@ -44,6 +50,8 @@ dataStatisticsTemplate.initEvent=function(){
         });
     });
     $('#updateFieldDataStatisticsTemplateModal').on('shown.bs.modal', function () {
+        $("#updateRootDataStatisticsTemplateModal .crete-close-btn").hide();
+        $("#updateRootDataStatisticsTemplateModal .update-close-btn").removeClass("hide").show();
         var selected=dataStatisticsTemplate.tree.getSelectedNodes();
         var nodeData=selected.nodes[0];
         $.get(dataStatisticsTemplate.getUrl+nodeData.uuid,function(data){
@@ -60,6 +68,8 @@ dataStatisticsTemplate.initEvent=function(){
         });
     });
     $('#updateRootDataStatisticsTemplateModal').on('shown.bs.modal', function () {
+        $("#updateRootDataStatisticsTemplateModal .crete-close-btn").hide();
+        $("#updateRootDataStatisticsTemplateModal .update-close-btn").removeClass("hide").show();
         var selected=dataStatisticsTemplate.tree.getSelectedNodes();
         var nodeData=selected.nodes[0];
         $.get(dataStatisticsTemplate.getUrl+nodeData.uuid,function(data){
@@ -152,14 +162,16 @@ dataStatisticsTemplate.delete=function(){
             return ;
         }
     }
-    $.get(dataStatisticsTemplate.deleteUrl+data.uuid+"/"+data.parentId,function(data){
-        if(data.status=="success"){
-            LobiboxUtil.notify("删除成功！");
-            dataStatisticsTemplateTree.removeNode(data.data);
-        }else{
-            LobiboxUtil.notify(data.message);
-        }
-    });
+    LobiboxUtil.confirm({msg:"确定要删除吗？",fn:function() {
+        $.get(dataStatisticsTemplate.deleteUrl+data.uuid+"/"+data.parentId,function(data){
+            if(data.status=="success"){
+                LobiboxUtil.notify("删除成功！");
+                dataStatisticsTemplateTree.removeNode(data.data);
+            }else{
+                LobiboxUtil.notify(data.message);
+            }
+        });
+    }});
 }
 dataStatisticsTemplate.showNode=function(){
     var selected=dataStatisticsTemplate.tree.getSelectedNodes();
@@ -201,6 +213,7 @@ dataStatisticsTemplate.moveUp=function(){
     $.get(dataStatisticsTemplate.moveUrl+data.uuid+"/-1",function(data){
         if(data.status=="success"){
             LobiboxUtil.notify("修改成功！");
+            dataStatisticsTemplateTree.moveUp(data.data);
         }else{
             LobiboxUtil.notify(data.message);
         }
@@ -216,6 +229,7 @@ dataStatisticsTemplate.moveDown=function(){
     $.get(dataStatisticsTemplate.moveUrl+data.uuid+"/1",function(data){
         if(data.status=="success"){
             LobiboxUtil.notify("修改成功！");
+            dataStatisticsTemplateTree.moveDown(data.data);
         }else{
             LobiboxUtil.notify(data.message);
         }

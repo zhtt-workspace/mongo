@@ -144,17 +144,22 @@ public class DataStatisticsTemplateQueryUtil {
             }
             map.put("uuid", uuid);
             map.put("parentId", child.get("parentId"));
-            map.put("show", child.containsField("show")&&child.getBoolean("show")==true);
+            boolean show=child.containsField("show")&&child.getBoolean("show")==true;
+            map.put("show",show );
+            if(show==false){
+                map.put("font",new BasicDBObject("color","red") );
+            }
             BasicDBObject DCT=DCTMap.get(uuid);
             if(DCT==null){
                 //本节点对应模板已被删除
+                map.put("name", "【已被删除】"+uuid);
             }else{
                 map.put("uuid", DCT.getString("uuid"));
                 map.put("name", DCT.get("name"));
                 map.put("parentId", DCT.get("parentId"));
                 map.put("type", DCT.get("type"));
                 List<BasicDBObject> childtree=(List<BasicDBObject>) child.get("children");
-                if(childtree==null){
+                if(childtree==null||childtree.size()==0){
                     //本节点无子节点
                 }else{
                     map.put("children",buildTree(childtree, DCTMap));

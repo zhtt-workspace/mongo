@@ -77,7 +77,9 @@ function zTreeUtil(options){
         instance:null,
         view: {
             selectedMulti: false,
-            dblClickExpand: false
+            dblClickExpand: false,
+            fontCss: getFont,
+            nameIsHTML: true
         },
         async: {
             enable: true,
@@ -91,6 +93,9 @@ function zTreeUtil(options){
         }
     };
 
+    function getFont(treeId, node) {
+        return node.font ? node.font : {};
+    }
     /**
      * 获取选中的节点，并返回当前树对象
      * {

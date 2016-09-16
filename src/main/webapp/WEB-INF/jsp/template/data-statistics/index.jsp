@@ -49,16 +49,16 @@
                                         <span class="glyphicon glyphicon-remove" aria-hidden="true"></span> 删除
                                     </a>
                                     <a href="javascript:dataStatisticsTemplate.showNode()" class="btn btn-danger btn-sm" role="button">
-                                        <span class="glyphicon glyphicon-remove" aria-hidden="true"></span> 显示
+                                        <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span> 显示
                                     </a>
                                     <a href="javascript:dataStatisticsTemplate.hideNode()" class="btn btn-danger btn-sm" role="button">
-                                        <span class="glyphicon glyphicon-remove" aria-hidden="true"></span> 隐藏
+                                        <span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span> 隐藏
                                     </a>
                                     <a href="javascript:dataStatisticsTemplate.moveUp()" class="btn btn-danger btn-sm" role="button">
-                                        <span class="glyphicon glyphicon-remove" aria-hidden="true"></span> 上移
+                                        <span class="glyphicon glyphicon-arrow-up" aria-hidden="true"></span> 上移
                                     </a>
                                     <a href="javascript:dataStatisticsTemplate.moveDown()" class="btn btn-danger btn-sm" role="button">
-                                        <span class="glyphicon glyphicon-remove" aria-hidden="true"></span> 下移
+                                        <span class="glyphicon glyphicon-arrow-down" aria-hidden="true"></span> 下移
                                     </a>
                                 </div>
                             </div>
