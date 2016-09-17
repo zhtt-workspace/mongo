@@ -115,8 +115,8 @@ dataStatisticsTemplate.submitCreateForm=function(obj){
             if(data.status=="success"){
                 LobiboxUtil.notify("保存成功！");
                 if($("#"+modalDiv.id+" input[name='uuid']").val()==""){
-                    dataStatisticsTemplateTree.addNode(data.data);
-                    //dataStatisticsTemplate.tree.addNode(data.data);
+                    //dataStatisticsTemplateTree.addNode(data.data);
+                    dataStatisticsTemplate.tree.addNode(data.data);
                 }else{
                     //dataStatisticsTemplateTree.updateNode(data.data);
                     dataStatisticsTemplate.tree.updateNode(data.data);
