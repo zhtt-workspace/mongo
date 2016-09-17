@@ -203,7 +203,8 @@ function zTreeUtil(options){
      */
     function ajaxLoad(event, treeId, treeNode){
         if(typeof treeNode.children=="undefined"&&typeof treeNode.isAjaxLoading=="undefined"){
-            $.get(options.url+treeNode.uuid,function(data){
+            var url=options.childUrl||options.url;
+            $.get(url+treeNode.uuid,function(data){
                 if(typeof data=="object"&&data.length>0){
                     var treeObj = $.fn.zTree.getZTreeObj(treeId);
                     treeObj.addNodes(treeNode, data);

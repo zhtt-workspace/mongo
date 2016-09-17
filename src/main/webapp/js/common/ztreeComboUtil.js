@@ -22,7 +22,6 @@ zTreeUtil.prototype.comboTree=function(){
 }
 zTreeUtil.prototype.addComboTreeHtml=function(){
     var _this=this;
-    $("#"+this._options.inputId).after($("#"+this._options.inputId).clone().attr("id",this._options.inputId+"_").hide()).removeAttr("name");
     var html=[];
     html.push('<div id="'+this._options.treeDivId+'Container" style="display:none; position: absolute;">');
     html.push('<div class="panel panel-default">');
@@ -38,16 +37,21 @@ zTreeUtil.prototype.addComboTreeHtml=function(){
     $("body").append(html.join(""));
     $("#"+this._options.treeDivId+'btn').click(function(){
         var nodes=_this.getSelectedNodes().nodes;
-        if(nodes!=null&&nodes.length>0){
-            var nodename=[];
-            var nodeid=[];
-            for(var i=0;i<nodes.length;i++){
-                var node=nodes[i];
-                nodename.push(node.name);
-                nodeid.push(node.uuid);
+        if(typeof _this._options.enter=="function"){
+            _this._options.enter(nodes);
+        }else{
+            $("#"+_this._options.inputId).after($("#"+_this._options.inputId).clone().attr("id",_this._options.inputId+"_").hide()).removeAttr("name");
+            if(nodes!=null&&nodes.length>0){
+                var nodename=[];
+                var nodeid=[];
+                for(var i=0;i<nodes.length;i++){
+                    var node=nodes[i];
+                    nodename.push(node.name);
+                    nodeid.push(node.uuid);
+                }
+                $("#"+_this._options.inputId).val(nodename.join(","));
+                $("#"+_this._options.inputId+"_").val(nodeid.join(","));
             }
-            $("#"+_this._options.inputId).val(nodename.join(","));
-            $("#"+_this._options.inputId+"_").val(nodeid.join(","));
         }
         _this.hideCombo();
     });

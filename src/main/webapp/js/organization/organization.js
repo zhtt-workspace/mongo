@@ -12,7 +12,8 @@ var organization={
     updateFormId:"updateOrganiztionForm",
     updateUrl:ctx+"/organization/update-form",
     deleteUrl:ctx+"/organization/delete",
-    treeUrl:ctx+"/organization/tree?parentId=",
+    treeUrl:ctx+"/organization/tree?uuid="+loginRootOrganization.uuid,
+    treeChildUrl:ctx+"/organization/tree?parentId=",
     treeId:"orgTreeDiv",
     tableListId:"organizationListTable",
     tableListUrl:ctx+'/organization/query',
@@ -159,7 +160,7 @@ organization.delete=function(){
                     if(data.status=="success"){
                         LobiboxUtil.notify("删除成功！");
                         for(var i=0;i<data.data.length;i++){
-                            organization.tree.removeNode({"uuid":data.data[i]});
+                            organization.tree.removeNode({"uuid":nndata.data[i]});
                         }
                     }else{
                         LobiboxUtil.notify("删除失败！"+data.message);

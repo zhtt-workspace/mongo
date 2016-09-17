@@ -9,6 +9,7 @@ organizationTree.init=function(){
     organization.tree=new zTreeUtil({
         treeDivId:organization.treeId,
         url:organization.treeUrl,
+        childUrl:organization.treeChildUrl,
         ajaxLoad:true,
         onAsyncSuccess:organizationTree.onAsyncSuccess
     });

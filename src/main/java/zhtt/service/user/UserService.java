@@ -56,8 +56,9 @@ public class UserService {
 	 * @param skip
 	 * @return
 	 */
-	public List<User> query(String name,String username,int limit,int skip){
+	public List<User> query(String orgCode,String name,String username,int limit,int skip){
 		Query query=new Query();
+		query.addCriteria(Criteria.where("orgCode").regex(".*"+orgCode+".*"));
 		query.addCriteria(Criteria.where("name").regex(".*"+name+".*"));
 		query.addCriteria(Criteria.where("username").regex(".*"+username+".*"));
 		query.limit(limit);

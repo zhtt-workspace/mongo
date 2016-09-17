@@ -42,7 +42,9 @@
       <div class="form-group">
         <label for="create-user-org" class="col-sm-2 control-label">所属机构</label>
         <div class="col-sm-10">
-          <input name="orgId" type="text" class="form-control" id="create-user-org" placeholder="所属机构" minlength="1" maxlength="32" required>
+          <input name="orgName" type="text" class="form-control" id="create-user-org" placeholder="所属机构" minlength="1" maxlength="32" required>
+          <input name="orgId" type="hidden">
+          <input name="orgCode" type="hidden">
         </div>
       </div>
     </form>

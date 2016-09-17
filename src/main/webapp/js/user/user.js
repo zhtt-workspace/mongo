@@ -10,21 +10,51 @@ var user={
     createModalId:"createUserModal",
     updateModalId:"updateUserModal",
     tableListId:"userListTable",
-    tableListUrl:ctx+'/user/query',
+    tableListUrl:ctx+'/user/query?',
     deleteUrl:ctx+'/user/delete',
     createUrl:ctx+"/user/create-form",
     updateUrl:ctx+"/user/update-form",
-    orgTreeUrl:ctx+"/organization/tree?parentId=",
+    orgTreeUrl:ctx+"/organization/tree?uuid="+loginRootOrganization.uuid,
+    orgTreeChildUrl:ctx+"/organization/tree?parentId=",
     createOrgTree:null,
     updateOrgTree:null
 };
 user.initEvent=function(){
+    $('#'+user.createModalId).on('shown.bs.modal', function () {
+        if(user.createOrgTree==null){
+                user.createOrgTree=new zTreeUtil({
+                    treeDivId:"createOrgTreeDiv",
+                    inputId:"create-user-org",
+                    enter:function(nodes){
+                        if(nodes!=null&&nodes.length>0){
+                            var nodename=[];
+                            var nodeid=[];
+                            var nodeCode=[];
+                            for(var i=0;i<nodes.length;i++){
+                                var node=nodes[i];
+                                nodename.push(node.name);
+                                nodeid.push(node.uuid);
+                                nodeCode.push(node.code);
+                            }
+                        }
+                        $('#'+user.createModalId+" input[name='orgName']").val(nodename.join(","));
+                        $('#'+user.createModalId+" input[name='orgId']").val(nodeid.join(","));
+                        $('#'+user.createModalId+" input[name='orgCode']").val(nodeCode.join(","));
+                    },
+                    url:user.orgTreeUrl,
+                    childUrl:user.orgTreeChildUrl,
+                    ajaxLoad:true
+                });
+                user.createOrgTree.comboTree();
+        }
+    });
     $('#'+user.updateModalId).on('shown.bs.modal', function () {
         if(user.updateOrgTree==null){
                 user.updateOrgTree=new zTreeUtil({
                     treeDivId:"updateOrgTreeDiv",
                     inputId:"update-user-org",
                     url:user.orgTreeUrl,
+                    childUrl:user.orgTreeChildUrl,
                     ajaxLoad:true
                 });
                 user.updateOrgTree.comboTree();

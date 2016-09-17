@@ -53,6 +53,16 @@ public class User {
      */
     private String orgId;
 
+    /**
+     * 所属机构
+     */
+    private String orgName;
+
+    /**
+     * 所属机构
+     */
+    private String orgCode;
+
     public ObjectId get_id() {
         return _id;
     }
@@ -116,6 +126,22 @@ public class User {
         this.uuid = uuid;
     }
 
+    public String getOrgName() {
+        return orgName;
+    }
+
+    public void setOrgName(String orgName) {
+        this.orgName = orgName;
+    }
+
+    public String getOrgCode() {
+        return orgCode;
+    }
+
+    public void setOrgCode(String orgCode) {
+        this.orgCode = orgCode;
+    }
+
     @Override
     public String toString() {
         return "{USERS:{_id:"+this._id+", name:"+this.name+",age:"+this.age+"}}";
@@ -135,6 +161,8 @@ public class User {
         }
         if(this.orgId!=null){
             value.put("orgId", orgId);
+            value.put("orgName", orgName);
+            value.put("orgCode", orgCode);
         }
         if(this.age!=0){
             value.put("age", age);

@@ -36,9 +36,10 @@ public class UserServiceMain {
     public static void query(UserService userService){
         String name="123";
         String username="admin";
+        String orgCode="admin";
         int limit=10;
         int skip=0;
-        List<User> userList=userService.query(name, username, limit, skip);
+        List<User> userList=userService.query(orgCode,name, username, limit, skip);
         System.out.println(userList);
     }
     public static void save(UserService userService){

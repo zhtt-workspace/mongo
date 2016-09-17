@@ -9,11 +9,14 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
+import zhtt.entity.user.Organization;
 import zhtt.entity.user.User;
 import zhtt.service.user.UserService;
 import zhtt.util.JsonResponse;
 import zhtt.util.JsonResponseStatusEnum;
 import zhtt.util.JsonTableResponse;
+
+import javax.servlet.http.HttpServletRequest;
 
 /**
  * Created by zhtt on 2016/8/5.
@@ -28,10 +31,11 @@ public class UserController {
       
     @RequestMapping("/query")
     @ResponseBody
-    public JsonTableResponse query(String name,String username,Integer limit,Integer offset){
+    public JsonTableResponse query(String name,String username,Integer limit,Integer offset,HttpServletRequest request){
         limit=limit==null?2:limit;
         offset=offset==null?0:offset;
-        List<User> userList=userService.query(name,username,limit,offset);
+        Organization loginRootOrganization=(Organization)request.getSession().getAttribute("loginRootOrganization");
+        List<User> userList=userService.query(loginRootOrganization.getCode(),name,username,limit,offset);
         long total=userService.count(name,username);
         return new JsonTableResponse(total,userList);
     }

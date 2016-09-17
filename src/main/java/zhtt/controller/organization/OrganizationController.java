@@ -10,6 +10,8 @@ import zhtt.util.JsonResponse;
 import zhtt.util.JsonResponseStatusEnum;
 import zhtt.util.JsonTableResponse;
 
+import javax.servlet.http.HttpServletRequest;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -24,8 +26,17 @@ public class OrganizationController {
 
     @RequestMapping("/tree")
     @ResponseBody
-    public List<Organization> root(@RequestParam(value = "parentId",required = false)String parentId){
-        return service.getByParentId(parentId);
+    public List<Organization> root(@RequestParam(value = "parentId",required = false)String parentId,@RequestParam(value = "uuid",required = false)String uuid){
+        if(parentId!=null&&parentId.length()>0){
+            return service.getByParentId(parentId);
+        }else if(uuid!=null&&uuid.length()>0){
+            Organization org=service.getByUuid(uuid);
+            List<Organization> organizationList=new ArrayList<Organization>();
+            organizationList.add(org);
+            return organizationList;
+        }else{
+            return service.getByParentId(parentId);
+        }
     }
 
     @RequestMapping("/query")
