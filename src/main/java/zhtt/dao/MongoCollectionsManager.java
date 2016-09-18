@@ -17,8 +17,20 @@ public class MongoCollectionsManager {
     @Autowired
     MongoOperations mongoTemplate;
 
+    /**
+     * 数据统计模板
+     * @return
+     */
     public DBCollection getDataStatisticsTemplateCollection(){
         return getDBCollection(TableConfig.DATA_STATISTICS_TEMPLATE);
+    }
+
+    /**
+     * 数据统计模板
+     * @return
+     */
+    public DBCollection getDataStatisticsCollection(){
+        return getDBCollection(TableConfig.DATA_STATISTICS);
     }
 
     public DBCollection getDBCollection(String collectionName){

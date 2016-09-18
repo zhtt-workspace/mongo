@@ -4,6 +4,7 @@ import com.mongodb.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import zhtt.dao.MongoCollectionsManager;
+import zhtt.dao.MongoQueryUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -88,87 +89,13 @@ public class DataStatisticsTemplateManager {
         return collection.findOne(query);
     }
 
-    /**
-     *
-     * @param query：查询条件
-     * @return
-     */
-    public DBCursor queryDBCursor(DBObject query){
-        try{
-            return queryDBCursor("datetime", query);
-        }catch(Exception e){
-            e.printStackTrace();
-            return null;
-        }
-    }
-
-    /**
-     *
-     * @param sort：排序字段
-     * @param query：查询条件
-     * @return
-     */
-    public DBCursor queryDBCursor(String sort,DBObject query){
-        try{
-            DBCollection coll = mongoCollectionsManager.getDataStatisticsTemplateCollection();
-            DBCursor dBCursor=coll.find(query).sort(new BasicDBObject(sort, -1));
-            return dBCursor;
-        }catch(Exception e){
-            e.printStackTrace();
-            return null;
-        }
-    }
-
-    /**
-     * 根据查询条件返回  DBCursor
-     * @param query：查询条件
-     * @param filter：指定需要返回的字段
-     * @return
-     */
-    public DBCursor queryDBCursor(DBObject query,DBObject filter){
-        DBCollection coll=mongoCollectionsManager.getDataStatisticsTemplateCollection();
-        DBCursor cusor = coll.find(query,filter);
-        return cusor;
-    }
-
-    /**
-     * 根据查询条件返回  List<BasicDBObject>
-     * @param query
-     * @return
-     */
-    public List<BasicDBObject> queryDBObjectList(DBObject query){
-        DBCursor cusor=this.queryDBCursor(query);
-        List<BasicDBObject> dblist=new ArrayList<BasicDBObject>();
-        while (cusor.hasNext()) {
-            dblist.add((BasicDBObject) cusor.next());
-        }
-        return dblist;
-    }
-
-    /**
-     * 根据查询条件返回  List<BasicDBObject>
-     * @param query
-     * @return
-     */
     public List<BasicDBObject> queryDBObjectList(DBObject query,DBObject filter){
-        DBCursor cusor=this.queryDBCursor(query,filter);
-        List<BasicDBObject> dblist=new ArrayList<BasicDBObject>();
-        while (cusor.hasNext()) {
-            dblist.add((BasicDBObject) cusor.next());
-        }
-        return dblist;
+        DBCollection collection=mongoCollectionsManager.getDataStatisticsTemplateCollection();
+        return MongoQueryUtil.queryDBObjectList(query,filter,collection);
     }
 
-    /**
-     * 分组
-     * @param key
-     * @param filterCond
-     * @param initialCode
-     * @param finalizer
-     * @return
-     */
-    public List<BasicDBObject> group(DBObject key, DBObject filterCond, DBObject initialCode,  String finalizer){
+    public List<BasicDBObject> queryDBObjectList(DBObject query){
         DBCollection collection=mongoCollectionsManager.getDataStatisticsTemplateCollection();
-        return (List<BasicDBObject>)collection.group(key, filterCond, initialCode,  finalizer);
+        return MongoQueryUtil.queryDBObjectList(query,collection);
     }
 }

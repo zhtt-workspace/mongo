@@ -22,7 +22,14 @@ public class TableConfig {
 
     /**
      * 数据统计模板
+     * zhtt_t_data_statistics_template
      */
     public static final String DATA_STATISTICS_TEMPLATE="zhtt_t_data_statistics_template";
+
+    /**
+     * 数据统计
+     * zhtt_t_data_statistics
+     */
+    public static final String DATA_STATISTICS="zhtt_t_data_statistics";
 
 }

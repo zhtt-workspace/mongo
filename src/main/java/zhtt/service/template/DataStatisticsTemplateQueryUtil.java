@@ -252,6 +252,9 @@ public class DataStatisticsTemplateQueryUtil {
             int forestLengt=forest.size();
             for (int i=0;i<forestLengt;i++) {
                 BasicDBObject obj=forest.get(i);
+                if(obj==null){
+                    break;
+                }
                 if(obj.get("uuid").equals(uuid)){
                     int objIndex=forest.indexOf(obj);
                     if(objIndex+moveDirection==-1||objIndex+moveDirection>=forestLengt){

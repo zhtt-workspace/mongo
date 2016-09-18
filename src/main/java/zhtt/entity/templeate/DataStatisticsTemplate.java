@@ -66,7 +66,7 @@ public class DataStatisticsTemplate {
          */
         public static final String createOrgId="createOrgId";
         /**
-         * 数据的创建机构
+         * 数据的接收机构：下级汇总上报的数据、本级内部数据
          */
         public static final String receiveOrgId="receiveOrgId";
         /**

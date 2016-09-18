@@ -62,7 +62,7 @@ public class OrganizationDao {
      * @return
      */
     public WriteResult update(Query query,Update update){
-        WriteResult writeResult=mongoTemplate.updateFirst(query, update,$class, table);
+        WriteResult writeResult=mongoTemplate.updateFirst(query, update, $class, table);
         return writeResult;
     }
 
@@ -76,21 +76,21 @@ public class OrganizationDao {
     }
 
     /**
-     * 删除机构
-     * @param uuid
-     */
-    public void delete(List<String> uuid){
-        mongoTemplate.remove(new Query(Criteria.where("uuid").in(uuid)),$class, table);
-    }
-
-    /**
      * 查询机构，指定需要返回的字段
      * @param query
      * @param fieldsObject
      * @return
      */
     public List<Organization> query(Query query,DBObject fieldsObject){
-        return query(new BasicQuery(query.getQueryObject(),fieldsObject));
+        return query(new BasicQuery(query.getQueryObject(), fieldsObject));
+    }
+
+    /**
+     * 删除机构
+     * @param uuid
+     */
+    public void delete(List<String> uuid){
+        mongoTemplate.remove(new Query(Criteria.where("uuid").in(uuid)),$class, table);
     }
 
     public long count(Query query){

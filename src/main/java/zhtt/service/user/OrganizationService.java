@@ -243,4 +243,15 @@ public class OrganizationService {
             return null;
         }
     }
+
+    public List<Organization> queryJuniorOrgNameAndUuidList(String parentId){
+        Query query =new Query();
+        query.addCriteria(Criteria.where("parentId").is(parentId));
+        BasicDBObject fieldsObject=new BasicDBObject();
+        fieldsObject.put("uuid", 1);
+        fieldsObject.put("name", 1);
+        List<Organization> orgList=dao.query(query,fieldsObject);
+        return orgList;
+    }
+
 }
