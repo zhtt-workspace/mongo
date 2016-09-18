@@ -14,7 +14,15 @@
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li class="active"><a href="#">首页</a></li>
-        <li><a href="#about">数据统计表</a></li>
+        <li>
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">数据统计信息管理<span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="${ctx}/data-statistics/create">数据采集管理</a></li>
+            <li><a href="#">数据统计查询</a></li>
+            <li><a href="#">数据简单查询</a></li>
+            <li><a href="${ctx}/user/index">采集日志查询</a></li>
+          </ul>
+        </li>
         <li><a href="#contact">信息调查表</a></li>
         <li><a href="#contact">信息排行榜</a></li>
         <li class="dropdown">

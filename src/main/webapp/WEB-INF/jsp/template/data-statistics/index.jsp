@@ -13,14 +13,14 @@
 <div class="container theme-showcase" role="main">
     <div class="container-fluid">
         <div class="row-fluid">
-            <div class="span3" style="height:100%;overflow: auto;">
+            <div class="span3" style="overflow: auto;">
                 <div class="panel panel-default">
                     <div class="panel-body">
                         <div id="dataStatisticsTemplateTreeDiv" class="ztree"></div>
                     </div>
                 </div>
             </div>
-            <div class="span9" style="height:100%;overflow: auto;">
+            <div class="span9" style="overflow: auto;">
                 <div class="panel panel-default">
                     <!-- Default panel contents -->
                     <div class="panel-heading">

@@ -6,7 +6,7 @@ package zhtt.entity.templeate;
 public class DataStatisticsTemplate {
 
     /**
-     * 数据库中作为标记为删除的字段,某些数据（例如casttype和typeitem）因为有其他数据相关联的原因不方便直接删除，所以做标记删除
+     * 数据库中作为标记为删除的字段,某些数据，因为有其他数据相关联的原因不方便直接删除，所以做标记删除
      *
      */
     public static final String DELETE_MAEK = "dismissed";
@@ -27,6 +27,60 @@ public class DataStatisticsTemplate {
          * 数据项节点
          */
         public static final String FIELD="field";
+        /**
+         * 本机构汇总下级后的数据
+         */
+        public static final String org="org";
+        /**
+         * 本机构内部的数据
+         */
+        public static final String headquarters="headquarters";
+    }
+
+    /**
+     * 每天需要录入的数据
+     */
+    public class DataKey{
+        /**
+         * 数据类型：本机构内部的、本机构汇总的
+         */
+        public static final String dataType="dataType";
+        /**
+         * 哪一天的数据
+         */
+        public static final String date="date";
+        /**
+         * 数据的创建时间
+         */
+        public static final String datetime="datetime";
+        /**
+         * 数据的所属机构
+         */
+        public static final String orgId="orgId";
+        /**
+         * 数据的所属机构
+         */
+        public static final String orgName="orgName";
+        /**
+         * 数据的创建机构（有可能上级为下级创建）
+         */
+        public static final String createOrgId="createOrgId";
+        /**
+         * 数据的创建机构
+         */
+        public static final String receiveOrgId="receiveOrgId";
+        /**
+         * 数据的统计数字
+         */
+        public static final String content="content";
+        /**
+         * 数据的上报状态
+         */
+        public static final String reportState="reportState";
+        /**
+         * 数据的下发状态（有可能上级为下级创建或修改）
+         */
+        public static final String issueState="issueState";
     }
 
     public class DocTree{
