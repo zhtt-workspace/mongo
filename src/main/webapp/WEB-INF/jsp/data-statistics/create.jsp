@@ -57,6 +57,8 @@
 <script type="text/javascript" src="${ctx}/tool/zTree_v3/js/jquery.ztree.all.min.js"></script>
 <script type="text/javascript" src="${ctx}/js/common/ztreeUtil.js"></script>
 <script type="text/javascript" src="${ctx}/js/common/ztreeComboUtil.js"></script>
+<script type="text/javascript" src="${ctx}/js/data-statistics/dataStatistics.js"></script>
+<script type="text/javascript" src="${ctx}/js/data-statistics/dataStatisticsCreate.js"></script>
 </body>
 </html>
 

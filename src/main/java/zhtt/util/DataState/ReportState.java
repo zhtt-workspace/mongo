@@ -25,4 +25,17 @@ public enum ReportState {
     ReportState(int state) {
         this.state = state;
     }
+
+    public static String getValueString(ReportState state){
+        switch (state) {
+            case noreport:
+                return "noreport";
+            case reporting:
+                return "reporting";
+            case reported:
+                return "reported";
+            default:
+                throw new RuntimeException("没有值: " + state);
+        }
+    }
 }

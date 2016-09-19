@@ -14,7 +14,9 @@ import zhtt.util.DataState.ReportState;
 import zhtt.util.FileUtil;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by zhtt on 2016/9/18.
@@ -31,15 +33,30 @@ public class DataStatisticsService {
     @Autowired
     private OrganizationService organizationService;
 
-    public List<BasicDBObject> queryJuniorDataListByReceiveOrgId(String receiveOrgId){
+    public Map<String, Object> buildCreateTableForm(String receiveOrgId){
         String todayDateStr=CalendarHelp.getTodayDateStr();
         BasicDBObject query=buildQuerySqlByDate(todayDateStr,todayDateStr);
         query.put(DataStatisticsTemplate.DataKey.receiveOrgId,receiveOrgId);
-        query.put(DataStatisticsTemplate.DataKey.reportState, ReportState.reported);
+        query.put(DataStatisticsTemplate.DataKey.reportState, ReportState.getValueString(ReportState.reported));
         List<BasicDBObject>  objList=dataStatisticsManager.query(query);
-        List<BasicDBObject>  totalObjList=statisJuniorDataByReceiveOrgId(query);
+        if(objList.size()>0){
+            List<BasicDBObject>  totalObjList=statisJuniorDataByReceiveOrgId(query);
+        }
         List<Organization> orgList=organizationService.queryJuniorOrgNameAndUuidList(receiveOrgId);
-        return null;
+        List<Map<String, String>> noReportOrgList=new ArrayList<Map<String, String>>();
+        for(Organization org:orgList){
+            Map<String,String> map=new HashMap<String,String>();
+            map.put("orgId",org.getUuid());
+            map.put("orgName",org.getName());
+            noReportOrgList.add(map);
+        }
+        Map<String, Object> mapListMap=new HashMap<String, Object>();
+        mapListMap.put("tableConfig",dataStatisticsTemplateService.getDataStatisticsTable(receiveOrgId));/** 初始化table表格的配置信息 **/
+        mapListMap.put("noReportOrgList",noReportOrgList);/** 未上报单位 **/
+        mapListMap.put("reportedOrgList",null);/** 已上报单位 **/
+        mapListMap.put("orgList",null);/** 本机构汇总 **/
+        mapListMap.put("unitList",null);/** 本单位内部数据 **/
+        return mapListMap;
     }
 
     /**
