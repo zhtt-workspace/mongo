@@ -89,9 +89,15 @@ public class DataStatisticsTemplateManager {
         return collection.findOne(query);
     }
 
-    public List<BasicDBObject> queryDBObjectList(DBObject query,DBObject filter){
+    /**
+     *
+     * @param query：查询条件
+     * @param filterField：指定返回字段
+     * @return
+     */
+    public List<BasicDBObject> queryDBObjectList(DBObject query,DBObject filterField){
         DBCollection collection=mongoCollectionsManager.getDataStatisticsTemplateCollection();
-        return MongoQueryUtil.queryDBObjectList(query,filter,collection);
+        return MongoQueryUtil.queryDBObjectList(query,filterField,collection);
     }
 
     public List<BasicDBObject> queryDBObjectList(DBObject query){

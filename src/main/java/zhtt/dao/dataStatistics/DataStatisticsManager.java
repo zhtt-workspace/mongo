@@ -4,6 +4,7 @@ import com.mongodb.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import zhtt.dao.MongoCollectionsManager;
+import zhtt.dao.MongoQueryUtil;
 
 import java.util.List;
 
@@ -63,5 +64,21 @@ public class DataStatisticsManager {
     public List<BasicDBObject> group(DBObject groupField, DBObject filterCond, DBObject initialField,  String finalizer){
         DBCollection collection=mongoCollectionsManager.getDataStatisticsCollection();
         return (List<BasicDBObject>)collection.group(groupField, filterCond, initialField,  finalizer);
+    }
+
+    /**
+     *
+     * @param query：查询条件
+     * @param filterField：指定返回字段
+     * @return
+     */
+    public List<BasicDBObject> query(DBObject query,DBObject filterField){
+        DBCollection collection=mongoCollectionsManager.getDataStatisticsTemplateCollection();
+        return MongoQueryUtil.queryDBObjectList(query, filterField, collection);
+    }
+
+    public List<BasicDBObject> query(DBObject query){
+        DBCollection collection=mongoCollectionsManager.getDataStatisticsTemplateCollection();
+        return MongoQueryUtil.queryDBObjectList(query,collection);
     }
 }

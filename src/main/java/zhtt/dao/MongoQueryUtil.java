@@ -13,8 +13,6 @@ import java.util.List;
  */
 public class MongoQueryUtil {
 
-
-
     /**
      *
      * @param query：查询条件
@@ -48,11 +46,11 @@ public class MongoQueryUtil {
     /**
      * 根据查询条件返回  DBCursor
      * @param query：查询条件
-     * @param filter：指定需要返回的字段
+     * @param filterField：指定需要返回的字段
      * @return
      */
-    public static DBCursor queryDBCursor(DBObject query,DBObject filter,DBCollection coll){
-        DBCursor cusor = coll.find(query,filter);
+    public static DBCursor queryDBCursor(DBObject query,DBObject filterField,DBCollection coll){
+        DBCursor cusor = coll.find(query,filterField);
         return cusor;
     }
 
@@ -75,8 +73,8 @@ public class MongoQueryUtil {
      * @param query
      * @return
      */
-    public static List<BasicDBObject> queryDBObjectList(DBObject query,DBObject filter,DBCollection coll){
-        DBCursor cusor=queryDBCursor(query,filter,coll);
+    public static List<BasicDBObject> queryDBObjectList(DBObject query,DBObject filterField,DBCollection coll){
+        DBCursor cusor=queryDBCursor(query,filterField,coll);
         List<BasicDBObject> dblist=new ArrayList<BasicDBObject>();
         while (cusor.hasNext()) {
             dblist.add((BasicDBObject) cusor.next());

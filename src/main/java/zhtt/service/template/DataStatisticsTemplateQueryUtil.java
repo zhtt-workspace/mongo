@@ -97,7 +97,7 @@ public class DataStatisticsTemplateQueryUtil {
         return uuidList;
     }
 
-    /** 得到子树上的所有显示状态的 input code **/
+    /** 得到子树上的所有显示状态的 input uuid **/
     public static  List<String> getInputShowListByChildrenTree(List<BasicDBObject> tree,List<String> inputUuidList){
         List<String> uuidList=new ArrayList<String>();
         for(BasicDBObject child:tree){

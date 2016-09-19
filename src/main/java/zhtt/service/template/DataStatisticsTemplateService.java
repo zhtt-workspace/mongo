@@ -113,4 +113,36 @@ public class DataStatisticsTemplateService {
         return dataStatisticsTemplateManager.queryDBObjectList(query);
     }
 
+    /**
+     * 获取本单位所有显示状态的字段
+     * @param orgId
+     * @return
+     */
+    public  DBObject getAllTotalField(String orgId){
+        BasicDBObject treeDoc=getDocTreeNode(orgId);
+        if(treeDoc==null){
+            return null;
+        }
+        List<String> uuidList=DataStatisticsTemplateQueryUtil.getInputShowListByChildrenTree((List<BasicDBObject>)treeDoc.get("children"),getAllFieldDoc());
+        DBObject object=new BasicDBObject();
+        for(String  uuid:uuidList){
+            object.put(uuid, 0);
+        }
+        return object;
+    }
+
+    /**
+     * 获取所有文档类型为Field的记录
+     */
+    public List<String> getAllFieldDoc(){
+        BasicDBObject query=new BasicDBObject(DataStatisticsTemplate.FieldKey.type, DataStatisticsTemplate.Type.FIELD);
+        DBObject filter=new BasicDBObject(DataStatisticsTemplate.FieldKey.uuid,true);
+        filter.put("_id",false);
+        List<BasicDBObject> dbList=dataStatisticsTemplateManager.queryDBObjectList(query,filter);
+        List<String> uuidList=new ArrayList<>();
+        for(BasicDBObject obj:dbList){
+            uuidList.add(obj.getString(DataStatisticsTemplate.FieldKey.uuid));
+        }
+        return uuidList;
+    }
 }
