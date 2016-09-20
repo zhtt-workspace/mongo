@@ -33,14 +33,20 @@ public class DataStatisticsService {
     @Autowired
     private OrganizationService organizationService;
 
+    /**
+     * 信息采集，需要初始化加载的数据
+     * @param receiveOrgId
+     * @return
+     */
     public Map<String, Object> buildCreateTableForm(String receiveOrgId){
         String todayDateStr=CalendarHelp.getTodayDateStr();
         BasicDBObject query=buildQuerySqlByDate(todayDateStr,todayDateStr);
         query.put(DataStatisticsTemplate.DataKey.receiveOrgId,receiveOrgId);
         query.put(DataStatisticsTemplate.DataKey.reportState, ReportState.getValueString(ReportState.reported));
         List<BasicDBObject>  objList=dataStatisticsManager.query(query);
+        List<BasicDBObject>  totalObjList=null;
         if(objList.size()>0){
-            List<BasicDBObject>  totalObjList=statisJuniorDataByReceiveOrgId(query);
+            totalObjList=statisJuniorDataByReceiveOrgId(query);
         }
         List<Organization> orgList=organizationService.queryJuniorOrgNameAndUuidList(receiveOrgId);
         List<Map<String, String>> noReportOrgList=new ArrayList<Map<String, String>>();
@@ -51,11 +57,12 @@ public class DataStatisticsService {
             noReportOrgList.add(map);
         }
         Map<String, Object> mapListMap=new HashMap<String, Object>();
-        mapListMap.put("tableConfig",dataStatisticsTemplateService.getDataStatisticsTable(receiveOrgId));/** 初始化table表格的配置信息 **/
+        mapListMap.put("tableConfig",dataStatisticsTemplateService.getDataStatisticsTable(receiveOrgId).getData());/** 初始化table表格的配置信息 **/
         mapListMap.put("noReportOrgList",noReportOrgList);/** 未上报单位 **/
         mapListMap.put("reportedOrgList",null);/** 已上报单位 **/
-        mapListMap.put("orgList",null);/** 本机构汇总 **/
-        mapListMap.put("unitList",null);/** 本单位内部数据 **/
+        mapListMap.put("totalData",totalObjList);/** 本次汇总的数据 **/
+        mapListMap.put("unitData",null);/** 本单位内部数据 **/
+        mapListMap.put("orgData",null);/** 本机构汇总后保存的数据 **/
         return mapListMap;
     }
 

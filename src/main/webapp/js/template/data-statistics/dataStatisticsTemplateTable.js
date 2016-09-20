@@ -5,6 +5,7 @@ var dataStatisticsTemplateTable={};
 dataStatisticsTemplateTable.init=function(){
     $.get(dataStatisticsTemplate.tableUrl,function(data){
         if(data.status=="success"){
+            $("#dataStatisticsFormBox").width($("#dataStatisticsFormBox").parent().width()-30);
             var tableHtml=dataStatisticsTemplateTable.template(data.data);
             $('#dataStatisticsTemplateTableBox').html(tableHtml);
         }else{

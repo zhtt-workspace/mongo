@@ -5,8 +5,18 @@
 <html lang="zh-CN">
 <head>
 <%@ include file="/jsp/bootstrap-top.jsp" %>
-<link rel="stylesheet" href="${ctx}/tool/zTree_v3/css/metroStyle/metroStyle.css" type="text/css">
 <link href="${ctx}/tool/bootstrap3/css/bootstrap-table.min.css" rel="stylesheet">
+<style type="text/css">
+    .noReportOrgList{
+        color:red;
+    }
+    #dataStatisticsFormBox{
+        width: 100%;overflow: auto;
+    }
+    #dataStatisticsFormBox td,#dataStatisticsFormBox th{
+        white-space: nowrap;
+    }
+</style>
 </head>
 
 <body role="document">
@@ -36,25 +46,16 @@
                     <span class="glyphicon glyphicon-circle-arrow-up" aria-hidden="true"></span> 上 报
                 </a>
             </form>
-            <table id="userListTable" class="table table-bordered table-hover  table-striped"></table>
+            <div id="dataStatisticsFormBox">
+
+            </div>
         </div>
     </div>
 </div> <!-- /container -->
 
-<div class="modal fade" id="createUserModal" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-        </div><!-- /.modal-content -->
-    </div><!-- /.modal -->
-</div>
-<div class="modal fade" id="updateUserModal" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-        </div><!-- /.modal-content -->
-    </div><!-- /.modal -->
-</div>
 <%@ include file="/jsp/bootstrap-bottom.jsp" %>
 <script type="text/javascript" src="${ctx}/tool/zTree_v3/js/jquery.ztree.all.min.js"></script>
+<script type="text/javascript" src="${ctx}/tool/jquery/jquery.fixedtable.js"></script>
 <script type="text/javascript" src="${ctx}/js/common/ztreeUtil.js"></script>
 <script type="text/javascript" src="${ctx}/js/common/ztreeComboUtil.js"></script>
 <script type="text/javascript" src="${ctx}/js/data-statistics/dataStatistics.js"></script>

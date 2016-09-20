@@ -51,7 +51,7 @@ public class Organization {
     /**
      * 类型
      * 每一层的根机构：org
-     * 每一层的代表机构：root
+     * 每一层的代表机构：headquarters
      * 代表机构下的子部门：dept
      */
     private String orgType;
