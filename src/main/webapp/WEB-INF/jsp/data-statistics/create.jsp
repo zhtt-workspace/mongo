@@ -5,6 +5,7 @@
 <html lang="zh-CN">
 <head>
 <%@ include file="/jsp/bootstrap-top.jsp" %>
+<script type="text/javascript" src="${ctx}/tool/jquery/jquery.fixedtable.js"></script>
 <link href="${ctx}/tool/bootstrap3/css/bootstrap-table.min.css" rel="stylesheet">
 <style type="text/css">
     .noReportOrgList{
@@ -14,7 +15,7 @@
         width: 100%;overflow: auto;
     }
     #dataStatisticsFormBox td,#dataStatisticsFormBox th{
-        white-space: nowrap;
+        white-space: nowrap;padding:2px 8px;
     }
 </style>
 </head>
@@ -55,7 +56,6 @@
 
 <%@ include file="/jsp/bootstrap-bottom.jsp" %>
 <script type="text/javascript" src="${ctx}/tool/zTree_v3/js/jquery.ztree.all.min.js"></script>
-<script type="text/javascript" src="${ctx}/tool/jquery/jquery.fixedtable.js"></script>
 <script type="text/javascript" src="${ctx}/js/common/ztreeUtil.js"></script>
 <script type="text/javascript" src="${ctx}/js/common/ztreeComboUtil.js"></script>
 <script type="text/javascript" src="${ctx}/js/data-statistics/dataStatistics.js"></script>

@@ -19,10 +19,10 @@ dataStatisticsCreate.initCreateForm=function(){
             var options = {
                 fixColumnColor: '#f2f2f2',
                 fixColumnNumber: 3,
-                width: 900,
-                height: 400
+                width: $("#dataStatisticsFormBox").width(),
+                height: document.body.clientHeight-$("#dataStatisticsFormBox").offset().top-30
             };
-            //$("#table").fixedTable(options);
+            $("#table").fixedTable(options);
         }else{
             LobiboxUtil.notify(data.message);
         }
@@ -79,7 +79,7 @@ dataStatisticsCreate.buildTableHeader=function(cfg){
             if(cfg.noReportOrgList&&cfg.noReportOrgList.length>0){
                 for(var i=0;i<cfg.noReportOrgList.length;i++){
                     var org=cfg.noReportOrgList[i];
-                    headerTr.push('<th class="noReportOrgList">'+org.orgName+'</th>');
+                    headerTr.push('<th class="noReportOrgList" id="'+org.orgId+'">'+org.orgName+'</th>');
                 }
             }
             headerTr.push('</tr>');
@@ -107,7 +107,7 @@ dataStatisticsCreate.buildTableContentTr=function(cfg){
                 table.push(dataStatisticsCreate.buildTableContentTr(childCfg));
             }
         }else if(item.type=="field"){
-            return dataStatisticsCreate.buildField(cfg,item);
+            table.push(dataStatisticsCreate.buildField(cfg,item));
         }
         table.push('</tr>');
         trFlag=true;
@@ -116,7 +116,7 @@ dataStatisticsCreate.buildTableContentTr=function(cfg){
 }
 dataStatisticsCreate.buildField=function(cfg,item){
     var fieldHtml=[];
-    fieldHtml.push('<td rowspan="'+(item.childrenSize||"1")+'" colspan="'+(item.colspan||'1')+'">'+item.name+'（'+item.unit+'）</td>');
+    fieldHtml.push('<td rowspan="'+(item.childrenSize||"1")+'" colspan="'+(item.colspan||'1')+'">'+item.name+'（'+item.unit+'）'+'<span style="visibility:hidden;">'+item.name+'（'+item.unit+'）'+'</span>'+'</td>');
     switch (cfg.method){
         case 'template':
             fieldHtml.push('<td>'+item.maxNumber+'</td>');
@@ -146,11 +146,14 @@ dataStatisticsCreate.buildField=function(cfg,item){
             if(cfg.noReportOrgList&&cfg.noReportOrgList.length>0){
                 for(var i=0;i<cfg.noReportOrgList.length;i++){
                     var org=cfg.noReportOrgList[i];
-                    fieldHtml.push('<td ></td>');
+                    fieldHtml.push('<td onclick="dataStatisticsCreate.openCreateDataForm(this)"></td>');
                 }
             }
             return fieldHtml.join("");
             break;
         default :return "";
     }
+}
+dataStatisticsCreate.openCreateDataForm=function(obj){
+
 }

@@ -72,14 +72,16 @@
                 ColumnsNumber++;
             });
             ColumnsWidth += 2;
-            if ($.browser.msie) {
-                switch ($.browser.version) {
-                    case "7.0":
-                        if (ColumnsNumber >= 3) ColumnsWidth--;
-                        break;
-                    case "8.0":
-                        if (ColumnsNumber >= 2) ColumnsWidth--;
-                        break;
+            if($.browser){
+                if ($.browser.msie) {
+                    switch ($.browser.version) {
+                        case "7.0":
+                            if (ColumnsNumber >= 3) ColumnsWidth--;
+                            break;
+                        case "8.0":
+                            if (ColumnsNumber >= 2) ColumnsWidth--;
+                            break;
+                    }
                 }
             }
             $("#" + tableID + "_tableColumn").css("width", ColumnsWidth);
