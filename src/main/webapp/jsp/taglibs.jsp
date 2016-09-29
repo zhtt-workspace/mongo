@@ -7,5 +7,5 @@
 <script type="text/javascript">
     var ctx="${ctx}";
     var loginUser={"uuid":"${loginUser.uuid}","name":"${loginUser.name}","orgId":"${loginUser.orgId}"};
-    var loginRootOrganization={"uuid":"${loginRootOrganization.uuid}","name":"${loginRootOrganization.name}"};
+    var loginRootOrganization={"uuid":"${loginRootOrganization.uuid}","name":"${loginRootOrganization.name}","parentId":"${loginRootOrganization.parentId}"};
 </script>

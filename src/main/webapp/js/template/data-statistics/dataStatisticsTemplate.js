@@ -29,12 +29,14 @@ dataStatisticsTemplate.initEvent=function(){
         $("#updateRootDataStatisticsTemplateModal .update-close-btn").hide();
         var selected=dataStatisticsTemplate.tree.getSelectedNodes();
         $('#createGroupDataStatisticsTemplateModal input[name="parentId"]').val(selected.nodes[0].uuid);
+        $("#createGroupDataStatisticsTemplateModal form").validate(); $("#createGroupDataStatisticsTemplateModal form").valid();
     });
     $('#createFieldDataStatisticsTemplateModal').on('shown.bs.modal', function () {
         $("#updateRootDataStatisticsTemplateModal .crete-close-btn").show();
         $("#updateRootDataStatisticsTemplateModal .update-close-btn").hide();
         var selected=dataStatisticsTemplate.tree.getSelectedNodes();
         $('#createFieldDataStatisticsTemplateModal input[name="parentId"]').val(selected.nodes[0].uuid);
+        $("#createFieldDataStatisticsTemplateModal form").validate(); $("#createFieldDataStatisticsTemplateModal form").valid();
     });
     $('#updateGroupDataStatisticsTemplateModal').on('shown.bs.modal', function () {
         $("#updateRootDataStatisticsTemplateModal .crete-close-btn").hide();
@@ -48,6 +50,7 @@ dataStatisticsTemplate.initEvent=function(){
             $('#updateGroupDataStatisticsTemplateModal input[name="name"]').val(data.name);
             $('#updateGroupDataStatisticsTemplateModal input[name="colspan"]').val(data.colspan);
         });
+        $("#updateGroupDataStatisticsTemplateModal form").validate(); $("#updateGroupDataStatisticsTemplateModal form").valid();
     });
     $('#updateFieldDataStatisticsTemplateModal').on('shown.bs.modal', function () {
         $("#updateRootDataStatisticsTemplateModal .crete-close-btn").hide();
@@ -66,6 +69,7 @@ dataStatisticsTemplate.initEvent=function(){
             $('#updateFieldDataStatisticsTemplateModal input[name="minNumber"]').val(data.minNumber);
             $('#updateFieldDataStatisticsTemplateModal input[name="beyondRemind"]').val(data.beyondRemind);
         });
+        $("#updateFieldDataStatisticsTemplateModal form").validate(); $("#updateFieldDataStatisticsTemplateModal form").valid();
     });
     $('#updateRootDataStatisticsTemplateModal').on('shown.bs.modal', function () {
         $("#updateRootDataStatisticsTemplateModal .crete-close-btn").hide();
@@ -78,6 +82,7 @@ dataStatisticsTemplate.initEvent=function(){
             $('#updateRootDataStatisticsTemplateModal input[name="name"]').val(data.name);
             $('#updateRootDataStatisticsTemplateModal input[name="colspan"]').val(data.colspan);
         });
+        $("#updateRootDataStatisticsTemplateModal form").validate(); $("#updateRootDataStatisticsTemplateModal form").valid();
     });
 }
 dataStatisticsTemplate.openForm=function(flag){

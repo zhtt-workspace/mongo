@@ -73,12 +73,12 @@ public class DataStatisticsManager {
      * @return
      */
     public List<BasicDBObject> query(DBObject query,DBObject filterField){
-        DBCollection collection=mongoCollectionsManager.getDataStatisticsTemplateCollection();
+        DBCollection collection=mongoCollectionsManager.getDataStatisticsCollection();
         return MongoQueryUtil.queryDBObjectList(query, filterField, collection);
     }
 
     public List<BasicDBObject> query(DBObject query){
-        DBCollection collection=mongoCollectionsManager.getDataStatisticsTemplateCollection();
+        DBCollection collection=mongoCollectionsManager.getDataStatisticsCollection();
         return MongoQueryUtil.queryDBObjectList(query,collection);
     }
 }

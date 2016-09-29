@@ -79,6 +79,7 @@ public class DataStatisticsTemplateService {
             filter.put(DataStatisticsTemplate.FieldKey.colspan,true);
             filter.put(DataStatisticsTemplate.FieldKey.maxNumber,true);
             filter.put(DataStatisticsTemplate.FieldKey.minNumber,true);
+            filter.put(DataStatisticsTemplate.FieldKey.decimalDigits,true);
             filter.put(DataStatisticsTemplate.FieldKey.unit,true);
             filter.put(DataStatisticsTemplate.FieldKey.beyondRemind,true);
             List<BasicDBObject> dbList=dataStatisticsTemplateManager.queryDBObjectList(query,filter);

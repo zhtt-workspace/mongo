@@ -36,22 +36,17 @@ LobiboxUtil.prompt=function(cfg){
             }
         });
 }
-LobiboxUtil.window=function(cfg){
-    Lobibox.window({
+LobiboxUtil.formWindow=function(cfg){
+    var lobiboxwindow =Lobibox.window({
+        width:cfg.width||600,
+        height:cfg.height||document.body.clientHeight*0.8,
         title: cfg.title||'信息窗口',
         content: function(){
             //return $('.container');
             return cfg.html||"窗口内容！"
         },
-        url: 'http://www.cnblogs.com/refactor/archive/2012/08/09/2594870.html',
-        autoload: false,
-        loadMethod: 'GET',
-        params: {
-            param1: 'Lorem',
-            param2: 'Ipsum'
-        },
         buttons: {
-            load: {
+            save: {
                 text: '保存'
             },
             close: {
@@ -59,14 +54,23 @@ LobiboxUtil.window=function(cfg){
                 closeOnClick: true
             }
         },
-        callback: function($this, type, ev){
-            if (type === 'load'){
-                $this.load(function(){
-                    //Do something when content is loaded
-                });
+        callback: function(lobibox, type){
+            var btnType;
+            if (type === 'save'){
+                if(cfg.submit){
+                    cfg.submit();
+                }
+                lobiboxwindow.hide();
+                lobiboxwindow.destroy();
+            }
+        },
+        shown:function(){
+            if(cfg.shown){
+                cfg.shown();
             }
         }
     });
+    return lobiboxwindow;
 }
 
 

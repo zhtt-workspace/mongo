@@ -225,6 +225,7 @@ public class DataStatisticsTemplateQueryUtil {
                                 map.put(DataStatisticsTemplate.FieldKey.maxNumber, DCT.get(DataStatisticsTemplate.FieldKey.maxNumber));
                                 map.put(DataStatisticsTemplate.FieldKey.minNumber, DCT.get(DataStatisticsTemplate.FieldKey.minNumber));
                                 map.put(DataStatisticsTemplate.FieldKey.beyondRemind, DCT.get(DataStatisticsTemplate.FieldKey.beyondRemind));
+                                map.put(DataStatisticsTemplate.FieldKey.decimalDigits, DCT.get(DataStatisticsTemplate.FieldKey.decimalDigits));
                             }
                         }else{
                             map.put(DataStatisticsTemplate.FieldKey.colspan, DCT.getString(DataStatisticsTemplate.FieldKey.colspan));

@@ -75,6 +75,24 @@ public class CalendarHelp {
     }
 
     /**
+     * Date 转 String
+     * @param date
+     * @return
+     */
+    public static String format(Date date){
+        if(date==null){
+            return null;
+        }
+        try {
+            DateFormat format = new SimpleDateFormat(EN_YMDHMS);
+            return format.format(date);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    /**
      * 得到当天日期
      * @return
      */
@@ -95,7 +113,7 @@ public class CalendarHelp {
      * @return
      */
     public static Date formatDayStartTime(String date){
-        return format( date + " 00:00:00", EN_YMD);
+        return format( date + " 00:00:00", EN_YMDHMS);
     }
 
     /**
@@ -111,6 +129,6 @@ public class CalendarHelp {
      * @return
      */
     public static Date formatDayEndTime(String date){
-        return format( date + " 23:59:59", EN_YMD);
+        return format( date + " 23:59:59", EN_YMDHMS);
     }
 }

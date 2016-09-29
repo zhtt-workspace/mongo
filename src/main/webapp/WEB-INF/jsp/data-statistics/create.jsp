@@ -37,8 +37,8 @@
         <div class="panel-body">
             <form class="form-inline">
                 <div class="form-group">
-                    <label for="query-user-startdate">数据日期</label>
-                    <input type="date" class="form-control" id="query-user-startdate" placeholder="日期">
+                    <label for="query-data-date">数据日期</label>
+                    <input type="date" class="form-control" id="query-data-date" placeholder="日期">
                 </div>
                 <a href="javascript:user.query();" class="btn btn-default btn-sm" role="button">
                     <span class="glyphicon glyphicon-search" aria-hidden="true"></span> 查 看
@@ -58,6 +58,8 @@
 <script type="text/javascript" src="${ctx}/tool/zTree_v3/js/jquery.ztree.all.min.js"></script>
 <script type="text/javascript" src="${ctx}/js/common/ztreeUtil.js"></script>
 <script type="text/javascript" src="${ctx}/js/common/ztreeComboUtil.js"></script>
+<script type="text/javascript" src="${ctx}/js/common/LobiboxUtil.js"></script>
+<script type="text/javascript" src="${ctx}/js/common/timeUtil.js"></script>
 <script type="text/javascript" src="${ctx}/js/data-statistics/dataStatistics.js"></script>
 <script type="text/javascript" src="${ctx}/js/data-statistics/dataStatisticsCreate.js"></script>
 </body>
