@@ -244,10 +244,13 @@ public class OrganizationService {
         }
     }
 
-    public List<Organization> queryJuniorOrgNameAndUuidList(String parentId){
+    public List<Organization> queryJuniorOrgNameAndUuidList(String parentId,List<String> uuidList){
         Query query =new Query();
         query.addCriteria(Criteria.where("parentId").is(parentId));
         query.addCriteria(Criteria.where("orgType").is(Organization.ORG));
+        if(uuidList!=null&&uuidList.size()>0){
+            query.addCriteria(Criteria.where("uuid").nin(uuidList));
+        }
         BasicDBObject fieldsObject=new BasicDBObject();
         fieldsObject.put("uuid", 1);
         fieldsObject.put("name", 1);

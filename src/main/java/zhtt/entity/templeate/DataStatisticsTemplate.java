@@ -35,6 +35,10 @@ public class DataStatisticsTemplate {
          * 本机构内部的数据
          */
         public static final String headquarters="headquarters";
+        /**
+         * 本机构内部的数据
+         */
+        public static final String headquartersCN="本机构录入的数据";
     }
 
     /**

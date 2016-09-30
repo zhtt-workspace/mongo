@@ -23,7 +23,7 @@ dataStatisticsCreate.initCreateForm=function(){
             $("#dataStatisticsFormBox").html(html);
             var options = {
                 fixColumnColor: '#f2f2f2',
-                fixColumnNumber: 3,
+                fixColumnNumber: 2,
                 width: $("#dataStatisticsFormBox").width(),
                 height: document.body.clientHeight-$("#dataStatisticsFormBox").offset().top-30
             };
@@ -73,14 +73,14 @@ dataStatisticsCreate.buildTableHeader=function(cfg){
                 headerTr.push('<th class="noReportOrgList">上次汇总保存的数据</th>');
             }
             /** 本次查询汇总结果 **/
-            if(cfg.totalObjList){
+            if(cfg.totalData){
                 headerTr.push('<th >本次查询汇总结果</th>');
             }else{
                 headerTr.push('<th class="noReportOrgList">本次查询汇总结果</th>');
             }
             /** 本单位内部 **/
             if(cfg.unitData){
-                headerTr.push('<th >本机构录入的数据</th>');
+                headerTr.push('<th id="'+loginRootOrganization.uuid+'">本机构录入的数据</th>');
             }else{
                 headerTr.push('<th class="noReportOrgList" id="'+loginRootOrganization.uuid+'">本机构录入的数据</th>');
             }
@@ -153,13 +153,13 @@ dataStatisticsCreate.buildField=function(cfg,item){
             }
             /** 本次查询汇总数据 **/
             if(cfg.totalData){
-                fieldHtml.push('<td ></td>');
+                fieldHtml.push('<td >'+(cfg.totalData[item.uuid]?cfg.totalData[item.uuid]:"")+'</td>');
             }else{
                 fieldHtml.push('<td>0</td>');
             }
             /** 本单位内部数据 **/
             if(cfg.unitData){
-                fieldHtml.push('<td ></td>');
+                fieldHtml.push('<td >'+(cfg.unitData[item.uuid]?cfg.unitData[item.uuid]:"")+'</td>');
             }else{
                 fieldHtml.push('<td  onclick="dataStatisticsCreate.openCreateDataForm(this)"></td>');
             }

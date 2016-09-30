@@ -45,10 +45,23 @@ public class DataStatisticsService {
         query=buildQueryJuniorSql(query,receiveOrgId);
         List<BasicDBObject>  objList=dataStatisticsManager.query(query);
         List<BasicDBObject>  totalObjList=null;
-        if(objList.size()>0){
+        BasicDBObject unitData=null;
+        List<BasicDBObject> reportedOrgList=formatJuniorData(objList);
+        List<String> reportOrgIdList=null;
+        if(objList!=null&&objList.size()>0){
+            reportOrgIdList=new ArrayList<>();
             totalObjList=statisJuniorDataByReceiveOrgId(query);
+            unitData=reportedOrgList.get(0);
+            for(BasicDBObject obj:reportedOrgList){
+                reportOrgIdList.add(obj.getString("orgId"));
+            }
+            if(DataStatisticsTemplate.Type.headquartersCN.equals(unitData.getString(DataStatisticsTemplate.DataKey.orgName))){
+                reportedOrgList.remove(0);
+            }else{
+                unitData=null;
+            }
         }
-        List<Organization> orgList=organizationService.queryJuniorOrgNameAndUuidList(receiveOrgId);
+        List<Organization> orgList=organizationService.queryJuniorOrgNameAndUuidList(receiveOrgId,reportOrgIdList);
         List<Map<String, String>> noReportOrgList=new ArrayList<Map<String, String>>();
         for(Organization org:orgList){
             Map<String,String> map=new HashMap<String,String>();
@@ -59,9 +72,9 @@ public class DataStatisticsService {
         Map<String, Object> mapListMap=new HashMap<String, Object>();
         mapListMap.put("tableConfig",dataStatisticsTemplateService.getDataStatisticsTable(receiveOrgId).getData());/** 初始化table表格的配置信息 **/
         mapListMap.put("noReportOrgList",noReportOrgList);/** 未上报单位 **/
-        mapListMap.put("reportedOrgList",formatJuniorData(objList));/** 已上报单位 **/
+        mapListMap.put("reportedOrgList",reportedOrgList);/** 已上报单位 **/
         mapListMap.put("totalData",totalObjList==null||totalObjList.size()==0?null:totalObjList.get(0));/** 本次汇总的数据 **/
-        mapListMap.put("unitData",null);/** 本单位内部数据 **/
+        mapListMap.put("unitData",unitData);/** 本单位内部数据 **/
         mapListMap.put("orgData",null);/** 本机构汇总后保存的数据 **/
         return mapListMap;
     }
@@ -78,7 +91,11 @@ public class DataStatisticsService {
                 }
                 data.put(DataStatisticsTemplate.DataKey.orgId,obj.getString(DataStatisticsTemplate.DataKey.orgId));
                 data.put(DataStatisticsTemplate.DataKey.orgName,obj.getString(DataStatisticsTemplate.DataKey.orgName));
-                juniorDataList.add(data);
+                if(DataStatisticsTemplate.Type.headquarters.equals(obj.getString(DataStatisticsTemplate.DataKey.dataType))){
+                    juniorDataList.add(0,data);
+                }else{
+                    juniorDataList.add(data);
+                }
             }
             return juniorDataList;
         }
