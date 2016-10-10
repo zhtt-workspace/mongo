@@ -39,9 +39,9 @@ public class DataStatisticsService {
      * @param receiveOrgId
      * @return
      */
-    public Map<String, Object> buildCreateTableForm(String receiveOrgId){
+    public Map<String, Object> buildCreateTableForm(String receiveOrgId,String date){
         String todayDateStr=CalendarHelp.getTodayDateStr();
-        BasicDBObject query=buildQuerySqlByDate(todayDateStr,todayDateStr);
+        BasicDBObject query=buildQuerySqlByDate(date==null?todayDateStr:date,date==null?todayDateStr:date);
         query=buildQueryJuniorSql(query,receiveOrgId);
         List<BasicDBObject>  objList=dataStatisticsManager.query(query);
         List<BasicDBObject>  totalObjList=null;
@@ -53,7 +53,7 @@ public class DataStatisticsService {
             totalObjList=statisJuniorDataByReceiveOrgId(query);
             unitData=reportedOrgList.get(0);
             for(BasicDBObject obj:reportedOrgList){
-                reportOrgIdList.add(obj.getString("orgId"));
+                reportOrgIdList.add(obj.getString(DataStatisticsTemplate.DataKey.orgId));
             }
             if(DataStatisticsTemplate.Type.headquartersCN.equals(unitData.getString(DataStatisticsTemplate.DataKey.orgName))){
                 reportedOrgList.remove(0);
@@ -65,12 +65,14 @@ public class DataStatisticsService {
         List<Map<String, String>> noReportOrgList=new ArrayList<Map<String, String>>();
         for(Organization org:orgList){
             Map<String,String> map=new HashMap<String,String>();
-            map.put("orgId",org.getUuid());
-            map.put("orgName",org.getName());
+            map.put(DataStatisticsTemplate.DataKey.orgId,org.getUuid());
+            map.put(DataStatisticsTemplate.DataKey.orgName,org.getName());
             noReportOrgList.add(map);
         }
         Map<String, Object> mapListMap=new HashMap<String, Object>();
-        mapListMap.put("tableConfig",dataStatisticsTemplateService.getDataStatisticsTable(receiveOrgId).getData());/** 初始化table表格的配置信息 **/
+        if(date==null){
+            mapListMap.put("tableConfig",dataStatisticsTemplateService.getDataStatisticsTable(receiveOrgId).getData());/** 初始化table表格的配置信息 **/
+        }
         mapListMap.put("noReportOrgList",noReportOrgList);/** 未上报单位 **/
         mapListMap.put("reportedOrgList",reportedOrgList);/** 已上报单位 **/
         mapListMap.put("totalData",totalObjList==null||totalObjList.size()==0?null:totalObjList.get(0));/** 本次汇总的数据 **/
@@ -122,8 +124,8 @@ public class DataStatisticsService {
     public static BasicDBObject buildQuerySqlByDate (String startTime,String endTime){
 
         List<BasicDBObject> basicDBObjectList = new ArrayList<BasicDBObject>();
-        basicDBObjectList.add(new BasicDBObject("date", new BasicDBObject("$gt", CalendarHelp.formatDayStartTime(startTime))));
-        basicDBObjectList.add(new BasicDBObject("date", new BasicDBObject("$lt", CalendarHelp.formatDayEndTime(endTime))));
+        basicDBObjectList.add(new BasicDBObject(DataStatisticsTemplate.DataKey.date, new BasicDBObject("$gt", CalendarHelp.formatDayStartTime(startTime))));
+        basicDBObjectList.add(new BasicDBObject(DataStatisticsTemplate.DataKey.date, new BasicDBObject("$lt", CalendarHelp.formatDayEndTime(endTime))));
         BasicDBObject query=new BasicDBObject("$and", basicDBObjectList);
         return query;
     }

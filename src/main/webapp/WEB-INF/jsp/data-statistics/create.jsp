@@ -40,7 +40,7 @@
                     <label for="query-data-date">数据日期</label>
                     <input type="date" class="form-control" id="query-data-date" placeholder="日期">
                 </div>
-                <a href="javascript:user.query();" class="btn btn-default btn-sm" role="button">
+                <a href="javascript:dataStatisticsCreate.query();" class="btn btn-default btn-sm" role="button">
                     <span class="glyphicon glyphicon-search" aria-hidden="true"></span> 查 看
                 </a>
                 <a href="" class="btn btn-success btn-sm" role="button">
@@ -61,6 +61,7 @@
 <script type="text/javascript" src="${ctx}/js/common/LobiboxUtil.js"></script>
 <script type="text/javascript" src="${ctx}/js/common/timeUtil.js"></script>
 <script type="text/javascript" src="${ctx}/js/data-statistics/dataStatistics.js"></script>
+<script type="text/javascript" src="${ctx}/js/data-statistics/dataStatisticsBuildTable.js"></script>
 <script type="text/javascript" src="${ctx}/js/data-statistics/dataStatisticsCreate.js"></script>
 </body>
 </html>

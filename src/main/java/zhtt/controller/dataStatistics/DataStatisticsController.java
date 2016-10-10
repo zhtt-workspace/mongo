@@ -31,7 +31,8 @@ public class DataStatisticsController {
             if(loginRootOrganization==null){
                 return new JsonResponse(JsonResponseStatusEnum.ERROR,"登录信息已过期！");
             }
-            Map<String, Object> mapListMap=service.buildCreateTableForm(loginRootOrganization.getUuid());
+            String date= (String) request.getParameter("date");
+            Map<String, Object> mapListMap=service.buildCreateTableForm(loginRootOrganization.getUuid(),date);
             return new JsonResponse(mapListMap);
         }catch (Exception e){
             e.printStackTrace();
