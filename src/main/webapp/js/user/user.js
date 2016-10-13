@@ -84,7 +84,7 @@ user.submitCreateForm=function(){
             }
         }
     });
-    var status=formUtil.submit({
+    var status=ajaxUtil.submit({
         form:$("#"+user.createModalId+" form"),
         url:user.createUrl,
         success:function(data){
@@ -129,7 +129,7 @@ user.openUpdateForm=function(){
  * 提交更新用户的表单
  */
 user.submitUpdateForm=function(){
-    formUtil.submit({
+    ajaxUtil.submit({
         form:$("#updateUserForm"),
         url:user.updateUrl,
         success:function(data){

@@ -114,7 +114,7 @@ dataStatisticsTemplate.openForm=function(flag){
 }
 dataStatisticsTemplate.submitCreateForm=function(obj){
     var modalDiv=obj.parentNode.parentNode.parentNode.parentNode.parentNode;
-    formUtil.submit({
+    ajaxUtil.submit({
         form:$("#"+modalDiv.id+" form"),
         success:function(data){
             if(data.status=="success"){

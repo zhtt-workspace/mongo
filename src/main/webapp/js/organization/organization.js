@@ -89,7 +89,7 @@ organization.submitCreateForm=function(){
         LobiboxUtil.notify("请选择机构类型！");
         return;
     }
-    formUtil.submit({
+    ajaxUtil.submit({
         form:$("#"+organization.createFormId),
         url:organization.createUrl,
         success:function(data){
@@ -121,7 +121,7 @@ organization.submitUpdateForm=function(){
         LobiboxUtil.notify("请选择机构类型！");
         return;
     }
-    formUtil.submit({
+    ajaxUtil.submit({
         form:$("#"+organization.updateFormId),
         url:organization.updateUrl,
         success:function(data){

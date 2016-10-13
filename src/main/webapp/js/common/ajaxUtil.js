@@ -1,7 +1,7 @@
 /**
  * Created by zhtt on 2016/8/13.
  */
-var formUtil={}
+var ajaxUtil={}
 /**
  * {
  *  #####################下面是需传入的参数###
@@ -14,7 +14,7 @@ var formUtil={}
  * @param obj
  * @returns {boolean}
  */
-formUtil.submit=function(obj){
+ajaxUtil.submit=function(obj){
     if(typeof obj.form!="object"){
         LobiboxUtil.notify("form对象为空");return false;
     }
@@ -48,7 +48,7 @@ formUtil.submit=function(obj){
     });
     return true;
 }
-formUtil.ajax=function(obj){
+ajaxUtil.ajax=function(obj){
     $.ajax({
         cache: true,
         type: "POST",
@@ -75,7 +75,7 @@ formUtil.ajax=function(obj){
  * 函数功能： 将fomr内的信息转成json
  * 参数说明：form：jquery的form对象
  */
-formUtil.getumberJsonStr=function(form){
+ajaxUtil.getumberJsonStr=function(form){
     var json=[];
     form.find("input[name]").filter(":text").each(function(){
         var value=$.trim(this.value);

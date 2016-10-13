@@ -124,7 +124,7 @@ dataStatisticsCreate.submitCreateDataForm=function(){
     var date=$("#query-data-date").val();
     date=date==""?timeUtil.getCurrentDateTime():date;
     jsonStr+=(',"date":"'+date+'"');
-    formUtil.submit({
+    ajaxUtil.submit({
         form:$(".createDataForm"),
         data:{jsonStr:"{"+jsonStr+"}"},
         url:dataStatistics.createUrl,
@@ -165,7 +165,7 @@ dataStatisticsCreate.submitCreateDataFormBack=function(data){
 }
 dataStatisticsCreate.getCreateDataJson=function(){
     var formObj=$(".createDataForm");
-    var content=formUtil.getumberJsonStr(formObj);
+    var content=ajaxUtil.getumberJsonStr(formObj);
     var json=[];
     if(content.length<=0){
         LobiboxUtil.notify("未添加数据！");
@@ -261,7 +261,7 @@ dataStatisticsCreate.saveStatisticsData=function(){
     jsonStr+=(',"dataType":"org"');
     jsonStr+=(',"reportState":"reported"');
 
-    formUtil.ajax({
+    ajaxUtil.ajax({
         data:{jsonStr:"{"+jsonStr+"}"},
         url:dataStatistics.createUrl,
         success:function(data){
