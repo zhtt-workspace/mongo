@@ -13,6 +13,7 @@ import zhtt.util.CalendarHelp;
 import zhtt.util.DataState.IssueState;
 import zhtt.util.DataState.ReportState;
 import zhtt.util.FileUtil;
+import zhtt.util.JsonResponse;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -45,20 +46,19 @@ public class DataStatisticsService {
         query=buildQueryJuniorSql(query,receiveOrgId);
         List<BasicDBObject>  objList=dataStatisticsManager.query(query);
         List<BasicDBObject>  totalObjList=null;
-        BasicDBObject unitData=null;
-        List<BasicDBObject> reportedOrgList=formatJuniorData(objList);
+        Map<String,Object> mapListMap=formatJuniorData(objList,receiveOrgId);
         List<String> reportOrgIdList=null;
-        if(objList!=null&&objList.size()>0){
-            reportOrgIdList=new ArrayList<>();
-            totalObjList=statisJuniorDataByReceiveOrgId(query);
-            unitData=reportedOrgList.get(0);
-            for(BasicDBObject obj:reportedOrgList){
-                reportOrgIdList.add(obj.getString(DataStatisticsTemplate.DataKey.orgId));
-            }
-            if(DataStatisticsTemplate.Type.headquartersCN.equals(unitData.getString(DataStatisticsTemplate.DataKey.orgName))){
-                reportedOrgList.remove(0);
-            }else{
-                unitData=null;
+        if(mapListMap==null){
+            mapListMap=new HashMap<>();
+        }else{
+            if(objList!=null&&objList.size()>0){
+                List<BasicDBObject> reportedOrgList=(List<BasicDBObject>)mapListMap.get("reportedOrgList");
+                reportOrgIdList=new ArrayList<>();
+
+                totalObjList=statisJuniorDataByReceiveOrgId(query);
+                for(BasicDBObject obj:reportedOrgList){
+                    reportOrgIdList.add(obj.getString(DataStatisticsTemplate.DataKey.orgId));
+                }
             }
         }
         List<Organization> orgList=organizationService.queryJuniorOrgNameAndUuidList(receiveOrgId,reportOrgIdList);
@@ -69,19 +69,17 @@ public class DataStatisticsService {
             map.put(DataStatisticsTemplate.DataKey.orgName,org.getName());
             noReportOrgList.add(map);
         }
-        Map<String, Object> mapListMap=new HashMap<String, Object>();
         if(date==null){
-            mapListMap.put("tableConfig",dataStatisticsTemplateService.getDataStatisticsTable(receiveOrgId).getData());/** 初始化table表格的配置信息 **/
+            JsonResponse jsonResponse=dataStatisticsTemplateService.getDataStatisticsTable(receiveOrgId);
+            mapListMap.put("tableConfig", jsonResponse.getData());/** 初始化table表格的配置信息 **/
         }
         mapListMap.put("noReportOrgList",noReportOrgList);/** 未上报单位 **/
-        mapListMap.put("reportedOrgList",reportedOrgList);/** 已上报单位 **/
         mapListMap.put("totalData",totalObjList==null||totalObjList.size()==0?null:totalObjList.get(0));/** 本次汇总的数据 **/
-        mapListMap.put("unitData",unitData);/** 本单位内部数据 **/
-        mapListMap.put("orgData",null);/** 本机构汇总后保存的数据 **/
         return mapListMap;
     }
 
-    private List<BasicDBObject>  formatJuniorData(List<BasicDBObject>  objList){
+    private Map<String,Object>  formatJuniorData(List<BasicDBObject>  objList,String loginOrgId){
+        Map<String,Object> returnMap=new HashMap<>();
         if(objList==null||objList.size()==0){
             return null;
         }else{
@@ -94,12 +92,15 @@ public class DataStatisticsService {
                 data.put(DataStatisticsTemplate.DataKey.orgId,obj.getString(DataStatisticsTemplate.DataKey.orgId));
                 data.put(DataStatisticsTemplate.DataKey.orgName,obj.getString(DataStatisticsTemplate.DataKey.orgName));
                 if(DataStatisticsTemplate.Type.headquarters.equals(obj.getString(DataStatisticsTemplate.DataKey.dataType))){
-                    juniorDataList.add(0,data);
+                    returnMap.put("unitData", data);
+                }else if(loginOrgId.equals(obj.getString(DataStatisticsTemplate.DataKey.orgId))){
+                    returnMap.put("orgData",data);
                 }else{
                     juniorDataList.add(data);
                 }
             }
-            return juniorDataList;
+            returnMap.put("reportedOrgList",juniorDataList);
+            return returnMap;
         }
     }
 
@@ -109,6 +110,15 @@ public class DataStatisticsService {
      * @return
      */
     public List<BasicDBObject> statisJuniorDataByReceiveOrgId(BasicDBObject query){
+
+
+        List<BasicDBObject> condition = new ArrayList<BasicDBObject>();
+        BasicDBObject orgCondition=new BasicDBObject(DataStatisticsTemplate.DataKey.orgId,new BasicDBObject("$ne",query.getString(DataStatisticsTemplate.DataKey.receiveOrgId)));
+        BasicDBObject headquarters=new BasicDBObject(DataStatisticsTemplate.DataKey.dataType,DataStatisticsTemplate.Type.headquarters);
+        condition.add(orgCondition);
+        condition.add(headquarters);
+        query.put("$or",condition);
+
         BasicDBObject groupField=new BasicDBObject(DataStatisticsTemplate.DataKey.receiveOrgId, true);
         String finalizer = FileUtil.getJavaScricptFunctionFromFile(this, "/js/dataStatistics-totalAllFileld.js");
         DBObject totalField=dataStatisticsTemplateService.getAllTotalField(query.getString(DataStatisticsTemplate.DataKey.receiveOrgId));

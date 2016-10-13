@@ -43,8 +43,11 @@
                 <a href="javascript:dataStatisticsCreate.query();" class="btn btn-default btn-sm" role="button">
                     <span class="glyphicon glyphicon-search" aria-hidden="true"></span> 查 看
                 </a>
+                <a href="javascript:dataStatisticsCreate.saveStatisticsData();" class="btn btn-success btn-sm" role="button">
+                    <span class="glyphicon glyphicon-circle-arrow-up" aria-hidden="true"></span> 保存本次统计数据
+                </a>
                 <a href="" class="btn btn-success btn-sm" role="button">
-                    <span class="glyphicon glyphicon-circle-arrow-up" aria-hidden="true"></span> 上 报
+                    <span class="glyphicon glyphicon-circle-arrow-up" aria-hidden="true"></span> 上报本次统计数据
                 </a>
             </form>
             <div id="dataStatisticsFormBox">

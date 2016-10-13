@@ -7,7 +7,10 @@ $(function(){
 })
 var dataStatisticsCreate={
     tableConfig:null,
-    formWindow:null
+    formWindow:null,
+    statisticsTableBoxId:"dataStatisticsFormBox",
+    statisticsTableId:"dataStatisticsTable",
+    createStatisticsTableId:"createDataStatisticsTable"
 };
 /**
  * 根据日期查看数据
@@ -22,15 +25,16 @@ dataStatisticsCreate.query=function(){
                 var cfgData=data.data;
                 cfgData.method='browseDataListTable';
                 cfgData.tableConfig=dataStatisticsCreate.tableConfig;
+                cfgData.tableId=dataStatisticsCreate.statisticsTableId;
                 var html=dataStatisticsBuildTable.buildTable(cfgData);
-                $("#dataStatisticsFormBox").html(html);
+                $("#"+dataStatisticsCreate.statisticsTableBoxId).html(html);
                 var options = {
                     fixColumnColor: '#f2f2f2',
                     fixColumnNumber: 2,
-                    width: $("#dataStatisticsFormBox").width(),
-                    height: document.body.clientHeight-$("#dataStatisticsFormBox").offset().top-30
+                    width: $("#"+dataStatisticsCreate.statisticsTableBoxId).width(),
+                    height: document.body.clientHeight-$("#"+dataStatisticsCreate.statisticsTableBoxId).offset().top-30
                 };
-                $("#table").fixedTable(options);
+                $("#"+dataStatisticsCreate.statisticsTableId).fixedTable(options);
             }else{
                 LobiboxUtil.notify(data.message);
             }
@@ -46,32 +50,52 @@ dataStatisticsCreate.initCreateForm=function(){
             var cfgData=data.data;
             cfgData.method='browseDataListTable';
             dataStatisticsCreate.tableConfig=cfgData.tableConfig;
+            cfgData.tableId=dataStatisticsCreate.statisticsTableId;
             var html=dataStatisticsBuildTable.buildTable(cfgData);
-            $("#dataStatisticsFormBox").html(html);
+            $("#"+dataStatisticsCreate.statisticsTableBoxId).html(html);
             var options = {
                 fixColumnColor: '#f2f2f2',
                 fixColumnNumber: 2,
-                width: $("#dataStatisticsFormBox").width(),
-                height: document.body.clientHeight-$("#dataStatisticsFormBox").offset().top-30
+                width: $("#"+dataStatisticsCreate.statisticsTableBoxId).width(),
+                height: document.body.clientHeight-$("#"+dataStatisticsCreate.statisticsTableBoxId).offset().top-30
             };
-            $("#table").fixedTable(options);
+            $("#"+dataStatisticsCreate.statisticsTableId).fixedTable(options);
         }else{
             LobiboxUtil.notify(data.message);
         }
     });
 }
-
+dataStatisticsCreate.openFormBox=function(obj){
+    var orgNode;
+    if(obj.className=="noReportOrgList"){
+        orgNode=obj;
+    }else{
+        var orgNodeIndex=obj.parentNode.children.length-obj.cellIndex;
+        var orgNodes=$(obj).parent().prevAll(".dstHeader").children();
+        orgNode=orgNodes[orgNodes.length-orgNodeIndex];
+    }
+    if(orgNode.className=="noReportOrgList"){
+        dataStatisticsCreate.openCreateDataForm(orgNode);
+    }else{
+        dataStatisticsCreate.openUpdateDataItemForm(orgNode);
+    }
+}
 /**
  * 打开新建数据的表单
  * @param obj
  */
-dataStatisticsCreate.openCreateDataForm=function(obj){
-    var orgNodeIndex=obj.parentNode.children.length-obj.cellIndex;
-    var orgNodes=$(obj).parent().prevAll(".dstHeader").children();
-    var orgNode=orgNodes[orgNodes.length-orgNodeIndex];
+dataStatisticsCreate.openCreateDataForm=function(orgNode){
+    /*var orgNode;
+    if(obj.className=="noReportOrgList"){
+        orgNode=obj;
+    }else{
+        var orgNodeIndex=obj.parentNode.children.length-obj.cellIndex;
+        var orgNodes=$(obj).parent().prevAll(".dstHeader").children();
+        orgNode=orgNodes[orgNodes.length-orgNodeIndex];
+    }*/
     var orgId=orgNode.id;
     var orgName=orgNode.innerText;
-    var tableHtml=dataStatisticsBuildTable.buildTable({tableConfig:dataStatisticsCreate.tableConfig,method:"createForm"});
+    var tableHtml=dataStatisticsBuildTable.buildTable({tableConfig:dataStatisticsCreate.tableConfig,method:"createForm",tableId:dataStatisticsCreate.createStatisticsTableId});
     var html=[];
     html.push('<form class="createDataForm">');
     html.push('<input type="hidden" class="orgId" value="'+orgId+'">');
@@ -106,13 +130,38 @@ dataStatisticsCreate.submitCreateDataForm=function(){
         url:dataStatistics.createUrl,
         success:function(data){
             if(data.status=="success"){
+                dataStatisticsCreate.submitCreateDataFormBack(data.data);
                 LobiboxUtil.notify("保存成功！");
             }else{
                 LobiboxUtil.notify(data.message);
             }
         }
     });
-
+}
+/**
+ * 提交保存成功之后，修改本次查询汇总列
+ */
+dataStatisticsCreate.submitCreateDataFormBack=function(data){
+    var content=data.content;
+    if(content){
+        var orgNodes=$("#"+dataStatisticsCreate.statisticsTableId+" .dstHeader th");
+        var orgNode=orgNodes.filter("#"+data.orgId);
+        $('th[id="'+data.orgId+'"]').removeAttr("class");
+        var orgNodeIndex=orgNodes.length-orgNode[0].cellIndex;
+        for(key in content){
+            $("."+key).each(function(){
+                var newValue=content[key];
+                var oldValue=this.innerText;
+                $(this).parent().children()[$(this).parent().children().length-orgNodeIndex].innerText=newValue;
+                if(oldValue==""){
+                    oldValue=0;
+                }else{
+                    oldValue=oldValue.indexOf(".")==-1?parseInt(oldValue):parseFloat(oldValue);
+                }
+                this.innerText=oldValue+newValue;
+            });
+        }
+    }
 }
 dataStatisticsCreate.getCreateDataJson=function(){
     var formObj=$(".createDataForm");
@@ -134,10 +183,10 @@ dataStatisticsCreate.getCreateDataJson=function(){
  * 打开新建数据项的表单
  * @param obj
  */
-dataStatisticsCreate.openUpdateDataItemForm=function(obj){
-    var orgNodeIndex=obj.parentNode.children.length-obj.cellIndex;
+dataStatisticsCreate.openUpdateDataItemForm=function(orgNode){
+    /*var orgNodeIndex=obj.parentNode.children.length-obj.cellIndex;
     var orgNodes=$(obj).parent().prevAll(".dstHeader").children();
-    var orgNode=orgNodes[orgNodes.length-orgNodeIndex];
+    var orgNode=orgNodes[orgNodes.length-orgNodeIndex];*/
     var orgId=orgNode.id;
     var orgName=orgNode.innerText;
     var html=[];
@@ -163,6 +212,10 @@ dataStatisticsCreate.openUpdateDataItemForm=function(obj){
             tableHtml.push('<td>数据值</td>');
             tableHtml.push('<td><input name="datavalue" value=""></td>')
         tableHtml.push('</tr>');
+        tableHtml.push('<tr>');
+            tableHtml.push('<td>备注</td>');
+            tableHtml.push('<td><textarea  style="resize: none;" ></textarea></td>')
+        tableHtml.push('</tr>');
     tableHtml.push('</table>');
     html.push(tableHtml.join(""));
     html.push('</form>');
@@ -170,6 +223,7 @@ dataStatisticsCreate.openUpdateDataItemForm=function(obj){
         {
             title:"为"+orgName+"修改数据项",
             html:html.join(""),
+            height:300,
             submit:dataStatisticsCreate.submitCreateDataForm,
             shown:function(){
                 $(".updateDataItemForm").validate();
@@ -177,5 +231,46 @@ dataStatisticsCreate.openUpdateDataItemForm=function(obj){
             }
         }
     );
+}
+/**
+ 保存本次统计数据
+ **/
+dataStatisticsCreate.saveStatisticsData=function(){
+    var trNodes=$("#"+dataStatisticsCreate.statisticsTableId +" tr")
+    var headerTrNode=$(trNodes[0]).children();
+    var cellIndex=headerTrNode.length-headerTrNode.filter("#queryTotal")[0].cellIndex;
+    var json=[];
+    for(var i=1;i<trNodes.length;i++){
+        var tdNodes=trNodes[i].children;
+        var tdNode=tdNodes[tdNodes.length-cellIndex];
+        var dataValue=tdNode.innerText;
+        var dataKey=tdNode.className;
+        var value=$.trim(dataValue);
+        if(!(value==""||value=="0"||isNaN(value))){
+            json.push('"'+dataKey+'":'+(value.indexOf(".")==-1?parseInt(value):parseFloat(value)));
+        }
+    }
+    var jsonStr='"content":{'+json.join(",")+'}';
+    var date=$("#query-data-date").val();
+    date=date==""?timeUtil.getCurrentDateTime():date;
+    jsonStr+=(',"date":"'+date+'"');
+    jsonStr+=(',"orgId":"'+loginRootOrganization.uuid+'"');
+    jsonStr+=(',"orgName":"'+loginRootOrganization.name+'"');
+    jsonStr+=(',"createOrgId":"'+loginRootOrganization.uuid+'"');
+    jsonStr+=(',"receiveOrgId":"'+loginRootOrganization.parentId+'"');
+    jsonStr+=(',"dataType":"org"');
+    jsonStr+=(',"reportState":"reported"');
 
+    formUtil.ajax({
+        data:{jsonStr:"{"+jsonStr+"}"},
+        url:dataStatistics.createUrl,
+        success:function(data){
+            if(data.status=="success"){
+                dataStatisticsCreate.submitCreateDataFormBack(data.data);
+                LobiboxUtil.notify("保存成功！");
+            }else{
+                LobiboxUtil.notify(data.message);
+            }
+        }
+    });
 }

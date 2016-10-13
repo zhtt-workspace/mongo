@@ -4,7 +4,7 @@
 var dataStatisticsBuildTable={};
 dataStatisticsBuildTable.buildTable=function(cfg){
     var table=[];
-    table.push('<table id="table" class="table table-bordered table-hover  table-striped">');
+    table.push('<table id="'+cfg.tableId+'" class="table table-bordered table-hover  table-striped">');
     table.push(dataStatisticsBuildTable.buildTableHeader(cfg));
     var childCfg={};
     $.extend(childCfg,cfg);
@@ -42,9 +42,9 @@ dataStatisticsBuildTable.buildTableHeader=function(cfg){
             }
             /** 本次查询汇总结果 **/
             if(cfg.totalData){
-                headerTr.push('<th >本次查询汇总结果</th>');
+                headerTr.push('<th id="queryTotal">本次查询汇总结果</th>');
             }else{
-                headerTr.push('<th class="noReportOrgList">本次查询汇总结果</th>');
+                headerTr.push('<th id="queryTotal" class="noReportOrgList">本次查询汇总结果</th>');
             }
             /** 本单位内部 **/
             if(cfg.unitData){
@@ -56,14 +56,14 @@ dataStatisticsBuildTable.buildTableHeader=function(cfg){
             if(cfg.reportedOrgList&&cfg.reportedOrgList.length>0){
                 for(var i=0;i<cfg.reportedOrgList.length;i++){
                     var org=cfg.reportedOrgList[i];
-                    headerTr.push('<th id="'+org.orgId+'"  onclick="dataStatisticsCreate.openUpdateDataItemForm(this)">'+org.orgName+'</th>');
+                    headerTr.push('<th id="'+org.orgId+'"  onclick="dataStatisticsCreate.openFormBox(this)">'+org.orgName+'</th>');
                 }
             }
             /** 未上报单位 **/
             if(cfg.noReportOrgList&&cfg.noReportOrgList.length>0){
                 for(var i=0;i<cfg.noReportOrgList.length;i++){
                     var org=cfg.noReportOrgList[i];
-                    headerTr.push('<th class="noReportOrgList" id="'+org.orgId+'"  onclick="dataStatisticsCreate.openCreateDataForm(this)">'+org.orgName+'</th>');
+                    headerTr.push('<th class="noReportOrgList" id="'+org.orgId+'"  onclick="dataStatisticsCreate.openFormBox(this)">'+org.orgName+'</th>');
                 }
             }
             headerTr.push('</tr>');
@@ -115,34 +115,34 @@ dataStatisticsBuildTable.buildField=function(cfg,item){
         case 'browseDataListTable':
             /** 上次汇总保存的数据 **/
             if(cfg.orgData){
-                fieldHtml.push('<td ></td>');
+                fieldHtml.push('<td class="'+item.uuid+'">'+(cfg.orgData[item.uuid]?cfg.orgData[item.uuid]:"")+'</td>');
             }else{
                 fieldHtml.push('<td></td>');
             }
             /** 本次查询汇总数据 **/
             if(cfg.totalData){
-                fieldHtml.push('<td >'+(cfg.totalData[item.uuid]?cfg.totalData[item.uuid]:"")+'</td>');
+                fieldHtml.push('<td class="'+item.uuid+'">'+(cfg.totalData[item.uuid]?cfg.totalData[item.uuid]:"")+'</td>');
             }else{
-                fieldHtml.push('<td></td>');
+                fieldHtml.push('<td class="'+item.uuid+'"></td>');
             }
             /** 本单位内部数据 **/
             if(cfg.unitData){
                 fieldHtml.push('<td >'+(cfg.unitData[item.uuid]?cfg.unitData[item.uuid]:"")+'</td>');
             }else{
-                fieldHtml.push('<td  onclick="dataStatisticsCreate.openCreateDataForm(this)"></td>');
+                fieldHtml.push('<td  onclick="dataStatisticsCreate.openFormBox(this)"></td>');
             }
             /** 已上报单位 **/
             if(cfg.reportedOrgList&&cfg.reportedOrgList.length>0){
                 for(var i=0;i<cfg.reportedOrgList.length;i++){
                     var org=cfg.reportedOrgList[i];
-                    fieldHtml.push('<th onclick="dataStatisticsCreate.openUpdateDataItemForm(this)">'+(org[item.uuid]?org[item.uuid]:"")+'</th>');
+                    fieldHtml.push('<th onclick="dataStatisticsCreate.openFormBox(this)">'+(org[item.uuid]?org[item.uuid]:"")+'</th>');
                 }
             }
             /** 未上报单位 **/
             if(cfg.noReportOrgList&&cfg.noReportOrgList.length>0){
                 for(var i=0;i<cfg.noReportOrgList.length;i++){
                     var org=cfg.noReportOrgList[i];
-                    fieldHtml.push('<td onclick="dataStatisticsCreate.openCreateDataForm(this)"></td>');
+                    fieldHtml.push('<td onclick="dataStatisticsCreate.openFormBox(this)"></td>');
                 }
             }
             return fieldHtml.join("");

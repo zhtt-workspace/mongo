@@ -28,6 +28,14 @@ public class DataStatisticsFormController {
     @Autowired
     private DataStatisticsFormService service;
 
+    /**
+     * 说明：
+     *      1、后台自动添加创建时间，前台无需添加时间
+     *      2、后台将数据日期添加：时：分：秒
+     * @param jsonStr
+     * @param request
+     * @return
+     */
     @RequestMapping("/create-form")
     @ResponseBody
     public JsonResponse create(String jsonStr,HttpServletRequest request){

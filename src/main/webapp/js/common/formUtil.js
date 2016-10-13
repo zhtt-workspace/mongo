@@ -4,10 +4,10 @@
 var formUtil={}
 /**
  * {
- *  ###下面是需传入的参数###
+ *  #####################下面是需传入的参数###
  *  form:form（必选,jquery对象）,
  *  url:url（可选）,
- *  ###下面是可回调的方法###
+ *  ########################下面是可回调的方法###
  *  error:errorCallBack（可选），
  *  success:successCallback（可选）
  * }
@@ -47,6 +47,29 @@ formUtil.submit=function(obj){
         }
     });
     return true;
+}
+formUtil.ajax=function(obj){
+    $.ajax({
+        cache: true,
+        type: "POST",
+        url:obj.url,
+        data:obj.data,
+        async: false,
+        error: function(request) {
+            if(obj.error){
+                obj.error(data);
+            }else{
+                LobiboxUtil.notify(data.message);
+            }
+        },
+        success: function(data) {
+            if(obj.success){
+                obj.success(data);
+            }else{
+                LobiboxUtil.notify("操作成功");
+            }
+        }
+    });
 }
 /**
  * 函数功能： 将fomr内的信息转成json
