@@ -110,8 +110,9 @@ public class DataStatisticsService {
      * @return
      */
     public List<BasicDBObject> statisJuniorDataByReceiveOrgId(BasicDBObject query){
-
-
+        /**
+         * 增加过滤条件，只统计本单位的，不统计本机构的
+         */
         List<BasicDBObject> condition = new ArrayList<BasicDBObject>();
         BasicDBObject orgCondition=new BasicDBObject(DataStatisticsTemplate.DataKey.orgId,new BasicDBObject("$ne",query.getString(DataStatisticsTemplate.DataKey.receiveOrgId)));
         BasicDBObject headquarters=new BasicDBObject(DataStatisticsTemplate.DataKey.dataType,DataStatisticsTemplate.Type.headquarters);
