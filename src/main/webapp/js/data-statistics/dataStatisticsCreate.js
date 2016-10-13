@@ -203,7 +203,7 @@ dataStatisticsCreate.openUpdateDataItemForm=function(orgNode){
         html.push('<input type="hidden" class="issueState" value="noissue">');
     }
     var tableHtml=[];
-    tableHtml.push('<table>');
+    tableHtml.push('<table class="formTable">');
         tableHtml.push('<tr>');
             tableHtml.push('<td>数据项名称</td>');
             tableHtml.push('<td><input name="datavalue" value=""></td>')

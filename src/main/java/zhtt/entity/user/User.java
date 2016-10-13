@@ -161,7 +161,12 @@ public class User {
         }
         if(this.orgId!=null){
             value.put("orgId", orgId);
+        }
+        if(this.orgName!=null){
             value.put("orgName", orgName);
+            value.put("orgCode", orgCode);
+        }
+        if(this.orgCode!=null){
             value.put("orgCode", orgCode);
         }
         if(this.age!=0){

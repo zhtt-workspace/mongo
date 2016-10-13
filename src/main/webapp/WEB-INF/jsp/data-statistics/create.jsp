@@ -17,6 +17,9 @@
     #dataStatisticsFormBox td,#dataStatisticsFormBox th{
         white-space: nowrap;padding:2px 8px;
     }
+    .formTable{
+
+    }
 </style>
 </head>
 

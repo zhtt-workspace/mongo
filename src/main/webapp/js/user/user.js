@@ -120,6 +120,8 @@ user.openUpdateForm=function(){
         form.find("input[name='password']").val(data.password);
         form.find("input[name='age']").val(data.age);
         form.find("input[name='orgId']").val(data.orgId);
+        form.find("input[name='orgName']").val(data.orgName);
+        form.find("input[name='orgCode']").val(data.orgCode);
     },500)
     //var newSelects = $.parseJSON(JSON.stringify(selects));
 }

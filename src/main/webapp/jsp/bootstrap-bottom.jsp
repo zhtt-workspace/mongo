@@ -1,5 +1,3 @@
-
-
 <!-- Bootstrap core JavaScript
 ================================================== -->
 <script type="text/javascript" src="${ctx}/tool/bootstrap3/js/bootstrap.min.js"></script>
@@ -11,5 +9,5 @@
 <script src="${ctx}/tool/Lobibox/Lobibox.min.js"></script>
 <script src="${ctx}/js/common/LobiboxUtil.js"></script>
 <script src="${ctx}/js/common/modalUtil.js"></script>
-<script src="${ctx}/js/common/formUtil.js"></script>
+<script src="${ctx}/js/common/ajaxUtil.js"></script>
 <script src="${ctx}/js/common/util.js"></script>

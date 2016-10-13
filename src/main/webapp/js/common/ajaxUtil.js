@@ -31,7 +31,7 @@ formUtil.submit=function(obj){
         url:url,
         data:obj.data||obj.form.serialize(),// 你的formid
         async: false,
-        error: function(request) {
+        error: function(data) {
             if(obj.error){
                 obj.error(data);
             }else{
@@ -55,7 +55,7 @@ formUtil.ajax=function(obj){
         url:obj.url,
         data:obj.data,
         async: false,
-        error: function(request) {
+        error: function(data) {
             if(obj.error){
                 obj.error(data);
             }else{
