@@ -36,14 +36,14 @@ public class OrganizationService {
     public JsonResponse save(Organization organization){
         String newCode=buildOrgCode(organization.getCode(),organization.getParentId());
         if(newCode==null){
-            return new JsonResponse(JsonResponseStatusEnum.ERROR,"编码已用尽，最多支持100个子节点，请重新调整当前结构！");
+            return JsonResponse.error("编码已用尽，最多支持100个子节点，请重新调整当前结构！");
         }else{
             organization.setCode(newCode);
             dao.save(organization);
             if(organization.getCode().endsWith("00")){
                 updateLeaf(organization.getParentId(),false);
             }
-            return new JsonResponse(organization);
+            return JsonResponse.success(organization);
         }
     }
 
@@ -56,7 +56,7 @@ public class OrganizationService {
         Query query=new Query();
         query.addCriteria(Criteria.where("uuid").is(organization.getUuid()));
         WriteResult writeResult=dao.update(query,organization.toUpdate());
-        return new JsonResponse(organization);
+        return  JsonResponse.success(organization);
     }
 
     /**

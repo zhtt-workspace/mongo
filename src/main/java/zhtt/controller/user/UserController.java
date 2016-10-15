@@ -45,9 +45,9 @@ public class UserController {
     public JsonResponse delete(@RequestBody List<String> uuid){
         try{
             userService.delete(uuid);
-            return new JsonResponse(uuid);
+            return JsonResponse.success(uuid);
         }catch (Exception e){
-            return new JsonResponse(JsonResponseStatusEnum.ERROR,e.getMessage());
+            return JsonResponse.error(e.getMessage());
         }
     }
 

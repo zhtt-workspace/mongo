@@ -53,9 +53,9 @@ public class OrganizationController {
     public JsonResponse delete(@RequestBody List<String> uuid){
         try{
             service.delete(uuid);
-            return new JsonResponse(uuid);
+            return JsonResponse.success(uuid);
         }catch (Exception e){
-            return new JsonResponse(JsonResponseStatusEnum.ERROR,e.getMessage());
+            return JsonResponse.error(e.getMessage());
         }
     }
 }

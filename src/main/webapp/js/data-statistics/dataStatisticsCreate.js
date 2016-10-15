@@ -274,3 +274,11 @@ dataStatisticsCreate.saveStatisticsData=function(){
         }
     });
 }
+
+/**
+ 上报机构数据
+ ****/
+ dataStatisticsCreate.reportStatisticsData=function(){
+     var date=$("#query-data-date").val();
+     date=date==""?timeUtil.getCurrentDateTime():date;
+ }

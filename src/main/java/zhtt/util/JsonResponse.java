@@ -25,19 +25,17 @@ public class JsonResponse implements Serializable {
     public JsonResponse() {
     }
 
-    public JsonResponse(Object data) {
-        this.data = data;
+    public static JsonResponse success(Object data) {
+        JsonResponse jsonResponse=new JsonResponse();
+        jsonResponse.setData(data);
+        return jsonResponse;
     }
 
-    public JsonResponse(JsonResponseStatusEnum status, String message) {
-        this.status = status.toString();
-        this.message = message;
-    }
-
-    public JsonResponse(JsonResponseStatusEnum status, String message, Object data) {
-        this.status = status.toString();
-        this.message = message;
-        this.data = data;
+    public static JsonResponse error(String message) {
+        JsonResponse jsonResponse=new JsonResponse();
+        jsonResponse.setMessage(message);
+        jsonResponse.setStatus(JsonResponseStatusEnum.ERROR.toString());
+        return jsonResponse;
     }
 
     public String getStatus() {

@@ -58,10 +58,10 @@ public class DataStatisticsTemplateController {
     @ResponseBody
     public Object get(@PathVariable("uuid")String uuid){
         if(uuid==null&&uuid.length()==0){
-            return new JsonResponse(JsonResponseStatusEnum.ERROR,"请示路径无效");
+            return JsonResponse.error("请示路径无效");
         }else{
             DBObject obj=dataStatisticsTemplateService.getByUuid(uuid);
-            return new JsonResponse(obj);
+            return JsonResponse.success(obj);
         }
     }
 }

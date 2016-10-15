@@ -25,7 +25,7 @@ public class OrganizationFormController {
         try{
             return service.save(organization);
         }catch (Exception e){
-            return new JsonResponse(JsonResponseStatusEnum.ERROR,e.getMessage());
+            return JsonResponse.error(e.getMessage());
         }
     }
 
@@ -35,7 +35,7 @@ public class OrganizationFormController {
         try{
             return service.update(organization);
         }catch (Exception e){
-            return new JsonResponse(JsonResponseStatusEnum.ERROR,e.getMessage());
+            return JsonResponse.error(e.getMessage());
         }
     }
 }

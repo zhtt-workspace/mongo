@@ -24,9 +24,9 @@ public class UserFormController {
     public JsonResponse save(User user){
         try{
             userService.saveUser(user);
-            return new JsonResponse();
+            return JsonResponse.success(user);
         }catch (Exception e){
-            return new JsonResponse(JsonResponseStatusEnum.ERROR,e.getMessage());
+            return  JsonResponse.error(e.getMessage());
         }
     }
 
@@ -35,9 +35,9 @@ public class UserFormController {
     public JsonResponse update(User user){
         try{
             userService.update(user);
-            return new JsonResponse(user);
+            return  JsonResponse.success(user);
         }catch (Exception e){
-            return new JsonResponse(JsonResponseStatusEnum.ERROR,e.getMessage());
+            return JsonResponse.error(e.getMessage());
         }
     }
 }

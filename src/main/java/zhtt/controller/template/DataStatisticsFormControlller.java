@@ -41,19 +41,19 @@ public class DataStatisticsFormControlller {
         try{
             Organization loginRootOrganization=(Organization)request.getSession().getAttribute("loginRootOrganization");
             if(loginRootOrganization==null){
-                return new JsonResponse(JsonResponseStatusEnum.ERROR,"登录信息已过期！");
+                return JsonResponse.error("登录信息已过期！");
             }
             if(uuid==null&&uuid.length()==0){
-                return new JsonResponse(JsonResponseStatusEnum.ERROR,"请示路径无效");
+                return JsonResponse.error("请示路径无效");
             }else{
                 dataStatisticsTemplateFormService.updateTreeState(loginRootOrganization.getUuid(),uuid, state);
                 Map<String,String> map=new HashMap<String,String>();
                 map.put("uuid",uuid);
-                return new JsonResponse(map);
+                return JsonResponse.success(map);
             }
         }catch (Exception e){
             e.printStackTrace();
-            return new JsonResponse(JsonResponseStatusEnum.ERROR,e.getMessage());
+            return  JsonResponse.error(e.getMessage());
         }
     }
 
@@ -63,19 +63,19 @@ public class DataStatisticsFormControlller {
         try{
             Organization loginRootOrganization=(Organization)request.getSession().getAttribute("loginRootOrganization");
             if(loginRootOrganization==null){
-                return new JsonResponse(JsonResponseStatusEnum.ERROR,"登录信息已过期！");
+                return JsonResponse.error("登录信息已过期！");
             }
             if(uuid==null&&uuid.length()==0){
-                return new JsonResponse(JsonResponseStatusEnum.ERROR,"请示路径无效");
+                return JsonResponse.error("请示路径无效");
             }else{
                 dataStatisticsTemplateFormService.upOrDown(loginRootOrganization.getUuid(), uuid, moveDirection);
                 Map<String,String> map=new HashMap<String,String>();
                 map.put("uuid",uuid);
-                return new JsonResponse(map);
+                return JsonResponse.success(map);
             }
         }catch (Exception e){
             e.printStackTrace();
-            return new JsonResponse(JsonResponseStatusEnum.ERROR,e.getMessage());
+            return JsonResponse.error(e.getMessage());
         }
     }
 
@@ -84,16 +84,16 @@ public class DataStatisticsFormControlller {
     public Object get(@PathVariable("uuid")String uuid,@PathVariable("parentId")String parentId,HttpServletRequest request){
         Organization loginRootOrganization=(Organization)request.getSession().getAttribute("loginRootOrganization");
         if(loginRootOrganization==null){
-            return new JsonResponse(JsonResponseStatusEnum.ERROR,"登录信息已过期！");
+            return JsonResponse.error("登录信息已过期！");
         }
         if(uuid==null&&uuid.length()==0){
-            return new JsonResponse(JsonResponseStatusEnum.ERROR,"请示路径无效");
+            return JsonResponse.error("请示路径无效");
         }else{
             dataStatisticsTemplateFormService.deleteAndModifyDocTree(uuid, parentId,loginRootOrganization.getUuid(), false);
             Map<String,String> map=new HashMap<String,String>();
             map.put("uuid",uuid);
             map.put("parentId",parentId);
-            return new JsonResponse(map);
+            return JsonResponse.success(map);
         }
     }
 
@@ -102,14 +102,14 @@ public class DataStatisticsFormControlller {
     private JsonResponse fieldform(@RequestParam Map<String,String> map,HttpServletRequest request){
         try{
             if(!map.containsKey("name")){
-                return new JsonResponse(JsonResponseStatusEnum.ERROR,"请输入名称！");
+                return JsonResponse.error("请输入名称！");
             }
             if(!map.containsKey("colspan")){
-                return new JsonResponse(JsonResponseStatusEnum.ERROR,"请输入总列数！");
+                return JsonResponse.error("请输入总列数！");
             }
             Organization loginRootOrganization=(Organization)request.getSession().getAttribute("loginRootOrganization");
             if(loginRootOrganization==null){
-                return new JsonResponse(JsonResponseStatusEnum.ERROR,"登录信息已过期！");
+                return JsonResponse.error("登录信息已过期！");
             }
 
             DBObject dbObj=createFieldDoc(map);
@@ -121,9 +121,9 @@ public class DataStatisticsFormControlller {
             }else{
                 dataStatisticsTemplateFormService.saveAndModifyTreeDoc(dbObj);
             }
-            return new JsonResponse(dbObj);
+            return JsonResponse.success(dbObj);
         }catch (Exception e){
-            return new JsonResponse(JsonResponseStatusEnum.ERROR,e.getMessage());
+            return JsonResponse.error(e.getMessage());
         }
     }
 
@@ -132,14 +132,14 @@ public class DataStatisticsFormControlller {
     private JsonResponse groupform(@RequestParam Map<String,String> map,HttpServletRequest request){
         try{
             if(!map.containsKey("name")){
-                return new JsonResponse(JsonResponseStatusEnum.ERROR,"请输入名称！");
+                return JsonResponse.error("请输入名称！");
             }
             if(!map.containsKey("colspan")){
-                return new JsonResponse(JsonResponseStatusEnum.ERROR,"请输入总列数！");
+                return JsonResponse.error("请输入总列数！");
             }
             Organization loginRootOrganization=(Organization)request.getSession().getAttribute("loginRootOrganization");
             if(loginRootOrganization==null){
-                return new JsonResponse(JsonResponseStatusEnum.ERROR,"登录信息已过期！");
+                return JsonResponse.error("登录信息已过期！");
             }
             DBObject dbObj=createGroupDoc(map);
             dbObj.put(DataStatisticsTemplate.GroupKey.orgId,loginRootOrganization.getUuid());
@@ -150,9 +150,9 @@ public class DataStatisticsFormControlller {
             }else{
                 dataStatisticsTemplateFormService.saveAndModifyTreeDoc(dbObj);
             }
-            return new JsonResponse(dbObj);
+            return JsonResponse.success(dbObj);
         }catch (Exception e){
-            return new JsonResponse(JsonResponseStatusEnum.ERROR,e.getMessage());
+            return JsonResponse.error(e.getMessage());
         }
     }
 
@@ -161,14 +161,14 @@ public class DataStatisticsFormControlller {
     private JsonResponse rootform(@RequestParam Map<String,String> map,HttpServletRequest request){
         try{
             if(!map.containsKey("name")){
-                return new JsonResponse(JsonResponseStatusEnum.ERROR,"请输入名称！");
+                return JsonResponse.error("请输入名称！");
             }
             if(!map.containsKey("colspan")){
-                return new JsonResponse(JsonResponseStatusEnum.ERROR,"请输入列数！");
+                return JsonResponse.error("请输入列数！");
             }
             Organization loginRootOrganization=(Organization)request.getSession().getAttribute("loginRootOrganization");
             if(loginRootOrganization==null){
-                return new JsonResponse(JsonResponseStatusEnum.ERROR,"登录信息已过期！");
+                return JsonResponse.error("登录信息已过期！");
             }
 
             DBObject dbObj=createRootDoc(map);
@@ -185,10 +185,10 @@ public class DataStatisticsFormControlller {
             DBObject dbObjQuery=createRootDocQuery(map);
             dbObjQuery.put(DataStatisticsTemplate.RootKey.orgId,loginRootOrganization.getUuid());
             dataStatisticsTemplateFormService.updateOrInsert(dbObjQuery, dbObj);
-            return new JsonResponse(dbObj);
+            return JsonResponse.success(dbObj);
         }catch (Exception e){
             e.printStackTrace();
-            return new JsonResponse(JsonResponseStatusEnum.ERROR,e.getMessage());
+            return JsonResponse.error(e.getMessage());
         }
     }
 

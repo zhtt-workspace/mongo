@@ -29,14 +29,14 @@ public class DataStatisticsController {
         try{
             Organization loginRootOrganization=(Organization)request.getSession().getAttribute("loginRootOrganization");
             if(loginRootOrganization==null){
-                return new JsonResponse(JsonResponseStatusEnum.ERROR,"登录信息已过期！");
+                return JsonResponse.error("登录信息已过期！");
             }
             String date= (String) request.getParameter("date");
             Map<String, Object> mapListMap=service.buildCreateTableForm(loginRootOrganization.getUuid(),date);
-            return new JsonResponse(mapListMap);
+            return JsonResponse.success(mapListMap);
         }catch (Exception e){
             e.printStackTrace();
-            return new JsonResponse(JsonResponseStatusEnum.ERROR,e.getMessage());
+            return JsonResponse.error(e.getMessage());
         }
     }
 }

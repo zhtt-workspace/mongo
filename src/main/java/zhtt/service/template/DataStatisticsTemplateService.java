@@ -39,7 +39,7 @@ public class DataStatisticsTemplateService {
     public JsonResponse getDataStatisticsTree(String orgId){
         BasicDBObject docTreeObj=getDocTreeNode(orgId);
         if(docTreeObj==null){
-            return new JsonResponse(JsonResponseStatusEnum.ERROR,"节点树未初始化，请创建。");
+            return JsonResponse.error("节点树未初始化，请创建。");
         }else{
             List<String> uuidList=DataStatisticsTemplateQueryUtil.getUuidListByDocTree(docTreeObj);
             BasicDBObject query=new BasicDBObject("uuid", new BasicDBObject("$in", uuidList));
@@ -56,7 +56,7 @@ public class DataStatisticsTemplateService {
                 }
             }
             Map<String, Object> map=DataStatisticsTemplateQueryUtil.buildTree(docTreeObj,dbMap);
-            return new JsonResponse(map);
+            return JsonResponse.success(map);
         }
     }
 
@@ -68,7 +68,7 @@ public class DataStatisticsTemplateService {
     public JsonResponse getDataStatisticsTable(String orgId){
         BasicDBObject docTreeObj=getDocTreeNode(orgId);
         if(docTreeObj==null){
-            return new JsonResponse(JsonResponseStatusEnum.ERROR,"节点树未初始化，请创建。");
+            return JsonResponse.error("节点树未初始化，请创建。");
         }else{
             List<String> uuidList=DataStatisticsTemplateQueryUtil.getUuidListByDocTree(docTreeObj);
             BasicDBObject query=new BasicDBObject(DataStatisticsTemplate.FieldKey.uuid, new BasicDBObject("$in", uuidList));
@@ -91,7 +91,7 @@ public class DataStatisticsTemplateService {
                 }
             }
             Map<String, Object> map = DataStatisticsTemplateQueryUtil.buildTable(docTreeObj, dbMap, DataStatisticsTemplateQueryUtil.getAllInputList(dbList));
-            return new JsonResponse(map);
+            return JsonResponse.success(map);
         }
     }
 

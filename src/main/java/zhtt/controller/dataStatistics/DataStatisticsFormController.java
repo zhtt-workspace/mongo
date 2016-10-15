@@ -5,6 +5,7 @@ import com.mongodb.util.JSON;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import zhtt.entity.templeate.DataStatisticsTemplate;
 import zhtt.entity.user.Organization;
@@ -25,6 +26,8 @@ import java.util.Map;
 @RequestMapping("/dataStatistics")
 public class DataStatisticsFormController {
 
+    private static final String POST="/create-form";
+
     @Autowired
     private DataStatisticsFormService service;
 
@@ -36,13 +39,13 @@ public class DataStatisticsFormController {
      * @param request
      * @return
      */
-    @RequestMapping("/create-form")
+    @RequestMapping(value = POST,method = RequestMethod.POST )
     @ResponseBody
     public JsonResponse create(String jsonStr,HttpServletRequest request){
         try{
             Organization loginRootOrganization=(Organization)request.getSession().getAttribute("loginRootOrganization");
             if(loginRootOrganization==null){
-                return new JsonResponse(JsonResponseStatusEnum.ERROR,"登录信息已过期！");
+                return JsonResponse.error("登录信息已过期！");
             }
             BasicDBObject data= (BasicDBObject) JSON.parse(jsonStr);
             if(checkData(data)){
@@ -54,16 +57,25 @@ public class DataStatisticsFormController {
                 dateStr+=" 15:30:30";
                 data.put(DataStatisticsTemplate.DataKey.date, CalendarHelp.format(dateStr, CalendarHelp.EN_YMDHMS));
                 service.save(data);
-                return new JsonResponse(data);
+                return JsonResponse.success(data);
             }else{
-                return new JsonResponse(JsonResponseStatusEnum.ERROR,"数据项缺失！");
+                return JsonResponse.error("数据项缺少！");
             }
         }catch (Exception e){
             e.printStackTrace();
-            return new JsonResponse(JsonResponseStatusEnum.ERROR,e.getMessage());
+            return JsonResponse.error(e.getMessage());
         }
     }
 
+    @RequestMapping()
+    @ResponseBody
+    public JsonResponse report(){
+        try{
+            return JsonResponse.success(null);
+        }catch (Exception e){
+            return JsonResponse.error(e.getMessage());
+        }
+    }
     private boolean checkData(BasicDBObject data){
         String[] keys={DataStatisticsTemplate.DataKey.createOrgId,DataStatisticsTemplate.DataKey.dataType,DataStatisticsTemplate.DataKey.date,DataStatisticsTemplate.DataKey.orgId,DataStatisticsTemplate.DataKey.orgName,DataStatisticsTemplate.DataKey.receiveOrgId};
         for(String key:keys){

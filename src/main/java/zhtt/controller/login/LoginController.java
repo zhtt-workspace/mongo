@@ -51,9 +51,9 @@ public class LoginController {
             request.getSession().setAttribute("loginUser",user);
             request.getSession().setAttribute("loginRootOrganization",getloginRootOrganization(organization));
             request.getSession().setAttribute("loginOrganization",organization);
-            return new JsonResponse(user);
+            return JsonResponse.success(user);
         }catch (Exception e){
-            return new JsonResponse(JsonResponseStatusEnum.ERROR,e.getMessage());
+            return JsonResponse.error(e.getMessage());
         }
     }
 
