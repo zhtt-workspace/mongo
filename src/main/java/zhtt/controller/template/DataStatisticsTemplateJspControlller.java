@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
  */
 @Controller
 @RequestMapping("/{module}")
-public class DataStatisticsJspControlller {
+public class DataStatisticsTemplateJspControlller {
 
     @RequestMapping(value = "/data-statistics/create-root",method = RequestMethod.GET)
     public String toCreateRootJsp(@PathVariable("module")String module){

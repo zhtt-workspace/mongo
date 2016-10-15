@@ -4,6 +4,7 @@ import com.mongodb.BasicDBObject;
 import com.mongodb.util.JSON;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -27,6 +28,10 @@ import java.util.Map;
 public class DataStatisticsFormController {
 
     private static final String POST="/create-form";
+    /**
+     * 上报数据
+     */
+    private static final String REPORT="/report/{date}";
 
     @Autowired
     private DataStatisticsFormService service;
@@ -67,11 +72,11 @@ public class DataStatisticsFormController {
         }
     }
 
-    @RequestMapping()
+    @RequestMapping(value = REPORT,method = RequestMethod.GET)
     @ResponseBody
-    public JsonResponse report(){
+    public JsonResponse report(@PathVariable("date")String date){
         try{
-            return JsonResponse.success(null);
+            return JsonResponse.success(date);
         }catch (Exception e){
             return JsonResponse.error(e.getMessage());
         }
@@ -87,4 +92,4 @@ public class DataStatisticsFormController {
         }
         return true;
     }
-}//{"content":"6250117d497e446285f954a2f3af3497:99,8ca633518d6d489a99ab04a67227ea69:441,d9dce5f324f6412391848158069a337c:441,16566a9775354345944614bcbcddea8c:441"}
+}

@@ -13,8 +13,23 @@ dataStatisticsTemplateTree.init=function(){
             dataStatisticsTemplate.tree.init();
             dataStatisticsTemplate.tree.getSelectedNodes().zTree.expandAll(true);
         }else{
-            dataStatisticsTemplate.openForm('createRootModalId');
-            LobiboxUtil.notify(data.message);
+            if("节点树未初始化，请创建。"==data.message&&loginRootOrganization.parentId!=""){
+                LobiboxUtil.confirm({
+                    msg:"节点树未初始化，是否初始化？",
+                    fn:dataStatisticsTemplateTree.cloneTree
+                });
+            }else{
+                dataStatisticsTemplate.openForm('createRootModalId');
+                LobiboxUtil.notify(data.message);
+            }
+        }
+    });
+}
+dataStatisticsTemplateTree.cloneTree=function(){
+    ajaxUtil.get({
+        url:dataStatisticsTemplate.cloneTreeUrl,
+        fn:function(data){
+            LobiboxUtil.notify("克隆成功！");
         }
     });
 }

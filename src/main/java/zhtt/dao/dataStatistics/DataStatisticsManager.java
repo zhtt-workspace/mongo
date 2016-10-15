@@ -29,6 +29,16 @@ public class DataStatisticsManager {
     }
 
     /**
+     * 保存
+     * @param obj
+     * @return
+     */
+    public WriteResult saveOrUpdate(DBObject query,DBObject obj){
+        WriteResult result=update(query,obj,true,false);
+        return result;
+    }
+
+    /**
      *
      * @param find:查询条件
      * @param update：更新后新值

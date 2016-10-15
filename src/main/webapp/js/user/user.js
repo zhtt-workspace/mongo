@@ -88,12 +88,8 @@ user.submitCreateForm=function(){
         form:$("#"+user.createModalId+" form"),
         url:user.createUrl,
         success:function(data){
-            if(data.status=="success"){
-                LobiboxUtil.notify("保存成功！");
-                modalUtil.close("#"+user.createModalId);
-            }else{
-                LobiboxUtil.notify(data.message);
-            }
+            LobiboxUtil.notify("保存成功！");
+            modalUtil.close("#"+user.createModalId);
         }
     });
 }
@@ -133,12 +129,8 @@ user.submitUpdateForm=function(){
         form:$("#updateUserForm"),
         url:user.updateUrl,
         success:function(data){
-            if(data.status=="success"){
-                LobiboxUtil.notify("保存成功！");
-                modalUtil.close("#"+user.updateModalId);
-            }else{
-                LobiboxUtil.notify(data.message);
-            }
+            LobiboxUtil.notify("保存成功！");
+            modalUtil.close("#"+user.updateModalId);
         }
     });
 }

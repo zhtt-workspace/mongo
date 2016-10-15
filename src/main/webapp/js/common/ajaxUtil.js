@@ -39,10 +39,12 @@ ajaxUtil.submit=function(obj){
             }
         },
         success: function(data) {
-            if(obj.success){
-                obj.success(data);
+            if(data.status=="success"){
+                if(obj.success){
+                    obj.success(data.data);
+                }
             }else{
-                LobiboxUtil.notify("操作成功");
+                LobiboxUtil.notify(data.message);
             }
         }
     });
@@ -57,16 +59,18 @@ ajaxUtil.ajax=function(obj){
         async: false,
         error: function(data) {
             if(obj.error){
-                obj.error(data);
+                obj.error(data.data);
             }else{
                 LobiboxUtil.notify(data.message);
             }
         },
         success: function(data) {
-            if(obj.success){
-                obj.success(data);
+            if(data.status=="success"){
+                if(obj.success){
+                    obj.success(data.data);
+                }
             }else{
-                LobiboxUtil.notify("操作成功");
+                LobiboxUtil.notify(data.message);
             }
         }
     });
@@ -84,4 +88,16 @@ ajaxUtil.getumberJsonStr=function(form){
         }
     });
     return json.join(",");
+}
+/**
+ * get请求
+ */
+ajaxUtil.get=function(args){
+    $.get(args.url,function(data){
+        if(data.status=="success"){
+            args.fn(data.data);
+        }else{
+            Lobibox.notify(data.message);
+        }
+    });
 }

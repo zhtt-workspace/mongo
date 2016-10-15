@@ -129,12 +129,8 @@ dataStatisticsCreate.submitCreateDataForm=function(){
         data:{jsonStr:"{"+jsonStr+"}"},
         url:dataStatistics.createUrl,
         success:function(data){
-            if(data.status=="success"){
-                dataStatisticsCreate.submitCreateDataFormBack(data.data);
-                LobiboxUtil.notify("保存成功！");
-            }else{
-                LobiboxUtil.notify(data.message);
-            }
+            dataStatisticsCreate.submitCreateDataFormBack(data);
+            LobiboxUtil.notify("保存成功！");
         }
     });
 }
@@ -265,12 +261,8 @@ dataStatisticsCreate.saveStatisticsData=function(){
         data:{jsonStr:"{"+jsonStr+"}"},
         url:dataStatistics.createUrl,
         success:function(data){
-            if(data.status=="success"){
-                dataStatisticsCreate.submitCreateDataFormBack(data.data);
-                LobiboxUtil.notify("保存成功！");
-            }else{
-                LobiboxUtil.notify(data.message);
-            }
+            dataStatisticsCreate.submitCreateDataFormBack(data);
+            LobiboxUtil.notify("保存成功！");
         }
     });
 }

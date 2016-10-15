@@ -16,6 +16,7 @@ var dataStatisticsTemplate={
     createGroupModalId:"openCreateGroupDataStatisticsTemplateModelBtn",
     createFieldModalId:"openCreateFieldDataStatisticsTemplateModelBtn",
     createUrl:ctx+"/template/data-statistics/form",
+    cloneTreeUrl:ctx+"/template/data-statistics/clone-tree",
     tree:null
 };
 dataStatisticsTemplate.init=function(){
@@ -117,19 +118,13 @@ dataStatisticsTemplate.submitCreateForm=function(obj){
     ajaxUtil.submit({
         form:$("#"+modalDiv.id+" form"),
         success:function(data){
-            if(data.status=="success"){
                 LobiboxUtil.notify("保存成功！");
                 if($("#"+modalDiv.id+" input[name='uuid']").val()==""){
-                    //dataStatisticsTemplateTree.addNode(data.data);
-                    dataStatisticsTemplate.tree.addNode(data.data);
+                    dataStatisticsTemplate.tree.addNode(data);
                 }else{
-                    //dataStatisticsTemplateTree.updateNode(data.data);
-                    dataStatisticsTemplate.tree.updateNode(data.data);
+                    dataStatisticsTemplate.tree.updateNode(data);
                 }
                 modalUtil.close("#"+modalDiv.id);
-            }else{
-                LobiboxUtil.notify(data.message);
-            }
         },
         error:function(data){
             LobiboxUtil.notify("操作失败！");

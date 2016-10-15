@@ -25,7 +25,7 @@ import java.util.Map;
  */
 @Controller
 @RequestMapping("/template")
-public class DataStatisticsFormControlller {
+public class DataStatisticsTemplateFormControlller {
 
     @Autowired
     private DataStatisticsTemplateFormService dataStatisticsTemplateFormService;
@@ -187,6 +187,21 @@ public class DataStatisticsFormControlller {
             dataStatisticsTemplateFormService.updateOrInsert(dbObjQuery, dbObj);
             return JsonResponse.success(dbObj);
         }catch (Exception e){
+            e.printStackTrace();
+            return JsonResponse.error(e.getMessage());
+        }
+    }
+
+    @RequestMapping(value="/data-statistics/clone-tree",method = RequestMethod.GET)
+    @ResponseBody
+    private JsonResponse cloneTree(HttpServletRequest request){
+        try {
+            Organization loginRootOrganization=(Organization)request.getSession().getAttribute("loginRootOrganization");
+            if(loginRootOrganization==null){
+                return JsonResponse.error("登录信息已过期！");
+            }
+            return JsonResponse.success("");
+        } catch (Exception e) {
             e.printStackTrace();
             return JsonResponse.error(e.getMessage());
         }

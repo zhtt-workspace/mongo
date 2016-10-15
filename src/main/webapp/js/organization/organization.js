@@ -93,13 +93,9 @@ organization.submitCreateForm=function(){
         form:$("#"+organization.createFormId),
         url:organization.createUrl,
         success:function(data){
-            if(data.status=="success"){
-                LobiboxUtil.notify("保存成功！");
-                modalUtil.close("#"+organization.createModalId);
-                organization.tree.addNode(data.data);
-            }else{
-                LobiboxUtil.notify(data.message);
-            }
+            LobiboxUtil.notify("保存成功！");
+            modalUtil.close("#"+organization.createModalId);
+            organization.tree.addNode(data);
         }
     });
 }
@@ -125,13 +121,9 @@ organization.submitUpdateForm=function(){
         form:$("#"+organization.updateFormId),
         url:organization.updateUrl,
         success:function(data){
-            if(data.status=="success"){
-                LobiboxUtil.notify("修改成功！");
-                modalUtil.close("#"+organization.updateFormId);
-                organization.tree.updateNode(data.data);
-            }else{
-                LobiboxUtil.notify(data.message);
-            }
+            LobiboxUtil.notify("修改成功！");
+            modalUtil.close("#"+organization.updateFormId);
+            organization.tree.updateNode(data);
         }
     });
 }
