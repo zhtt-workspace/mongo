@@ -32,6 +32,10 @@ public class DataStatisticsFormController {
      * 上报数据
      */
     private static final String REPORT="/report/{date}";
+    /**
+     * 上报数据
+     */
+    private static final String UPDATE_DATA_ITEM="/update-data-item";
 
     @Autowired
     private DataStatisticsFormService service;

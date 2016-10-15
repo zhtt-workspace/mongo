@@ -17,8 +17,14 @@
     #dataStatisticsFormBox td,#dataStatisticsFormBox th{
         white-space: nowrap;padding:2px 8px;
     }
-    .formTable{
-
+    .formTable td{
+        padding:8px 5px;
+    }
+    .formTable input{
+        width:300px;
+    }
+    .formTable textarea{
+        width:300px;
     }
 </style>
 </head>

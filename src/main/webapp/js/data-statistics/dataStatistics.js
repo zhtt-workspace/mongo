@@ -3,5 +3,6 @@
  */
 var dataStatistics={
     buildCreateFormUrl:ctx+"/dataStatistics/tableForm",
-    createUrl:ctx+"/dataStatistics/create-form"
+    createUrl:ctx+"/dataStatistics/create-form",
+    updateDataItemUrl:ctx+"/dataStatistics/update-data-item"
 }

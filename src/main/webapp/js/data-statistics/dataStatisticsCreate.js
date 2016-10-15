@@ -10,7 +10,8 @@ var dataStatisticsCreate={
     formWindow:null,
     statisticsTableBoxId:"dataStatisticsFormBox",
     statisticsTableId:"dataStatisticsTable",
-    createStatisticsTableId:"createDataStatisticsTable"
+    createStatisticsTableId:"createDataStatisticsTable",
+    updateDataItemFormId:"updateDataItemForm"
 };
 /**
  * 根据日期查看数据
@@ -180,13 +181,10 @@ dataStatisticsCreate.getCreateDataJson=function(){
  * @param obj
  */
 dataStatisticsCreate.openUpdateDataItemForm=function(orgNode){
-    /*var orgNodeIndex=obj.parentNode.children.length-obj.cellIndex;
-    var orgNodes=$(obj).parent().prevAll(".dstHeader").children();
-    var orgNode=orgNodes[orgNodes.length-orgNodeIndex];*/
     var orgId=orgNode.id;
     var orgName=orgNode.innerText;
     var html=[];
-    html.push('<form class="updateDataItemForm">');
+    html.push('<form id="updateDataItemForm">');
     html.push('<input type="hidden" class="orgId" value="'+orgId+'">');
     html.push('<input type="hidden" class="orgName" value="'+orgName+'">');
     html.push('<input type="hidden" class="createOrgId" value="'+loginRootOrganization.uuid+'">');
@@ -210,7 +208,7 @@ dataStatisticsCreate.openUpdateDataItemForm=function(orgNode){
         tableHtml.push('</tr>');
         tableHtml.push('<tr>');
             tableHtml.push('<td>备注</td>');
-            tableHtml.push('<td><textarea  style="resize: none;" ></textarea></td>')
+            tableHtml.push('<td><textarea  style="resize: none;" rows="5"></textarea></td>')
         tableHtml.push('</tr>');
     tableHtml.push('</table>');
     html.push(tableHtml.join(""));
@@ -219,8 +217,8 @@ dataStatisticsCreate.openUpdateDataItemForm=function(orgNode){
         {
             title:"为"+orgName+"修改数据项",
             html:html.join(""),
-            height:300,
-            submit:dataStatisticsCreate.submitCreateDataForm,
+            height:320,
+            submit:dataStatisticsCreate.submitUpdateDataItemForm,
             shown:function(){
                 $(".updateDataItemForm").validate();
                 $(".updateDataItemForm").valid();
@@ -274,3 +272,9 @@ dataStatisticsCreate.saveStatisticsData=function(){
      var date=$("#query-data-date").val();
      date=date==""?timeUtil.getCurrentDateTime():date;
  }
+/**
+ * 更新数据项
+ */
+dataStatisticsCreate.submitUpdateDataItemForm=function(){
+    var formObj=$("#"+dataStatisticsCreate.updateDataItemFormId);
+}
