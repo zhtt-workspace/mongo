@@ -170,7 +170,6 @@ public class DataStatisticsTemplateFormControlller {
             if(loginRootOrganization==null){
                 return JsonResponse.error("登录信息已过期！");
             }
-
             DBObject dbObj=createRootDoc(map);
             if(map.containsKey("uuid")&&map.get("uuid")!=null&&map.get("uuid").length()>0){
 
@@ -200,6 +199,7 @@ public class DataStatisticsTemplateFormControlller {
             if(loginRootOrganization==null){
                 return JsonResponse.error("登录信息已过期！");
             }
+            dataStatisticsTemplateFormService.cloneTreeNode(loginRootOrganization.getParentId(),loginRootOrganization.getUuid());
             return JsonResponse.success("");
         } catch (Exception e) {
             e.printStackTrace();

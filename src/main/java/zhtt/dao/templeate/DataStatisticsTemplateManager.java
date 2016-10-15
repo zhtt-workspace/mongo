@@ -30,6 +30,15 @@ public class DataStatisticsTemplateManager {
     }
 
     /**
+     * 保存
+     * @param obj
+     * @return
+     */
+    public WriteResult save(DBObject query,DBObject obj){
+        return update(query,obj,true,false);
+    }
+
+    /**
      * 有则更新
      * @param find
      * @param update

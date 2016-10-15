@@ -24,6 +24,9 @@ public class DataStatisticsTemplateFormService {
     @Autowired
     private DataStatisticsTemplateManager dataStatisticsTemplateManager;
 
+    @Autowired
+    private DataStatisticsTemplateService dataStatisticsTemplateService;
+
     public WriteResult save(DBObject obj){
         return dataStatisticsTemplateManager.save(obj);
     }
@@ -130,12 +133,21 @@ public class DataStatisticsTemplateFormService {
         return true;
     }
 
+
+    public WriteResult cloneTreeNode(String parentId,String orgId){
+        BasicDBObject treeNode=dataStatisticsTemplateService.getDocTreeNode(parentId);
+        treeNode.put(DataStatisticsTemplate.DocTree.orgId,orgId);
+        treeNode.put(DataStatisticsTemplate.DocTree.datetime,new Date());
+        treeNode.remove("_id");
+        DBObject query = DataStatisticsTemplateQueryUtil.getTreeDocQuery(orgId);
+        return dataStatisticsTemplateManager.save(query,treeNode);
+    }
     /**
      * 初始化 ：doc_tree节点
      * @param name
      * @return
      */
-    public WriteResult init(String name,int cols){
+    private WriteResult init(String name,int cols){
         DBObject obj=new BasicDBObject();
         obj.put("name",name);//树结构名称
         obj.put("children",null);//子节点标识

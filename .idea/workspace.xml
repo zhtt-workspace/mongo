@@ -8,20 +8,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" readonly="true" id="37eef5dd-1dfe-4e9d-855f-61686d0c1ff8" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/zhtt/service/dataStatistics/DataStatisticsUtil.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/zhtt/controller/dataStatistics/DataStatisticsFormController.java" afterPath="$PROJECT_DIR$/src/main/java/zhtt/controller/dataStatistics/DataStatisticsFormController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/zhtt/service/dataStatistics/DataStatisticsFormService.java" afterPath="$PROJECT_DIR$/src/main/java/zhtt/service/dataStatistics/DataStatisticsFormService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/zhtt/dao/dataStatistics/DataStatisticsManager.java" afterPath="$PROJECT_DIR$/src/main/java/zhtt/dao/dataStatistics/DataStatisticsManager.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/zhtt/service/dataStatistics/DataStatisticsService.java" afterPath="$PROJECT_DIR$/src/main/java/zhtt/service/dataStatistics/DataStatisticsService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/js/common/ajaxUtil.js" afterPath="$PROJECT_DIR$/src/main/webapp/js/common/ajaxUtil.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/js/data-statistics/dataStatisticsCreate.js" afterPath="$PROJECT_DIR$/src/main/webapp/js/data-statistics/dataStatisticsCreate.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/js/template/data-statistics/dataStatisticsTemplate.js" afterPath="$PROJECT_DIR$/src/main/webapp/js/template/data-statistics/dataStatisticsTemplate.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/js/template/data-statistics/dataStatisticsTemplateTree.js" afterPath="$PROJECT_DIR$/src/main/webapp/js/template/data-statistics/dataStatisticsTemplateTree.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/js/organization/organization.js" afterPath="$PROJECT_DIR$/src/main/webapp/js/organization/organization.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/js/user/user.js" afterPath="$PROJECT_DIR$/src/main/webapp/js/user/user.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/zhtt/controller/template/DataStatisticsTemplateFormControlller.java" afterPath="$PROJECT_DIR$/src/main/java/zhtt/controller/template/DataStatisticsTemplateFormControlller.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/zhtt/service/template/DataStatisticsTemplateFormService.java" afterPath="$PROJECT_DIR$/src/main/java/zhtt/service/template/DataStatisticsTemplateFormService.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/zhtt/dao/templeate/DataStatisticsTemplateManager.java" afterPath="$PROJECT_DIR$/src/main/java/zhtt/dao/templeate/DataStatisticsTemplateManager.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/zhtt/service/dataStatistics/DataStatisticsUtil.java" afterPath="$PROJECT_DIR$/src/main/java/zhtt/service/dataStatistics/DataStatisticsUtil.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MOVED" beforePath="E:\zhtt-workspace\workspace-zhtt\zhtt\SpringMongo\src\main\java\zhtt\controller\template\DataStatisticsFormControlller.java" afterPath="$PROJECT_DIR$/src/main/java/zhtt/controller/template/DataStatisticsTemplateFormControlller.java" />
-      <change type="MOVED" beforePath="E:\zhtt-workspace\workspace-zhtt\zhtt\SpringMongo\src\main\java\zhtt\controller\template\DataStatisticsJspControlller.java" afterPath="$PROJECT_DIR$/src/main/java/zhtt/controller/template/DataStatisticsTemplateJspControlller.java" />
     </list>
     <ignored path="SpringMongo.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -49,43 +41,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="dataStatisticsCreate.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/js/data-statistics/dataStatisticsCreate.js">
+      <file leaf-file-name="create.jsp" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/data-statistics/create.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="2237" max-vertical-offset="5339">
-              <caret line="131" column="58" selection-start-line="131" selection-start-column="58" selection-end-line="131" selection-end-column="58" />
-              <folding>
-                <marker date="1476526649958" expanded="true" signature="8540:8553" placeholder="..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="organization.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/js/organization/organization.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="1576" max-vertical-offset="4522">
-              <caret line="97" column="38" selection-start-line="97" selection-start-column="38" selection-end-line="97" selection-end-column="38" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="dataStatisticsTemplateTree.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/js/template/data-statistics/dataStatisticsTemplateTree.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="114" max-vertical-offset="2565">
-              <caret line="16" column="31" selection-start-line="16" selection-start-column="31" selection-end-line="16" selection-end-column="31" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ajaxUtil.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/js/common/ajaxUtil.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="888" max-vertical-offset="2052">
-              <caret line="96" column="22" selection-start-line="96" selection-start-column="22" selection-end-line="96" selection-end-column="22" />
+            <state vertical-scroll-proportion="1.109063" vertical-offset="190" max-vertical-offset="1520">
+              <caret line="48" column="61" selection-start-line="48" selection-start-column="61" selection-end-line="48" selection-end-column="61" />
               <folding />
             </state>
           </provider>
@@ -103,56 +63,85 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="dataStatisticsTemplate.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/js/template/data-statistics/dataStatisticsTemplate.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="122" max-vertical-offset="4674">
-              <caret line="18" column="58" selection-start-line="18" selection-start-column="58" selection-end-line="18" selection-end-column="58" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DataStatisticsTemplateFormControlller.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="DataStatisticsTemplateFormControlller.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/zhtt/controller/template/DataStatisticsTemplateFormControlller.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.7349043" vertical-offset="2997" max-vertical-offset="5947">
-              <caret line="202" column="34" selection-start-line="202" selection-start-column="34" selection-end-line="202" selection-end-column="34" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="2997" max-vertical-offset="5947">
+              <caret line="201" column="52" selection-start-line="201" selection-start-column="52" selection-end-line="201" selection-end-column="52" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="JsonResponse.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/zhtt/util/JsonResponse.java">
+      <file leaf-file-name="DataStatisticsTemplateFormService.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/zhtt/service/template/DataStatisticsTemplateFormService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="116" max-vertical-offset="1102">
-              <caret line="12" column="25" selection-start-line="12" selection-start-column="19" selection-end-line="12" selection-end-column="25" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="2171" max-vertical-offset="2850">
+              <caret line="136" column="36" selection-start-line="136" selection-start-column="23" selection-end-line="136" selection-end-column="36" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="user.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/js/user/user.js">
+      <file leaf-file-name="DataStatisticsTemplateManager.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/zhtt/dao/templeate/DataStatisticsTemplateManager.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="1477" max-vertical-offset="4731">
-              <caret line="86" column="15" selection-start-line="86" selection-start-column="15" selection-end-line="86" selection-end-column="15" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="dataStatisticsTemplateTable.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/js/template/data-statistics/dataStatisticsTemplateTable.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1159">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="798" max-vertical-offset="2185">
+              <caret line="15" column="42" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="42" />
               <folding>
-                <marker date="1474352145951" expanded="true" signature="894:905" placeholder="..." />
-                <marker date="1474352145951" expanded="true" signature="946:957" placeholder="..." />
-                <marker date="1474352145951" expanded="true" signature="998:1009" placeholder="..." />
+                <element signature="e#850#851#0" expanded="true" />
+                <element signature="e#901#902#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DataStatisticsTemplateService.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/zhtt/service/template/DataStatisticsTemplateService.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="1465" max-vertical-offset="2698">
+              <caret line="103" column="80" selection-start-line="102" selection-start-column="54" selection-end-line="103" selection-end-column="80" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DataStatisticsService.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/zhtt/service/dataStatistics/DataStatisticsService.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="1544" max-vertical-offset="2223">
+              <caret line="123" column="0" selection-start-line="123" selection-start-column="0" selection-end-line="123" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DataStatisticsController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/zhtt/controller/dataStatistics/DataStatisticsController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="24" max-vertical-offset="703">
+              <caret line="37" column="0" selection-start-line="37" selection-start-column="0" selection-end-line="37" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DataStatisticsManager.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/zhtt/dao/dataStatistics/DataStatisticsManager.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="1107" max-vertical-offset="1786">
+              <caret line="89" column="31" selection-start-line="89" selection-start-column="31" selection-end-line="89" selection-end-column="31" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DataStatisticsUtil.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/zhtt/service/dataStatistics/DataStatisticsUtil.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="192" max-vertical-offset="1026">
+              <caret line="43" column="93" selection-start-line="43" selection-start-column="93" selection-end-line="43" selection-end-column="93" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -572,9 +561,7 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/zhtt/dao/user/OrganizationDao.java" />
         <option value="$PROJECT_DIR$/src/main/java/zhtt/dao/MongoQueryUtil.java" />
-        <option value="$PROJECT_DIR$/src/main/java/zhtt/dao/templeate/DataStatisticsTemplateManager.java" />
         <option value="$PROJECT_DIR$/src/main/java/zhtt/util/DataState/ReportState.java" />
         <option value="$PROJECT_DIR$/src/main/java/zhtt/entity/user/Organization.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/js/template/data-statistics/dataStatisticsTemplateTable.js" />
@@ -611,18 +598,20 @@
         <option value="$PROJECT_DIR$/src/main/java/zhtt/controller/template/DataStatisticsTemplateController.java" />
         <option value="$PROJECT_DIR$/src/main/java/zhtt/controller/user/UserController.java" />
         <option value="$PROJECT_DIR$/src/main/java/zhtt/controller/user/UserFormController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/zhtt/service/dataStatistics/DataStatisticsUtil.java" />
-        <option value="$PROJECT_DIR$/src/main/java/zhtt/service/dataStatistics/DataStatisticsService.java" />
         <option value="$PROJECT_DIR$/src/main/java/zhtt/controller/dataStatistics/DataStatisticsFormController.java" />
         <option value="$PROJECT_DIR$/src/main/java/zhtt/dao/dataStatistics/DataStatisticsManager.java" />
         <option value="$PROJECT_DIR$/src/main/java/zhtt/service/dataStatistics/DataStatisticsFormService.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/js/user/user.js" />
         <option value="$PROJECT_DIR$/src/main/webapp/js/organization/organization.js" />
         <option value="$PROJECT_DIR$/src/main/webapp/js/data-statistics/dataStatisticsCreate.js" />
-        <option value="$PROJECT_DIR$/src/main/java/zhtt/controller/template/DataStatisticsTemplateFormControlller.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/js/template/data-statistics/dataStatisticsTemplate.js" />
         <option value="$PROJECT_DIR$/src/main/webapp/js/template/data-statistics/dataStatisticsTemplateTree.js" />
         <option value="$PROJECT_DIR$/src/main/webapp/js/common/ajaxUtil.js" />
+        <option value="$PROJECT_DIR$/src/main/java/zhtt/dao/templeate/DataStatisticsTemplateManager.java" />
+        <option value="$PROJECT_DIR$/src/main/java/zhtt/service/template/DataStatisticsTemplateFormService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/zhtt/controller/template/DataStatisticsTemplateFormControlller.java" />
+        <option value="$PROJECT_DIR$/src/main/java/zhtt/service/dataStatistics/DataStatisticsUtil.java" />
+        <option value="$PROJECT_DIR$/src/main/java/zhtt/service/dataStatistics/DataStatisticsService.java" />
       </list>
     </option>
   </component>
@@ -2271,13 +2260,7 @@
       <workItem from="1476243079289" duration="3121000" />
       <workItem from="1476319891574" duration="3035000" />
       <workItem from="1476334495722" duration="2636000" />
-      <workItem from="1476506611955" duration="10833000" />
-    </task>
-    <task id="LOCAL-00007" summary="test update user form volidate">
-      <created>1471237983800</created>
-      <option name="number" value="00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1471237983800</updated>
+      <workItem from="1476506611955" duration="14892000" />
     </task>
     <task id="LOCAL-00008" summary="test org tree volidate">
       <created>1471410471175</created>
@@ -2567,11 +2550,17 @@
       <option name="project" value="LOCAL" />
       <updated>1476510468913</updated>
     </task>
-    <option name="localTasksCounter" value="56" />
+    <task id="LOCAL-00056" summary="统一接收后台返回值">
+      <created>1476527931936</created>
+      <option name="number" value="00056" />
+      <option name="project" value="LOCAL" />
+      <updated>1476527931936</updated>
+    </task>
+    <option name="localTasksCounter" value="57" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="581867000" />
+    <option name="totallyTimeSpent" value="585926000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -2592,7 +2581,7 @@
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.23376623" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.47986576" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.47943723" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32997763" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
@@ -2656,7 +2645,6 @@
     <option name="myTodoPanelSettings">
       <TodoPanelSettings />
     </option>
-    <MESSAGE value="test  tree select" />
     <MESSAGE value="test  user org-tree select" />
     <MESSAGE value="test  init-data user org" />
     <MESSAGE value="test  data-statistics-template" />
@@ -2681,11 +2669,12 @@
     <MESSAGE value="test  data show by date" />
     <MESSAGE value="test  org update" />
     <MESSAGE value="test  JsonResponse" />
-    <option name="LAST_COMMIT_MESSAGE" value="test  JsonResponse" />
+    <MESSAGE value="统一接收后台返回值" />
+    <option name="LAST_COMMIT_MESSAGE" value="统一接收后台返回值" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="180" />
+      <option name="time" value="185" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory">
@@ -2699,20 +2688,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/zhtt/service/template/DataStatisticsTemplateFormService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2622">
-          <caret line="21" column="13" selection-start-line="21" selection-start-column="13" selection-end-line="21" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/zhtt/service/template/DataStatisticsTemplateQueryUtil.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="3759" max-vertical-offset="5282">
-          <caret line="227" column="140" selection-start-line="227" selection-start-column="140" selection-end-line="227" selection-end-column="140" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/template/data-statistics/create-field.jsp">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-1.3571428" vertical-offset="570" max-vertical-offset="1482">
@@ -2869,22 +2844,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/data-statistics/create.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-9.5" vertical-offset="646" max-vertical-offset="1520">
-          <caret line="48" column="61" selection-start-line="48" selection-start-column="61" selection-end-line="48" selection-end-column="61" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/zhtt/controller/dataStatistics/DataStatisticsController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="139" max-vertical-offset="703">
-          <caret line="35" column="19" selection-start-line="35" selection-start-column="19" selection-end-line="35" selection-end-column="19" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/zhtt/controller/organization/OrganizationFormController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="77" max-vertical-offset="760">
@@ -2941,16 +2900,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/zhtt/service/dataStatistics/DataStatisticsUtil.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1064">
-          <caret line="14" column="31" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="31" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/zhtt/dao/MongoQueryUtil.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-1.2166667" vertical-offset="936" max-vertical-offset="1596">
@@ -2975,42 +2924,16 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/zhtt/dao/dataStatistics/DataStatisticsManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="464" max-vertical-offset="1786">
-          <caret line="35" column="35" selection-start-line="35" selection-start-column="23" selection-end-line="35" selection-end-column="35" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/zhtt/service/dataStatistics/DataStatisticsFormService.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="195" max-vertical-offset="988">
           <caret line="29" column="56" selection-start-line="29" selection-start-column="56" selection-end-line="29" selection-end-column="56" />
           <folding>
-            <element signature="e#1211#1212#0" expanded="true" />
-            <element signature="e#1238#1239#0" expanded="true" />
-            <element signature="e#1376#1377#0" expanded="true" />
-            <element signature="e#1403#1404#0" expanded="true" />
+            <element signature="e#641#642#0" expanded="false" />
+            <element signature="e#1071#1072#0" expanded="false" />
+            <element signature="e#1211#1212#0" expanded="false" />
+            <element signature="e#1238#1239#0" expanded="false" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/zhtt/service/dataStatistics/DataStatisticsService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="246" max-vertical-offset="2204">
-          <caret line="45" column="33" selection-start-line="45" selection-start-column="33" selection-end-line="45" selection-end-column="33" />
-          <folding>
-            <element signature="e#4800#4815#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/zhtt/service/template/DataStatisticsTemplateService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="895" max-vertical-offset="2698">
-          <caret line="70" column="19" selection-start-line="70" selection-start-column="19" selection-end-line="70" selection-end-column="19" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -3027,9 +2950,9 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1159">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <marker date="1474352145951" expanded="true" signature="894:905" placeholder="..." />
-            <marker date="1474352145951" expanded="true" signature="946:957" placeholder="..." />
-            <marker date="1474352145951" expanded="true" signature="998:1009" placeholder="..." />
+            <marker date="1474352145951" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1474352145951" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1474352145951" expanded="true" signature="-1:-1" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -3055,7 +2978,7 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="2237" max-vertical-offset="5339">
           <caret line="131" column="58" selection-start-line="131" selection-start-column="58" selection-end-line="131" selection-end-column="58" />
           <folding>
-            <marker date="1476526649958" expanded="true" signature="8540:8553" placeholder="..." />
+            <marker date="1476526649958" expanded="true" signature="-1:-1" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -3102,10 +3025,77 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/zhtt/dao/templeate/DataStatisticsTemplateManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="114" max-vertical-offset="2185">
+          <caret line="15" column="42" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="42" />
+          <folding>
+            <element signature="e#850#851#0" expanded="true" />
+            <element signature="e#901#902#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/zhtt/controller/template/DataStatisticsTemplateFormControlller.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7349043" vertical-offset="2997" max-vertical-offset="5947">
-          <caret line="202" column="34" selection-start-line="202" selection-start-column="34" selection-end-line="202" selection-end-column="34" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="2997" max-vertical-offset="5947">
+          <caret line="201" column="52" selection-start-line="201" selection-start-column="52" selection-end-line="201" selection-end-column="52" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/zhtt/service/template/DataStatisticsTemplateFormService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="2171" max-vertical-offset="2850">
+          <caret line="136" column="36" selection-start-line="136" selection-start-column="23" selection-end-line="136" selection-end-column="36" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/zhtt/service/template/DataStatisticsTemplateService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1465" max-vertical-offset="2698">
+          <caret line="103" column="80" selection-start-line="102" selection-start-column="54" selection-end-line="103" selection-end-column="80" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/zhtt/dao/dataStatistics/DataStatisticsManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1107" max-vertical-offset="1786">
+          <caret line="89" column="31" selection-start-line="89" selection-start-column="31" selection-end-line="89" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/zhtt/service/dataStatistics/DataStatisticsUtil.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="192" max-vertical-offset="1026">
+          <caret line="43" column="93" selection-start-line="43" selection-start-column="93" selection-end-line="43" selection-end-column="93" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/zhtt/controller/dataStatistics/DataStatisticsController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="24" max-vertical-offset="703">
+          <caret line="37" column="0" selection-start-line="37" selection-start-column="0" selection-end-line="37" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/zhtt/service/dataStatistics/DataStatisticsService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1544" max-vertical-offset="2223">
+          <caret line="123" column="0" selection-start-line="123" selection-start-column="0" selection-end-line="123" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/data-statistics/create.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="1.109063" vertical-offset="190" max-vertical-offset="1520">
+          <caret line="48" column="61" selection-start-line="48" selection-start-column="61" selection-end-line="48" selection-end-column="61" />
           <folding />
         </state>
       </provider>

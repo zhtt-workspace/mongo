@@ -22,7 +22,6 @@ public class DataStatisticsUtil {
      * @return
      */
     public static BasicDBObject buildQuerySqlByDate (String startTime,String endTime){
-
         List<BasicDBObject> basicDBObjectList = new ArrayList<BasicDBObject>();
         basicDBObjectList.add(new BasicDBObject(DataStatisticsTemplate.DataKey.date, new BasicDBObject("$gt", CalendarHelp.formatDayStartTime(startTime))));
         basicDBObjectList.add(new BasicDBObject(DataStatisticsTemplate.DataKey.date, new BasicDBObject("$lt", CalendarHelp.formatDayEndTime(endTime))));
@@ -34,11 +33,17 @@ public class DataStatisticsUtil {
         if(query==null){
             query=new BasicDBObject();
         }
-        List<BasicDBObject> dateCondition = new ArrayList<BasicDBObject>();
+        /*List<BasicDBObject> dateCondition = new ArrayList<BasicDBObject>();
         dateCondition.add(new BasicDBObject(DataStatisticsTemplate.DataKey.reportState, ReportState.getValueString(ReportState.reported)));
         dateCondition.add(new BasicDBObject(DataStatisticsTemplate.DataKey.issueState, IssueState.getValueString(IssueState.noissue)));
         query.put("$or", dateCondition);
-        query.put(DataStatisticsTemplate.DataKey.receiveOrgId,orgId);
+        query.put(DataStatisticsTemplate.DataKey.receiveOrgId,orgId);*/
+
+        List<BasicDBObject> orgCondition = new ArrayList<BasicDBObject>();
+        orgCondition.add(new BasicDBObject(DataStatisticsTemplate.DataKey.orgId, orgId));
+        orgCondition.add(new BasicDBObject(DataStatisticsTemplate.DataKey.receiveOrgId, orgId));
+        query.put("$or", orgCondition);
+
         return query;
     }
 

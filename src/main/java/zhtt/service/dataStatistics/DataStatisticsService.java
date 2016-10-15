@@ -55,7 +55,7 @@ public class DataStatisticsService {
                 List<BasicDBObject> reportedOrgList=(List<BasicDBObject>)mapListMap.get("reportedOrgList");
                 reportOrgIdList=new ArrayList<>();
 
-                totalObjList=statisJuniorDataByReceiveOrgId(query);
+                totalObjList=statisJuniorDataByReceiveOrgId(query,receiveOrgId);
                 for(BasicDBObject obj:reportedOrgList){
                     reportOrgIdList.add(obj.getString(DataStatisticsTemplate.DataKey.orgId));
                 }
@@ -107,22 +107,23 @@ public class DataStatisticsService {
     /**
      * 根据接收机构统计下级数据
      * @param query
+     * @param orgId
      * @return
      */
-    public List<BasicDBObject> statisJuniorDataByReceiveOrgId(BasicDBObject query){
+    public List<BasicDBObject> statisJuniorDataByReceiveOrgId(BasicDBObject query,String orgId){
         /**
          * 增加过滤条件，只统计本单位的，不统计本机构的
          */
         List<BasicDBObject> condition = new ArrayList<BasicDBObject>();
-        BasicDBObject orgCondition=new BasicDBObject(DataStatisticsTemplate.DataKey.orgId,new BasicDBObject("$ne",query.getString(DataStatisticsTemplate.DataKey.receiveOrgId)));
+        BasicDBObject orgCondition=new BasicDBObject(DataStatisticsTemplate.DataKey.orgId,new BasicDBObject("$ne",orgId));
         BasicDBObject headquarters=new BasicDBObject(DataStatisticsTemplate.DataKey.dataType,DataStatisticsTemplate.Type.headquarters);
         condition.add(orgCondition);
         condition.add(headquarters);
-        query.put("$or",condition);
-
+        //query.put("$or",condition);
+        query.put(DataStatisticsTemplate.DataKey.orgId,new BasicDBObject("$ne",orgId));
         BasicDBObject groupField=new BasicDBObject(DataStatisticsTemplate.DataKey.receiveOrgId, true);
         String finalizer = FileUtil.getJavaScricptFunctionFromFile(this, "/js/dataStatistics-totalAllFileld.js");
-        DBObject totalField=dataStatisticsTemplateService.getAllTotalField(query.getString(DataStatisticsTemplate.DataKey.receiveOrgId));
+        DBObject totalField=dataStatisticsTemplateService.getAllTotalField(orgId);
         return dataStatisticsManager.group(groupField, query, totalField,  finalizer);
     }
 }
