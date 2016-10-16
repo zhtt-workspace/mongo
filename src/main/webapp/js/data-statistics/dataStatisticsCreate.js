@@ -66,6 +66,10 @@ dataStatisticsCreate.initCreateForm=function(){
         }
     });
 }
+/**
+ * 打开form表单对话框
+ * @param obj
+ */
 dataStatisticsCreate.openFormBox=function(obj){
     var orgNode;
     if(obj.className=="noReportOrgList"){
@@ -78,8 +82,37 @@ dataStatisticsCreate.openFormBox=function(obj){
     if(orgNode.className=="noReportOrgList"){
         dataStatisticsCreate.openCreateDataForm(orgNode);
     }else{
-        dataStatisticsCreate.openUpdateDataItemForm(orgNode);
+        var key=$(obj).parent().find("[class]").attr("class");
+        var name=$(obj).parent().find("[class]").text();
+        var orgId=orgNode.id;
+        var orgName=orgNode.innerText;
+        dataStatisticsCreate.openUpdateDataItemForm({dataKey:key,dataName:name,orgId:orgId,orgName:orgName,cnNamePath:dataStatisticsCreate.getDataItemCnNamePath(obj)});
     }
+}
+dataStatisticsCreate.getDataItemCnNamePath=function(tdNode){
+    var cnNamePath=[];
+    var max=$(".dstHeader + tr").first().children().length;
+    var trNode=$(tdNode).parent();
+    var min=trNode.children().length;
+    var dataItemSize=parseInt(dataStatisticsCreate.tableConfig.colspan)-1;
+    if(min<=max){
+        for(var i=dataItemSize-(max-min);i>0;){
+            var dataItemNode=trNode.children()[--i];
+            cnNamePath.push(dataItemNode.innerText);
+        }
+    }
+    while(min<max){
+        trNode=trNode.prev();
+        var len=trNode.children().length;
+        if(min<len){
+            for(var i=len-min;i>0;){
+                var dataItemNode=trNode.children()[--i];
+                cnNamePath.push(dataItemNode.innerText);
+            }
+        }
+    }
+    LobiboxUtil.notify(cnNamePath.join("->"));
+    return cnNamePath;
 }
 /**
  * 打开新建数据的表单
@@ -180,16 +213,15 @@ dataStatisticsCreate.getCreateDataJson=function(){
  * 打开新建数据项的表单
  * @param obj
  */
-dataStatisticsCreate.openUpdateDataItemForm=function(orgNode){
-    var orgId=orgNode.id;
-    var orgName=orgNode.innerText;
+dataStatisticsCreate.openUpdateDataItemForm=function(obj){
     var html=[];
-    html.push('<form id="updateDataItemForm">');
-    html.push('<input type="hidden" class="orgId" value="'+orgId+'">');
-    html.push('<input type="hidden" class="orgName" value="'+orgName+'">');
+    html.push('<form id="'+dataStatisticsCreate.updateDataItemFormId+'">');
+    html.push('<input type="hidden" class="orgId" value="'+obj.orgId+'">');
+    html.push('<input type="hidden" class="orgName" value="'+obj.orgName+'">');
+    html.push('<input type="hidden" class="dataKey" value="'+obj.dataKey+'">');
     html.push('<input type="hidden" class="createOrgId" value="'+loginRootOrganization.uuid+'">');
     html.push('<input type="hidden" class="receiveOrgId" value="'+loginRootOrganization.uuid+'">');
-    if(loginRootOrganization.uuid==orgId){
+    if(loginRootOrganization.uuid==obj.orgId){
         html.push('<input type="hidden" class="dataType" value="headquarters">');
         html.push('<input type="hidden" class="reportState" value="reported">');
     }else{
@@ -200,28 +232,28 @@ dataStatisticsCreate.openUpdateDataItemForm=function(orgNode){
     tableHtml.push('<table class="formTable">');
         tableHtml.push('<tr>');
             tableHtml.push('<td>数据项名称</td>');
-            tableHtml.push('<td><input name="datavalue" value=""></td>')
+            tableHtml.push('<td><input name="dataName" value="'+obj.dataName+'"></td>')
         tableHtml.push('</tr>');
         tableHtml.push('<tr>');
             tableHtml.push('<td>数据值</td>');
-            tableHtml.push('<td><input name="datavalue" value=""></td>')
+            tableHtml.push('<td><input name="dataValue" value=""></td>')
         tableHtml.push('</tr>');
         tableHtml.push('<tr>');
             tableHtml.push('<td>备注</td>');
-            tableHtml.push('<td><textarea  style="resize: none;" rows="5"></textarea></td>')
+            tableHtml.push('<td><textarea name="remarks" style="resize: none;" rows="5" required="true"></textarea></td>')
         tableHtml.push('</tr>');
     tableHtml.push('</table>');
     html.push(tableHtml.join(""));
     html.push('</form>');
     dataStatisticsCreate.formWindow=LobiboxUtil.formWindow(
         {
-            title:"为"+orgName+"修改数据项",
+            title:"为"+obj.orgName+"修改数据项",
             html:html.join(""),
             height:320,
             submit:dataStatisticsCreate.submitUpdateDataItemForm,
             shown:function(){
-                $(".updateDataItemForm").validate();
-                $(".updateDataItemForm").valid();
+                $("#"+dataStatisticsCreate.updateDataItemFormId).validate();
+                $("#"+dataStatisticsCreate.updateDataItemFormId).valid();
             }
         }
     );

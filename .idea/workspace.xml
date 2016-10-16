@@ -7,10 +7,8 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" readonly="true" id="37eef5dd-1dfe-4e9d-855f-61686d0c1ff8" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/zhtt/controller/dataStatistics/DataStatisticsFormController.java" afterPath="$PROJECT_DIR$/src/main/java/zhtt/controller/dataStatistics/DataStatisticsFormController.java" />
+    <list default="true" readonly="true" id="37eef5dd-1dfe-4e9d-855f-61686d0c1ff8" name="Default" comment="一级子节点新建数据">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/data-statistics/create.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/data-statistics/create.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/js/data-statistics/dataStatistics.js" afterPath="$PROJECT_DIR$/src/main/webapp/js/data-statistics/dataStatistics.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/js/data-statistics/dataStatisticsCreate.js" afterPath="$PROJECT_DIR$/src/main/webapp/js/data-statistics/dataStatisticsCreate.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
@@ -43,8 +41,8 @@
       <file leaf-file-name="create.jsp" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/data-statistics/create.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-10.178572" vertical-offset="190" max-vertical-offset="1634">
-              <caret line="25" column="23" selection-start-line="25" selection-start-column="23" selection-end-line="25" selection-end-column="23" />
+            <state vertical-scroll-proportion="-8.821428" vertical-offset="190" max-vertical-offset="1634">
+              <caret line="23" column="32" selection-start-line="23" selection-start-column="32" selection-end-line="23" selection-end-column="32" />
               <folding />
             </state>
           </provider>
@@ -53,10 +51,35 @@
       <file leaf-file-name="dataStatisticsCreate.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/webapp/js/data-statistics/dataStatisticsCreate.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="1.2588598" vertical-offset="3363" max-vertical-offset="5415">
-              <caret line="220" column="64" selection-start-line="220" selection-start-column="40" selection-end-line="220" selection-end-column="64" />
+            <state vertical-scroll-proportion="0.40625" vertical-offset="1710" max-vertical-offset="6023">
+              <caret line="103" column="0" selection-start-line="103" selection-start-column="0" selection-end-line="103" selection-end-column="0" />
               <folding>
-                <marker date="1476539877716" expanded="true" signature="8390:8403" placeholder="..." />
+                <marker date="1476623340130" expanded="true" signature="9652:9665" placeholder="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="dataStatisticsBuildTable.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/js/data-statistics/dataStatisticsBuildTable.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="1881" max-vertical-offset="2945">
+              <caret line="47" column="13" selection-start-line="47" selection-start-column="13" selection-end-line="47" selection-end-column="13" />
+              <folding>
+                <element signature="e#0#41#0" expanded="false" />
+                <marker date="1476252040810" expanded="true" signature="4122:4140" placeholder="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="LobiboxUtil.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/js/common/LobiboxUtil.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="614" max-vertical-offset="17556">
+              <caret line="50" column="14" selection-start-line="50" selection-start-column="14" selection-end-line="50" selection-end-column="14" />
+              <folding>
+                <marker date="1474610965700" expanded="true" signature="4997:5194" placeholder="..." />
               </folding>
             </state>
           </provider>
@@ -544,10 +567,10 @@
         <option value="$PROJECT_DIR$/src/main/java/zhtt/controller/template/DataStatisticsTemplateFormControlller.java" />
         <option value="$PROJECT_DIR$/src/main/java/zhtt/service/dataStatistics/DataStatisticsUtil.java" />
         <option value="$PROJECT_DIR$/src/main/java/zhtt/service/dataStatistics/DataStatisticsService.java" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/data-statistics/create.jsp" />
-        <option value="$PROJECT_DIR$/src/main/webapp/js/data-statistics/dataStatisticsCreate.js" />
         <option value="$PROJECT_DIR$/src/main/webapp/js/data-statistics/dataStatistics.js" />
         <option value="$PROJECT_DIR$/src/main/java/zhtt/controller/dataStatistics/DataStatisticsFormController.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/data-statistics/create.jsp" />
+        <option value="$PROJECT_DIR$/src/main/webapp/js/data-statistics/dataStatisticsCreate.js" />
       </list>
     </option>
   </component>
@@ -2196,13 +2219,7 @@
       <workItem from="1476243079289" duration="3121000" />
       <workItem from="1476319891574" duration="3035000" />
       <workItem from="1476334495722" duration="2636000" />
-      <workItem from="1476506611955" duration="16160000" />
-    </task>
-    <task id="LOCAL-00009" summary="test org tree lod">
-      <created>1471588789488</created>
-      <option name="number" value="00009" />
-      <option name="project" value="LOCAL" />
-      <updated>1471588789488</updated>
+      <workItem from="1476506611955" duration="29734000" />
     </task>
     <task id="LOCAL-00010" summary="test org tree save">
       <created>1471689899266</created>
@@ -2492,11 +2509,17 @@
       <option name="project" value="LOCAL" />
       <updated>1476539223137</updated>
     </task>
-    <option name="localTasksCounter" value="58" />
+    <task id="LOCAL-00058" summary="一级子节点新建数据">
+      <created>1476540437432</created>
+      <option name="number" value="00058" />
+      <option name="project" value="LOCAL" />
+      <updated>1476540437432</updated>
+    </task>
+    <option name="localTasksCounter" value="59" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="587194000" />
+    <option name="totallyTimeSpent" value="600768000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -2514,7 +2537,7 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.28667483" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.23376623" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.27813852" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.47943723" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
@@ -2718,16 +2741,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/js/data-statistics/dataStatisticsBuildTable.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1995" max-vertical-offset="2945">
-          <caret line="117" column="95" selection-start-line="117" selection-start-column="95" selection-end-line="117" selection-end-column="95" />
-          <folding>
-            <element signature="e#0#41#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/jsp/bootstrap-bottom.jsp">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.3793677" vertical-offset="0" max-vertical-offset="601">
@@ -2926,23 +2939,13 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/js/common/LobiboxUtil.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="44" max-vertical-offset="17556">
-          <caret line="14" column="12" selection-start-line="14" selection-start-column="12" selection-end-line="14" selection-end-column="12" />
-          <folding>
-            <marker date="1474610965700" expanded="true" signature="-1:-1" placeholder="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/zhtt/dao/templeate/DataStatisticsTemplateManager.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="114" max-vertical-offset="2185">
           <caret line="15" column="42" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="42" />
           <folding>
-            <element signature="e#850#851#0" expanded="true" />
-            <element signature="e#901#902#0" expanded="true" />
+            <element signature="e#850#851#0" expanded="false" />
+            <element signature="e#901#902#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -3003,14 +3006,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/data-statistics/create.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-10.178572" vertical-offset="190" max-vertical-offset="1634">
-          <caret line="25" column="23" selection-start-line="25" selection-start-column="23" selection-end-line="25" selection-end-column="23" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/js/data-statistics/dataStatistics.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="247">
@@ -3027,12 +3022,41 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/data-statistics/create.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-8.821428" vertical-offset="190" max-vertical-offset="1634">
+          <caret line="23" column="32" selection-start-line="23" selection-start-column="32" selection-end-line="23" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/js/common/LobiboxUtil.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="614" max-vertical-offset="17556">
+          <caret line="50" column="14" selection-start-line="50" selection-start-column="14" selection-end-line="50" selection-end-column="14" />
+          <folding>
+            <marker date="1474610965700" expanded="true" signature="4997:5194" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/js/data-statistics/dataStatisticsBuildTable.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1881" max-vertical-offset="2945">
+          <caret line="47" column="13" selection-start-line="47" selection-start-column="13" selection-end-line="47" selection-end-column="13" />
+          <folding>
+            <element signature="e#0#41#0" expanded="false" />
+            <marker date="1476252040810" expanded="true" signature="4122:4140" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/js/data-statistics/dataStatisticsCreate.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.2588598" vertical-offset="3363" max-vertical-offset="5415">
-          <caret line="220" column="64" selection-start-line="220" selection-start-column="40" selection-end-line="220" selection-end-column="64" />
+        <state vertical-scroll-proportion="0.40625" vertical-offset="1710" max-vertical-offset="6023">
+          <caret line="103" column="0" selection-start-line="103" selection-start-column="0" selection-end-line="103" selection-end-column="0" />
           <folding>
-            <marker date="1476539877716" expanded="true" signature="8390:8403" placeholder="..." />
+            <marker date="1476623340130" expanded="true" signature="9652:9665" placeholder="..." />
           </folding>
         </state>
       </provider>

@@ -21,7 +21,7 @@
         padding:8px 5px;
     }
     .formTable input{
-        width:300px;
+        width:300px;height:27px;
     }
     .formTable textarea{
         width:300px;
